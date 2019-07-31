@@ -28,4 +28,15 @@ Route::group(['namespace' => 'Auth'], function () {
 
 });
  
+// Authenticated Routes
+Route::group(['middleware' => ['auth'] ], function(){
+    Route::resource('merchants', 'MerchantController', ['names' => [
+        'index' => 'merchants'
+    ]]);
 
+    Route::resource('locations', 'LocationController', ['names' => [
+        'index' => 'locations'
+    ]]);
+
+
+});
