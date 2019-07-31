@@ -11,7 +11,7 @@
 |
 */
 
-
+Route::get('/', 'DashboardController@index')->name('home');
 Route::get('/dashboard', 'DashboardController@index')->name('home');
 
 // Registration and Login Routes
