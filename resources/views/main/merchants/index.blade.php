@@ -72,12 +72,12 @@
 
             <div class="row">
                 <div class="col-md-3">
-                    <input type="text" name="mall_name" placeholder="Type Merchant Name" id="mall_name" class="form-control" required="" value="{{$current_merchant->merchant_name}}" />
+                    <input type="text" name="mall_name" placeholder="Type Merchant Name" id="mall_name" class="form-control" required="" value="{{@$current_merchant->merchant_name}}" />
 
                 </div>
             </div>
 
-            @if($locations)
+            @if(isset($locations))
             <br />
             <div class="row">
                 <div class="col-md-12">
@@ -144,24 +144,6 @@
       }
     });
 
-    //
-    // $(document).on('click', '.btn-delete', function(e){
-    //     e.preventDefault();
-    //     // var btndelete = $(this); 
-    //     // $.ajax({
-    //     //     url: btndelete.attr('data-href'),
-    //     //     type: btndelete.attr('data-method'),       
-    //     //     dataType:'json',
-    //     //     success:function(data){
-    //     //         if(data.status==='error'){
-    //     //             alert(data.message);
-    //     //         }else{  
-    //     //             $('.row-location[data-id="'+btndelete.attr('data-id')+'"]').remove();
-    //     //             toastr.success("Successfully Removed!");
-    //     //         }   
-    //     //     }
-    //     // });
-    // });
 
     $(document).on('click', '.btn-delete', function(e){
         e.preventDefault();
