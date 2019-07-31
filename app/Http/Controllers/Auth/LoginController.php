@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use App\User;
+use Auth;
 
 class LoginController extends Controller
 {
@@ -25,7 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/dashboard';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -45,6 +48,20 @@ class LoginController extends Controller
     public function username()
     {
         return 'email_id';
+    }
+
+    public function login(Request $request)
+    {
+         $user = User::where($this->username(), $request->email_id)
+                      ->where('password',md5($request->password))
+                      ->first();
+         Auth::login($user);
+         return redirect($this->redirectTo);
+    }
+
+    public function logout(Request $request){
+        Auth::logout();
+        return redirect('https://admin.mall-e.net/account/logout');
     }
  
 }
