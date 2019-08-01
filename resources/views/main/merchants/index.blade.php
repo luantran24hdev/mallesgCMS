@@ -43,7 +43,7 @@
                                     <select name="level_id" class="form-control">
                                         @if($floors)
                                             @foreach($floors as $floor)
-                                             <option value="{{$floor->level_id}}">{{$floor->level}}</option>
+                                             <option value="{{@$floor->level_id}}">{{@$floor->level}}</option>
                                             @endforeach
                                         @endif
                                     </select>
@@ -61,7 +61,7 @@
                             <tr class="row-location" data-id="{{$location->merchantLocation_id}}">
                                 <td>{{$location->mall->mall_name}}</td>
                                 <td>{{$location->merchant_location}}</td>
-                                <td>{{$location->floor->level}}</td>
+                                <td>{{@$location->floor->level}}</td>
                                 <td>
                                     <a  href="javascript:;" data-href="{{route('locations.destroy',['merchants'=>$location->merchantLocation_id])}}" data-method="DELETE" class="btn-delete" data-id="{{$location->merchantLocation_id}}">
                                         <span class="text-danger">Delete</span>
