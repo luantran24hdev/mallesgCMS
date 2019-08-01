@@ -3,12 +3,11 @@
 namespace App\Repositories;
 
 
-use App\MerchantMaster;
+use App\MallMaster;
 use BadMethodCallException, Auth;
 
-class MerchantRepository implements RepositoryInterface
+class MallRepository implements RepositoryInterface
 {   
-
 
     /**
      * get all resources in storage.
@@ -17,7 +16,7 @@ class MerchantRepository implements RepositoryInterface
     */
     public function all()
     { 
-        return MerchantMaster::all();
+        return MallMaster::orderBy('mall_name')->get();
     }
 
     /**
@@ -27,7 +26,7 @@ class MerchantRepository implements RepositoryInterface
     */
     public function find($id)
     {   
-        return MerchantMaster::find($id);
+        return MallMaster::find($id);
     }
 
     /**
@@ -37,7 +36,7 @@ class MerchantRepository implements RepositoryInterface
     */
     public function create($data)
     {
-        return MerchantMaster::create($data);
+        return MallMaster::create($data);
     }
 
 
@@ -48,7 +47,7 @@ class MerchantRepository implements RepositoryInterface
     */
     public function update($id, array $data)
     {   
-        return MerchantMaster::find($id)->update($data);
+        return MallMaster::find($id)->update($data);
     }
 
 
@@ -60,7 +59,7 @@ class MerchantRepository implements RepositoryInterface
     public function destroy($id)
     {
 
-        return MerchantMaster::destroy($id);
+        return MallMaster::destroy($id);
     }
 
     /**
@@ -73,6 +72,7 @@ class MerchantRepository implements RepositoryInterface
         return $this->destroy($id);
     }
 
+
     /**
      * 
      *
@@ -80,10 +80,9 @@ class MerchantRepository implements RepositoryInterface
     */
     public function search($name)
     {
-        return MerchantMaster::where('merchant_name','LIKE', "%$name%")                        
-                        ->orderBy('merchant_name')
-                        ->pluck('merchant_name', 'merchant_id');
+        return MallMaster::where('mall_name','LIKE', "%$name%")                        
+                        ->orderBy('mall_name')
+                        ->pluck('mall_name', 'mall_id');
     }
-
 
 }

@@ -5,25 +5,35 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Repositories\MerchantRepository; 
+use App\Repositories\MallRepository; 
+
+use App\LevelMaster;
 
 
 class MerchantController extends Controller
 {
 
     /**
-    * @var MemberRepository
+    * @var MerchantRepository
     *
     */
     protected $merchant;
+
+    /**
+    * @var MallRepository
+    *
+    */
+    protected $mall;
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(MerchantRepository $merchant)
+    public function __construct(MerchantRepository $merchant, MallRepository $mall)
     {
         $this->merchant =  $merchant; 
+        $this->mall =  $mall; 
     }
 
     /**
@@ -31,7 +41,7 @@ class MerchantController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
         $merchants = $this->merchant->all()->pluck('merchant_name', 'merchant_id');
 
@@ -71,15 +81,22 @@ class MerchantController extends Controller
      */
     public function show($id)
     {
-        $merchantOptions = $this->merchant->all()->pluck('merchant_name', 'merchant_id')->toJson();
-        $current_merchant = $this->merchant->find($id) ?? false;
+        $merchantOptions = $this->merchant->all()->pluck('merchant_name', 'merchant_id')->toJson() ?? [];
+        $mallOptions = $this->mall->all()->pluck('mall_name', 'mall_id')->toJson() ?? [];
+        $current_merchant = $this->merchant->find($id) ?? [];
         $locations = $current_merchant->locations;
+        $floors = LevelMaster::all();
+ 
+        $data = [
+            'merchantOptions' => $merchantOptions,
+            'current_merchant' => $current_merchant,
+            'locations' => $locations,
+            'mallOptions' => $mallOptions,
+            'floors' => $floors,
+            'id' => $id
+        ];
 
-        return view('main.merchants.index',compact(
-            'merchantOptions',
-            'current_merchant',
-            'locations'
-        ));
+        return view('main.merchants.index',$data);
     }
 
     /**
@@ -115,4 +132,16 @@ class MerchantController extends Controller
     {
         //
     }
+
+    /**
+     * 
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function search($name)
+    {
+        return $this->merchant->search($name);
+    }
+
 }

@@ -30,10 +30,17 @@ Route::group(['namespace' => 'Auth'], function () {
  
 // Authenticated Routes
 Route::group(['middleware' => ['auth'] ], function(){
+
+    //malls
+    Route::get('malls/search/{name?}', 'MallController@search')->name('malls.search');
+
+    //merchants
     Route::resource('merchants', 'MerchantController', ['names' => [
         'index' => 'merchants'
     ]]);
+    Route::get('merchants/search/{name?}', 'MerchantController@search')->name('merchants.search');
 
+    //locations
     Route::resource('locations', 'LocationController', ['names' => [
         'index' => 'locations'
     ]]);

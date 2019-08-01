@@ -3,12 +3,27 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+use App\Repositories\MallRepository; 
 
-use App\MerchantLocation;
-
-class LocationController extends Controller
+class MallController extends Controller
 {
+
+    /**
+    * @var MallRepository
+    *
+    */
+    protected $mall;
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct(MallRepository $mall)
+    {
+        $this->mall =  $mall; 
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -36,36 +51,8 @@ class LocationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
-
-        // Start Validation
-        $validator = Validator::make($request->all(), [
-            'mall_id' => 'required',
-            'merchant_id' => 'required',
-            'level_id' => 'required',
-            'merchant_location' => 'required',
-        ]);
-        
-        if($validator->fails()){ 
-           return response()->json([
-                'status' => 'error',
-                'message' => $validator->messages()->first()
-           ],200);
-        }
-
-        $insert = MerchantLocation::create([
-            'mall_id' => $request->mall_id,
-            'merchant_id' => $request->merchant_id,
-            'level_id' => $request->level_id,
-            'merchant_location' => $request->merchant_location,
-            'location_details' => ""
-        ]);
-
-        return response()->json([
-            'status' => 'success',
-            'mall_name' => $request->mall_name,
-            'id' => $insert->id
-        ],200);
+    {
+        //
     }
 
     /**
@@ -110,10 +97,18 @@ class LocationController extends Controller
      */
     public function destroy($id)
     {
-        $delete = MerchantLocation::destroy($id);
-        return response()->json([
-            'status' => $delete ? 'success' : 'error',
-            'message' => $delete ? __('succesfully deleted') : __('error deleting')
-        ],200);
+        //
+    }
+
+
+    /**
+     * 
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function search($name)
+    {
+        return $this->mall->search($name);
     }
 }

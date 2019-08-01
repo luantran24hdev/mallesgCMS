@@ -12,10 +12,10 @@
     <link href="{{asset('assets/images/logo/malle.png')}}" rel="icon" type="image">
     <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" >
     <link href="{{asset('assets/css/toastr.min.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{asset('assets/css/malle_style.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('assets/fontawesome/css/all.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('assets/css/dropzone.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{asset('assets/css/jqueryui.css')}}" rel="stylesheet" type="text/css"> 
+    <link href="{{asset('assets/css/jqueryui.css')}}" rel="stylesheet" type="text/css">     
+    <link href="{{asset('assets/css/malle_style.css')}}" rel="stylesheet" type="text/css">
     @yield('style')
  
 </head>

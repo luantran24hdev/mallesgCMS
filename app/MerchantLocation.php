@@ -19,7 +19,11 @@ class MerchantLocation extends Model
      * @var array
      */
     protected $fillable = [
-
+        'mall_id',
+        'merchant_id',
+        'level_id',
+        'merchant_location',
+        'location_details'
     ];
 
     public function floor(){
