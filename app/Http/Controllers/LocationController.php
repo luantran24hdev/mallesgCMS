@@ -38,13 +38,17 @@ class LocationController extends Controller
     public function store(Request $request)
     {   
 
+        $messages = [
+            'mall_id.required'    => 'Invalid mall name!'
+        ];
+
         // Start Validation
         $validator = Validator::make($request->all(), [
             'mall_id' => 'required',
             'merchant_id' => 'required',
             'level_id' => 'required',
             'merchant_location' => 'required',
-        ]);
+        ],$messages);
         
         if($validator->fails()){ 
            return response()->json([

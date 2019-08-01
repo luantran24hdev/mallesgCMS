@@ -17,8 +17,7 @@
             @if(isset($locations))
             <br />
             <div class="row">
-                <div class="col-md-12">
-                    <h3><span class="text-info">{{$current_merchant->merchant_name}}    </span></h3>
+                <div class="col-md-12"> 
 
                     <form method="POST" action="{{route('locations.store')}}" id="frm-add-location">
                         <input type="hidden" name="mall_id" id="mall_id">
@@ -40,8 +39,9 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label class="mb-2 font-12">&nbsp;</label>
-                                    <select name="level_id" class="form-control">
+                                    <select name="level_id" class="form-control" required="">
                                         @if($floors)
+                                            <option value="">---- {{__('Select Level')}} ----</option>
                                             @foreach($floors as $floor)
                                              <option value="{{@$floor->level_id}}">{{@$floor->level}}</option>
                                             @endforeach
