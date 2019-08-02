@@ -9,6 +9,7 @@
 
             <div class="row">
                 <div class="col-md-3">
+                    <label class="mb-2 font-12">{{__('Merchant')}}</label>
                     <input type="text" name="merchant_name" placeholder="Type Merchant Name" id="merchant_name" class="form-control" required="" value="{{@$current_merchant->merchant_name}}"  data-autocompleturl="{{route('merchants.search')}}"/>
 
                 </div>

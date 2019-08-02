@@ -46,6 +46,11 @@ class MerchantMaster extends Model
         return $this->hasMany('App\MerchantLocation', 'merchant_id', 'merchant_id');
     }
 
+    public function promotions(){
+        return $this->hasMany('App\PromotionMaster', 'merchant_id', 'merchant_id');
+    }
+
+
 
 
     

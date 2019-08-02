@@ -34,11 +34,19 @@ Route::group(['middleware' => ['auth'] ], function(){
     //malls
     Route::get('malls/search/{name?}', 'MallController@search')->name('malls.search');
 
+
     //merchants
     Route::resource('merchants', 'MerchantController', ['names' => [
         'index' => 'merchants'
     ]]);
     Route::get('merchants/search/{name?}', 'MerchantController@search')->name('merchants.search');
+
+    //promotions
+    Route::resource('promotions', 'PromotionController', ['names' => [
+        'index' => 'promotions'
+    ]]);
+    Route::get('promotions/search/{name?}', 'PromotionController@search')->name('promotions.search');
+
 
     //locations
     Route::resource('locations', 'LocationController', ['names' => [

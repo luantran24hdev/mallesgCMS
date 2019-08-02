@@ -10,7 +10,8 @@
         @endif
         <ul class="list-group list-group-flush">
             <li class="list-group-item"><a class="malle-link" href="{{route('merchants')}}">{{__('Merchants in Outlets')}}</a></li>  
-          </ul>
+            <li class="list-group-item"><a class="malle-link" href="{{route('promotions')}}">{{__('New Promotions')}}</a></li> 
+        </ul>
         
     </div>
 </div>

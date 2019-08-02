@@ -1,0 +1,165 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
+use App\Repositories\PromotionRepository; 
+use App\Repositories\MerchantRepository; 
+
+use Auth;
+
+class PromotionController extends Controller
+{
+
+    /**
+    * @var MallRepository
+    *
+    */
+    protected $promotion;
+
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct(MerchantRepository $merchant, PromotionRepository $promotion)
+    {
+        $this->promotion =  $promotion;  
+        $this->merchant =  $merchant; 
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $promotion = $this->promotion->all()->pluck('promo_name', 'promo_id');
+
+        $data = [
+           'promoOptions' => $promotion->toJson()
+        ];
+
+        return view('main.promotions.index',$data);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {   
+        $messages = [
+            
+        ];
+ 
+        // Start Validation
+        $validator = Validator::make($request->all(), [
+            'promo_name' => 'required',
+            'merchant_id' => 'required',
+        ],$messages);
+        
+        if($validator->fails()){ 
+           return response()->json([
+                'status' => 'error',
+                'message' => $validator->messages()->first()
+           ],200);
+        }
+
+        $insert = $this->promotion->create([ 
+            'user_id' => Auth::user()->user_id,
+            'promo_name' => $request->promo_name,
+            'merchant_id' => $request->merchant_id,
+            'description' => "",
+            'dated' => "",
+            'start_on' => "",
+            'ends_on' => "",
+            'no_end_date' => "",
+            'active' => "",
+            'dm_id' => 0,
+            'redeemable' => ""
+        ]);
+
+        return response()->json([
+            'status' => 'success',
+            'promo_name' => $request->promo_name,
+            'id' => $insert->id
+        ],200);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $merchantOptions = $this->merchant->all()->pluck('merchant_name', 'merchant_id')->toJson() ?? [];
+        $current_merchant = $this->merchant->find($id) ?? [];
+        $promotions = $current_merchant->promotions;
+ 
+        $data = [
+            'merchantOptions' => $merchantOptions,
+            'current_merchant' => $current_merchant, 
+            'promotions' => $promotions,
+            'id' => $id
+        ];
+
+        return view('main.promotions.index',$data);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $delete = $this->promotion->destroy($id);
+        return response()->json([
+            'status' => $delete ? 'success' : 'error',
+            'message' => $delete ? __('succesfully deleted') : __('error deleting')
+        ],200);
+    }
+}

@@ -11,7 +11,8 @@ class CustomServiceProvider extends ServiceProvider
         $this->app->bind(
             'App\Repositories\RepositoryInterface',
             'App\Repositories\MerchantRepository',
-            'App\Repositories\MallRepository'
+            'App\Repositories\MallRepository',
+            'App\Repositories\PromotionRepository'
         );
     }
 }
