@@ -91,7 +91,7 @@ class PromotionController extends Controller
             'start_on' => "",
             'ends_on' => "",
             'no_end_date' => "",
-            'active' => "",
+            'active' => "Y",
             'dm_id' => 0,
             'redeemable' => ""
         ]);
