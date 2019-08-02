@@ -37,10 +37,20 @@
                         </div>
                     </form>
                     <table class="table table-striped malle-table " id="promotion-table" data-sourceurl="{{route('promotions.show',['promotions'=>$id])}}">
+                        <thead>
+                            <tr>
+                                <th>{{__('Promotion Name')}}</th>
+                                <th>{{__('Merchant Name')}}</th>
+                                <th>{{__('Created By')}}</th>
+                                <th>&nbsp;</th>
+                            </tr>
+                        </thead>
                         <tbody>
                          @foreach($promotions as $promotions)
                             <tr class="row-promotion" data-id="{{$promotions->promo_id}}">
                                 <td>{{$promotions->promo_name}}</td> 
+                                <td>{{$promotions->merchant->merchant_name}}</td> 
+                                <td>{{$promotions->creator->short_name}}</td> 
                                 <td>
                                     <a  href="javascript:;" data-href="{{route('promotions.destroy',['promotions'=>$promotions->promo_id])}}" data-method="DELETE" class="btn-delete" data-id="{{$promotions->promo_id}}">
                                         <span class="text-danger">Delete</span>

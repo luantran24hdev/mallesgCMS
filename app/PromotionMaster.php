@@ -35,5 +35,15 @@ class PromotionMaster extends Model
         'user_id',
         'redeemable'
     ];
+
+    public function merchant(){
+        return $this->hasOne('App\MerchantMaster', 'merchant_id', 'merchant_id');
+    }
+
+    public function creator(){
+        return $this->hasOne('App\User', 'user_id', 'user_id');
+    }
+
+
 	
 }
