@@ -30,7 +30,7 @@
 
             @if(isset($promo_id))
             <a style="float:right;" href="{{route('promotions.show',['promotions'=>$id])}}">{{__('Back')}}</a>
-            @endif
+            @endif 
             </div>
             <div class="card-body">
 
