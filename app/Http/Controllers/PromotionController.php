@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Repositories\PromotionRepository; 
 use App\Repositories\MerchantRepository; 
 
+use Carbon\Carbon;
 use Auth;
 
 class PromotionController extends Controller
@@ -114,12 +115,15 @@ class PromotionController extends Controller
         $merchantOptions = $this->merchant->all()->pluck('merchant_name', 'merchant_id')->toJson() ?? [];
         $current_merchant = $this->merchant->find($id) ?? [];
         $promotions = $current_merchant->promotions;
- 
+        $current_promo = $this->promotion->find(request()->promo_id) ?? [];
+
         $data = [
             'merchantOptions' => $merchantOptions,
             'current_merchant' => $current_merchant, 
             'promotions' => $promotions,
-            'id' => $id
+            'id' => $id,
+            'promo_id' => request()->promo_id ?? null,
+            'current_promo' => $current_promo
         ];
 
         return view('main.promotions.index',$data);
@@ -143,9 +147,53 @@ class PromotionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id)
     {
-        //
+       // try {
+            $request = request();
+            $messages = [
+                 
+            ];
+
+            // Start Validation
+            $validator = Validator::make($request->all(), [
+                'promo_id' => 'required',
+                'merchant_id' => 'required',
+                'promo_name' => 'required',
+                'description' => 'required',
+                'amount' => 'required',
+                'start_on' => 'required',
+                'ends_on' => $request->no_end_date ? '': 'required'
+            ],$messages);
+            
+            if($validator->fails()){ 
+               return response()->json([
+                    'status' => 'error',
+                    'message' => $validator->messages()->first()
+               ],200);
+            }
+
+            $update = $this->promotion->update( $request->promo_id,[
+                'merchant_id' => $request->merchant_id,
+                'promo_name' => $request->promo_name,
+                'description' => $request->description,
+                'amount' => $request->amount,
+                'start_on' => $request->start_on,
+                'ends_on' => $request->no_end_date ? "": $request->ends_on,
+                'other_offer' => $request->other_offer ?? null, 
+                'no_end_date' => $request->no_end_date ?? "",
+                'active' => $request->active_txt ?? "",
+                'redeemable' => $request->redeemable_txt ?? null,
+            ]);
+
+            return response()->json([
+                'status' => 'success',
+                'promo_name' => $request->promo_name,
+                'id' => $request->promo_id
+            ],200);
+        // } catch (QueryException $e) {
+        //     throw new \InvalidArgumentException('Erro inserting', 500, $e);
+        // }
     }
 
     /**

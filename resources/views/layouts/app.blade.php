@@ -16,6 +16,7 @@
     <link href="{{asset('assets/css/dropzone.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('assets/css/jqueryui.css')}}" rel="stylesheet" type="text/css">     
     <link href="{{asset('assets/css/malle_style.css')}}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     @yield('style')
  
 </head>
@@ -42,8 +43,10 @@
     </div>
  
 </body>
-<script type="text/javascript" src="{{asset('assets/js/jquery.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('assets/js/jqueryui.js')}}"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <script type="text/javascript" src="{{asset('assets/js/bootstrap.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/js/toastr.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/js/popper.min.js')}}"></script>

@@ -46,6 +46,7 @@ Route::group(['middleware' => ['auth'] ], function(){
         'index' => 'promotions'
     ]]);
     Route::get('promotions/search/{name?}', 'PromotionController@search')->name('promotions.search');
+    Route::get('promotions/{promotions}/{promo_id?}', 'PromotionController@show')->name('promotions.show');
 
 
     //locations

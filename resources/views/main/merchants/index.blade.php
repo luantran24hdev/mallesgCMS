@@ -106,6 +106,9 @@
 <script>
   $( function() {
 
+    $("#start_date").datepicker({dateFormat: 'dd/mm/yy'});
+            $("#end_date").datepicker({dateFormat: 'dd/mm/yy'});
+
     // malls
     $( "#merchant_name" ).autocomplete({
         source: function (request, response) {
