@@ -28,7 +28,9 @@
             <div class="card-header-malle">
             {{__('Manage Promotions')}}
 
+            @if(isset($promo_id))
             <a style="float:right;" href="{{route('promotions.show',['promotions'=>$id])}}">{{__('Back')}}</a>
+            @endif
             </div>
             <div class="card-body">
 
