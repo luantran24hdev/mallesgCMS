@@ -33,7 +33,8 @@ class PromotionMaster extends Model
         'active',
         'dm_id',
         'user_id',
-        'redeemable'
+        'redeemable',
+        'promo_active'
     ];
 
     public function merchant(){

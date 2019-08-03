@@ -93,8 +93,9 @@ class PromotionController extends Controller
             'ends_on' => "",
             'no_end_date' => "",
             'active' => "N",
+            'promo_active' => "N",
             'dm_id' => 0,
-            'redeemable' => "N"
+            'redeemable' => "N",
         ]);
 
         return response()->json([
@@ -183,6 +184,7 @@ class PromotionController extends Controller
                 'other_offer' => $request->other_offer ?? null, 
                 'no_end_date' => $request->no_end_date ?? "",
                 'active' => $request->active_txt ?? "",
+                'promo_active' => $request->active_txt ?? "",
                 'redeemable' => $request->redeemable_txt ?? null,
             ]);
 
