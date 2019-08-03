@@ -25,7 +25,11 @@
 <div class="row">
     <div class="col-md-10">
         <div class="card card-malle">
-            <div class="card-header-malle">{{__('Manage Promotions')}}</div>
+            <div class="card-header-malle">
+            {{__('Manage Promotions')}}
+
+            <a style="float:right;" href="{{route('promotions.show',['promotions'=>$id])}}">{{__('Back')}}</a>
+            </div>
             <div class="card-body">
 
             <div class="row">
@@ -111,7 +115,7 @@
                                     <label class="mb-2 font-12">{{__('Amount')}}</label>
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text text-primary font-weight-bold" id="basic-addon1">S$</span>
+                                                <span class="input-group-text text-primary font-weight-bold" id="basic-addon1">{{$current_merchant->country->currency_symbol}}</span>
                                             </div>
                                              <input type="text" name="amount" id="promo_amount" value="{{$current_promo->amount}}" aria-describedby="basic-addon1" class="form-control text-primary text-right font-weight-bold" onkeypress="return isNumber(event)">
 
@@ -188,7 +192,7 @@
 
                                 <label class="mb-2 font-12">Promotion Ends on </label>
                                 <div class="input-group">
-                                    <input type="text" name="ends_on" id="end_date" placeholder="End Date" value="{{$current_promo->ends_on}}" class="form-control py-2 border-right-0 border hasDatepicker" @if($current_promo->no_end_date) disabled @endif>
+                                    <input type="text" name="ends_on" id="end_date" placeholder="End Date" value="@if($current_promo->no_end_date!="Y"){{$current_promo->ends_on}}@endif" class="form-control py-2 border-right-0 border hasDatepicker" @if($current_promo->no_end_date) disabled @endif>
                                                 <span class="input-group-append">
                                                         <button class="btn btn-outline-secondary border-left-0 border" type="button">
                                                                 <i class="fa fa-calendar"></i>
@@ -240,11 +244,19 @@
 <script>
   $( function() {
 
-      $('#start_date, #end_date').daterangepicker({
+      $('#start_date').daterangepicker({
         singleDatePicker: true,
         showDropdowns: true,
         locale: {
-          format: 'MM/DD/YYYY'
+          format: 'DD/MM/YYYY'
+        }
+      });
+
+      $('#end_date').daterangepicker({
+        singleDatePicker: true,
+        showDropdowns: true,
+        locale: {
+          format: 'DD/MM/YYYY'
         }
       });
 

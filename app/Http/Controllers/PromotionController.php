@@ -92,9 +92,9 @@ class PromotionController extends Controller
             'start_on' => "",
             'ends_on' => "",
             'no_end_date' => "",
-            'active' => "Y",
+            'active' => "N",
             'dm_id' => 0,
-            'redeemable' => ""
+            'redeemable' => "N"
         ]);
 
         return response()->json([

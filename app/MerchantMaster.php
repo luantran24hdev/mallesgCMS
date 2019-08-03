@@ -50,6 +50,9 @@ class MerchantMaster extends Model
         return $this->hasMany('App\PromotionMaster', 'merchant_id', 'merchant_id');
     }
 
+    public function country(){
+        return $this->belongsTo('App\CountryMaster', 'country_id', 'country_id');
+    }
 
 
 
