@@ -115,7 +115,7 @@
       </button>
     </div>
     <div class="modal-body ">
-      <p class="font-12">{{__('Are you sure you want to delete this promotion?')}}</p>
+      <p class="font-12">{{__('Are you sure you want to delete Item?')}}</p>
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('No')}}</button>
