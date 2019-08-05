@@ -190,6 +190,7 @@ class PromotionController extends Controller
 
             return response()->json([
                 'status' => 'success',
+                'message' => __('succesfully updated!'),
                 'promo_name' => $request->promo_name,
                 'id' => $request->promo_id
             ],200);

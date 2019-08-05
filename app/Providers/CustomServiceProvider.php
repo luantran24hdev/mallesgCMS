@@ -12,7 +12,8 @@ class CustomServiceProvider extends ServiceProvider
             'App\Repositories\RepositoryInterface',
             'App\Repositories\MerchantRepository',
             'App\Repositories\MallRepository',
-            'App\Repositories\PromotionRepository'
+            'App\Repositories\PromotionRepository',
+            'App\Repositories\PromotionTagRepository'
         );
     }
 }

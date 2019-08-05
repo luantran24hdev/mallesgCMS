@@ -54,5 +54,11 @@ Route::group(['middleware' => ['auth'] ], function(){
         'index' => 'locations'
     ]]);
 
+    //promo tags
+    Route::resource('promo-tags', 'PromotionTagController', ['names' => [
+        'index' => 'promo-tags'
+    ]]);
+    Route::get('promo-tags/search/{name?}', 'PromotionTagController@search')->name('promo-tags.search');
+
 
 });

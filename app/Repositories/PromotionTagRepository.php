@@ -3,11 +3,11 @@
 namespace App\Repositories;
 
 
-use App\PromotionMaster;
-use Illuminate\Database\QueryException;
+use App\PromotionTag;
+use App\TagMaster;
 use BadMethodCallException, Auth;
 
-class PromotionRepository implements RepositoryInterface
+class PromotionTagRepository implements RepositoryInterface
 {   
 
     /**
@@ -17,7 +17,7 @@ class PromotionRepository implements RepositoryInterface
     */
     public function all()
     { 
-        return PromotionMaster::orderBy('promo_name')->get();
+        return PromotionTag::orderBy('tag_name')->get();
     }
 
     /**
@@ -27,7 +27,7 @@ class PromotionRepository implements RepositoryInterface
     */
     public function find($id)
     {   
-        return PromotionMaster::find($id);
+        return PromotionTag::find($id);
     }
 
     /**
@@ -37,7 +37,11 @@ class PromotionRepository implements RepositoryInterface
     */
     public function create($data)
     {
-        return PromotionMaster::create($data);
+        try {
+            return PromotionTag::create($data);
+        } catch (QueryException $e) {
+            throw new \Exception($e->getMessage(), 500, $e);
+        }
     }
 
 
@@ -49,7 +53,7 @@ class PromotionRepository implements RepositoryInterface
     public function update($id, array $data)
     {   
         try {
-            return PromotionMaster::find($id)->update($data);
+            return PromotionTag::find($id)->update($data);
         } catch (QueryException $e) {
             throw new \InvalidArgumentException('Cannot update promotion!', 500, $e);
         }
@@ -64,7 +68,7 @@ class PromotionRepository implements RepositoryInterface
     public function destroy($id)
     {
 
-        return PromotionMaster::destroy($id);
+        return PromotionTag::destroy($id);
     }
 
     /**
@@ -85,9 +89,9 @@ class PromotionRepository implements RepositoryInterface
     */
     public function search($name)
     {
-        return PromotionMaster::where('promo_name','LIKE', "%$name%")                        
-                        ->orderBy('promo_name')
-                        ->pluck('promo_name', 'promo_id');
+        return TagMaster::where('tag_name','LIKE', "%$name%")                        
+                        ->orderBy('tag_name')
+                        ->pluck('tag_name', 'tag_id');
     }
 
 }

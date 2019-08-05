@@ -45,6 +45,10 @@ class PromotionMaster extends Model
         return $this->hasOne('App\User', 'user_id', 'user_id');
     }
 
+    public function promotion_tags(){
+        return $this->hasMany('App\PromotionTag', 'promo_id', 'promo_id');
+    }
+
 
 	
 }

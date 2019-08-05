@@ -47,17 +47,11 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-<script type="text/javascript" src="{{asset('assets/js/bootstrap.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/js/toastr.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/js/popper.min.js')}}"></script>
-<script type="text/javascript">
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-    toastr.options.showEasing = 'swing';
-    toastr.options.progressBar = true;
-</script>
+<script type="text/javascript" src="{{asset('assets/js/bootstrap.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/js/bootbox.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/js/bootbox.locales.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/defaults.js')}}"></script>
 @yield('script')
 </html>
