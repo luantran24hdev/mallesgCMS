@@ -347,6 +347,31 @@
         });
     });
 
+    // change promo tag status
+    $(document).on('change', '.primary_tag', function(e){
+        e.preventDefault();
+        var selectOp = $(this); 
+ 
+         $.ajax({
+            url: selectOp.attr('data-href'),
+            type: selectOp.attr('data-method'),       
+            dataType:'json',
+            data: {'primary_tag': selectOp.find('option:selected').val()},
+            success:function(data){
+                if(data.status==='error'){
+                    errorReturn(data)
+                }else{  
+
+                    toastr.success(data.message);
+                }   
+            },
+            error: function(data){ 
+                exeptionReturn(data);
+            }
+        });
+
+    });
+
    });
   function isNumber(evt) {
             evt = (evt) ? evt : window.event;

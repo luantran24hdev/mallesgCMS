@@ -42,7 +42,10 @@
                             <tr class="row-promo-tags" data-id="{{$promo_tag->pt_id}}">
                                 <td> {{$promo_tag->master->tag_name}}</td>  
                                 <td>
-                                    {{$promo_tag->primary_tag}}
+                                    <select name="primary_tag"  class="deal-status primary_tag" data-id="{{$promo_tag->pt_id}}" data-href="{{route('promo-tags.setprimary',['id'=>$promo_tag->pt_id])}}" data-method="POST">
+                                        <option value="N" @if($promo_tag->primary_tag!="Y") selected @endif>No</option>
+                                        <option value="Y" @if($promo_tag->primary_tag=="Y") selected @endif>Yes</option>
+                                    </select>
                                 </td>
                                 <td>
                                     <a  href="javascript:;" data-href="{{route('promo-tags.destroy',['promotions'=>$promo_tag->pt_id])}}" data-method="DELETE" class="btn-pt-delete" data-id="{{$promo_tag->pt_id}}">

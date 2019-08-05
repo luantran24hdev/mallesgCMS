@@ -151,4 +151,24 @@ class PromotionTagController extends Controller
     {
         return $this->tag->search($name);
     }
+
+    /**
+     * 
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function setPrimary($id)
+    {
+ 
+        $this->tag->update($id, [
+            'primary_tag' => request()->primary_tag
+        ]);
+
+         return response()->json([
+            'status' => 'success',
+            'message' => __('successfully updated tag'),
+            'id' => $id
+        ],200);
+    }
 }
