@@ -29,7 +29,7 @@ Route::group(['namespace' => 'Auth'], function () {
 });
  
 // Authenticated Routes
-Route::group(['middleware' => ['auth'], function(){
+Route::group(['middleware' => 'auth'], function(){
 
     //malls
     Route::get('malls/search/{name?}', 'MallController@search')->name('malls.search');
@@ -42,7 +42,7 @@ Route::group(['middleware' => ['auth'], function(){
     Route::get('merchants/search/{name?}', 'MerchantController@search')->name('merchants.search');
 
     //promotions
- 
+
     Route::resource('promotions', 'PromotionController', ['names' => [
         'index' => 'promotions'
     ]]);
