@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Request as sRequest;
 use Illuminate\Support\Facades\Validator;
 
 use App\Repositories\PromotionRepository; 
 use App\Repositories\MerchantRepository; 
+use App\MerchantPromoImage;
 
 use Carbon\Carbon;
 use Auth;
@@ -127,7 +129,8 @@ class PromotionController extends Controller
             'promo_id' => request()->promo_id ?? null,
             'current_promo' => $current_promo,
             'daysofweek' => $daysofweek,
-            'promotion_days' => $current_promo->promotion_days
+            'promotion_days' => $current_promo->promotion_days ?? [],
+            'promotion_images' => $current_promo->images ?? []
         ];
 
         return view('main.promotions.index',$data);
@@ -216,4 +219,52 @@ class PromotionController extends Controller
             'message' => $delete ? __('succesfully deleted') : __('error deleting')
         ],200);
     }
+
+    /**
+     * 
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function uploadimage(sRequest $request)
+    {
+ 
+        $file = $request->files->get('image');
+ 
+        try{
+
+            if($file->getMimeType()!="image/png"){
+                throw new \Exception("invalid file", 500);
+            }
+
+
+            $newfilename = md5($request->promo_id."_".$request->merchant_id."_".round(microtime(true))) . '.png';
+ 
+            if(env('APP_ENV')=='live')
+                $file->move('../../admin/promos/', $newfilename);
+            else
+                $file->move('../storage/app/public/', $newfilename);
+            
+            MerchantPromoImage::create([
+                'promo_id' => $request->promo_id,
+                'merchant_id' => $request->merchant_id,
+                'image_name' => $newfilename,
+                'image_count' => 0,
+                'date_added' => Carbon::now()
+            ]);
+
+        } catch (QueryException $e) {
+            throw new \Exception($e->getMessage(), 500, $e);
+        }
+
+        return response()->json([
+            'status' => 'success' ,
+            'message' =>__('succesfully uploaded'),
+            'file' => "https://admin.mall-e.net/promos/".$newfilename
+        ],200);
+
+    }
+
+ 
+
 }

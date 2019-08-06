@@ -19,11 +19,30 @@
             height: 100%;
         }
 
-        
+ 
+.upload-demo-wrap {
+    width: 100%;
+    height: 100; 
+}
+
+.upload-msg {
+    text-align: center; 
+    font-size: 22px;
+    color: #aaa; 
+    border: 1px solid #aaa;
+    display: table;
+    cursor: pointer;
+}     
+
+.fit-image{
+width: 100%;
+object-fit: cover;
+height: 213px; /* only if you want fixed height */
+}
     </style>
 @endsection
 
-@section('content')
+@section('content')                        
 <div class="row">
     <div class="col-md-10">
         <div class="card card-malle">
@@ -103,6 +122,7 @@
     </div>
 </div>
 
+@include('main.promotions.images')
 @include('main.promotions.tags')
 @include('main.promotions.days')
 
@@ -125,12 +145,126 @@
   </div>
 </div>
 </div>
+
+<div class="modal fade" id="croppermodal" tabindex="-1" role="dialog" aria-labelledby="cropmodallabel" aria-hidden="true">
+<div class="modal-dialog modal-lg" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="cropmodallabel">Image Cropper</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body ">
+      <div class="upload-demo-wrap" style="display: none">
+        <div id="upload-demo"></div>
+    </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Cancel')}}</button>
+      <button type="button" class="btn upload-result" >{{__('Upload')}}</button>
+    </div>
+  </div>
+</div>
+</div>
+
 @endsection
 
 
 @section('script')
+<link rel="stylesheet" type="text/css" href="{{asset('css/croppie.css')}}">
+<script type="text/javascript" src="{{asset('js/croppie.min.js')}}"></script>
+
+
 <script>
   $( function() {
+
+    $uploadCrop = $('#upload-demo').croppie({
+        enableResize: true,
+        enableExif: true,
+        viewport: {
+            width: 447,
+            height: 317, 
+        },
+        boundary: {
+            width: 647,
+            height: 459
+        }
+    });
+
+
+    $('#upload').on('change', function () { readFile(this); });
+
+    @if(isset($promo_id))
+        $('.upload-result').on('click', function (ev) {
+            $uploadCrop.croppie('result', {
+                type: 'canvas',
+                size: 'viewport'
+            }).then(function (resp) {
+
+                var ImageURL = resp;
+
+                // Split the base64 string in data and contentType
+                var block = ImageURL.split(";");
+                // Get the content type
+                var contentType = block[0].split(":")[1];// In this case "image/gif"
+                // get the real base64 content of the file
+                var realData = block[1].split(",")[1];// In this case "iVBORw0KGg...."
+
+                // Convert to blob
+                var blob = b64toBlob(realData, contentType);
+
+                // Create a FormData and append the file
+                var fd = new FormData();
+                fd.append("image", blob);
+                fd.append("promo_id", "{{@$promo_id}}");
+                fd.append("merchant_id", "{{@$id}}");
+                
+                $.ajax({
+                    url: "{{route('promotions.uploadimage')}}",
+                    data: fd,// the formData function is available in almost all new browsers.
+                    type:"POST",
+                    contentType:false,
+                    processData:false,
+                    cache:false,
+                    dataType:"json", // Cha
+                    success:function(data){
+                        if(data.status==='error'){
+                            errorReturn(data)
+                        }else{  
+                            
+                        }   
+                    },
+                    error: function(data){ 
+                        exeptionReturn(data);
+                    }
+                });
+
+            });
+        });
+@endif
+
+    function readFile(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                
+                reader.onload = function (e) { 
+                    $('.upload-demo-wrap').show();
+                    $uploadCrop.croppie('bind', {
+                        url: e.target.result
+                    }).then(function(){
+                        console.log('jQuery bind complete');
+                    });
+                    
+                }
+                
+                reader.readAsDataURL(input.files[0]);
+                $('#croppermodal').modal('show');
+            }
+            else {
+                alert("Sorry - you're browser doesn't support the FileReader API");
+            }
+        }
 
       $('#start_date').daterangepicker({
         singleDatePicker: true,
@@ -377,5 +511,29 @@
         }
         return true;
     }
+
+    function b64toBlob(b64Data, contentType, sliceSize) {
+        contentType = contentType || '';
+        sliceSize = sliceSize || 512;
+
+        var byteCharacters = atob(b64Data);
+        var byteArrays = [];
+
+        for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+            var slice = byteCharacters.slice(offset, offset + sliceSize);
+
+            var byteNumbers = new Array(slice.length);
+            for (var i = 0; i < slice.length; i++) {
+                byteNumbers[i] = slice.charCodeAt(i);
+            }
+
+            var byteArray = new Uint8Array(byteNumbers);
+
+            byteArrays.push(byteArray);
+        }
+
+      var blob = new Blob(byteArrays, {type: contentType});
+      return blob;
+}
   </script>
 @endsection

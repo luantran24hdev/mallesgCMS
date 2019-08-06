@@ -60,6 +60,10 @@ class PromotionMaster extends Model
         return $this->hasOne('App\PromotionDay', 'promo_id', 'promo_id');
     }
 
+    public function images(){
+        return $this->hasMany('App\MerchantPromoImage', 'promo_id', 'promo_id');
+    }
+
 
 	
 }
