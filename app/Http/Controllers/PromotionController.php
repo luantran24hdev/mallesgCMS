@@ -117,6 +117,7 @@ class PromotionController extends Controller
         $current_merchant = $this->merchant->find($id) ?? [];
         $promotions = $current_merchant->promotions;
         $current_promo = $this->promotion->find(request()->promo_id) ?? [];
+        $daysofweek = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
 
         $data = [
             'merchantOptions' => $merchantOptions,
@@ -124,7 +125,9 @@ class PromotionController extends Controller
             'promotions' => $promotions,
             'id' => $id,
             'promo_id' => request()->promo_id ?? null,
-            'current_promo' => $current_promo
+            'current_promo' => $current_promo,
+            'daysofweek' => $daysofweek,
+            'promotion_days' => $current_promo->promotion_days
         ];
 
         return view('main.promotions.index',$data);

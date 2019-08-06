@@ -61,5 +61,10 @@ Route::group(['middleware' => ['auth'] ], function(){
     Route::get('promo-tags/search/{name?}', 'PromotionTagController@search')->name('promo-tags.search');
     Route::post('promo-tags/set-primary/{id?}', 'PromotionTagController@setPrimary')->name('promo-tags.setprimary');
 
+    //promo days
+    Route::resource('promodays', 'PromotionDayController', ['names' => [
+        'index' => 'promodays'
+    ]]);
+
 
 });

@@ -229,7 +229,7 @@ input::-webkit-calendar-picker-indicator {
   margin-top: 30px;
 }
 
-.deal-status{
+.deal-status, .dd-orange{
   background-color: orange;
   color: white;
   border: 0;

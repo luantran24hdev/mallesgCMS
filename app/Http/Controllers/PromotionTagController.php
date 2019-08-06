@@ -160,7 +160,6 @@ class PromotionTagController extends Controller
      */
     public function setPrimary($id)
     {
- 
         $this->tag->update($id, [
             'primary_tag' => request()->primary_tag
         ]);

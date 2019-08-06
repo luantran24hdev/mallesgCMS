@@ -24,3 +24,31 @@ var errorReturn = function(data){
         className: 'rubberBand animated'
     });
 }
+
+// autocomplete
+var jcomplete = function(element){
+    var targetid = $(element).attr('jautocom-targetid');
+    var redirecturl = $(element).attr('jautocom-redirecturl');
+    $( element ).autocomplete({
+        source: function (request, response) {
+            $.getJSON($(element).attr('jautocom-sourceurl') +'/' + request.term, function (data) {
+                response($.map(data, function (value, key) {
+                    return {
+                        label: value,
+                        value: key
+                    };
+                }));
+            });
+        },
+          select: function(event, ui) {
+            $(element).val(ui.item.label); 
+                //this will determin the call back of autocomplete
+                if(typeof redirecturl !== typeof undefined && redirecturl !== false){
+                    window.location.href = $(element).attr('jautocom-redirecturl')+ui.item.value;
+                }else if(typeof targetid !== typeof undefined && targetid !== false){
+                    $($(element).attr('jautocom-targetid')).val(ui.item.value); 
+                }
+            return false;
+          }
+    });
+}

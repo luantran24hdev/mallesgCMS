@@ -2,10 +2,11 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Model;
 use App\Http\Resources\PromotionMasterResource;
+use App\PromotionDay;
 use DB;
 
-use Illuminate\Database\Eloquent\Model;
 
 class PromotionMaster extends Model
 {
@@ -47,6 +48,16 @@ class PromotionMaster extends Model
 
     public function promotion_tags(){
         return $this->hasMany('App\PromotionTag', 'promo_id', 'promo_id');
+    }
+
+    public function promotion_days(){
+
+        //create if not exist
+        if(!PromotionDay::find($this->promo_id)){
+            PromotionDay::firstOrCreate(['promo_id'=>$this->promo_id]);
+        }
+
+        return $this->hasOne('App\PromotionDay', 'promo_id', 'promo_id');
     }
 
 

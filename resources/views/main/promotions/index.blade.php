@@ -39,7 +39,7 @@
             <div class="row">
                 <div class="col-md-3">
                     <label class="mb-2 font-12">{{__('Merchant')}}</label>
-                    <input type="text" name="merchant_name" placeholder="Type Merchant Name" id="merchant_name" class="form-control" required="" value="{{@$current_merchant->merchant_name}}"  data-autocompleturl="{{route('merchants.search')}}"/>
+                    <input type="text" name="merchant_name" placeholder="Type Merchant Name" id="merchant_name" class="form-control" required="" value="{{@$current_merchant->merchant_name}}"  jautocom-sourceurl="{{route('merchants.search')}}" jautocom-redirecturl="{{route('promotions')}}/" />
 
                 </div>
             </div>
@@ -104,6 +104,7 @@
 </div>
 
 @include('main.promotions.tags')
+@include('main.promotions.days')
 
 <div class="modal fade" id="deletepromotionmodal" tabindex="-1" role="dialog" aria-labelledby="deletemodalpromotionlabel" aria-hidden="true">
 <div class="modal-dialog" role="document">
@@ -148,24 +149,8 @@
       });
 
     // malls autocomplete
-    $( "#merchant_name" ).autocomplete({
-        source: function (request, response) {
-            $.getJSON($("#merchant_name").attr('data-autocompleturl') +'/' + request.term, function (data) {
-                response($.map(data, function (value, key) {
-                    return {
-                        label: value,
-                        value: key
-                    };
-                }));
-            });
-        },
-          select: function(event, ui) {
-            $("#merchant_name").val(ui.item.label); 
-            window.location.href = '{{route("promotions")}}/'+ui.item.value;
-
-            return false;
-          }
-    });
+    jcomplete('#merchant_name');
+    jcomplete('#tag_name','target-id');
 
     // store promotions
     $(document).on('submit','#frm-add-promotion', function(e){
@@ -274,24 +259,6 @@
         $('#active_txt').val('N');
     });
 
-    // promotags autocomplete
-    $( "#tag_name" ).autocomplete({
-        source: function (request, response) {
-            $.getJSON($("#tag_name").attr('data-autocompleturl') +'/' + request.term, function (data) {
-                response($.map(data, function (value, key) {
-                    return {
-                        label: value,
-                        value: key
-                    };
-                }));
-            });
-        },
-          select: function(event, ui) {
-            $("#tag_name").val(ui.item.label); 
-            $("#tag_id").val(ui.item.value); 
-            return false;
-          }
-    });
 
      // store promotags
     $(document).on('submit','#addPromoTag', function(e){
@@ -372,15 +339,43 @@
 
     });
 
+    // change promo tag status
+    $(document).on('change', '.promo_days', function(e){
+        e.preventDefault();
+        var selectOp = $(this); 
+        var attrName = selectOp.attr("name");
+ 
+         $.ajax({
+            url: selectOp.attr('data-href'),
+            type: selectOp.attr('data-method'),       
+            dataType:'json',
+            data: {                 
+                day : selectOp.attr('name'),
+                value : selectOp.find('option:selected').val()
+            },
+            success:function(data){
+                if(data.status==='error'){
+                    errorReturn(data)
+                }else{  
+
+                    toastr.success(data.message);
+                }   
+            },
+            error: function(data){ 
+                exeptionReturn(data);
+            }
+        });
+
+    });
+
    });
   function isNumber(evt) {
-            evt = (evt) ? evt : window.event;
-            var charCode = (evt.which) ? evt.which : evt.keyCode;
-            if (charCode > 31 && (charCode < 46 || charCode > 57) ) {
-                    return false;
-            }
-
-            return true;
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode > 31 && (charCode < 46 || charCode > 57) ) {
+                return false;
+        }
+        return true;
     }
   </script>
 @endsection
