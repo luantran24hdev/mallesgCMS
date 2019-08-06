@@ -239,7 +239,7 @@ class PromotionController extends Controller
 
 
             $newfilename = md5($request->promo_id."_".$request->merchant_id."_".round(microtime(true))) . '.png';
- 
+
             if(env('APP_ENV')=='live')
                 $file->move('../../admin/promos/', $newfilename);
             else
@@ -249,7 +249,7 @@ class PromotionController extends Controller
                 'promo_id' => $request->promo_id,
                 'merchant_id' => $request->merchant_id,
                 'image_name' => $newfilename,
-                'image_count' => 0,
+                'image_count' => 2,
                 'date_added' => Carbon::now()
             ]);
 
