@@ -193,10 +193,10 @@ height: 213px; /* only if you want fixed height */
     });
 
 
-    $('#upload').on('change', function () { readFile(this); });
+    $(document).on('change', '#upload', function () { readFile(this); });
 
     @if(isset($promo_id))
-        $('.upload-result').on('click', function (ev) {
+        $(document).on('click','.upload-result', function (ev) {
             $uploadCrop.croppie('result', {
                 type: 'canvas',
                 size: 'viewport'
@@ -232,7 +232,15 @@ height: 213px; /* only if you want fixed height */
                         if(data.status==='error'){
                             errorReturn(data)
                         }else{  
-                            
+
+
+                            $('#promo-image-body #promo-image-content').remove();
+                            $("#promo-image-body").load( $('#promo-image-body').attr('data-sourceurl') +" #promo-image-content");
+
+
+                            $('#croppermodal').modal('hide');
+
+                            toastr.success(data.message);
                         }   
                     },
                     error: function(data){ 
