@@ -260,7 +260,7 @@ class PromotionController extends Controller
         return response()->json([
             'status' => 'success' ,
             'message' =>__('succesfully uploaded'),
-            'file' => "https://admin.mall-e.net/promos/".$newfilename
+            'file' => env("LIVE_URL").$newfilename
         ],200);
 
     }
