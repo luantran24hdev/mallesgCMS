@@ -275,6 +275,14 @@ class PromotionController extends Controller
      */
     public function deleteimage($id)
     {
+        
+        $image = MerchantPromoImage::find($id);
+
+        if(env('APP_ENV')=='live')
+                unlink('../../admin/promos/'.$image->image_name);
+            else
+                unlink('../storage/app/public/'.$image->image_name);
+
         $delete = MerchantPromoImage::destroy($id);
         return response()->json([
             'status' => $delete ? 'success' : 'error',

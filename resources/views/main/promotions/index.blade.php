@@ -533,6 +533,7 @@ height: 213px; /* only if you want fixed height */
                     if(data.status==='error'){
                         errorReturn(data)
                     }else{   
+                        $('#deletepromotionmodal').modal('hide');
                         $('#promo-image-body #promo-image-content').remove();
                         $("#promo-image-body").load( $('#promo-image-body').attr('data-sourceurl') +" #promo-image-content");
                         toastr.success(data.message);
