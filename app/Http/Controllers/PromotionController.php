@@ -130,9 +130,11 @@ class PromotionController extends Controller
             'current_promo' => $current_promo,
             'daysofweek' => $daysofweek,
             'promotion_days' => $current_promo->promotion_days ?? [],
-            'promotion_images' => $current_promo->images ?? []
+            'promotion_images' => $current_promo->images ?? [],
+            'promotion_tags' => $current_promo->promotion_tags ?? [],
+            'live_url' => env('LIVE_URL')
         ];
-
+        #dd($data);
         return view('main.promotions.index',$data);
     }
 
@@ -249,7 +251,7 @@ class PromotionController extends Controller
                 'promo_id' => $request->promo_id,
                 'merchant_id' => $request->merchant_id,
                 'image_name' => $newfilename,
-                'image_count' => 2,
+                'image_count' => $request->image_count,
                 'date_added' => Carbon::now()
             ]);
 
@@ -263,6 +265,21 @@ class PromotionController extends Controller
             'file' => env("LIVE_URL").$newfilename
         ],200);
 
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function deleteimage($id)
+    {
+        $delete = MerchantPromoImage::destroy($id);
+        return response()->json([
+            'status' => $delete ? 'success' : 'error',
+            'message' => $delete ? __('succesfully deleted') : __('error deleting')
+        ],200);
     }
 
  

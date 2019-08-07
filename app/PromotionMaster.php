@@ -47,7 +47,8 @@ class PromotionMaster extends Model
     }
 
     public function promotion_tags(){
-        return $this->hasMany('App\PromotionTag', 'promo_id', 'promo_id');
+        return $this->hasMany('App\PromotionTag', 'promo_id', 'promo_id')
+                    ->where('merchant_id',$this->merchant_id);
     }
 
     public function promotion_days(){
@@ -60,8 +61,10 @@ class PromotionMaster extends Model
         return $this->hasOne('App\PromotionDay', 'promo_id', 'promo_id');
     }
 
-    public function images(){
-        return $this->hasMany('App\MerchantPromoImage', 'promo_id', 'promo_id');
+    public function images(){ 
+        return $this->hasMany('App\MerchantPromoImage', 'promo_id', 'promo_id')
+                    ->where('merchant_id',$this->merchant_id)
+                    ->orderBy('image_count');
     }
 
 

@@ -49,7 +49,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('promotions/search/{name?}', 'PromotionController@search')->name('promotions.search');
     Route::get('promotions/{promotions}/{promo_id?}', 'PromotionController@show')->name('promotions.show');
     Route::post('promotions/uploadimage', 'PromotionController@uploadimage')->name('promotions.uploadimage');
-
+    Route::post('promotions/deleteimage/{id}', 'PromotionController@deleteimage')->name('promotions.deleteimage');
 
 
     //locations

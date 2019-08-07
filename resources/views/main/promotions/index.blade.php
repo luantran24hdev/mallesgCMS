@@ -179,21 +179,24 @@ height: 213px; /* only if you want fixed height */
 <script>
   $( function() {
 
-    $uploadCrop = $('#upload-demo').croppie({
-        enableResize: true,
-        enableExif: true,
-        viewport: {
-            width: 447,
-            height: 317, 
-        },
-        boundary: {
-            width: 647,
-            height: 459
-        }
-    });
+   var $uploadCrop = $('#upload-demo');
+   $uploadCrop.croppie({
+            enableResize: true,
+            enableExif: true,
+            viewport: {
+                width: 550,
+                height: 390, 
+            },
+            boundary: {
+                width: 647,
+                height: 459
+            }
+        });
 
-
-    $(document).on('change', '#upload', function () { readFile(this); });
+   $('#croppermodal').on('shown.bs.modal', function() {
+        $uploadCrop.croppie('bind');
+   });
+    
 
     @if(isset($promo_id))
         $(document).on('click','.upload-result', function (ev) {
@@ -219,6 +222,7 @@ height: 213px; /* only if you want fixed height */
                 fd.append("image", blob);
                 fd.append("promo_id", "{{@$promo_id}}");
                 fd.append("merchant_id", "{{@$id}}");
+                fd.append("image_count", $('#selected_image').val());
                 
                 $.ajax({
                     url: "{{route('promotions.uploadimage')}}",
@@ -232,14 +236,9 @@ height: 213px; /* only if you want fixed height */
                         if(data.status==='error'){
                             errorReturn(data)
                         }else{  
-
-
                             $('#promo-image-body #promo-image-content').remove();
                             $("#promo-image-body").load( $('#promo-image-body').attr('data-sourceurl') +" #promo-image-content");
-
-
                             $('#croppermodal').modal('hide');
-
                             toastr.success(data.message);
                         }   
                     },
@@ -250,29 +249,12 @@ height: 213px; /* only if you want fixed height */
 
             });
         });
-@endif
+    @endif
 
-    function readFile(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                
-                reader.onload = function (e) { 
-                    $('.upload-demo-wrap').show();
-                    $uploadCrop.croppie('bind', {
-                        url: e.target.result
-                    }).then(function(){
-                        console.log('jQuery bind complete');
-                    });
-                    
-                }
-                
-                reader.readAsDataURL(input.files[0]);
-                $('#croppermodal').modal('show');
-            }
-            else {
-                alert("Sorry - you're browser doesn't support the FileReader API");
-            }
-        }
+    $(document).on('change', '.imguploader', function () { 
+        readFile(this); 
+        $('#selected_image').val($(this).attr('data-count'));
+    });
 
       $('#start_date').daterangepicker({
         singleDatePicker: true,
@@ -289,6 +271,29 @@ height: 213px; /* only if you want fixed height */
           format: 'DD/MM/YYYY'
         }
       });
+
+    function readFile(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();            
+            $('#croppermodal').modal('show');
+
+            reader.onload = function (e) { 
+                $('.upload-demo-wrap').show();
+                $uploadCrop.croppie('bind', {
+                    url: e.target.result
+                }).then(function(){
+                    console.log('jQuery bind complete');
+                });
+                
+            }
+            
+            reader.readAsDataURL(input.files[0]);
+            
+        }
+        else {
+            alert("Sorry - you're browser doesn't support the FileReader API");
+        }
+    }
 
     // malls autocomplete
     jcomplete('#merchant_name');
@@ -510,6 +515,34 @@ height: 213px; /* only if you want fixed height */
 
     });
 
+
+    // delete promo image
+    $(document).on('click', '.btn-pi-delete', function(e){
+        e.preventDefault();
+        var btndelete = $(this); 
+ 
+        $('#deletepromotionmodal').modal('show');
+
+        $('#btnDeletePromotion').unbind().click(function(){
+
+            $.ajax({
+                url: btndelete.attr('data-href'),
+                type: btndelete.attr('data-method'),       
+                dataType:'json',
+                success:function(data){
+                    if(data.status==='error'){
+                        errorReturn(data)
+                    }else{   
+                        $('#promo-image-body #promo-image-content').remove();
+                        $("#promo-image-body").load( $('#promo-image-body').attr('data-sourceurl') +" #promo-image-content");
+                        toastr.success(data.message);
+                    }   
+                }
+            });
+                 
+        });
+    });
+
    });
   function isNumber(evt) {
         evt = (evt) ? evt : window.event;
@@ -518,9 +551,9 @@ height: 213px; /* only if you want fixed height */
                 return false;
         }
         return true;
-    }
+  }
 
-    function b64toBlob(b64Data, contentType, sliceSize) {
+  function b64toBlob(b64Data, contentType, sliceSize) {
         contentType = contentType || '';
         sliceSize = sliceSize || 512;
 
@@ -542,6 +575,6 @@ height: 213px; /* only if you want fixed height */
 
       var blob = new Blob(byteArrays, {type: contentType});
       return blob;
-}
+  }
   </script>
 @endsection

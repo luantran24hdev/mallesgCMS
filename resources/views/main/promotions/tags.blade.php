@@ -38,7 +38,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                         @foreach($current_promo->promotion_tags as $promo_tag)
+                         @foreach($promotion_tags as $promo_tag)
                             <tr class="row-promo-tags" data-id="{{$promo_tag->pt_id}}">
                                 <td> {{$promo_tag->master->tag_name}}</td>  
                                 <td>

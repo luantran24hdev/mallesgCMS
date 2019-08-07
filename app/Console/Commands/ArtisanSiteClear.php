@@ -41,6 +41,7 @@ class ArtisanSiteClear extends Command
         $this->call('optimize');
         $this->call('cache:clear'); 
         $this->call('view:clear');  
+        $this->call('config:clear');  
         //exec('composer dumpautoload');
     }
 
