@@ -14,8 +14,8 @@ class PromotionMaster extends Model
     public $timestamps = false;
     protected $table = 'promotions_master';
     protected $primaryKey = 'promo_id';
-	
-	/**
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -38,35 +38,41 @@ class PromotionMaster extends Model
         'promo_active'
     ];
 
-    public function merchant(){
+    public function merchant()
+    {
         return $this->hasOne('App\MerchantMaster', 'merchant_id', 'merchant_id');
     }
 
-    public function creator(){
+    public function creator()
+    {
         return $this->hasOne('App\User', 'user_id', 'user_id');
     }
 
-    public function promotion_tags(){
+    public function promotion_tags()
+    {
         return $this->hasMany('App\PromotionTag', 'promo_id', 'promo_id')
-                    ->where('merchant_id',$this->merchant_id);
+            ->where('merchant_id', $this->merchant_id);
     }
 
-    public function promotion_days(){
-
+    public function promotion_days()
+    {
         //create if not exist
-        if(!PromotionDay::find($this->promo_id)){
-            PromotionDay::firstOrCreate(['promo_id'=>$this->promo_id]);
+        if (!PromotionDay::find($this->promo_id)) {
+            PromotionDay::firstOrCreate(['promo_id' => $this->promo_id]);
         }
 
         return $this->hasOne('App\PromotionDay', 'promo_id', 'promo_id');
     }
 
-    public function images(){ 
+    public function images()
+    {
         return $this->hasMany('App\MerchantPromoImage', 'promo_id', 'promo_id')
-                    ->where('merchant_id',$this->merchant_id)
-                    ->orderBy('image_count');
+            ->where('merchant_id', $this->merchant_id)
+            ->orderBy('image_count');
     }
 
-
-	
+    public function outlets()
+    {
+        return $this->hasMany(PromotionOutlet::class, 'promo_id', 'promo_id');
+    }
 }

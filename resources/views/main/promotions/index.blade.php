@@ -123,6 +123,7 @@ height: 213px; /* only if you want fixed height */
 </div>
 
 @include('main.promotions.images')
+@include('main.promotions.outlets')
 @include('main.promotions.tags')
 @include('main.promotions.days')
 
@@ -577,5 +578,24 @@ height: 213px; /* only if you want fixed height */
       var blob = new Blob(byteArrays, {type: contentType});
       return blob;
   }
+
+  // malls
+  $( "#mall_name" ).autocomplete({
+        source: function (request, response) {
+            $.getJSON($("#mall_name").attr('data-autocompleturl') +'/' + request.term, function (data) {
+                response($.map(data, function (value, key) {
+                    return {
+                        label: value,
+                        value: key
+                    };
+                }));
+            });
+        },
+          select: function(event, ui) {
+             $("#mall_name").val(ui.item.label); 
+             $("#mall_id").val(ui.item.value); 
+             return false;
+          }
+    });
   </script>
 @endsection
