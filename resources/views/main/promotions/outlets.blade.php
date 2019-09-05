@@ -7,7 +7,7 @@
       </div>
       <div class="card-body">
         
-        <form method="POST" action="{{route('promo-tags.store')}}" id="addPromoTag">
+        <form method="POST" action="{{route('promo-outlets.store')}}" id="addPromoTag">
           <input type="hidden" name="promo_id" id="promo_id" value="{{$promo_id}}">
           <input type="hidden" name="merchant_id" id="merchant_id" value="{{$id}}">
           <input type="hidden" name="tag_id" id="tag_id" value="">
@@ -47,6 +47,9 @@
                   </td>
                   <td>{{ optional($outlet->merchant)->merchant_address}}</td>  
                   <td>
+                      <a href="javascript:;" data-href="{{route('promo-tags.destroy',['promotions'=>$promo_tag->pt_id])}}" data-method="DELETE" class="btn-pt-delete" data-id="{{$promo_tag->pt_id}}">
+                          <span class="text-danger">{{__('Delete')}}</span>
+                      </a>
                   </td>
                 </tr>
                 @endforeach

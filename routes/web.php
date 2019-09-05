@@ -25,15 +25,14 @@ Route::group(['namespace' => 'Auth'], function () {
     Route::get('password/reset/{token}', 'ResetPasswordController@showResetForm')->name('password.reset');
     Route::post('password/reset', 'ResetPasswordController@reset')->name('password.update');
     Route::get('logout', 'LoginController@logout')->name('logout')->middleware('auth');
-
 });
- 
+
 // Authenticated Routes
-Route::group(['middleware' => 'auth'], function(){
+Route::group(['middleware' => 'auth'], function () {
 
     //malls
     Route::get('malls/search/{name?}', 'MallController@search')->name('malls.search');
-
+    Route::get('malls/search-with/{name?}', 'MallController@searchWith')->name('malls.searchwith');
 
     //merchants
     Route::resource('merchants', 'MerchantController', ['names' => [
@@ -69,5 +68,7 @@ Route::group(['middleware' => 'auth'], function(){
         'index' => 'promodays'
     ]]);
 
-
+    Route::resource('promo-outlets', 'PromotionOutletsController', ['names' => [
+        'index' => 'promo-outlets'
+    ]]);
 });

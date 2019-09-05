@@ -10,7 +10,7 @@
     <title>Mall-E - Admin2</title>
 
     <link href="{{asset('assets/images/logo/malle.png')}}" rel="icon" type="image">
-    <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" >
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css" >
     <link href="{{asset('assets/css/toastr.min.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('assets/fontawesome/css/all.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('assets/css/dropzone.css')}}" rel="stylesheet" type="text/css">
@@ -22,27 +22,29 @@
 </head>
 
 <body class="dashboard-body">
-    <nav class="navbar navbar-light bg-malle">
-        <div class="container">
-            <a class="navbar-brand text-light" href="{{route('home')}}">
-                <img src="{{asset('assets/images/logo/rec.png')}}" width="110" height="50" class="d-inline-block align-top" alt="">
-                | {{__('Admin Dashboard')}}
-            </a>
-            <a class="my-2 btn-logout btn btn-danger bg-red" href="{{route('logout')}}">{{__('Logout')}}</a>
-        </div>
-    </nav>
-
-    <div class="container-fluid">
-        <div class="row">
-            @include('partials.sidebar')
-            <div class="col-md-10">
-                @yield('content')
+    <div id="app">
+        <nav class="navbar navbar-light bg-malle">
+            <div class="container">
+                <a class="navbar-brand text-light" href="{{route('home')}}">
+                    <img src="{{asset('assets/images/logo/rec.png')}}" width="110" height="50" class="d-inline-block align-top" alt="">
+                    | {{__('Admin Dashboard')}}
+                </a>
+                <a class="my-2 btn-logout btn btn-danger bg-red" href="{{route('logout')}}">{{__('Logout')}}</a>
             </div>
-        </div>
+        </nav>
 
+        <div class="container-fluid">
+            <div class="row">
+                @include('partials.sidebar')
+                <div class="col-md-10">
+                    @yield('content')
+                </div>
+            </div>
+
+        </div>
     </div>
- 
 </body>
+<script type="text/javascript" src="{{ mix('js/app.js')}}"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>

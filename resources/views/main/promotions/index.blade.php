@@ -123,7 +123,10 @@ height: 213px; /* only if you want fixed height */
 </div>
 
 @include('main.promotions.images')
-@include('main.promotions.outlets')
+{{-- @include('main.promotions.outlets') --}}
+@if(isset($promo_id))
+    <promotion-outlets :outlets="{{ (isset($promo_id)) ? $current_promo->outlets()->with('merchant', 'merchantLocation')->get()->toJson() : '' }}" :autocompletesrc="'{{ route("malls.searchwith") }}'"></promotion-outlets>
+@endif
 @include('main.promotions.tags')
 @include('main.promotions.days')
 
@@ -175,7 +178,6 @@ height: 213px; /* only if you want fixed height */
 @section('script')
 <link rel="stylesheet" type="text/css" href="{{asset('css/croppie.css')}}">
 <script type="text/javascript" src="{{asset('js/croppie.min.js')}}"></script>
-
 
 <script>
   $( function() {

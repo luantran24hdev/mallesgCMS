@@ -3,15 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Repositories\MallRepository; 
+use App\Repositories\MallRepository;
+use App\MallMaster;
 
 class MallController extends Controller
 {
 
     /**
-    * @var MallRepository
-    *
-    */
+     * @var MallRepository
+     *
+     */
     protected $mall;
 
     /**
@@ -21,7 +22,7 @@ class MallController extends Controller
      */
     public function __construct(MallRepository $mall)
     {
-        $this->mall =  $mall; 
+        $this->mall =  $mall;
     }
 
     /**
@@ -110,5 +111,11 @@ class MallController extends Controller
     public function search($name)
     {
         return $this->mall->search($name);
+    }
+
+    public function searchWith($name)
+    {
+        return MallMaster::with('merchantLocations:mall_id,merchant_location,merchantlocation_id')->where('mall_name', 'LIKE', "%$name%")
+            ->orderBy('mall_name')->get(['mall_name', 'mall_id']);
     }
 }
