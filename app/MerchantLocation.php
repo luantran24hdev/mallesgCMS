@@ -11,9 +11,9 @@ class MerchantLocation extends Model
 {
 
     public $timestamps = false;
-    protected $primaryKey = 'merchantLocation_id';
-	
-	/**
+    protected $primaryKey = 'merchantlocation_id';
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -26,12 +26,13 @@ class MerchantLocation extends Model
         'location_details'
     ];
 
-    public function floor(){
+    public function floor()
+    {
         return $this->hasOne('App\LevelMaster', 'level_id', 'level_id');
     }
 
-    public function mall(){
+    public function mall()
+    {
         return $this->hasOne('App\MallMaster', 'mall_id', 'mall_id');
     }
-	
 }

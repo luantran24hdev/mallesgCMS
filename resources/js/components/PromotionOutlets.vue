@@ -52,11 +52,14 @@
               <table class="table table-striped malle-table " id="promotion-tag-table">
                 <tbody>
                   <tr v-for="outlet in dataOutlets" class="row-promo-tags">
-                    <td>{{ outlet.merchant && outlet.merchant.merchant_name || null }}</td>  
+                    <td>{{ outlet.mall && outlet.mall.mall_name || null }}</td>  
                     <td>
                       {{ outlet.merchant_location && outlet.merchant_location.merchant_location || null }}
                     </td>
-                    <td>{{ outlet.merchant && outlet.merchant.merchant_address || null}}</td>  
+                    <td>{{ outlet.merchant_location && outlet.merchant_location.floor.level || null}}</td>  
+                    <td>
+                      <a href="javascript:;" class="btn-edit"><span class="text-success">Edit</span></a>
+                    </td>
                     <td>
                         <a href="javascript:;">
                             <span class="text-danger">Delete</span>

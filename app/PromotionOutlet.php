@@ -19,6 +19,11 @@ class PromotionOutlet extends Model
 
     public function merchantLocation()
     {
-        return $this->hasOne(MerchantLocation::class, 'merchantLocation_id', 'merchangelocation_id');
+        return $this->hasOne(MerchantLocation::class, 'merchantlocation_id', 'merchantlocation_id');
+    }
+
+    public function mall()
+    {
+        return $this->hasOne(MallMaster::class, 'mall_id', 'mall_id');
     }
 }

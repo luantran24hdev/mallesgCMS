@@ -127,7 +127,7 @@ height: 213px; /* only if you want fixed height */
 @if(isset($promo_id))
     <promotion-outlets 
         :promo-id="{{ $promo_id }}"
-        :outlets="{{ (isset($promo_id)) ? $current_promo->outlets()->with('merchant', 'merchantLocation')->get()->toJson() : '' }}" 
+        :outlets="{{ (isset($promo_id)) ? $current_promo->outlets()->with('merchant', 'merchantLocation', 'mall', 'merchantLocation.floor')->get()->toJson() : '' }}" 
         :autocompletesrc="'{{ route("malls.searchwith") }}'"
         :post-url="'{{ route("promo-outlets.store") }}'">
     </promotion-outlets>
