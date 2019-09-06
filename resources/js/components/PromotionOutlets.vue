@@ -12,13 +12,13 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label class="mb-2 font-12">Mall Name</label>
-                  <!-- <input type="text" name="mall_name" placeholder="Mall Name" id="mall_name" class="form-control" required=""> -->
                   <vue-bootstrap-typeahead
                     :data="malls"
                     v-model="mallsSearch"
                     :serializer="s => s.mall_name"
                     placeholder="Type a mall..."
                     @hit="fillLocation($event)"
+                    :minMatchingChars="1"
                   ></vue-bootstrap-typeahead>
                 </div>
               </div>
@@ -51,12 +51,12 @@
             <div class="col-md-12"> 
               <table class="table table-striped malle-table " id="promotion-tag-table">
                 <tbody>
-                  <tr v-for="outlet in outlets" class="row-promo-tags">
-                    <td>{{ outlet.merchant.merchant_name }}</td>  
+                  <tr v-for="outlet in dataOutlets" class="row-promo-tags">
+                    <td>{{ outlet.merchant && outlet.merchant.merchant_name || null }}</td>  
                     <td>
                       {{ outlet.merchant_location && outlet.merchant_location.merchant_location || null }}
                     </td>
-                    <td>{{ outlet.merchant.merchant_address}}</td>  
+                    <td>{{ outlet.merchant && outlet.merchant.merchant_address || null}}</td>  
                     <td>
                         <a href="javascript:;">
                             <span class="text-danger">Delete</span>
@@ -78,7 +78,7 @@ import VueBootstrapTypeahead from "vue-bootstrap-typeahead";
 import _ from "lodash";
 
 export default {
-  props: ["outlets", "autocompletesrc"],
+  props: ["promoId", "outlets", "autocompletesrc", "postUrl"],
 
   components: {
     VueBootstrapTypeahead
@@ -95,7 +95,8 @@ export default {
       mallsSearch: "",
       selectedMall: null,
       selectedLocation: 0,
-      isLoading: false
+      isLoading: false,
+      dataOutlets: this.outlets
     };
   },
 
@@ -106,7 +107,21 @@ export default {
   },
 
   methods: {
-    processOutlet() {},
+    processOutlet() {
+      if (this.selectedMall) {
+        axios
+          .post(this.postUrl, {
+            merchantlocation_id: this.selectedLocation,
+            mall_id: this.selectedMall.mall_id,
+            promo_id: this.promoId
+          })
+          .then(response => {
+            toastr.success("Successfully Added!");
+            console.log(response);
+            this.dataOutlets.push(response.data);
+          });
+      }
+    },
 
     fillLocation(data) {
       this.selectedMall = data;

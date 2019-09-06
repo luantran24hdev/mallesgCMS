@@ -125,7 +125,12 @@ height: 213px; /* only if you want fixed height */
 @include('main.promotions.images')
 {{-- @include('main.promotions.outlets') --}}
 @if(isset($promo_id))
-    <promotion-outlets :outlets="{{ (isset($promo_id)) ? $current_promo->outlets()->with('merchant', 'merchantLocation')->get()->toJson() : '' }}" :autocompletesrc="'{{ route("malls.searchwith") }}'"></promotion-outlets>
+    <promotion-outlets 
+        :promo-id="{{ $promo_id }}"
+        :outlets="{{ (isset($promo_id)) ? $current_promo->outlets()->with('merchant', 'merchantLocation')->get()->toJson() : '' }}" 
+        :autocompletesrc="'{{ route("malls.searchwith") }}'"
+        :post-url="'{{ route("promo-outlets.store") }}'">
+    </promotion-outlets>
 @endif
 @include('main.promotions.tags')
 @include('main.promotions.days')

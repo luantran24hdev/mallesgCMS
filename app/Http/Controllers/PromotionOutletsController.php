@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\PromotionOutlet;
+use App\MerchantLocation;
 
 class PromotionOutletsController extends Controller
 {
@@ -15,7 +17,23 @@ class PromotionOutletsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = [
+            'promo_description' => '',
+            'amount' => 0,
+            'merchant_id' => MerchantLocation::find($request->merchantlocation_id)->mall_id,
+            'live' => 'Y',
+            'featured' => 'N',
+            'redeem' => 'N',
+            'dated' => now()->format('d/m/y'),
+            'user_id' => auth()->user()->user_id,
+            'start_on' => '',
+            'ends_on' => ''
+        ];
+
+        $promotion = PromotionOutlet::create($request->all() + $data);
+        $promotion->load('merchant', 'merchantLocation');
+
+        return response()->json($promotion);
     }
 
     /**

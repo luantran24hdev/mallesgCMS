@@ -10,6 +10,8 @@ class PromotionOutlet extends Model
     protected $table = 'promotions_outlets';
     protected $primaryKey = 'po_id';
 
+    protected $guarded = [];
+
     public function merchant()
     {
         return $this->hasOne(MerchantMaster::class, 'merchant_id', 'merchant_id');
