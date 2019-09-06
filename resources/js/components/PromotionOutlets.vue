@@ -56,7 +56,7 @@
                     <td>
                       {{ outlet.merchant_location && outlet.merchant_location.merchant_location || null }}
                     </td>
-                    <td>{{ outlet.merchant_location && outlet.merchant_location.floor.level || null}}</td>  
+                    <td>{{  outlet.merchant_location && (outlet.merchant_location.floor && outlet.merchant_location.floor.level) || null}}</td>  
                     <td>
                       <a href="javascript:;" class="btn-edit"><span class="text-success">Edit</span></a>
                     </td>

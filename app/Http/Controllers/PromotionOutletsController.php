@@ -31,7 +31,7 @@ class PromotionOutletsController extends Controller
         ];
 
         $promotion = PromotionOutlet::create($request->all() + $data);
-        $promotion->load('merchant', 'merchantLocation');
+        $promotion->load('merchant', 'merchantLocation', 'mall', 'merchantLocation.floor');
 
         return response()->json($promotion);
     }
