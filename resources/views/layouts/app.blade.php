@@ -17,6 +17,7 @@
     <link href="{{asset('assets/css/jqueryui.css')}}" rel="stylesheet" type="text/css">     
     <link href="{{asset('assets/css/malle_style.css')}}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     @yield('style')
  
 </head>
@@ -44,7 +45,7 @@
         </div>
     </div>
 </body>
-<script type="text/javascript" src="{{ mix('js/app.js')}}"></script>
+{{--<script type="text/javascript" src="{{ mix('js/app.js')}}"></script>--}}
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>

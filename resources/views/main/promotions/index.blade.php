@@ -89,15 +89,36 @@ height: 213px; /* only if you want fixed height */
                                 <th>{{__('Promotion Name')}}</th>
                                 <th>{{__('Merchant Name')}}</th>
                                 <th>{{__('Created By')}}</th>
-                                <th>&nbsp;</th>
+                                <th>{{__('Active')}}</th>
+                                <th>{{__('Redeem')}}</th>
+                                <th>{{__('Action')}}&nbsp;</th>
                             </tr>
                         </thead>
                         <tbody>
+
                          @foreach($promotions as $promotions)
                             <tr class="row-promotion" data-id="{{$promotions->promo_id}}">
-                                <td>{{$promotions->promo_name}}</td> 
+                                <td>{{$promotions->promo_name}}  {{$promotions->promo_id}}</td>
                                 <td>{{$promotions->merchant->merchant_name}}</td> 
-                                <td>{{$promotions->creator->short_name}}</td> 
+                                <td>{{$promotions->creator->short_name}}</td>
+                                <td>
+
+                                    <select name="active" id="" class="column_update dd-orange" data-href="{{route('promotions.col',['promo_id' => $promotions->promo_id])}}" data-method="POST">
+                                        <option value="Y" @if($promotions->active=='Y') selected @endif>Yes</option>
+                                        <option value="N" @if($promotions->active=='N') selected @endif>No</option>
+                                    </select>
+
+                                </td>
+                                <td>
+                                    @if($promotions->redeemable=='Y')
+                                        <span> Yes </span>
+                                    @else
+                                    <select name="redeemable" id="" class="column_update dd-orange" data-href="{{route('promotions.col',['promo_id' => $promotions->promo_id])}}" data-method="POST">
+                                        <option value="Y" @if($promotions->redeemable=='Y') selected @endif>Yes</option>
+                                        <option value="N" @if($promotions->redeemable=='N') selected @endif>No</option>
+                                    </select>
+                                    @endif
+                                </td>
                                 <td>
                                     <a href="{{route('promotions.show',['promotions'=>$id, 'promo_id'=>$promotions->promo_id])}}" data="2" class="btn-edit"><span class="text-success">Edit</span></a>
                                     |
@@ -134,7 +155,7 @@ height: 213px; /* only if you want fixed height */
     </promotion-outlets>
 @endif--}}
 @include('main.promotions.tags')
-@include('main.promotions.days')
+{{--@include('main.promotions.days')--}}
 
 <div class="modal fade" id="deletepromotionmodal" tabindex="-1" role="dialog" aria-labelledby="deletemodalpromotionlabel" aria-hidden="true">
 <div class="modal-dialog" role="document">
@@ -306,7 +327,7 @@ height: 213px; /* only if you want fixed height */
 
     // malls autocomplete
     jcomplete('#merchant_name');
-    jcomplete('#tag_name','target-id');
+    jcomplete('#tag_name','tag_id');
 
     // store promotions
     $(document).on('submit','#frm-add-promotion', function(e){
@@ -430,14 +451,17 @@ height: 213px; /* only if you want fixed height */
             data:data,
             success:function(data){
                 if(data.status==='error'){
+                   // console.log(data);
                     errorReturn(data)
-                }else{  
+                }else{
+                    //console.log(data);
                     $('#promotion-tag-table tbody').remove();
                     $("#promotion-tag-table").load( $('#promotion-tag-table').attr('data-sourceurl') +" #promotion-tag-table tbody");
                     toastr.success(data.message);
                 }   
             },
-            error: function(data){ 
+            error: function(data){
+               // console.log(data);
                 exeptionReturn(data);
             }
         });
@@ -524,8 +548,8 @@ height: 213px; /* only if you want fixed height */
     });
 
 
-      // change promo outlate live status
-      $(document).on('change', '.outlate_live', function(e){
+      // change promo outlate live, featured and redeem status
+      $(document).on('change', '.column_update', function(e){
           e.preventDefault();
           var selectOp = $(this);
           var attrName = selectOp.attr("name");
@@ -539,45 +563,16 @@ height: 213px; /* only if you want fixed height */
                   value : selectOp.find('option:selected').val()
               },
               success:function(data){
-                  //console.log('llllllllllll');
+                  console.log(data);
                   if(data.status==='error'){
                       errorReturn(data)
                   }else{
-
+                      $("#promotion-table").load( $('#promotion-table').attr('data-sourceurl') +" #promotion-table");
                       toastr.success(data.message);
                   }
               },
               error: function(data){
-                  //console.log(data);
-                  exeptionReturn(data);
-              }
-          });
-
-      });
-      $(document).on('change', '.outlate_featured', function(e){
-          e.preventDefault();
-          var selectOp = $(this);
-          var attrName = selectOp.attr("name");
-
-          $.ajax({
-              url: selectOp.attr('data-href'),
-              type: selectOp.attr('data-method'),
-              dataType:'json',
-              data: {
-                  name : selectOp.attr('name'),
-                  value : selectOp.find('option:selected').val()
-              },
-              success:function(data){
-                  //console.log('llllllllllll');
-                  if(data.status==='error'){
-                      errorReturn(data)
-                  }else{
-
-                      toastr.success(data.message);
-                  }
-              },
-              error: function(data){
-                  //console.log(data);
+                  console.log(data);
                   exeptionReturn(data);
               }
           });
@@ -714,5 +709,40 @@ height: 213px; /* only if you want fixed height */
              return false;
           }
     });
-  </script>
+
+  // autocomplete
+  var jcomplete = function(element){
+      var targetid = $(element).attr('jautocom-targetid');
+      var redirecturl = $(element).attr('jautocom-redirecturl');
+      $( element ).autocomplete({
+          source: function (request, response) {
+              $.getJSON($(element).attr('jautocom-sourceurl') +'/' + request.term, function (data) {
+                  response($.map(data, function (value, key) {
+                      return {
+                          label: value,
+                          value: key
+                      };
+                  }));
+              });
+          },
+          select: function(event, ui) {
+              //alert('hii');
+              $(element).val(ui.item.label);
+              //this will determin the call back of autocomplete
+              if(typeof redirecturl !== typeof undefined && redirecturl !== false){
+                  window.location.href = $(element).attr('jautocom-redirecturl')+ui.item.value;
+              }else if(typeof targetid !== typeof undefined && targetid !== false){
+                  $('#tag_id').val(ui.item.value);
+                  $($(element).attr('jautocom-targetid')).val(ui.item.value);
+              }
+              return false;
+          }
+      });
+  }
+
+
+
+
+
+</script>
 @endsection

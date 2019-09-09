@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\MerchantLocation;
+use App\PromotionMaster;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Request as sRequest;
 use Illuminate\Support\Facades\Validator;
@@ -343,6 +344,21 @@ class PromotionController extends Controller
         ],200);
     }
 
+    public function activeUp(Request $request)
+    {
+
+        $name = request()->name;
+        $id = $request->promo_id;
+        $promo_master = PromotionMaster::find($id);
+        $promo_master->$name = request()->value;
+        $promo_master->save();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => __('successfully updated !'),
+            'id' => $id
+        ],200);
+    }
  
 
 }

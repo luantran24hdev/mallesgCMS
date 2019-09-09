@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\MerchantMaster;
+use App\PromotionMaster;
 use Illuminate\Http\Request;
 use App\PromotionOutlet;
 use App\MerchantLocation;
@@ -64,6 +66,38 @@ class PromotionOutletsController extends Controller
         ],200);
     }
 
+    public function show($id){
+
+        $merchantOptions = MerchantMaster::all()->pluck('merchant_name', 'merchant_id')->toJson() ?? [];
+        $current_merchant = MerchantMaster::find($id);
+        $promotions = $current_merchant->promotions;
+
+        $current_promo = PromotionMaster::find(request()->promo_id) ?? [];
+        $daysofweek = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
+        $outlate_data = PromotionOutlet::find(request()->outlate_id) ?? [];
+//return $current_promo;
+        $data = [
+            'merchantOptions' => $merchantOptions,
+            'current_merchant' => $current_merchant,
+            'promotions' => $promotions,
+            'id' => $id,
+            'promo_id' => request()->promo_id ?? null,
+            'current_promo' => $current_promo,
+            'daysofweek' => $daysofweek,
+            'promotion_days' => $current_promo->promotion_days ?? [],
+            'promotion_images' => $current_promo->images ?? [],
+            'promotion_tags' => $current_promo->promotion_tags ?? [],
+            'live_url' => env('LIVE_URL'),
+            'outlate_data' => $outlate_data
+        ];
+        //return request()->promo_id;
+        //return $current_promo->outlets;
+        //return $data;
+        #dd($data);
+        return view('main.promotions.editoutlets',$data);
+
+
+    }
     /**
      * Update the specified resource in storage.
      *

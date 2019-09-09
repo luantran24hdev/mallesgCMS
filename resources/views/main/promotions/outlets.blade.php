@@ -47,6 +47,7 @@
                <th>Level</th>
                <th>Live</th>
                <th>Featured</th>
+               <th>Redeem</th>
                <th>Action</th>
 
              </tr>
@@ -64,21 +65,27 @@
                     {{ optional($outlet->merchantLocation)->floor['level'] }}
                   </td>
                   <td>
-                    <select name="live" id="" class="outlate_live dd-orange" data-href="{{route('promo-outlets.update',['promo_active' => $outlet->po_id])}}" data-method="PUT">
+                    <select name="live" id="" class="column_update dd-orange" data-href="{{route('promo-outlets.update',['promo_active' => $outlet->po_id])}}" data-method="PUT">
                       <option value="Y" @if($outlet->live=='Y') selected @endif>Yes</option>
                       <option value="N" @if($outlet->live=='N') selected @endif>No</option>
                     </select>
                   </td>
                   <td>
-                   <select name="featured" id="" class="outlate_featured dd-orange" data-href="{{route('promo-outlets.update',['promo_active' => $outlet->po_id])}}" data-method="PUT">
+                   <select name="featured" id="" class="column_update dd-orange" data-href="{{route('promo-outlets.update',['promo_active' => $outlet->po_id])}}" data-method="PUT">
                       <option value="Y" @if($outlet->featured=='Y') selected @endif>Yes</option>
                       <option value="N" @if($outlet->featured=='N') selected @endif>No</option>
                     </select>
                   </td>
                   <td>
-                    <a  href="javascript:;" data-href="" data-method="DELETE" class="" data-id="">
-                      <span class="text-info">Edit</span>
-                    </a>
+                    <select name="redeem" id="" class="column_update dd-orange" data-href="{{route('promo-outlets.update',['promo_active' => $outlet->po_id])}}" data-method="PUT">
+                      <option value="Y" @if($outlet->redeem=='Y') selected @endif>Yes</option>
+                      <option value="N" @if($outlet->redeem=='N') selected @endif>No</option>
+                    </select>
+                  </td>
+                  <td>
+
+                    <a href="{{route('promo-outlets.show',['id'=>$id, 'outlate_id'=>$outlet->po_id,'promo_id'=>$outlet->promo_id])}}" data="2" class="btn-edit"><span class="text-success">Edit</span></a>
+                    |
                     &nbsp;
                     <a  href="javascript:;" data-href="{{route('promo-outlets.destroy',['promo_active' => $outlet->po_id])}}" data-method="DELETE" class="btn-delete" data-id="{{$outlet->po_id}}">
                       <span class="text-danger">Delete</span>

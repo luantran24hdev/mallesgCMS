@@ -13,7 +13,7 @@
                 <input type="hidden" name="tag_id" id="tag_id" value="">
 
                     <div class="row">
-                        <div class="col-md-9">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label class="mb-2 font-12">{{__('Tag Name')}}</label>
                                 <input type="text" name="tag_name" placeholder="Tag Name" id="tag_name" class="form-control" required="" jautocom-sourceurl="{{route('promo-tags.search')}}" jautocom-targetid="tag_id">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\PromotionTag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Repositories\PromotionTagRepository; 
@@ -75,20 +76,46 @@ class PromotionTagController extends Controller
            ],200);
         }
 
-        $insert = $this->tag->create([  
-            'promo_id' => $request->promo_id,
-            'tag_id' => $request->tag_id,
-            'merchant_id' => $request->merchant_id,
-            'primary_tag' => "",
-            'dated' => Carbon::now()->format('d/m/Y'),
-            'user_id' =>  Auth::user()->user_id,
-        ]);
 
+
+        $ifexist = PromotionTag::where('promo_id',$request->promo_id)->get();
+
+        if(count($ifexist) > 0){
+
+            //return "Hellooo";
+            $insert = $this->tag->update($ifexist[0]->pt_id,[
+                'tag_id' => $request->tag_id,
+                'merchant_id' => $request->merchant_id,
+                'primary_tag' => "",
+                'dated' => Carbon::now()->format('d/m/Y'),
+                'user_id' =>  Auth::user()->user_id,
+            ]);
+
+        }
+        else{
+            //return "Hellooo";
+            $insert = $this->tag->create([
+                'promo_id' => $request->promo_id,
+                'tag_id' => $request->tag_id,
+                'merchant_id' => $request->merchant_id,
+                'primary_tag' => "",
+                'dated' => Carbon::now()->format('d/m/Y'),
+                'user_id' =>  Auth::user()->user_id,
+            ]);
+
+
+        }
+
+        if(isset($insert->pt_id)){
+            $id = $insert->pt_id;
+        }else{
+            $id = $ifexist[0]->pt_id;
+        }
         return response()->json([
             'status' => 'success',
             'message' => __('successfully added tag'),
             'tag_name' => $request->tag_name,
-            'id' => $insert->id
+            'id' => $id
         ],200);
     }
 
