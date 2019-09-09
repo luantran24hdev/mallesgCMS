@@ -7,23 +7,24 @@
       </div>
       <div class="card-body">
         
-        <form method="POST" action="{{route('promo-outlets.store')}}" id="addPromoTag">
+        <form method="POST" action="{{route('promo-outlets.store')}}" id="addOutlates">
           <input type="hidden" name="promo_id" id="promo_id" value="{{$promo_id}}">
           <input type="hidden" name="merchant_id" id="merchant_id" value="{{$id}}">
-          <input type="hidden" name="tag_id" id="tag_id" value="">
+          <input type="hidden" name="mall_id" id="mall_id" value="">
+
           
           <div class="row">
             <div class="col-md-4">
               <div class="form-group">
                 <label class="mb-2 font-12">{{__('Mall Name')}}</label>
-                <input type="text" name="mall_name" placeholder="Mall Name" id="mall_name" class="form-control" required="" data-autocompleturl="{{route('malls.search')}}">
+                <input type="text"  placeholder="Mall Name" id="mall_name" class="form-control" required="" data-autocompleturl="{{route('malls.search')}}">
               </div>
             </div>
             
             <div class="col-md-3">
               <div class="form-group">
                 <label class="mb-2 font-12">{{__('Location')}}</label>
-                <select name="location" id="" class="form-control">
+                <select name="merchantlocation_id" id="locations" class="form-control">
                   <option value="">--- Select ----</option>
                 </select>
               </div>
@@ -37,19 +38,51 @@
         
         <div class="row">
           <div class="col-md-12"> 
-            <table class="table table-striped malle-table " id="promotion-tag-table" data-sourceurl="{{route('promotions.show',['promotions'=>$id, 'promo_id' => $promo_id])}}">
+            <table class="table table-striped malle-table " id="promotion-outlate-table" data-sourceurl="{{route('promotions.show',['promotions'=>$id, 'promo_id' => $promo_id])}}">
+             <thead>
+             <tr>
+               <th>Promotional Name</th>
+               <th>Mall Name</th>
+               <th>Location</th>
+               <th>Level</th>
+               <th>Live</th>
+               <th>Featured</th>
+               <th>Action</th>
+
+             </tr>
+             </thead>
               <tbody>
+
                 @foreach($current_promo->outlets as $outlet)
-                <tr class="row-promo-tags" data-id="{{$outlet->pt_id}}">
-                  <td>{{ optional($outlet->merchant)->merchant_name }}</td>  
+                <tr class="row-promotion" data-id="{{$outlet->po_id}}">
+                  <td>{{ optional($current_promo)->promo_name }}</td>
+                  <td>{{ optional($outlet->mall)->mall_name }}</td>
                   <td>
-                    {{ optional($outlet->merchantLocation())->merchant_location }}
+                    {{ optional($outlet->merchantLocation)->merchant_location }}
                   </td>
-                  <td>{{ optional($outlet->merchant)->merchant_address}}</td>  
                   <td>
-                      <a href="javascript:;" data-href="{{route('promo-tags.destroy',['promotions'=>$promo_tag->pt_id])}}" data-method="DELETE" class="btn-pt-delete" data-id="{{$promo_tag->pt_id}}">
-                          <span class="text-danger">{{__('Delete')}}</span>
-                      </a>
+                    {{ optional($outlet->merchantLocation)->floor['level'] }}
+                  </td>
+                  <td>
+                    <select name="live" id="" class="outlate_live dd-orange" data-href="{{route('promo-outlets.update',['promo_active' => $outlet->po_id])}}" data-method="PUT">
+                      <option value="Y" @if($outlet->live=='Y') selected @endif>Yes</option>
+                      <option value="N" @if($outlet->live=='N') selected @endif>No</option>
+                    </select>
+                  </td>
+                  <td>
+                   <select name="featured" id="" class="outlate_featured dd-orange" data-href="{{route('promo-outlets.update',['promo_active' => $outlet->po_id])}}" data-method="PUT">
+                      <option value="Y" @if($outlet->featured=='Y') selected @endif>Yes</option>
+                      <option value="N" @if($outlet->featured=='N') selected @endif>No</option>
+                    </select>
+                  </td>
+                  <td>
+                    <a  href="javascript:;" data-href="" data-method="DELETE" class="" data-id="">
+                      <span class="text-info">Edit</span>
+                    </a>
+                    &nbsp;
+                    <a  href="javascript:;" data-href="{{route('promo-outlets.destroy',['promo_active' => $outlet->po_id])}}" data-method="DELETE" class="btn-delete" data-id="{{$outlet->po_id}}">
+                      <span class="text-danger">Delete</span>
+                    </a>
                   </td>
                 </tr>
                 @endforeach

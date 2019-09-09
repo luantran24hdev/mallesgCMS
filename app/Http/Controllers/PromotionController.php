@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\MerchantLocation;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Request as sRequest;
 use Illuminate\Support\Facades\Validator;
@@ -120,7 +121,7 @@ class PromotionController extends Controller
         $promotions = $current_merchant->promotions;
         $current_promo = $this->promotion->find(request()->promo_id) ?? [];
         $daysofweek = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
-
+//return $current_promo;
         $data = [
             'merchantOptions' => $merchantOptions,
             'current_merchant' => $current_merchant, 
@@ -134,6 +135,9 @@ class PromotionController extends Controller
             'promotion_tags' => $current_promo->promotion_tags ?? [],
             'live_url' => env('LIVE_URL')
         ];
+
+        //return $current_promo->outlets;
+        //return $current_promo;
         #dd($data);
         return view('main.promotions.index',$data);
     }
@@ -287,6 +291,55 @@ class PromotionController extends Controller
         return response()->json([
             'status' => $delete ? 'success' : 'error',
             'message' => $delete ? __('succesfully deleted') : __('error deleting')
+        ],200);
+    }
+
+
+    public function getLocation(Request $request){
+        //return $request->mall_id;
+        if($request->ajax()){
+          if($request->mall_id != NULL && $request->merchent_id != NULL){
+              $mall_id = $request->mall_id;
+              $merchent_id = $request->merchent_id;
+
+              $locations = MerchantLocation::where('merchant_id',$merchent_id)->where('mall_id',$mall_id)->get();
+              $loc = "";
+              if(count($locations) > 0){
+
+                  if(count($locations) > 1){
+                    $loc.="<option value=''>--- Select ----</option>";
+                  }
+                foreach ($locations as $location){
+                    $loc.='<option value="'.$location->merchantlocation_id.'">'.$location->merchant_location.'</option>';
+                }
+
+              return response()->json([
+                  'status' => 'success' ,
+                  'message' =>__('succesfully uploaded'),
+                  'location' => $loc
+              ],200);
+
+              }else{
+
+                  $loc.="<option value=''>--- Select ----</option>";
+                  $loc.="<option value=''>NO Data Found</option>";
+
+                  return response()->json([
+                      'status' => 'success' ,
+                      'message' =>__('succesfully uploaded'),
+                      'location' => $loc
+                  ],200);
+              }
+          }else{
+              return response()->json([
+                  'location' => "No Data Found"
+              ],200);
+
+          }
+        }
+
+        return response()->json([
+            'location' => "No Data Found"
         ],200);
     }
 

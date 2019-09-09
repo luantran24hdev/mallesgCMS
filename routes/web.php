@@ -50,6 +50,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('promotions/uploadimage', 'PromotionController@uploadimage')->name('promotions.uploadimage');
     Route::post('promotions/deleteimage/{id}', 'PromotionController@deleteimage')->name('promotions.deleteimage');
 
+    Route::post('promotions/getlocation', 'PromotionController@getLocation')->name('promotions.location');
+
 
     //locations
     Route::resource('locations', 'LocationController', ['names' => [

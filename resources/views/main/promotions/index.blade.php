@@ -123,15 +123,16 @@ height: 213px; /* only if you want fixed height */
 </div>
 
 @include('main.promotions.images')
-{{-- @include('main.promotions.outlets') --}}
-@if(isset($promo_id))
-    <promotion-outlets 
+
+ @include('main.promotions.outlets')
+{{--@if(isset($promo_id))
+    <promotion-outlets
         :promo-id="{{ $promo_id }}"
-        :outlets="{{ (isset($promo_id)) ? $current_promo->outlets()->with('merchant', 'merchantLocation', 'mall', 'merchantLocation.floor')->get()->toJson() : '' }}" 
+        :outlets="{{ (isset($promo_id)) ? $current_promo->outlets()->with('merchant', 'merchantLocation', 'mall', 'merchantLocation.floor')->get()->toJson() : '' }}"
         :autocompletesrc="'{{ route("malls.searchwith") }}'"
         :post-url="'{{ route("promo-outlets.store") }}'">
     </promotion-outlets>
-@endif
+@endif--}}
 @include('main.promotions.tags')
 @include('main.promotions.days')
 
@@ -440,9 +441,37 @@ height: 213px; /* only if you want fixed height */
                 exeptionReturn(data);
             }
         });
-    });  
+    });
 
-    // delete promotion tags
+      $(document).on('submit','#addOutlates', function(e){
+          e.preventDefault();
+          var data = $(this).serialize();
+          var url = $(this).attr('action');
+          var type =  $(this).attr('method');
+
+          $.ajax({
+              url: url,
+              type: type,
+              dataType:'json',
+              data:data,
+              success:function(data){
+                  if(data.status==='error'){
+                      //errorReturn(data)
+                      toastr.error(data.message, 'Error');
+                  }else{
+                      $('#promotion-outlate-table tbody').remove();
+                      $("#promotion-outlate-table").load( $('#promotion-outlate-table').attr('data-sourceurl') +" #promotion-outlate-table");
+                      toastr.success(data.message);
+                  }
+              },
+              error: function(data){
+                  exeptionReturn(data);
+                  //toastr.error('I do not think that word means what you think it means.', 'Inconceivable!');
+              }
+          });
+      });
+
+      // delete promotion tags
     $(document).on('click', '.btn-pt-delete', function(e){
         e.preventDefault();
         var btndelete = $(this); 
@@ -493,6 +522,67 @@ height: 213px; /* only if you want fixed height */
         });
 
     });
+
+
+      // change promo outlate live status
+      $(document).on('change', '.outlate_live', function(e){
+          e.preventDefault();
+          var selectOp = $(this);
+          var attrName = selectOp.attr("name");
+
+          $.ajax({
+              url: selectOp.attr('data-href'),
+              type: selectOp.attr('data-method'),
+              dataType:'json',
+              data: {
+                  name : selectOp.attr('name'),
+                  value : selectOp.find('option:selected').val()
+              },
+              success:function(data){
+                  //console.log('llllllllllll');
+                  if(data.status==='error'){
+                      errorReturn(data)
+                  }else{
+
+                      toastr.success(data.message);
+                  }
+              },
+              error: function(data){
+                  //console.log(data);
+                  exeptionReturn(data);
+              }
+          });
+
+      });
+      $(document).on('change', '.outlate_featured', function(e){
+          e.preventDefault();
+          var selectOp = $(this);
+          var attrName = selectOp.attr("name");
+
+          $.ajax({
+              url: selectOp.attr('data-href'),
+              type: selectOp.attr('data-method'),
+              dataType:'json',
+              data: {
+                  name : selectOp.attr('name'),
+                  value : selectOp.find('option:selected').val()
+              },
+              success:function(data){
+                  //console.log('llllllllllll');
+                  if(data.status==='error'){
+                      errorReturn(data)
+                  }else{
+
+                      toastr.success(data.message);
+                  }
+              },
+              error: function(data){
+                  //console.log(data);
+                  exeptionReturn(data);
+              }
+          });
+
+      });
 
     // change promo tag status
     $(document).on('change', '.promo_days', function(e){
@@ -599,8 +689,28 @@ height: 213px; /* only if you want fixed height */
             });
         },
           select: function(event, ui) {
+            //console.log(event);
+
              $("#mall_name").val(ui.item.label); 
-             $("#mall_id").val(ui.item.value); 
+             $("#mall_id").val(ui.item.value);
+
+              $.ajax({
+                  type:'POST',
+                  url:'{{ route('promotions.location') }}',
+                  //data:'_token = <?php echo csrf_token() ?>',
+                  data: {
+                      'mall_id': ui.item.value,
+                      'merchent_id': $('#merchant_id').val(),
+                      '_token': '<?php echo csrf_token() ?>'
+                  },
+                  success:function(data) {
+                      //$("#msg").html(data.msg);
+                      console.log(data.location);
+                      $('#locations').html(data.location);
+                  }
+              });
+
+
              return false;
           }
     });
