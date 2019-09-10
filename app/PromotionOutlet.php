@@ -26,4 +26,9 @@ class PromotionOutlet extends Model
     {
         return $this->hasOne(MallMaster::class, 'mall_id', 'mall_id');
     }
+
+    public function promotion_days(){
+
+        return $this->hasOne(PromotionOutletsDay::class, 'po_id', 'po_id');
+    }
 }

@@ -452,7 +452,8 @@ height: 213px; /* only if you want fixed height */
             success:function(data){
                 if(data.status==='error'){
                    // console.log(data);
-                    errorReturn(data)
+                    toastr.error(data.message, 'Error');
+                    //errorReturn(data)
                 }else{
                     //console.log(data);
                     $('#promotion-tag-table tbody').remove();
@@ -460,7 +461,7 @@ height: 213px; /* only if you want fixed height */
                     toastr.success(data.message);
                 }   
             },
-            error: function(data){
+            error: function(data){mall_name
                // console.log(data);
                 exeptionReturn(data);
             }
@@ -579,34 +580,7 @@ height: 213px; /* only if you want fixed height */
 
       });
 
-    // change promo tag status
-    $(document).on('change', '.promo_days', function(e){
-        e.preventDefault();
-        var selectOp = $(this); 
-        var attrName = selectOp.attr("name");
- 
-         $.ajax({
-            url: selectOp.attr('data-href'),
-            type: selectOp.attr('data-method'),       
-            dataType:'json',
-            data: {                 
-                day : selectOp.attr('name'),
-                value : selectOp.find('option:selected').val()
-            },
-            success:function(data){
-                if(data.status==='error'){
-                    errorReturn(data)
-                }else{  
 
-                    toastr.success(data.message);
-                }   
-            },
-            error: function(data){ 
-                exeptionReturn(data);
-            }
-        });
-
-    });
 
 
     // delete promo image

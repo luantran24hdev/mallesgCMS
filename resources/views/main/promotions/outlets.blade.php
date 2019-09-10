@@ -54,6 +54,7 @@
              </thead>
               <tbody>
 
+                @if(isset($current_promo->outlets))
                 @foreach($current_promo->outlets as $outlet)
                 <tr class="row-promotion" data-id="{{$outlet->po_id}}">
                   <td>{{ optional($current_promo)->promo_name }}</td>
@@ -93,6 +94,7 @@
                   </td>
                 </tr>
                 @endforeach
+                  @endif
               </tbody>
             </table>
           </div>

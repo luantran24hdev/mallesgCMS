@@ -91,8 +91,10 @@ class PromotionOutletsController extends Controller
             'outlate_data' => $outlate_data
         ];
         //return request()->promo_id;
-        //return $current_promo->outlets;
-        //return $data;
+        //return $current_promo;
+        //return $outlate_data;
+        //return $daysofweek[0];
+
         #dd($data);
         return view('main.promotions.editoutlets',$data);
 
@@ -134,5 +136,36 @@ class PromotionOutletsController extends Controller
         ],200);
     }
 
+    public function updateOutlate(Request $request){
 
+
+        $validator = \Validator::make($request->all(), [
+            'amount' => 'required',
+        ]);
+
+        if($validator->fails()){
+            return response()->json([
+                'status' => 'error',
+                'message' => $validator->messages()->first()
+            ],200);
+        }
+
+
+        $outlate = PromotionOutlet::find($request->out_id);
+        $outlate->live = $request->live;
+        $outlate->featured = $request->featured;
+        $outlate->amount = $request->amount;
+        $outlate->desc_2 = $request->desc_2 ? $request->desc_2 : '';
+        $outlate->taxes = $request->taxes ? $request->taxes : 'N';
+        $outlate->takeout = $request->takeout ? $request->takeout : 'N';
+        $outlate->start_on = $request->start_on;
+        $outlate->ends_on = $request->ends_on;
+        $outlate->save();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => __('successfully updated !'),
+        ],200);
+
+    }
 }

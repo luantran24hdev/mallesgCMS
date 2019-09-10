@@ -78,18 +78,14 @@ class PromotionTagController extends Controller
 
 
 
-        $ifexist = PromotionTag::where('promo_id',$request->promo_id)->get();
+        $ifexist = PromotionTag::where('promo_id',$request->promo_id)->where('tag_id',$request->tag_id)->first();
 
-        if(count($ifexist) > 0){
+        if(!empty($ifexist)){
 
-            //return "Hellooo";
-            $insert = $this->tag->update($ifexist[0]->pt_id,[
-                'tag_id' => $request->tag_id,
-                'merchant_id' => $request->merchant_id,
-                'primary_tag' => "",
-                'dated' => Carbon::now()->format('d/m/Y'),
-                'user_id' =>  Auth::user()->user_id,
-            ]);
+            return response()->json([
+                'status' => 'error',
+                'message' => __('Already Added.'),
+            ],200);
 
         }
         else{
@@ -106,16 +102,11 @@ class PromotionTagController extends Controller
 
         }
 
-        if(isset($insert->pt_id)){
-            $id = $insert->pt_id;
-        }else{
-            $id = $ifexist[0]->pt_id;
-        }
         return response()->json([
             'status' => 'success',
             'message' => __('successfully added tag'),
             'tag_name' => $request->tag_name,
-            'id' => $id
+            'id' => $insert->pt_id
         ],200);
     }
 
