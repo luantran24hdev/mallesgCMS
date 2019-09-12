@@ -231,12 +231,22 @@
     });
 
     $('#end_date').daterangepicker({
+
+        autoApply :false,
         singleDatePicker: true,
         showDropdowns: true,
         locale: {
+            //cancelLabel: 'Clear',
             format: 'DD/MM/YYYY'
         }
     });
+
+    <?php if(empty($outlate_data->ends_on)) { ?>
+            $(document).ready(function () {
+                $('#end_date').val('');
+            });
+
+    <?php } ?>
 
 
     $(document).on('submit','#editOutlates', function(e){
@@ -257,10 +267,14 @@
                 }else{
                     //$('#promotion-outlate-table tbody').remove();
                     //$('#editoutlatedata').remove();
-
                     //console.log($('#editoutlatedata').attr('data-sourceurl')+'#editoutlatedata');
+
+
                     $("#editoutlatedata").load($('#editoutlatedata').attr('data-sourceurl')+" #editoutlatedata");
+
                     toastr.success(data.message);
+                    //location.reload();
+
                 }
             },
             error: function(data){

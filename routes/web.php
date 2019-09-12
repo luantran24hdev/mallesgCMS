@@ -30,7 +30,7 @@ Route::group(['namespace' => 'Auth'], function () {
 // Authenticated Routes
 Route::group(['middleware' => 'auth'], function () {
 
-    //malls
+    //mallspromotions.location
     Route::get('malls/search/{name?}', 'MallController@search')->name('malls.search');
     Route::get('malls/search-with/{name?}', 'MallController@searchWith')->name('malls.searchwith');
 

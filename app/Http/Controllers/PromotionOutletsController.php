@@ -159,7 +159,7 @@ class PromotionOutletsController extends Controller
         $outlate->taxes = $request->taxes ? $request->taxes : 'N';
         $outlate->takeout = $request->takeout ? $request->takeout : 'N';
         $outlate->start_on = $request->start_on;
-        $outlate->ends_on = $request->ends_on;
+        $outlate->ends_on = $request->ends_on ? $request->ends_on : '';
         $outlate->save();
 
         return response()->json([

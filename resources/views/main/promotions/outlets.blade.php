@@ -15,11 +15,24 @@
           
           <div class="row">
             <div class="col-md-4">
-              <div class="form-group">
+                <div class="form-group">
+                  <label class="mb-2 font-12">{{__('Search Mall Name')}}</label>
+                <select id="e1">
+                    @if(!empty($mall_lists))
+                        @foreach($mall_lists as $mall)
+                            <option value="{{ $mall['mall_id'] }}">{{ $mall['mall_name'] }}</option>
+                        @endforeach
+                    @endif
+                </select>
+                </div>
+              {{--<div class="form-group">
                 <label class="mb-2 font-12">{{__('Mall Name')}}</label>
                 <input type="text"  placeholder="Mall Name" id="mall_name" class="form-control" required="" data-autocompleturl="{{route('malls.search')}}">
-              </div>
+              </div>--}}
+
             </div>
+
+
             
             <div class="col-md-3">
               <div class="form-group">

@@ -39,6 +39,18 @@ width: 100%;
 object-fit: cover;
 height: 213px; /* only if you want fixed height */
 }
+
+
+        .select2-container--default .select2-selection--single .select2-selection__arrow{
+            top: 6px !important;
+        }
+
+        .select2-container .select2-selection--single {
+            height: 38px !important;
+        }
+        .select2-container--default .select2-selection--single .select2-selection__rendered{
+            line-height: 36px !important;
+        }
     </style>
 @endsection
 
@@ -207,6 +219,38 @@ height: 213px; /* only if you want fixed height */
 <script type="text/javascript" src="{{asset('js/croppie.min.js')}}"></script>
 
 <script>
+
+    $(document).ready(function() {
+        $('#e1').val('');
+        $('#e1').select2({
+            placeholder: 'Search Mall Name',
+            allowClear: true,
+            width:200,
+            height:50
+        });
+        $('#e1').on('select2:select', function (e) {
+            $("#mall_name").val(e.params.data.text);
+            $("#mall_id").val(e.params.data.id);
+
+            $.ajax({
+                type:'POST',
+                url:'{{ route('promotions.location') }}',
+                //data:'_token = <?php echo csrf_token() ?>',
+                data: {
+                    'mall_id': e.params.data.id,
+                    'merchent_id': $('#merchant_id').val(),
+                    '_token': '<?php echo csrf_token() ?>'
+                },
+                success:function(data) {
+                    //$("#msg").html(data.msg);
+                    console.log(data.location);
+                    $('#locations').html(data.location);
+                }
+            });
+        });
+
+    });
+
   $( function() {
 
    var $uploadCrop = $('#upload-demo');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\MallMaster;
 use App\MerchantLocation;
 use App\PromotionMaster;
 use Illuminate\Http\Request;
@@ -121,8 +122,18 @@ class PromotionController extends Controller
         $current_merchant = $this->merchant->find($id) ?? [];
         $promotions = $current_merchant->promotions;
         $current_promo = $this->promotion->find(request()->promo_id) ?? [];
-        $daysofweek = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
-//return $current_promo;
+        $daysofweek = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+        $mall_id_lists = MerchantLocation::with('mall')->where('merchant_id', $id)->distinct()->pluck('mall_id');
+
+        $mall_list = [];
+        if (!empty($mall_id_lists)) {
+            foreach ($mall_id_lists as $key => $list) {
+                $mall_name = MallMaster::find($list);
+                $mall_list[$key]['mall_id'] = $list;
+                $mall_list[$key]['mall_name'] = $mall_name['mall_name'];
+            }
+        }
+
         $data = [
             'merchantOptions' => $merchantOptions,
             'current_merchant' => $current_merchant, 
@@ -134,12 +145,12 @@ class PromotionController extends Controller
             'promotion_days' => $current_promo->promotion_days ?? [],
             'promotion_images' => $current_promo->images ?? [],
             'promotion_tags' => $current_promo->promotion_tags ?? [],
-            'live_url' => env('LIVE_URL')
+            'live_url' => env('LIVE_URL'),
+            'mall_lists' => $mall_list
         ];
 
         //return $current_promo->outlets;
-        //return $current_promo;
-        #dd($data);
+        //return $data;
         return view('main.promotions.index',$data);
     }
 
