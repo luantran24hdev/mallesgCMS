@@ -41,16 +41,26 @@ height: 213px; /* only if you want fixed height */
 }
 
 
-        .select2-container--default .select2-selection--single .select2-selection__arrow{
+        .prom_out .select2-container--default .select2-selection--single .select2-selection__arrow{
             top: 6px !important;
         }
 
-        .select2-container .select2-selection--single {
+        .prom_out .select2-container .select2-selection--single {
             height: 38px !important;
         }
+
         .select2-container--default .select2-selection--single .select2-selection__rendered{
             line-height: 36px !important;
         }
+
+        .prom_cat .select2-container--default .select2-selection--single .select2-selection__arrow{
+            top: 32px !important;
+        }
+        .prom_cat .select2-container .select2-selection--single {
+            height: 38px !important;
+            margin-top: 25px;
+        }
+
     </style>
 @endsection
 
@@ -167,7 +177,7 @@ height: 213px; /* only if you want fixed height */
     </promotion-outlets>
 @endif--}}
 @include('main.promotions.tags')
-{{--@include('main.promotions.days')--}}
+@include('main.promotions.category')
 
 <div class="modal fade" id="deletepromotionmodal" tabindex="-1" role="dialog" aria-labelledby="deletemodalpromotionlabel" aria-hidden="true">
 <div class="modal-dialog" role="document">
@@ -221,14 +231,14 @@ height: 213px; /* only if you want fixed height */
 <script>
 
     $(document).ready(function() {
-        $('#e1').val('');
-        $('#e1').select2({
+        $('#prom_out').val('');
+        $('#prom_out').select2({
             placeholder: 'Search Mall Name',
             allowClear: true,
             width:200,
             height:50
         });
-        $('#e1').on('select2:select', function (e) {
+        $('#prom_out').on('select2:select', function (e) {
             $("#mall_name").val(e.params.data.text);
             $("#mall_id").val(e.params.data.id);
 
@@ -247,6 +257,18 @@ height: 213px; /* only if you want fixed height */
                     $('#locations').html(data.location);
                 }
             });
+        });
+
+
+        $('#category_select').val('');
+        $('#category_select').select2({
+            placeholder: 'Search Category',
+            allowClear: true,
+            width:400,
+            height:50
+        });
+        $('#category_select').on('select2:select', function (e) {
+            $("#sub_category_id").val(e.params.data.id);
         });
 
     });
@@ -530,6 +552,35 @@ height: 213px; /* only if you want fixed height */
                   }else{
                       $('#promotion-outlate-table tbody').remove();
                       $("#promotion-outlate-table").load( $('#promotion-outlate-table').attr('data-sourceurl') +" #promotion-outlate-table");
+                      toastr.success(data.message);
+                  }
+              },
+              error: function(data){
+                  exeptionReturn(data);
+                  //toastr.error('I do not think that word means what you think it means.', 'Inconceivable!');
+              }
+          });
+      });
+
+
+      $(document).on('submit','#addPromoCategory', function(e){
+          e.preventDefault();
+          var data = $(this).serialize();
+          var url = $(this).attr('action');
+          var type =  $(this).attr('method');
+
+          $.ajax({
+              url: url,
+              type: type,
+              dataType:'json',
+              data:data,
+              success:function(data){
+                  if(data.status==='error'){
+                      //errorReturn(data)
+                      toastr.error(data.message, 'Error');
+                  }else{
+                      $('#promotion-category-table tbody').remove();
+                      $("#promotion-category-table").load( $('#promotion-category-table').attr('data-sourceurl') +" #promotion-category-table");
                       toastr.success(data.message);
                   }
               },

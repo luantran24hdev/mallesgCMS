@@ -124,7 +124,8 @@ class PromotionController extends Controller
         $current_promo = $this->promotion->find(request()->promo_id) ?? [];
         $daysofweek = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
         $mall_id_lists = MerchantLocation::with('mall')->where('merchant_id', $id)->distinct()->pluck('mall_id');
-
+        $sub_categoryies = \DB::table('sub_category_master')->select('sub_category_id','Sub_Category_Name')->get();
+        //return $sub_categoryies;
         $mall_list = [];
         if (!empty($mall_id_lists)) {
             foreach ($mall_id_lists as $key => $list) {
@@ -133,7 +134,7 @@ class PromotionController extends Controller
                 $mall_list[$key]['mall_name'] = $mall_name['mall_name'];
             }
         }
-
+        //return $current_promo->promotion_category;
         $data = [
             'merchantOptions' => $merchantOptions,
             'current_merchant' => $current_merchant, 
@@ -143,13 +144,15 @@ class PromotionController extends Controller
             'current_promo' => $current_promo,
             'daysofweek' => $daysofweek,
             'promotion_days' => $current_promo->promotion_days ?? [],
+            'promotion_categorys' => $current_promo->promotion_category ?? [],
             'promotion_images' => $current_promo->images ?? [],
             'promotion_tags' => $current_promo->promotion_tags ?? [],
             'live_url' => env('LIVE_URL'),
-            'mall_lists' => $mall_list
+            'mall_lists' => $mall_list,
+            'sub_category_lists' => $sub_categoryies
         ];
 
-        //return $current_promo->outlets;
+        //return $current_promo->promotion_category->rajat;
         //return $data;
         return view('main.promotions.index',$data);
     }

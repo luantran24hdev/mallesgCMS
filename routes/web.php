@@ -75,6 +75,11 @@ Route::group(['middleware' => 'auth'], function () {
         'index' => 'promo-outlets'
     ]]);
 
+    Route::resource('promo-category', 'PromotionCategoryController', ['names' => [
+        'index' => 'promo-category'
+    ]]);
+    Route::post('promo-category/set-primary/{id?}', 'PromotionCategoryController@setPrimary')->name('promo-category.setprimary');
+
     Route::post('promo-outlets/updateOulates', 'PromotionOutletsController@updateOutlate')->name('promo.update.outlate');
 
     Route::resource('promo-outlets-days', 'PromotionOutletsDaysController', ['names' => [

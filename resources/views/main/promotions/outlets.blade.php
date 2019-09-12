@@ -13,11 +13,11 @@
           <input type="hidden" name="mall_id" id="mall_id" value="">
 
           
-          <div class="row">
+          <div class="row prom_out">
             <div class="col-md-4">
                 <div class="form-group">
                   <label class="mb-2 font-12">{{__('Search Mall Name')}}</label>
-                <select id="e1">
+                <select id="prom_out">
                     @if(!empty($mall_lists))
                         @foreach($mall_lists as $mall)
                             <option value="{{ $mall['mall_id'] }}">{{ $mall['mall_name'] }}</option>
