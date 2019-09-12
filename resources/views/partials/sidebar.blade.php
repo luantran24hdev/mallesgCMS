@@ -13,6 +13,7 @@
             <li class="list-group-item"><a class="malle-link" href="{{route('merchants.list')}}">{{__('Merchants List')}}</a></li>
             <li class="list-group-item"><a class="malle-link" href="{{route('merchants')}}">{{__('Merchants in Outlets')}}</a></li>
             <li class="list-group-item"><a class="malle-link" href="{{route('promotions')}}">{{__('New Promotions')}}</a></li>
+            <li class="list-group-item"><a class="malle-link" href="{{route('time-tags')}}">{{__('Time Tags')}}</a></li>
         </ul>
         
     </div>

@@ -93,4 +93,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('promo-outlets-days', 'PromotionOutletsDaysController', ['names' => [
         'index' => 'promo-outlets-days'
     ]]);
+
+    //promo tags
+    Route::resource('time-tags', 'TimeTagController', ['names' => [
+        'index' => 'time-tags'
+    ]]);
+    Route::get('timetag', 'TimeTagController@timeTags')->name('timetag.tags');
+    Route::post('time-tags/tags/store', 'TimeTagController@timeTagStore')->name('time-tags.tags.store');
+    Route::delete('time-tags/tags/destroy/{id?}', 'TimeTagController@timeTagDestroy')->name('timetags.tags.destroy');
 });
