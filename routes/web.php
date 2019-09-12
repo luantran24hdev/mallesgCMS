@@ -31,8 +31,12 @@ Route::group(['namespace' => 'Auth'], function () {
 Route::group(['middleware' => 'auth'], function () {
 
     //mallspromotions.location
+    Route::resource('malls', 'MallController', ['names' => [
+        'index' => 'malls'
+    ]]);
     Route::get('malls/search/{name?}', 'MallController@search')->name('malls.search');
     Route::get('malls/search-with/{name?}', 'MallController@searchWith')->name('malls.searchwith');
+    Route::post('malls/column-update/{id?}', 'MallController@columnUpdate')->name('malls.column-update');
 
     //merchants
     Route::resource('merchants', 'MerchantController', ['names' => [

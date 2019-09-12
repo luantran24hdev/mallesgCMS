@@ -31,6 +31,7 @@ class MerchantMaster extends Model
 		'company_id',
 		'mt_id',
 		'featured',
+        'beta',
 		'merchant_active',
 		'main_image',
 		'facebook',
