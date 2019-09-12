@@ -110,4 +110,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('timetaggroup', 'TimeTagController@timeTagsGrouping')->name('timetag.tags.group');
     Route::post('timetaggroup/store', 'TimeTagController@timeTagGroupingStore')->name('timetaggroup.tags.store');
     Route::delete('timetaggroup/destroy/{id?}', 'TimeTagController@timeTagGroupingDestroy')->name('timetags.tags.destroy');
+
+
+    //Preference tags
+    Route::resource('preference-tags', 'PreferenceMasterController', ['names' => [
+        'index' => 'preference-tags'
+    ]]);
+
+    //Promotion Prefernece
+    Route::post('promotion-preference/store', 'PreferenceMasterController@promotionPreferenceStore')->name('promotion.preference.store');
+    Route::delete('promotion-preference/destroy/{id?}', 'PreferenceMasterController@promotionPreferenceDestroy')->name('promotion.preference.destroy');
+    Route::post('promotion-preference/set-primary/{id?}', 'PreferenceMasterController@setPrimary')->name('promotion.preference.setprimary');
 });

@@ -211,6 +211,7 @@ height: 213px; /* only if you want fixed height */
 @endif--}}
 @include('main.promotions.tags')
 @include('main.promotions.category')
+@include('main.promotions.preference')
 
 <div class="modal fade" id="deletepromotionmodal" tabindex="-1" role="dialog" aria-labelledby="deletemodalpromotionlabel" aria-hidden="true">
 <div class="modal-dialog" role="document">
@@ -309,15 +310,24 @@ height: 213px; /* only if you want fixed height */
         });
 
 
-        $('#category_select').val('');
+        $('#category_select,#preference_select').val('');
         $('#category_select').select2({
             placeholder: 'Search Category',
             allowClear: true,
             width:400,
             height:50
         });
+        $('#preference_select').select2({
+            placeholder: 'Search Preference',
+            allowClear: true,
+            width:400,
+            height:50
+        });
         $('#category_select').on('select2:select', function (e) {
             $("#sub_category_id").val(e.params.data.id);
+        });
+        $('#preference_select').on('select2:select', function (e) {
+            $("#preference_id").val(e.params.data.id);
         });
 
     });
@@ -634,6 +644,34 @@ height: 213px; /* only if you want fixed height */
                   }else{
                       $('#promotion-category-table tbody').remove();
                       $("#promotion-category-table").load( $('#promotion-category-table').attr('data-sourceurl') +" #promotion-category-table");
+                      toastr.success(data.message);
+                  }
+              },
+              error: function(data){
+                  exeptionReturn(data);
+                  //toastr.error('I do not think that word means what you think it means.', 'Inconceivable!');
+              }
+          });
+      });
+
+      $(document).on('submit','#addPromoPreference', function(e){
+          e.preventDefault();
+          var data = $(this).serialize();
+          var url = $(this).attr('action');
+          var type =  $(this).attr('method');
+
+          $.ajax({
+              url: url,
+              type: type,
+              dataType:'json',
+              data:data,
+              success:function(data){
+                  if(data.status==='error'){
+                      //errorReturn(data)
+                      toastr.error(data.message, 'Error');
+                  }else{
+                      $('#promotion-preference-table tbody').remove();
+                      $("#promotion-preference-table").load( $('#promotion-preference-table').attr('data-sourceurl') +" #promotion-preference-table");
                       toastr.success(data.message);
                   }
               },

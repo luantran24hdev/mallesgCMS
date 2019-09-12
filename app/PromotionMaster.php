@@ -61,6 +61,12 @@ class PromotionMaster extends Model
             ->where('merchant_id', $this->merchant_id);
     }
 
+    public function promotion_preference()
+    {
+        return $this->hasMany('App\PromotionPreference', 'promo_id', 'promo_id')
+            ->where('merchant_id', $this->merchant_id);
+    }
+
     public function promotion_days()
     {
         //create if not exist

@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\CountryMaster;
 use App\MallMaster;
 use App\MerchantLocation;
+use App\PreferenceMaster;
 use App\PromotionMaster;
+use App\PromotionPreference;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Request as sRequest;
 use Illuminate\Support\Facades\Validator;
@@ -130,6 +132,8 @@ class PromotionController extends Controller
         $daysofweek = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
         $mall_id_lists = MerchantLocation::with('mall')->where('merchant_id', $id)->distinct()->pluck('mall_id');
         $sub_categoryies = \DB::table('sub_category_master')->select('sub_category_id','Sub_Category_Name')->get();
+        $preference_master_lists = PreferenceMaster::all();
+       // $preference_list = PromotionPreference::all();
         //return $sub_categoryies;
         $mall_list = [];
         if (!empty($mall_id_lists)) {
@@ -154,7 +158,9 @@ class PromotionController extends Controller
             'promotion_tags' => $current_promo->promotion_tags ?? [],
             'live_url' => env('LIVE_URL'),
             'mall_lists' => $mall_list,
-            'sub_category_lists' => $sub_categoryies
+            'sub_category_lists' => $sub_categoryies,
+            'preference_lists' => $current_promo->promotion_preference ?? [],
+            'preference_master_lists' => $preference_master_lists
         ];
 
         //return $current_promo->promotion_category->rajat;
