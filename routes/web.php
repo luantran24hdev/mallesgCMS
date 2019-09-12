@@ -88,7 +88,9 @@ Route::group(['middleware' => 'auth'], function () {
     ]]);
     Route::post('promo-category/set-primary/{id?}', 'PromotionCategoryController@setPrimary')->name('promo-category.setprimary');
 
-    Route::post('promo-outlets/updateOulates', 'PromotionOutletsController@updateOutlate')->name('promo.update.outlate');
+    Route::post('promo-outlets/updateOutlates', 'PromotionOutletsController@updateOutlate')->name('promo.update.outlate');
+    Route::post('promo-outlets-day/storepromOutlates', 'PromotionOutletsController@storePromOutlate')->name('promo.outlate.store');
+    Route::delete('promo-outlets-day/deleteProOutDay/{id?}', 'PromotionOutletsController@deleteProOutDay')->name('promo.outlate.day.destroy');
 
     Route::resource('promo-outlets-days', 'PromotionOutletsDaysController', ['names' => [
         'index' => 'promo-outlets-days'

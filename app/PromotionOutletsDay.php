@@ -25,4 +25,19 @@ class PromotionOutletsDay extends Model
         'saturday',
         'sunday'
     ];
+
+    public function outlatedata()
+    {
+        return $this->belongsTo(PromotionOutlet::class, 'po_id', 'po_id');
+    }
+
+    public function promomaster()
+    {
+        return $this->hasOne(PromotionMaster::class, 'promo_id', 'promo_id');
+    }
+
+    public function dayweek()
+    {
+        return $this->hasOne(DayOfWeek::class, 'dow_id', 'dow_id');
+    }
 }

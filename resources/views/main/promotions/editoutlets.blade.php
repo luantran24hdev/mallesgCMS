@@ -43,6 +43,21 @@
             height: 213px; /* only if you want fixed height */
         }
 
+
+        .prom_outlate .select2-container--default .select2-selection--single .select2-selection__arrow{
+            top: 5px !important;
+        }
+        .prom_outlate .select2-container .select2-selection--single {
+            height: 38px !important;
+        }
+
+        .prom_outlate .select2-container--default .select2-selection--single .select2-selection__rendered{
+            line-height: 35px;
+        }
+        .prom_outlate .select2-container{
+            top:30px;
+        }
+
     </style>
 @endsection
 
@@ -196,10 +211,47 @@
     </div>
 
 
-    @include('main.promotions.days')
+    {{--@include('main.promotions.days')--}}
+    @include('main.promotions.prom_outlate')
+
+
+
+    <div class="modal fade" id="deletelocationmodal" tabindex="-1" role="dialog" aria-labelledby="deletemodallocationlabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deletemodallocationlabel">Delete Confirmation</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body ">
+                    <p class="font-12">Are you sure you want to delete this location?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-danger" id="btnDeleteLocation">Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 @section('script')
 <script>
+
+
+    $('#week_select').val('');
+    $('#week_select').select2({
+        placeholder: 'Select Week Day',
+        allowClear: true,
+        width:300
+    });
+
+     $('#week_select').on('select2:select', function (e) {
+         $("#dow_id").val(e.params.data.id);
+     });
+
+
 
     // change promo tag status
     $(document).on('change', '.promo_days', function(e){
@@ -271,13 +323,6 @@
         }
     });
 
-    <?php if(empty($outlate_data->ends_on)) { ?>
-            $(document).ready(function () {
-                $('#end_date').val('');
-            });
-
-    <?php } ?>
-
 
     $(document).on('submit','#editOutlates', function(e){
         e.preventDefault();
@@ -295,26 +340,72 @@
                     //errorReturn(data)
                     toastr.error(data.message, 'Error');
                 }else{
-                    //$('#promotion-outlate-table tbody').remove();
-                    //$('#editoutlatedata').remove();
-                    //console.log($('#editoutlatedata').attr('data-sourceurl')+'#editoutlatedata');
-
-
                     $("#editoutlatedata").load($('#editoutlatedata').attr('data-sourceurl')+" #editoutlatedata");
-                  // debugger;
                     noenddate();
                     toastr.success(data.message);
-                    //location.reload();
 
                 }
             },
             error: function(data){
                 exeptionReturn(data);
-                //toastr.error('I do not think that word means what you think it means.', 'Inconceivable!');
             }
         });
     });
 
+
+    $(document).on('submit','#addPromoOutlateDay', function(e){
+        e.preventDefault();
+        var data = $(this).serialize();
+        var url = $(this).attr('action');
+        var type =  $(this).attr('method');
+
+        $.ajax({
+            url: url,
+            type: type,
+            dataType:'json',
+            data:data,
+            success:function(data){
+                if(data.status==='error'){
+                    toastr.error(data.message, 'Error');
+                }else{
+                    $("#promotion-outday-table").load( $('#promotion-outday-table').attr('data-sourceurl') +" #promotion-outday-table");
+                    toastr.success(data.message);
+                }
+            },
+            error: function(data){
+                exeptionReturn(data);
+            }
+        });
+    });
+
+
+    // delete
+    $(document).on('click', '.btn-delete', function(e){
+        e.preventDefault();
+        var btndelete = $(this);
+
+        $('#deletelocationmodal').modal('show');
+
+        $('#btnDeleteLocation').unbind().click(function(){
+
+            $.ajax({
+                url: btndelete.attr('data-href'),
+                type: btndelete.attr('data-method'),
+                dataType:'json',
+                success:function(data){
+                    if(data.status==='error'){
+                        toastr.error(data.message);
+                    }else{
+                        $('#deletelocationmodal').modal('hide');
+                        $('.row-promo-out-day[data-id="'+btndelete.attr('data-id')+'"]').remove();
+                        toastr.success(data.message);
+
+                    }
+                }
+            });
+
+        });
+    });
 
 </script>
 @endsection

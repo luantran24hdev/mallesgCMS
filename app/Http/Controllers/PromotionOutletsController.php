@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\DayOfWeek;
 use App\MerchantMaster;
 use App\PromotionMaster;
+use App\PromotionOutletsDay;
 use Illuminate\Http\Request;
 use App\PromotionOutlet;
 use App\MerchantLocation;
@@ -73,9 +75,13 @@ class PromotionOutletsController extends Controller
         $promotions = $current_merchant->promotions;
 
         $current_promo = PromotionMaster::find(request()->promo_id) ?? [];
-        $daysofweek = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
+        //$daysofweek = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
+        $daysofweek = DayOfWeek::all();
         $outlate_data = PromotionOutlet::find(request()->outlate_id) ?? [];
-//return $current_promo;
+
+        $promotion_outlate_days = PromotionOutletsDay::where('po_id',request()->outlate_id)->get() ?? [];
+
+//return $promotion_outlate_day;
         $data = [
             'merchantOptions' => $merchantOptions,
             'current_merchant' => $current_merchant,
@@ -88,11 +94,13 @@ class PromotionOutletsController extends Controller
             'promotion_images' => $current_promo->images ?? [],
             'promotion_tags' => $current_promo->promotion_tags ?? [],
             'live_url' => env('LIVE_URL'),
-            'outlate_data' => $outlate_data
+            'outlate_data' => $outlate_data,
+            'promotions_out_days'=>$promotion_outlate_days
+
         ];
         //return request()->promo_id;
-        //return $current_promo;
-        //return $outlate_data;
+        //return $data;
+        //  return $promotion_outlate_days;
         //return $daysofweek[0];
 
         #dd($data);
@@ -169,4 +177,48 @@ class PromotionOutletsController extends Controller
         ],200);
 
     }
+    public function storePromOutlate(Request $request){
+        $messages = [
+            'po_id.required'    => 'Promotion Id is required',
+            'dow_id.required'    =>  'Week Day field is required',
+            'promo_id.required'    => 'Promo ID field is required'
+        ];
+
+        // Start Validation
+        $validator = \Validator::make($request->all(), [
+            'po_id' => 'required',
+            'dow_id' => 'required',
+            'promo_id' => 'required',
+        ],$messages);
+
+        if($validator->fails()){
+            return response()->json([
+                'status' => 'error',
+                'message' => $validator->messages()->first()
+            ],200);
+        }
+
+
+        $prom_out_days = new PromotionOutletsDay();
+        $prom_out_days->po_id = $request->po_id;
+        $prom_out_days->dow_id = $request->dow_id;
+        $prom_out_days->promo_id =  $request->promo_id;
+        $prom_out_days->save();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => __('successfully added.'),
+        ],200);
+    }
+
+    public function deleteProOutDay($id)
+    {
+        $delete = PromotionOutletsDay::destroy($id);
+        return response()->json([
+            'status' => $delete ? 'success' : 'error',
+            'message' => $delete ? __('succesfully deleted') : __('error deleting')
+        ],200);
+    }
+
+
 }
