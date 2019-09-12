@@ -206,6 +206,7 @@ class PromotionController extends Controller
                 'promo_name' => $request->promo_name,
                 'description' => $request->description,
                 'amount' => $request->amount,
+                'was_amount' => $request->was_amount,
                 'start_on' => $request->start_on,
                 'ends_on' => $request->no_end_date ? "": $request->ends_on,
                 'other_offer' => $request->other_offer ?? null, 

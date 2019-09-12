@@ -92,7 +92,7 @@
                                     </select>
                                 </div>
 
-                                <div class="col-md-12">
+                                <div class="col-md-7">
                                     <div class="form-group">
                                         <label class="mb-2 font-12">{{__('Amount')}}</label>
                                         <div class="input-group mb-3">
@@ -104,7 +104,19 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-12">
+                                <div class="col-md-7">
+                                    <div class="form-group">
+                                        <label class="mb-2 font-12">{{__('Was')}}</label>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text text-primary font-weight-bold" id="basic-addon1">{{$current_merchant->country->currency_symbol}}</span>
+                                            </div>
+                                            <input type="text" name="was_amount" id="was_amount" value="{{$current_promo->was_amount}}" aria-describedby="basic-addon1" class="form-control text-primary text-right font-weight-bold" onkeypress="return isNumber(event)" readonly>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
                                     <div class="form-group">
                                         <label class="mb-2 font-12">{{__('Other Offer')}}</label>
                                         <div class="input-group mb-3">
@@ -112,6 +124,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
 
                         </div>
@@ -145,10 +158,14 @@
                                         </span>
                                 </div>
                                 <br>
-
+                                <div>
+                                <label class="mb-2 font-12">
+                                    <input type="checkbox" value="Y" name="no_end_date" id="no_end_date" @if($outlate_data->no_end_date == 'Y') checked @endif  onclick="noenddate()">
+                                    No End Date</label>
+                            </div>
                                 <label class="mb-2 font-12">Promotion Ends on </label>
                                 <div class="input-group">
-                                    <input type="text" name="ends_on" id="end_date" placeholder="End Date" value="{{ @$outlate_data->ends_on }}" class="form-control py-2 border-right-0 border hasDatepicker" >
+                                    <input type="text" name="ends_on" id="end_date" placeholder="End Date" value="{{ @$outlate_data->ends_on }}" class="form-control py-2 border-right-0 border hasDatepicker" @if($outlate_data->no_end_date == 'Y') disabled @endif>
                                     <span class="input-group-append">
                                             <button class="btn btn-outline-secondary border-left-0 border" type="button">
                                                     <i class="fa fa-calendar"></i>
@@ -230,6 +247,19 @@
         }
     });
 
+    function noenddate(){
+      // /  debugger;
+        /*$('#no_end_date').click(function() {*/
+            if ($('#no_end_date'). prop("checked") == true) {
+                $("#end_date").attr('disabled', true).val("");
+            }
+            else {
+                $("#end_date").attr('disabled', false);
+            }
+        /*});*/
+    }
+
+
     $('#end_date').daterangepicker({
 
         autoApply :false,
@@ -271,7 +301,8 @@
 
 
                     $("#editoutlatedata").load($('#editoutlatedata').attr('data-sourceurl')+" #editoutlatedata");
-
+                  // debugger;
+                    noenddate();
                     toastr.success(data.message);
                     //location.reload();
 

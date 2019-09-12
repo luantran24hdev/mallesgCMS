@@ -26,6 +26,7 @@ class PromotionMaster extends Model
         'promo_name',
         'description',
         'amount',
+        'was_amount',
         'other_offer',
         'dated',
         'start_on',

@@ -50,7 +50,24 @@
                     </div>
                 </div>
 
+                {{--<div class="col-md-2">
+
+                </div>--}}
+
                 <div class="col-md-2">
+
+                    <div class="form-group">
+                        <label class="mb-2 font-12">{{__('Was')}}</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text text-primary font-weight-bold" id="basic-addon1">{{$current_merchant->country->currency_symbol}}</span>
+                            </div>
+                            <input type="text" name="was_amount" id="was_amount" value="{{$current_promo->was_amount}}" aria-describedby="basic-addon1" class="form-control text-primary text-right font-weight-bold" onkeypress="return isNumber(event)">
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                     <label class="mb-2 font-12">Active</label><br>
                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                 <label class="btn btn-default @if($current_promo->active=="Y") active @endif" id="yes_active">
@@ -63,9 +80,10 @@
                             </div>
 
                             <input type="hidden" name="active_txt" id="active_txt" @if($current_promo->active) value="Y" @else value="N" @endif>
+                    </div>
 
-                            <br><br>
 
+                    <div class="form-group">
                             <label class="mb-2 font-12">Redeemable</label><br>
                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                 <label class="btn btn-default @if($current_promo->redeemable=="Y") active @endif" id="yes_redeemable">
@@ -78,7 +96,14 @@
                             </div>
 
                             <input type="hidden" name="redeemable_txt" id="redeemable_txt" value="{{$current_promo->redeemable}}">
+                    </div>
+
+
+
+
                 </div>
+
+
 
                 <div class="col-md-3">
                     <label class="mb-2 font-12">Promotion Starts on</label>
