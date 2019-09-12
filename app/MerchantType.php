@@ -18,4 +18,12 @@ class MerchantType extends Model
     protected $fillable = [
 
     ];
+
+    public static function totalTypeMerchant($id){
+        if(!empty($id)){
+            $total = MerchantMaster::where('mt_id',$id)->where('merchant_active','Y')->count();
+            return $total;
+        }
+        return 0;
+    }
 }

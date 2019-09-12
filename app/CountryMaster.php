@@ -22,5 +22,14 @@ class CountryMaster extends Model
     protected $fillable = [
 
     ];
+
+    public static function totalCountryMerchant($cid){
+        if(!empty($cid)){
+            $total = MerchantMaster::where('country_id',$cid)->where('merchant_active','Y')->count();
+
+            return $total;
+        }
+        return 0;
+    }
 	
 }

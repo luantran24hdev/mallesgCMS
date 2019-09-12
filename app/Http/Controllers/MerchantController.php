@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\CountryMaster;
+use App\MerchantMaster;
+use App\MerchantType;
 use App\PromotionOutlet;
 use Illuminate\Http\Request;
 
@@ -159,9 +162,17 @@ class MerchantController extends Controller
     public function merchantList(Request $request)
     {
         $merchants = $this->merchant->all()->pluck('merchant_name', 'merchant_id');
-
+        $count_merchant = MerchantMaster::where('merchant_active','Y')->count();
+        $current_merchants = MerchantMaster::where('merchant_active','Y')->get();
+        $countrys = CountryMaster::all();
+        $merchant_types = MerchantType::all();
+        //return $count_all_me_type;
         $data = [
-            'merchantOptions' => $merchants->toJson()
+            'merchantOptions' => $merchants->toJson(),
+            'total_merchant' => $count_merchant,
+            'countrys' => $countrys,
+            'current_merchants' => $current_merchants,
+            'merchant_types' => $merchant_types,
         ];
 
         return view('main.merchants_list.index',$data);
@@ -170,13 +181,17 @@ class MerchantController extends Controller
     public function merchantListShow($id)
     {
         $merchantOptions = $this->merchant->all()->pluck('merchant_name', 'merchant_id')->toJson() ?? [];
-        $current_merchant = $this->merchant->find($id) ?? [];
-        $outlate_totel = PromotionOutlet::where('merchant_id',$id)->count();
-
+        $current_merchants = MerchantMaster::where('merchant_id',$id)->get() ?? [];
+        $count_merchant = MerchantMaster::where('merchant_active','Y')->count();
+       // $outlate_totel = PromotionOutlet::where('merchant_id',$id)->count();
+        $countrys = CountryMaster::all();
+//return $current_merchant;
         $data = [
             'merchantOptions' => $merchantOptions,
-            'current_merchant' => $current_merchant,
-           'outlate_totel' => $outlate_totel,
+            'current_merchants' => $current_merchants,
+           //'outlate_totel' => $outlate_totel,
+            'total_merchant' => $count_merchant,
+            'countrys' => $countrys,
             'id' => $id
         ];
 

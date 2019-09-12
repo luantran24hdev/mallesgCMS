@@ -31,4 +31,13 @@ class PromotionOutlet extends Model
 
         return $this->hasOne(PromotionOutletsDay::class, 'po_id', 'po_id');
     }
+
+    public static function totalOutlate($id){
+        if(!empty($id)){
+            $total = PromotionOutlet::where('merchant_id',$id)->count();
+            return $total;
+        }
+        return 0;
+
+    }
 }
