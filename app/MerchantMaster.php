@@ -53,6 +53,14 @@ class MerchantMaster extends Model
     public function country(){
         return $this->belongsTo('App\CountryMaster', 'country_id', 'country_id');
     }
+    public function city(){
+        return $this->belongsTo('App\CityMaster', 'city_id', 'city_id');
+    }
+    public function merchanttype(){
+        return $this->belongsTo('App\MerchantType', 'mt_id', 'mt_id');
+    }
+
+
 
 
 

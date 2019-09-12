@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\PromotionOutlet;
 use Illuminate\Http\Request;
 
 use App\Repositories\MerchantRepository; 
@@ -96,6 +97,9 @@ class MerchantController extends Controller
             'id' => $id
         ];
 
+
+        //return $current_merchant;
+
         return view('main.merchants.index',$data);
     }
 
@@ -130,7 +134,15 @@ class MerchantController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //$delete = $this->merchant->delete($id);
+
+
+        $delete = $this->merchant->destroy($id);
+        return response()->json([
+            'status' => $delete ? 'success' : 'error',
+            'message' => $delete ? __('succesfully deleted') : __('error deleting')
+        ],200);
+
     }
 
     /**
@@ -144,4 +156,43 @@ class MerchantController extends Controller
         return $this->merchant->search($name);
     }
 
+    public function merchantList(Request $request)
+    {
+        $merchants = $this->merchant->all()->pluck('merchant_name', 'merchant_id');
+
+        $data = [
+            'merchantOptions' => $merchants->toJson()
+        ];
+
+        return view('main.merchants_list.index',$data);
+    }
+
+    public function merchantListShow($id)
+    {
+        $merchantOptions = $this->merchant->all()->pluck('merchant_name', 'merchant_id')->toJson() ?? [];
+        $current_merchant = $this->merchant->find($id) ?? [];
+        $outlate_totel = PromotionOutlet::where('merchant_id',$id)->count();
+
+        $data = [
+            'merchantOptions' => $merchantOptions,
+            'current_merchant' => $current_merchant,
+           'outlate_totel' => $outlate_totel,
+            'id' => $id
+        ];
+
+        return view('main.merchants_list.index',$data);
+    }
+
+    public function columnUpdate($id){
+
+        $this->merchant->update($id, [
+            request()->name => request()->value
+        ]);
+
+        return response()->json([
+            'status' => 'success',
+            'message' => __('successfully updated merchant'),
+            'id' => $id
+        ],200);
+    }
 }

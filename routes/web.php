@@ -38,7 +38,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('merchants', 'MerchantController', ['names' => [
         'index' => 'merchants'
     ]]);
+
     Route::get('merchants/search/{name?}', 'MerchantController@search')->name('merchants.search');
+    Route::get('merchants-list/', 'MerchantController@merchantList')->name('merchants.list');
+    Route::get('merchants-list/{id?}', 'MerchantController@merchantListShow')->name('merchants.list.show');
+    Route::post('merchants-list/column-update/{id?}', 'MerchantController@columnUpdate')->name('merchants.column-update');
 
     //promotions
 
