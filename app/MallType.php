@@ -18,4 +18,13 @@ class MallType extends Model
         return 0;
     }
 
+    public static function getName($id){
+        if(!empty($id)){
+            $name =  MallType::where('mt_id',$id)->first('type_name');
+            return $name->type_name;
+        }
+        return 0;
+    }
+
+
 }

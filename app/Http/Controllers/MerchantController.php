@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\CountryMaster;
+use App\MallType;
 use App\MerchantMaster;
 use App\MerchantType;
 use App\PromotionOutlet;
@@ -88,9 +89,10 @@ class MerchantController extends Controller
         $merchantOptions = $this->merchant->all()->pluck('merchant_name', 'merchant_id')->toJson() ?? [];
         $mallOptions = $this->mall->all()->pluck('mall_name', 'mall_id')->toJson() ?? [];
         $current_merchant = $this->merchant->find($id) ?? [];
-        $locations = $current_merchant->locations;
+        $locations = $current_merchant->loc($id);
         $floors = LevelMaster::all();
- 
+
+        //return $locations;
         $data = [
             'merchantOptions' => $merchantOptions,
             'current_merchant' => $current_merchant,

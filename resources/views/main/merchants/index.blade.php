@@ -58,17 +58,35 @@
                     </form>
                     <table class="table table-striped malle-table " id="location-table" data-sourceurl="{{route('merchants.show',['merchant'=>$id])}}">
                         <tbody>
-                        @foreach($locations as $location)
-                            <tr class="row-location" data-id="{{$location->merchantlocation_id}}">
-                                <td>{{$location->mall->mall_name}}</td>
-                                <td>{{$location->merchant_location}}</td>
-                                <td>{{@$location->floor->level}}</td>
-                                <td>
-                                    <a  href="javascript:;" data-href="{{route('locations.destroy',[$location->merchantlocation_id])}}" data-method="DELETE" class="btn-delete" data-id="{{$location->merchantlocation_id}}">
-                                        <span class="text-danger">Delete</span>
-                                    </a>
-                                </td>
+                        @foreach($locations as $key=>$location1)
+
+                            <tr>
+                                <span class="type_name" style="font-size: large;font-weight: 700;">{{ \App\MallType::getName($key) }} ({{ count($location1) }})</span>
+                                <?php  //echo "<pre>"; print_r($location->merchantlocation_id); echo "</pre>"; die;?>
+                                <table class="table table-striped malle-table">
+                                    <tbody>
+                                @foreach($location1 as $key1=>$location)
+
+
+                                        <tr class="row-location" data-id="{{$location->merchantlocation_id}}">
+                                            <td>{{@$location->mall_name}}</td>
+                                            <td>{{$location->merchant_location}}</td>
+                                            <td>{{@$location->level}}</td>
+                                            <td>
+                                                <a  href="javascript:;" data-href="{{route('locations.destroy',[$location->merchantlocation_id])}}" data-method="DELETE" class="btn-delete" data-id="{{$location->merchantlocation_id}}">
+                                                    <span class="text-danger">Delete</span>
+                                                </a>
+                                            </td>
+
+                                        </tr>
+
+
+                                @endforeach
+                                    </tbody>
+                                </table>
                             </tr>
+
+
                         @endforeach
                         </tbody>
                     </table>
