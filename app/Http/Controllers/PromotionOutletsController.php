@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\DayOfWeek;
 use App\MerchantMaster;
 use App\PromotionMaster;
+use App\PromotionOutlateTime;
 use App\PromotionOutletsDay;
+use App\TimeTags;
 use Illuminate\Http\Request;
 use App\PromotionOutlet;
 use App\MerchantLocation;
@@ -78,10 +80,12 @@ class PromotionOutletsController extends Controller
         //$daysofweek = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
         $daysofweek = DayOfWeek::all();
         $outlate_data = PromotionOutlet::find(request()->outlate_id) ?? [];
-
+        $time_data = TimeTags::all();
         $promotion_outlate_days = PromotionOutletsDay::where('po_id',request()->outlate_id)->get() ?? [];
-
-//return $promotion_outlate_day;
+        $prom_time_data = PromotionOutletsDay::where('po_id',request()->outlate_id)->pluck('dow_id') ?? [];
+        $day_selects = DayOfWeek::whereIn('dow_id',$prom_time_data)->get();
+        $promotion_outlate_time = PromotionOutlateTime::where('po_id',request()->outlate_id)->get() ?? [];
+//return $promotion_outlate_time;
         $data = [
             'merchantOptions' => $merchantOptions,
             'current_merchant' => $current_merchant,
@@ -95,7 +99,10 @@ class PromotionOutletsController extends Controller
             'promotion_tags' => $current_promo->promotion_tags ?? [],
             'live_url' => env('LIVE_URL'),
             'outlate_data' => $outlate_data,
-            'promotions_out_days'=>$promotion_outlate_days
+            'promotions_out_days'=>$promotion_outlate_days,
+            'time_data' => $time_data,
+            'day_selects' => $day_selects,
+            'promotion_outlate_time' => $promotion_outlate_time
 
         ];
         //return request()->promo_id;
@@ -199,21 +206,92 @@ class PromotionOutletsController extends Controller
         }
 
 
-        $prom_out_days = new PromotionOutletsDay();
-        $prom_out_days->po_id = $request->po_id;
-        $prom_out_days->dow_id = $request->dow_id;
-        $prom_out_days->promo_id =  $request->promo_id;
-        $prom_out_days->save();
+        $ifexist = PromotionOutletsDay::where('po_id',$request->po_id)->where('dow_id',$request->dow_id)->first();
 
-        return response()->json([
-            'status' => 'success',
-            'message' => __('successfully added.'),
-        ],200);
+        if(!empty($ifexist)){
+
+            return response()->json([
+                'status' => 'error',
+                'message' => __('Already Added.'),
+            ],200);
+
+        }
+        else {
+
+            $prom_out_days = new PromotionOutletsDay();
+            $prom_out_days->po_id = $request->po_id;
+            $prom_out_days->dow_id = $request->dow_id;
+            $prom_out_days->promo_id = $request->promo_id;
+            $prom_out_days->save();
+
+            return response()->json([
+                'status' => 'success',
+                'message' => __('successfully added.'),
+            ], 200);
+        }
     }
 
     public function deleteProOutDay($id)
     {
         $delete = PromotionOutletsDay::destroy($id);
+        return response()->json([
+            'status' => $delete ? 'success' : 'error',
+            'message' => $delete ? __('succesfully deleted') : __('error deleting')
+        ],200);
+    }
+
+
+    public function storePromOutlateTime(Request $request){
+        $messages = [
+            'po_id.required'    => 'Promotion Id is required',
+            'dow_id.required'    =>  'Day field is required',
+            'tt_id.required'    => 'Time field is required'
+        ];
+
+        // Start Validation
+        $validator = \Validator::make($request->all(), [
+            'po_id' => 'required',
+            'dow_id' => 'required',
+            'tt_id' => 'required',
+        ],$messages);
+
+        if($validator->fails()){
+            return response()->json([
+                'status' => 'error',
+                'message' => $validator->messages()->first()
+            ],200);
+        }
+
+
+        $ifexist = PromotionOutlateTime::where('po_id',$request->po_id)->where('dow_id',$request->dow_id)->where('tt_id',$request->tt_id)->first();
+
+        if(!empty($ifexist)){
+
+            return response()->json([
+                'status' => 'error',
+                'message' => __('Already Added.'),
+            ],200);
+
+        }
+        else {
+
+            $prom_out_time = new PromotionOutlateTime();
+            $prom_out_time->po_id = $request->po_id;
+            $prom_out_time->dow_id = $request->dow_id;
+            $prom_out_time->tt_id = $request->tt_id;
+            $prom_out_time->user_id = \Auth::user()->user_id;
+            $prom_out_time->save();
+
+            return response()->json([
+                'status' => 'success',
+                'message' => __('successfully added.'),
+            ], 200);
+        }
+    }
+
+    public function deleteProOutTime($id)
+    {
+        $delete = PromotionOutlateTime::destroy($id);
         return response()->json([
             'status' => $delete ? 'success' : 'error',
             'message' => $delete ? __('succesfully deleted') : __('error deleting')

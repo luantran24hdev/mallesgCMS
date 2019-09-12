@@ -92,6 +92,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('promo-outlets-day/storepromOutlates', 'PromotionOutletsController@storePromOutlate')->name('promo.outlate.store');
     Route::delete('promo-outlets-day/deleteProOutDay/{id?}', 'PromotionOutletsController@deleteProOutDay')->name('promo.outlate.day.destroy');
 
+    Route::post('promo-outlets-time/storepromOutlatesTime', 'PromotionOutletsController@storePromOutlateTime')->name('promo.outlate.time.store');
+    Route::delete('promo-outlets-time/deleteProOutTime/{id?}', 'PromotionOutletsController@deleteProOutTime')->name('promo.outlate.time.destroy');
+
     Route::resource('promo-outlets-days', 'PromotionOutletsDaysController', ['names' => [
         'index' => 'promo-outlets-days'
     ]]);

@@ -213,6 +213,7 @@
 
     {{--@include('main.promotions.days')--}}
     @include('main.promotions.prom_outlate')
+    @include('main.promotions.prom_outlate_time')
 
 
 
@@ -251,7 +252,28 @@
          $("#dow_id").val(e.params.data.id);
      });
 
+    $('#day_select').val('');
+    $('#day_select').select2({
+        placeholder: 'Select Day',
+        allowClear: true,
+        width:300
+    });
 
+    $('#day_select').on('select2:select', function (e) {
+        $("#time_dow_id").val(e.params.data.id);
+    });
+
+
+    $('#time_select').val('');
+    $('#time_select').select2({
+        placeholder: 'Select Time',
+        allowClear: true,
+        width:300
+    });
+
+    $('#time_select').on('select2:select', function (e) {
+        $("#tt_id").val(e.params.data.id);
+    });
 
     // change promo tag status
     $(document).on('change', '.promo_days', function(e){
@@ -369,6 +391,31 @@
                     toastr.error(data.message, 'Error');
                 }else{
                     $("#promotion-outday-table").load( $('#promotion-outday-table').attr('data-sourceurl') +" #promotion-outday-table");
+                    toastr.success(data.message);
+                }
+            },
+            error: function(data){
+                exeptionReturn(data);
+            }
+        });
+    });
+
+    $(document).on('submit','#addPromoOutlateTime', function(e){
+        e.preventDefault();
+        var data = $(this).serialize();
+        var url = $(this).attr('action');
+        var type =  $(this).attr('method');
+
+        $.ajax({
+            url: url,
+            type: type,
+            dataType:'json',
+            data:data,
+            success:function(data){
+                if(data.status==='error'){
+                    toastr.error(data.message, 'Error');
+                }else{
+                    $("#promotion-outtime-table").load( $('#promotion-outtime-table').attr('data-sourceurl') +" #promotion-outtime-table");
                     toastr.success(data.message);
                 }
             },
