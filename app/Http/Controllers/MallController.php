@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\CountryMaster;
 use App\EventMaster;
+use App\MallType;
 use App\MerchantLocation;
 use App\OfferMaster;
 use Illuminate\Http\Request;
@@ -36,9 +38,18 @@ class MallController extends Controller
     public function index()
     {
         $malls = $this->mall->all()->pluck('mall_name', 'mall_id');
-
+        $current_malls = MallMaster::where('mall_active','Y')->get() ?? [];
+        $total_mall = MallMaster::where('mall_active','Y')->count();
+        $countrys = CountryMaster::all();
+        $mall_types = MallType::all();
+//return $total_type_mall;
         $data = [
-            'malls' => $malls->toJson()
+            'malls' => $malls->toJson(),
+            'current_mallss' => $current_malls,
+            'total_mall' => $total_mall,
+            'countrys' => $countrys,
+            'mall_types' => $mall_types,
+
         ];
 
         return view('main.mall_list.index',$data);
@@ -75,19 +86,18 @@ class MallController extends Controller
     {
         //$merchantOptions = $this->merchant->all()->pluck('merchant_name', 'merchant_id')->toJson() ?? [];
        // $mallOptions = $this->mall->all()->pluck('mall_name', 'mall_id')->toJson() ?? [];
-        $current_malls = $this->mall->find($id) ?? [];
-        $total_merchant = MerchantLocation::where('mall_id',$id)->distinct()->count();
-        $total_event = EventMaster::where('mall_id',$id)->where('type','C')->count();
-        $total_promos = OfferMaster::where('mall_id',$id)->where('live','Y')->count();
+        $current_malls = MallMaster::where('mall_id',$id)->get() ?? [] ;
+        $total_mall = MallMaster::where('mall_active','Y')->count();
         //$locations = $current_merchant->locations;
         //$floors = LevelMaster::all();
-
+//return $current_malls;
         $data = [
            // 'merchantOptions' => $merchantOptions,
-            'current_malls' => $current_malls,
-           'total_merchant' => $total_merchant,
+            'current_mallss' => $current_malls,
+            'total_mall' => $total_mall,
+           /*'total_merchant' => $total_merchant,
             'total_event' => $total_event,
-            'total_promos' => $total_promos,
+            'total_promos' => $total_promos,*/
            // 'floors' => $floors,
            'id' => $id
         ];

@@ -1,25 +1,69 @@
 @extends('layouts.app')
 
+<style>
+    .mall_out .select2-container--default .select2-selection--single .select2-selection__arrow{
+        top: 5px !important;
+    }
+    .mall_out .select2-container .select2-selection--single {
+        height: 38px !important;
+    }
+
+    .mall_out .select2-container--default .select2-selection--single .select2-selection__rendered{
+        line-height: 35px;
+    }
+
+</style>
+
 @section('content')
 <div class="row">
     <div class="col-md-10">
         <div class="card card-malle">
-            <div class="card-header-malle">{{__('Manage Malls')}}</div>
+            <div class="card-header-malle">{{__('Manage Malls')}} ({{ @$total_mall }})</div>
             <div class="card-body">
 
-            <div class="row">
+            <div class="row mall_out">
                 <div class="col-md-3">
                     <label class="mb-2 font-12">Mall Name</label>
                     <input type="text" name="mall_name" placeholder="Enter Mall Name" id="mall_name" class="form-control" required="" list="datalist1" data-autocompleturl="{{route('malls.search')}}" value="{{ @$current_malls->mall_name}}">
 
                 </div>
+                @if(!isset($id))
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="mb-2 font-12">{{__('Country')}}</label>
+                            <br>
+                            <select id="country_select">
+                                @if(!empty($countrys))
+                                    @foreach($countrys as $country)
+                                        <?php $country_total = \App\CountryMaster::totalCountryMall($country->country_id);?>
+                                        <option value="{{ $country->country_name }}">{{ $country->country_name }} ({{ $country_total }})</option>
+                                    @endforeach
+                                @endif
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="mb-2 font-12">{{__('Mall Type')}}</label>
+                            <select id="mall_type">
+                                @if(!empty($mall_types))
+                                    <option value="all">All ({{ @$total_mall }})</option>
+                                    @foreach($mall_types as $mall_type)
+                                        <?php $type_total = \App\MallType::totalTypeMall($mall_type->mt_id);?>
+                                        <option value="{{ $mall_type->type_name }}">{{ $mall_type->type_name }} ({{ $type_total }})</option>
+                                    @endforeach
+                                @endif
+                            </select>
+                        </div>
+                    </div>
+                @endif
             </div>
 
-            @if(isset($current_malls))
+            @if(isset($current_mallss))
             <br />
             <div class="row">
                 <div class="col-md-12">
-                    <table class="table table-striped malle-table" id="merchant-list-table" data-sourceurl="{{route('merchants.show',['merchant'=>$id])}}">
+                    <table class="table table-striped malle-table" id="mall-list-table" @if(isset($id))  data-sourceurl="{{route('merchants.show',['merchant'=>@$id])}}" @else data-sourceurl="{{route('malls')}}" @endif >
                         <thead>
                         <th>Mall Name</th>
                         <th>City</th>
@@ -34,12 +78,12 @@
                         <th>Action</th>
                         </thead>
                         <tbody>
-                        {{--@foreach($locations as $location)--}}
+                        @foreach($current_mallss as $current_malls)
                             <tr class="row-location" data-id="{{$current_malls->mall_id}}">
                                 <td>{{ @$current_malls->mall_name }}</td>
                                 <td>{{ @$current_malls->city->city_name }}</td>
                                 <td>{{ @$current_malls->country->country_name }}</td>
-                                <td>{{ @$current_malls->merchanttype->type }}</td>
+                                <td>{{ @$current_malls->malltype->type_name }}</td>
                                 <td>
                                     <select name="beta" id="" class="malls_column_update dd-orange" data-href="{{route('malls.column-update',[$current_malls->mall_id])}}" data-method="POST">
                                         <option value="N" @if($current_malls->beta=='N') selected @endif>No</option>
@@ -60,9 +104,9 @@
                                     </select>
                                 </td>
 
-                                <td> {{ @$total_merchant }}</td>
-                                <td> {{ @$total_event }}</td>
-                                <td> {{ @$total_promos }}</td>
+                                <td> {{ @$total_merchant = \App\MallMaster::total_merchant($current_malls->mall_id) }}</td>
+                                <td> {{ @$total_event = \App\MallMaster::total_event($current_malls->mall_id) }}</td>
+                                <td> {{ @$total_promos = \App\MallMaster::total_promos($current_malls->mall_id) }}</td>
                                 <td>
                                     <a href="javascript:;">
                                         <span class="text-info">Edit</span>
@@ -73,7 +117,7 @@
                                     </a>
                                 </td>
                             </tr>
-                        {{--@endforeach--}}
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -108,7 +152,47 @@
 
 @section('script')
 <script>
+
+
+    $(document).ready(function() {
+        var dataTables =  $('#mall-list-table').DataTable({
+                responsive: true,
+                aaSorting: [],
+            }
+        );
+
+        '<?php if(!isset($id)) { ?>'
+            dataTables.columns(2).search("Singapore").draw();
+        '<?php } ?>'
+
+        $('#country_select').on('select2:select', function (e) {
+            var val = e.params.data.id;
+            dataTables.columns(2).search(val).draw();
+
+
+        });
+
+        $('#mall_type').on('select2:select', function (e) {
+            // $("#time_dow_id").val(e.params.data.id);
+            var val = e.params.data.id;
+
+            //console.log(e.params.data.text);
+            if(val=='all'){
+                dataTables.columns(3).search("").draw();
+            }else{
+                dataTables.columns(3).search(val).draw();
+            }
+        });
+
+
+    });
+
   $( function() {
+
+      //$('#country_select').val('');
+      $('#country_select,#mall_type').select2({
+          width:200
+      });
 
     $("#start_date").datepicker({dateFormat: 'dd/mm/yy'});
             $("#end_date").datepicker({dateFormat: 'dd/mm/yy'});

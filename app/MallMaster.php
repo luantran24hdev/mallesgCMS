@@ -32,7 +32,41 @@ class MallMaster extends Model
     public function city(){
         return $this->belongsTo('App\CityMaster', 'city_id', 'city_id');
     }
-    public function merchanttype(){
-        return $this->belongsTo('App\MerchantType', 'mt_id', 'mt_id');
+    public function malltype(){
+        return $this->belongsTo('App\MallType', 'mt_id', 'mt_id');
     }
+
+
+    public static function total_merchant($id){
+
+        if(!empty($id)){
+            $total_merchant = MerchantLocation::where('mall_id',$id)->distinct()->count();
+            return $total_merchant;
+        }
+        return 0;
+    }
+
+    public static function total_event($id){
+        if(!empty($id)){
+            $total_event = EventMaster::where('mall_id',$id)->where('type','C')->count();
+            return $total_event;
+        }
+        return 0;
+
+    }
+
+    public static function total_promos($id){
+        if(!empty($id)){
+            $total_promos = OfferMaster::where('mall_id',$id)->where('live','Y')->count();
+            return $total_promos;
+        }
+        return 0;
+
+    }
+
+
+
+
+
+
 }

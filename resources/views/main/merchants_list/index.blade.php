@@ -156,7 +156,11 @@
             aaSorting: [],
          }
         );
+
+
+        '<?php if(!isset($id)) { ?>'
         dataTables.columns(2).search("Singapore").draw();
+        '<?php } ?>'
 
         $('#country_select').on('select2:select', function (e) {
             var val = e.params.data.id;
