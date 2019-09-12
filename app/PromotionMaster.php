@@ -82,4 +82,13 @@ class PromotionMaster extends Model
     {
         return $this->hasMany(PromotionOutlet::class, 'promo_id', 'promo_id');
     }
+
+
+    public static function totalOutlate($pid){
+
+        if(!empty($pid)){
+            return PromotionOutlet::where('promo_id',$pid)->count();
+        }
+        return 0;
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\CountryMaster;
 use App\MallMaster;
 use App\MerchantLocation;
 use App\PromotionMaster;
@@ -45,9 +46,13 @@ class PromotionController extends Controller
     public function index()
     {
         $promotion = $this->promotion->all()->pluck('promo_name', 'promo_id');
-
+        $countrys = CountryMaster::all();
+        $promotions = PromotionMaster::where('promo_active','Y')->get();
+//return $promotions;
         $data = [
-           'promoOptions' => $promotion->toJson()
+           'promoOptions' => $promotion->toJson(),
+            'countrys' => $countrys,
+            'promotions' => $promotions
         ];
 
         return view('main.promotions.index',$data);

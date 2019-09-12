@@ -61,6 +61,17 @@ height: 213px; /* only if you want fixed height */
             margin-top: 25px;
         }
 
+        .merch_out .select2-container--default .select2-selection--single .select2-selection__arrow{
+            top: 5px !important;
+        }
+        .merch_out .select2-container .select2-selection--single {
+            height: 38px !important;
+        }
+
+        .merch_out .select2-container--default .select2-selection--single .select2-selection__rendered{
+            line-height: 35px;
+        }
+
     </style>
 @endsection
 
@@ -69,7 +80,7 @@ height: 213px; /* only if you want fixed height */
     <div class="col-md-10">
         <div class="card card-malle">
             <div class="card-header-malle">
-            {{__('Manage Promotions')}}
+            {{__('Manage Promotions')}}  ({{ count($promotions) }})
 
             @if(isset($promo_id))
             <a style="float:right;" href="{{route('promotions.show',['promotions'=>$id])}}">{{__('Back')}}</a>
@@ -81,16 +92,33 @@ height: 213px; /* only if you want fixed height */
                 <div class="col-md-3">
                     <label class="mb-2 font-12">{{__('Merchant')}}</label>
                     <input type="text" name="merchant_name" placeholder="Type Merchant Name" id="merchant_name" class="form-control" required="" value="{{@$current_merchant->merchant_name}}"  jautocom-sourceurl="{{route('merchants.search')}}" jautocom-redirecturl="{{route('promotions')}}/" />
-
                 </div>
+                @if(!isset($id))
+                <div class="col-md-4 merch_out">
+                    <div class="form-group">
+                        <label class="mb-2 font-12">{{__('Country')}}</label>
+                        <br>
+                        <select id="country_select">
+                            @if(!empty($countrys))
+                                @foreach($countrys as $country)
+                                    <?php $country_total = \App\CountryMaster::totalCountryPromotionMerchant($country->country_id);?>
+                                    <option value="{{ $country->country_name }}">{{ $country->country_name }} ({{ $country_total }})</option>
+                                @endforeach
+                            @endif
+                        </select>
+                    </div>
+                </div>
+                @endif
+
             </div>
 
             @if(isset($promotions) && empty($promo_id))
             <br />
             <div class="row">
-                <div class="col-md-12"> 
+                <div class="col-md-12">
+                    @if(isset($id))
                     <form method="POST" action="{{route('promotions.store')}}" id="frm-add-promotion">
-                        <input type="hidden" name="merchant_id" id="mall_id" value="{{$current_merchant->merchant_id}}">
+                        <input type="hidden" name="merchant_id" id="mall_id" value="{{@$current_merchant->merchant_id}}">
                         <div class="row">
                             <div class="col-md-9">
                                 <div class="form-group">
@@ -105,11 +133,14 @@ height: 213px; /* only if you want fixed height */
                             </div>
                         </div>
                     </form>
-                    <table class="table table-striped malle-table " id="promotion-table" data-sourceurl="{{route('promotions.show',['promotions'=>$id])}}">
+                    @endif
+                    <table class="table table-striped malle-table " id="promotion-table" data-sourceurl="{{route('promotions.show',['promotions'=>@$id])}}">
                         <thead>
                             <tr>
                                 <th>{{__('Promotion Name')}}</th>
                                 <th>{{__('Merchant Name')}}</th>
+                                <th>{{__('Merchant Country')}}</th>
+                                <th>{{__('Outlate')}}</th>
                                 <th>{{__('Created By')}}</th>
                                 <th>{{__('Active')}}</th>
                                 <th>{{__('Redeem')}}</th>
@@ -121,7 +152,9 @@ height: 213px; /* only if you want fixed height */
                          @foreach($promotions as $promotions)
                             <tr class="row-promotion" data-id="{{$promotions->promo_id}}">
                                 <td>{{$promotions->promo_name}}  {{$promotions->promo_id}}</td>
-                                <td>{{$promotions->merchant->merchant_name}}</td> 
+                                <td>{{$promotions->merchant->merchant_name}}</td>
+                                <td>{{$promotions->merchant->country->country_name}}</td>
+                                <td>{{ $total_outlate = \App\PromotionMaster::totalOutlate($promotions->promo_id) }}</td>
                                 <td>{{$promotions->creator->short_name}}</td>
                                 <td>
 
@@ -142,7 +175,7 @@ height: 213px; /* only if you want fixed height */
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="{{route('promotions.show',['promotions'=>$id, 'promo_id'=>$promotions->promo_id])}}" data="2" class="btn-edit"><span class="text-success">Edit</span></a>
+                                    <a href="{{route('promotions.show',['promotions'=>$promotions->merchant_id, 'promo_id'=>$promotions->promo_id])}}" data="2" class="btn-edit"><span class="text-success">Edit</span></a>
                                     |
                                     <a  href="javascript:;" data-href="{{route('promotions.destroy',['promotions'=>$promotions->promo_id])}}" data-method="DELETE" class="btn-delete" data-id="{{$promotions->promo_id}}">
                                         <span class="text-danger">Delete</span>
@@ -231,6 +264,22 @@ height: 213px; /* only if you want fixed height */
 <script>
 
     $(document).ready(function() {
+
+        var dataTables =  $('#promotion-table').DataTable({
+                responsive: true,
+                aaSorting: [],
+            }
+        );
+        '<?php if(!isset($id)) { ?>'
+        dataTables.columns(2).search("Singapore").draw();
+        '<?php } ?>'
+
+        $('#country_select').on('select2:select', function (e) {
+            var val = e.params.data.id;
+            dataTables.columns(2).search(val).draw();
+        });
+
+
         $('#prom_out').val('');
         $('#prom_out').select2({
             placeholder: 'Search Mall Name',
@@ -274,6 +323,10 @@ height: 213px; /* only if you want fixed height */
     });
 
   $( function() {
+
+      $('#country_select').select2({
+          width:200
+      });
 
    var $uploadCrop = $('#upload-demo');
    $uploadCrop.croppie({

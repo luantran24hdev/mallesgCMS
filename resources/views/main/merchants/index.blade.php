@@ -59,12 +59,12 @@
                     <table class="table table-striped malle-table " id="location-table" data-sourceurl="{{route('merchants.show',['merchant'=>$id])}}">
                         <tbody>
                         @foreach($locations as $location)
-                            <tr class="row-location" data-id="{{$location->merchantLocation_id}}">
+                            <tr class="row-location" data-id="{{$location->merchantlocation_id}}">
                                 <td>{{$location->mall->mall_name}}</td>
                                 <td>{{$location->merchant_location}}</td>
                                 <td>{{@$location->floor->level}}</td>
                                 <td>
-                                    <a  href="javascript:;" data-href="{{route('locations.destroy',['merchants'=>$location->merchantLocation_id])}}" data-method="DELETE" class="btn-delete" data-id="{{$location->merchantLocation_id}}">
+                                    <a  href="javascript:;" data-href="{{route('locations.destroy',[$location->merchantlocation_id])}}" data-method="DELETE" class="btn-delete" data-id="{{$location->merchantlocation_id}}">
                                         <span class="text-danger">Delete</span>
                                     </a>
                                 </td>
@@ -181,7 +181,7 @@
         $('#deletelocationmodal').modal('show');
 
         $('#btnDeleteLocation').unbind().click(function(){
-
+            console.log(btndelete.attr('data-href'));
             $.ajax({
                 url: btndelete.attr('data-href'),
                 type: btndelete.attr('data-method'),       

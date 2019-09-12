@@ -26,7 +26,6 @@ class CountryMaster extends Model
     public static function totalCountryMerchant($cid){
         if(!empty($cid)){
             $total = MerchantMaster::where('country_id',$cid)->where('merchant_active','Y')->count();
-
             return $total;
         }
         return 0;
@@ -35,6 +34,18 @@ class CountryMaster extends Model
     public static function totalCountryMall($cid){
         if(!empty($cid)){
             $total = MallMaster::where('country_id',$cid)->where('mall_active','Y')->count();
+
+            return $total;
+        }
+        return 0;
+    }
+
+    public static function totalCountryPromotionMerchant($cid){
+        if(!empty($cid)){
+            //$total = MerchantMaster::where('country_id',$cid)->where('merchant_active','Y')->count();
+            $total = PromotionMaster::leftJoin('merchant_master', function ($join){
+                $join->on('promotions_master.merchant_id','=','merchant_master.merchant_id');
+            })->where('country_id',$cid)->count();
 
             return $total;
         }
