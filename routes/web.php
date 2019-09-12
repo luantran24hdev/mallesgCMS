@@ -101,4 +101,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('timetag', 'TimeTagController@timeTags')->name('timetag.tags');
     Route::post('time-tags/tags/store', 'TimeTagController@timeTagStore')->name('time-tags.tags.store');
     Route::delete('time-tags/tags/destroy/{id?}', 'TimeTagController@timeTagDestroy')->name('timetags.tags.destroy');
+
+    Route::get('timetaggroup', 'TimeTagController@timeTagsGrouping')->name('timetag.tags.group');
+    Route::post('timetaggroup/store', 'TimeTagController@timeTagGroupingStore')->name('timetaggroup.tags.store');
+    Route::delete('timetaggroup/destroy/{id?}', 'TimeTagController@timeTagGroupingDestroy')->name('timetags.tags.destroy');
 });

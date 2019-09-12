@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\TimeGroup;
 use App\TimeMaster;
 use App\TimeTags;
 use Illuminate\Http\Request;
@@ -174,6 +175,67 @@ class TimeTagController extends Controller
         return response()->json([
             'status' => $time_tag ? 'success' : 'error',
             'message' => $time_tag ? __('succesfully deleted') : __('error deleting')
+        ],200);
+
+
+    }
+
+
+    public function timeTagsGrouping(){
+
+        //return "kkk";
+        $time_tag_groups = TimeGroup::all();
+        $time_tags = TimeTags::all();
+        $time_masters = TimeMaster::all();
+
+        $data = [
+            'time_tag_groups' => $time_tag_groups,
+            'time_tags' => $time_tags,
+            'time_groups' => $time_masters
+        ];
+        return view('main.timetag.time_tag_group',$data);
+    }
+
+    public function timeTagGroupingStore(Request $request){
+        $messages = [
+            'time_tag.required'    => 'Time Tag field is required',
+            'time_group.required'    => 'Time Tag field is required'
+        ];
+
+        // Start Validation
+        $validator = \Validator::make($request->all(), [
+            'time_group' => 'required',
+            'time_tag' => 'required',
+        ],$messages);
+
+        if($validator->fails()){
+            return response()->json([
+                'status' => 'error',
+                'message' => $validator->messages()->first()
+            ],200);
+        }
+
+
+        $time_tag = new TimeGroup();
+        $time_tag->time_id = $request->time_group;
+        $time_tag->tt_id = $request->time_tag;
+        $time_tag->user_id =  Auth::user()->user_id;
+        $time_tag->save();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => __('successfully added.'),
+        ],200);
+    }
+
+    public function timeTagGroupingDestroy($id)
+    {
+        $time_tag_group = TimeGroup::find($id);
+        $time_tag_group->delete();
+
+        return response()->json([
+            'status' => $time_tag_group ? 'success' : 'error',
+            'message' => $time_tag_group ? __('succesfully deleted') : __('error deleting')
         ],200);
 
 

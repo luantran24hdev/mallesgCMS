@@ -9,6 +9,8 @@
 
     @if(isset($promo_id))--}}
         <a style="margin-left: 50px" href="{{route('timetag.tags')}}">{{__('Time Tag')}}</a>
+
+        <a style="margin-left: 50px" href="{{route('timetag.tags.group')}}">{{__('Time Tags Grouping')}}</a>
     {{--@endif--}}
     {{--@if(isset($promo_id))
         <a style="float:right;" href="{{route('promotions.show',['promotions'=>$id, 'promo_id'=>$promo_id])}}">{{__('Back')}}</a>
