@@ -154,6 +154,7 @@
         var dataTables =  $('#merchant-list-table').DataTable({
             responsive: true,
             aaSorting: [],
+            paging: false
          }
         );
 

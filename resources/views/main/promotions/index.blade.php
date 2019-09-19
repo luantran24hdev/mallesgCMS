@@ -269,6 +269,7 @@ height: 213px; /* only if you want fixed height */
         var dataTables =  $('#promotion-table').DataTable({
                 responsive: true,
                 aaSorting: [],
+                paging: false
             }
         );
         '<?php if(!isset($id)) { ?>'

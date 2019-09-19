@@ -10,9 +10,9 @@ class MallType extends Model
     protected $table = 'mall_type';
     protected $primaryKey = 'mt_id';
 
-    public static function totalTypeMall($id){
+    public static function totalTypeMall($cuid,$cid,$id){
         if(!empty($id)){
-            $total = MallMaster::where('mt_id',$id)->where('mall_active','Y')->count();
+            $total = MallMaster::where('country_id',$cuid)->where('city_id',$cid)->where('mt_id',$id)->where('mall_active','Y')->count();
             return $total;
         }
         return 0;

@@ -28,7 +28,7 @@
 
                 </div>
                 @if(!isset($id))
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="form-group">
                             <label class="mb-2 font-12">{{__('Country')}}</label>
                             <br>
@@ -36,9 +36,19 @@
                                 @if(!empty($countrys))
                                     @foreach($countrys as $country)
                                         <?php $country_total = \App\CountryMaster::totalCountryMall($country->country_id);?>
-                                        <option value="{{ $country->country_name }}">{{ $country->country_name }} ({{ $country_total }})</option>
+                                        <option value="{{ $country->country_id }}" title="{{$country->country_name}}">{{ $country->country_name }} ({{ $country_total }})</option>
                                     @endforeach
                                 @endif
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="mb-2 font-12">{{__('City')}}</label>
+                            <br>
+                            <select id="city_control" class="form-control">
+                                <?php $country_total = \App\CountryMaster::totalCountryMall(1);?>
+                                <option value="{{ @$citymaster->city_id }}" title="{{ @$citymaster->city_name }}">{{ @$citymaster->city_name }} ({{ $country_total }})</option>
                             </select>
                         </div>
                     </div>
@@ -47,10 +57,10 @@
                             <label class="mb-2 font-12">{{__('Mall Type')}}</label>
                             <select id="mall_type">
                                 @if(!empty($mall_types))
-                                    <option value="all">All ({{ @$total_mall }})</option>
+                                    <option value="all">All ({{ $country_total = \App\CountryMaster::totalCountryMall(1)}})</option>
                                     @foreach($mall_types as $mall_type)
-                                        <?php $type_total = \App\MallType::totalTypeMall($mall_type->mt_id);?>
-                                        <option value="{{ $mall_type->type_name }}">{{ $mall_type->type_name }} ({{ $type_total }})</option>
+                                        <?php $type_total = \App\MallType::totalTypeMall($mall_type->country_id,$mall_type->city_id,$mall_type->mt_id);?>
+                                        <option value="{{ $mall_type->malltype->type_name }}">{{ $mall_type->malltype->type_name }} ({{ $type_total }})</option>
                                     @endforeach
                                 @endif
                             </select>
@@ -158,6 +168,7 @@
         var dataTables =  $('#mall-list-table').DataTable({
                 responsive: true,
                 aaSorting: [],
+                paging: false
             }
         );
 
@@ -166,8 +177,65 @@
         '<?php } ?>'
 
         $('#country_select').on('select2:select', function (e) {
-            var val = e.params.data.id;
+
+            var val = e.params.data.title;
+            var id= e.params.data.id;
+
+            //console.log(val);
             dataTables.columns(2).search(val).draw();
+            dataTables.columns(1).search("").draw();
+            dataTables.columns(3).search("").draw();
+
+           $.ajax({
+                url: '{{ route('malls.getcity') }}',
+                type: 'POST',
+                dataType:'json',
+               data : {'id':id},
+                success:function(data){
+                    // /console.log(data);
+                    $('#city_control').html(data.city);
+                }
+            });
+
+            var country_id = $("#country_select").val();
+            $.ajax({
+                url: '{{ route('malls.getType') }}',
+                type: 'POST',
+                dataType:'json',
+                data : {'country_id':country_id},
+                success:function(data){
+                    //console.log(data);
+                    $('#mall_type').html(data.city);
+                    //dataTables.ajax.reload();
+                }
+            });
+
+            // /dataTables.ajax.reload();
+
+        });
+
+        $('#city_control').on('select2:select', function (e) {
+            //console.log('city');
+            var val = e.params.data.title;
+
+            if(val=='all'){
+                dataTables.columns(1).search("").draw();
+            }else{
+                dataTables.columns(1).search(val).draw();
+            }
+            var country_id = $("#country_select").val();
+            var city_id = $("#city_control").val();
+
+            $.ajax({
+                url: '{{ route('malls.getType') }}',
+                type: 'POST',
+                dataType:'json',
+                data : {'country_id':country_id,city_id:city_id},
+                success:function(data){
+                    //console.log(data);
+                    $('#mall_type').html(data.city);
+                }
+            });
 
 
         });
@@ -175,7 +243,6 @@
         $('#mall_type').on('select2:select', function (e) {
             // $("#time_dow_id").val(e.params.data.id);
             var val = e.params.data.id;
-
             //console.log(e.params.data.text);
             if(val=='all'){
                 dataTables.columns(3).search("").draw();
@@ -190,7 +257,7 @@
   $( function() {
 
       //$('#country_select').val('');
-      $('#country_select,#mall_type').select2({
+      $('#country_select,#mall_type,#city_control').select2({
           width:200
       });
 

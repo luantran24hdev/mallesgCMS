@@ -37,6 +37,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('malls/search/{name?}', 'MallController@search')->name('malls.search');
     Route::get('malls/search-with/{name?}', 'MallController@searchWith')->name('malls.searchwith');
     Route::post('malls/column-update/{id?}', 'MallController@columnUpdate')->name('malls.column-update');
+    Route::post('malls/getCity', 'MallController@getCity')->name('malls.getcity');
+    Route::post('malls/getType', 'MallController@getType')->name('malls.getType');
 
     //merchants
     Route::resource('merchants', 'MerchantController', ['names' => [
