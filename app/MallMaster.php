@@ -64,6 +64,33 @@ class MallMaster extends Model
 
     }
 
+    public static  function locationByMallId($mall_id){
+
+        $merchant_types = MerchantType::join('merchant_master','merchant_type.mt_id','=','merchant_master.mt_id')
+            ->join('merchant_locations','merchant_master.merchant_id','=','merchant_locations.merchant_id')
+            ->where('merchant_locations.mall_id',$mall_id)
+            ->distinct('merchant_locations.mall_id')
+            // ->groupBy('type')
+            ->get();
+
+
+        $locations = [];
+        foreach ($merchant_types as $merchant_type){
+            $merchant_locations = MerchantLocation::where('mall_id',$mall_id)
+                ->join('merchant_master','merchant_master.merchant_id','=','merchant_locations.merchant_id')
+                ->join('level_master', 'merchant_locations.level_id', '=', 'level_master.level_id')
+                ->join('merchant_type','merchant_type.mt_id','=','merchant_master.mt_id')
+                ->where('merchant_type.mt_id',$merchant_type->mt_id)
+                ->distinct('mall_id')
+                ->get(['level_master.*','merchant_type.*','merchant_master.merchant_name']);
+
+
+            $locations[$merchant_type->type]=$merchant_locations;
+        }
+
+        return $locations;
+    }
+
 
 
 

@@ -114,7 +114,13 @@
                                     </select>
                                 </td>
 
-                                <td> {{ @$total_merchant = \App\MallMaster::total_merchant($current_malls->mall_id) }}</td>
+                                <?php $total_merchant = \App\MallMaster::total_merchant($current_malls->mall_id) ?>
+                                <td>@if($total_merchant > 0)
+                                        <a href="{{ route('mall.info',[$current_malls->mall_id]) }}"><span style="color: blue"><b> {{ @$total_merchant }}</b></span></a>
+                                    @else
+                                        {{ @$total_merchant }}
+                                    @endif
+                                </td>
                                 <td> {{ @$total_event = \App\MallMaster::total_event($current_malls->mall_id) }}</td>
                                 <td> {{ @$total_promos = \App\MallMaster::total_promos($current_malls->mall_id) }}</td>
                                 <td>

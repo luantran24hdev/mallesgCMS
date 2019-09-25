@@ -7,6 +7,7 @@ use App\CountryMaster;
 use App\EventMaster;
 use App\MallType;
 use App\MerchantLocation;
+use App\MerchantType;
 use App\OfferMaster;
 use Illuminate\Http\Request;
 use App\Repositories\MallRepository;
@@ -253,6 +254,26 @@ class MallController extends Controller
             'message' => __('successfully updated mall'),
             'city' => $cit
         ],200);
+
+    }
+
+    public function mallInfo($mall_id){
+        //return $id;
+        $mall = MallMaster::find($mall_id);
+        $total_merchant = MallMaster::total_merchant($mall_id);
+
+        $locations = MallMaster::locationByMallId($mall_id);
+
+        //$merchant_types = MerchantType::all();
+       // return $locations;
+
+        $data = [
+            'mall' => $mall,
+            'total_merchant' => $total_merchant,
+            'locations' => $locations
+        ];
+        return view('main.mall_list.mall_info',$data);
+
 
     }
 }

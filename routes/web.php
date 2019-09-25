@@ -40,6 +40,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('malls/getCity', 'MallController@getCity')->name('malls.getcity');
     Route::post('malls/getType', 'MallController@getType')->name('malls.getType');
 
+    Route::get('mall/info/{id}', 'MallController@mallInfo')->name('mall.info');
+
     //merchants
     Route::resource('merchants', 'MerchantController', ['names' => [
         'index' => 'merchants'
