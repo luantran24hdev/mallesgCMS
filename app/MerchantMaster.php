@@ -58,6 +58,7 @@ class MerchantMaster extends Model
             ->where('merchant_locations.merchant_id', '=', $mid)
             ->get();
 
+
 //return $mall_types;
         $locations = [];
         foreach ($mall_types as $mall_type){

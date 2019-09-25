@@ -82,7 +82,7 @@ class MallMaster extends Model
                 ->join('merchant_type','merchant_type.mt_id','=','merchant_master.mt_id')
                 ->where('merchant_type.mt_id',$merchant_type->mt_id)
                 ->distinct('mall_id')
-                ->get(['level_master.*','merchant_type.*','merchant_master.merchant_name']);
+                ->get(['level_master.*','merchant_type.*','merchant_master.merchant_name','merchant_locations.merchant_location']);
 
 
             $locations[$merchant_type->type]=$merchant_locations;

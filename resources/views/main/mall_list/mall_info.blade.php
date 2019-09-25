@@ -38,6 +38,20 @@
                             </select>
                         </div>
                     </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="mb-2 font-12">{{__('Floor / Level')}}</label>
+                            <br>
+                            <select id="level_select">
+                                @if(!empty($levels))
+                                    <option value="all">All</option>
+                                    @foreach($levels as $level)
+                                        <option value="{{ $level->level_id }}" title="{{ $level->level  }}">{{ $level->level  }}</option>
+                                    @endforeach
+                                @endif
+                            </select>
+                        </div>
+                    </div>
                 @endif
             </div>
 
@@ -49,14 +63,15 @@
                     @foreach($locations as $key=>$location1)
                     <div class="hide show_{{$location1[0]->mt_id}}">
                      <b>{{ $key }} ({{ count($location1) }})</b>
-                    <table class="table table-striped malle-table " id="location-table" data-sourceurl="">
+                    <table class="table table-striped malle-table mall_info_table" data-sourceurl="">
                         <tbody>
                         @foreach($location1 as $location)
-                            <tr>
+                            <tr class="level_{{ @$location->level_id }} levelhide">
                                 <td>{{@$location->merchant_name}}</td>
                                 <td>{{$key}}</td>
                                 <td>{{@$mall->mall_name}}</td>
                                 <td>{{@$location->level}}</td>
+                                <td>{{@$location->merchant_location}}</td>
                             </tr>
                         @endforeach
                         </tbody>
@@ -80,7 +95,7 @@
 <script>
 
 
-    $('#country_select').select2({
+    $('#country_select,#level_select').select2({
         width:200
     });
 
@@ -96,5 +111,23 @@
 
     });
 
+    $('#level_select').on('select2:select', function (e) {
+        var id= e.params.data.id;
+
+        if(id == 'all'){
+            $('.levelhide').show();
+        }else{
+            $('.levelhide').hide();
+            $('.level_'+id).show();
+        }
+
+    });
+
+
+   /* $(document).ready(function() {
+         var dataTables = $('.mall_info_table').DataTable();
+         dataTables.columns(2).search("Restaurant").draw();
+    });
+*/
   </script>
 @endsection

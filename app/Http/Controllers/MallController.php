@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\CityMaster;
 use App\CountryMaster;
 use App\EventMaster;
+use App\LevelMaster;
 use App\MallType;
 use App\MerchantLocation;
 use App\MerchantType;
@@ -264,13 +265,15 @@ class MallController extends Controller
 
         $locations = MallMaster::locationByMallId($mall_id);
 
+        $levels = LevelMaster::all();
         //$merchant_types = MerchantType::all();
-       // return $locations;
+      //return $locations;
 
         $data = [
             'mall' => $mall,
             'total_merchant' => $total_merchant,
-            'locations' => $locations
+            'locations' => $locations,
+            'levels' => $levels
         ];
         return view('main.mall_list.mall_info',$data);
 
