@@ -84,9 +84,10 @@
                                 <td>{{ $current_merchant->country->country_name }}</td>
                                 <td>{{ $current_merchant->merchanttype->type }}</td>
                                 <td>
+                                    <span style="display: none"> {{ $current_merchant->beta }} </span>
                                     <select name="beta" id="" class="merchant_column_update dd-orange" data-href="{{route('merchants.column-update',[$current_merchant->merchant_id])}}" data-method="POST">
-                                        <option value="Y" @if($current_merchant->beta=='Y') selected @endif>Yes</option>
                                         <option value="N" @if($current_merchant->beta=='N') selected @endif>No</option>
+                                        <option value="Y" @if($current_merchant->beta=='Y') selected @endif>Yes</option>
                                     </select>
                                 </td>
                                 <td>

@@ -158,9 +158,9 @@ height: 213px; /* only if you want fixed height */
                                 <td>{{$promotions->creator->short_name}}</td>
                                 <td>
 
-                                    <select name="active" id="" class="column_update dd-orange" data-href="{{route('promotions.col',['promo_id' => $promotions->promo_id])}}" data-method="POST">
-                                        <option value="Y" @if($promotions->active=='Y') selected @endif>Yes</option>
-                                        <option value="N" @if($promotions->active=='N') selected @endif>No</option>
+                                    <select name="promo_active" id="" class="column_update dd-orange" data-href="{{route('promotions.col',['promo_id' => $promotions->promo_id])}}" data-method="POST">
+                                        <option value="Y" @if($promotions->promo_active=='Y') selected @endif>Yes</option>
+                                        <option value="N" @if($promotions->promo_active=='N') selected @endif>No</option>
                                     </select>
 
                                 </td>

@@ -49,7 +49,7 @@ class PromotionController extends Controller
     {
         $promotion = $this->promotion->all()->pluck('promo_name', 'promo_id');
         $countrys = CountryMaster::all();
-        $promotions = PromotionMaster::where('promo_active','Y')->get();
+        $promotions = PromotionMaster::all();
 //return $promotions;
         $data = [
            'promoOptions' => $promotion->toJson(),
