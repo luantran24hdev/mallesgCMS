@@ -39,6 +39,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('malls/column-update/{id?}', 'MallController@columnUpdate')->name('malls.column-update');
     Route::post('malls/getCity', 'MallController@getCity')->name('malls.getcity');
     Route::post('malls/getType', 'MallController@getType')->name('malls.getType');
+    Route::post('malls/getTown', 'MallController@getTown')->name('malls.getTown');
 
     Route::get('mall/info/{id}', 'MallController@mallInfo')->name('mall.info');
 

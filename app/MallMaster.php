@@ -36,6 +36,10 @@ class MallMaster extends Model
         return $this->belongsTo('App\MallType', 'mt_id', 'mt_id');
     }
 
+    public function town(){
+        return $this->belongsTo('App\TownMaster', 'town_id', 'town_id');
+    }
+
 
     public static function total_merchant($id){
 

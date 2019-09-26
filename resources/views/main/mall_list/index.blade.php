@@ -28,7 +28,7 @@
 
                 </div>
                 @if(!isset($id))
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <div class="form-group">
                             <label class="mb-2 font-12">{{__('Country')}}</label>
                             <br>
@@ -42,17 +42,33 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <div class="form-group">
                             <label class="mb-2 font-12">{{__('City')}}</label>
                             <br>
                             <select id="city_control" class="form-control">
                                 <?php $country_total = \App\CountryMaster::totalCountryMall(1);?>
-                                <option value="{{ @$citymaster->city_id }}" title="{{ @$citymaster->city_name }}">{{ @$citymaster->city_name }} ({{ $country_total }})</option>
+                                    <option value="{{ @$citymaster->city_id }}" title="{{ @$citymaster->city_name }}">{{ @$citymaster->city_name }} ({{ $country_total }})</option>
                             </select>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="mb-2 font-12">{{__('Town')}}</label>
+                            <br>
+                            <select id="town_control" class="form-control">
+
+                                @if(!empty($townmasters))
+                                    <option value="all">All ({{ $country_total = \App\CountryMaster::totalCountryMall(1)}})</option>
+                                    @foreach($townmasters as $townmaster)
+                                        <?php $town_total = \App\TownMaster::totalTownMall(1,$townmaster->city_id,$townmaster->town_id);?>
+                                        <option value="{{ @$townmaster->town_id }}" title="{{ @$townmaster->town_name }}">{{ @$townmaster->town_name }} ({{ $town_total }})</option>
+                                    @endforeach
+                                @endif
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
                         <div class="form-group">
                             <label class="mb-2 font-12">{{__('Mall Type')}}</label>
                             <select id="mall_type">
@@ -76,6 +92,7 @@
                     <table class="table table-striped malle-table" id="mall-list-table" @if(isset($id))  data-sourceurl="{{route('merchants.show',['merchant'=>@$id])}}" @else data-sourceurl="{{route('malls')}}" @endif >
                         <thead>
                         <th>Mall Name</th>
+                        <th>Town</th>
                         <th>City</th>
                         <th>Country</th>
                         <th>Type</th>
@@ -91,6 +108,7 @@
                         @foreach($current_mallss as $current_malls)
                             <tr class="row-location" data-id="{{$current_malls->mall_id}}">
                                 <td>{{ @$current_malls->mall_name }}</td>
+                                <td>{{ @$current_malls->town->town_name }}</td>
                                 <td>{{ @$current_malls->city->city_name }}</td>
                                 <td>{{ @$current_malls->country->country_name }}</td>
                                 <td>{{ @$current_malls->malltype->type_name }}</td>
@@ -174,12 +192,13 @@
         var dataTables =  $('#mall-list-table').DataTable({
                 responsive: true,
                 aaSorting: [],
-                paging: false
+                paging: false,
+                "scrollX": true
             }
         );
 
         '<?php if(!isset($id)) { ?>'
-            dataTables.columns(2).search("Singapore").draw();
+            dataTables.columns(3).search("Singapore").draw();
         '<?php } ?>'
 
         $('#country_select').on('select2:select', function (e) {
@@ -188,9 +207,10 @@
             var id= e.params.data.id;
 
             //console.log(val);
-            dataTables.columns(2).search(val).draw();
+            dataTables.columns(3).search(val).draw();
+            dataTables.columns(2).search("").draw();
             dataTables.columns(1).search("").draw();
-            dataTables.columns(3).search("").draw();
+            dataTables.columns(4).search("").draw();
 
            $.ajax({
                 url: '{{ route('malls.getcity') }}',
@@ -200,6 +220,17 @@
                 success:function(data){
                     // /console.log(data);
                     $('#city_control').html(data.city);
+                }
+            });
+
+            $.ajax({
+                url: '{{ route('malls.getTown') }}',
+                type: 'POST',
+                dataType:'json',
+                data : {'id':id},
+                success:function(data){
+                    // /console.log(data);
+                    $('#town_control').html(data.town);
                 }
             });
 
@@ -224,10 +255,12 @@
             //console.log('city');
             var val = e.params.data.title;
 
+
+
             if(val=='all'){
-                dataTables.columns(1).search("").draw();
+                dataTables.columns(2).search("").draw();
             }else{
-                dataTables.columns(1).search(val).draw();
+                dataTables.columns(2).search(val).draw();
             }
             var country_id = $("#country_select").val();
             var city_id = $("#city_control").val();
@@ -243,6 +276,17 @@
                 }
             });
 
+            $.ajax({
+                url: '{{ route('malls.getTown') }}',
+                type: 'POST',
+                dataType:'json',
+                data : {'id':country_id,city_id:city_id},
+                success:function(data){
+                    // /console.log(data);
+                    $('#town_control').html(data.town);
+                }
+            });
+
 
         });
 
@@ -251,9 +295,20 @@
             var val = e.params.data.id;
             //console.log(e.params.data.text);
             if(val=='all'){
-                dataTables.columns(3).search("").draw();
+                dataTables.columns(4).search("").draw();
             }else{
-                dataTables.columns(3).search(val).draw();
+                dataTables.columns(4).search(val).draw();
+            }
+        });
+
+        $('#town_control').on('select2:select', function (e) {
+            // $("#time_dow_id").val(e.params.data.id);
+            var val = e.params.data.title;
+            //console.log(e.params.data.text);
+            if(val=='all'){
+                dataTables.columns(1).search("").draw();
+            }else{
+                dataTables.columns(1).search(val).draw();
             }
         });
 
@@ -263,8 +318,8 @@
   $( function() {
 
       //$('#country_select').val('');
-      $('#country_select,#mall_type,#city_control').select2({
-          width:200
+      $('#country_select,#mall_type,#city_control,#town_control').select2({
+          width:130
       });
 
     $("#start_date").datepicker({dateFormat: 'dd/mm/yy'});

@@ -10,6 +10,7 @@ use App\MallType;
 use App\MerchantLocation;
 use App\MerchantType;
 use App\OfferMaster;
+use App\TownMaster;
 use Illuminate\Http\Request;
 use App\Repositories\MallRepository;
 use App\MallMaster;
@@ -45,6 +46,7 @@ class MallController extends Controller
         $total_mall = MallMaster::where('mall_active','Y')->count();
         $countrys = CountryMaster::all();
         $citymaster = CityMaster::where('country_id',1)->first();
+        $townmasters = TownMaster::where('city_id',1)->get();
         $city_total_by_country = CityMaster::where('country_id',1)->first();
         $mall_types = MallMaster::with('malltype')
             ->where('country_id',1)
@@ -52,7 +54,7 @@ class MallController extends Controller
             ->distinct('mt_id')->get(['mt_id','country_id','city_id']);
 
 
-//return $mall_types;
+//return $current_malls;
         $data = [
             'malls' => $malls->toJson(),
             'current_mallss' => $current_malls,
@@ -60,6 +62,7 @@ class MallController extends Controller
             'countrys' => $countrys,
             'mall_types' => $mall_types,
             'citymaster' => $citymaster,
+            'townmasters' => $townmasters
 
         ];
 
@@ -215,11 +218,43 @@ class MallController extends Controller
 
     }
 
-    public function getType(Request $request){
+
+    public function getTown(Request $request){
         //return $request->id;
 
-        //$citys = CityMaster::where('country_id',$request->id)->get();
-        //$mall_count = MallMaster::where('country_id',$request->id)->count();
+
+        $citys = CityMaster::where('country_id',$request->id)->pluck('city_id');
+
+        if(isset($request->city_id)){
+            $towns = TownMaster::where('city_id',$request->city_id)->get(['town_id','town_name','city_id']);
+            $total_town = MallMaster::where('country_id',$request->id)->where('city_id',$request->city_id)->where('mall_active','Y')->count();
+        }else{
+            $towns = TownMaster::whereIn('city_id',$citys)->get(['town_id','town_name','city_id']);
+            $total_town = MallMaster::where('country_id',$request->id)->whereIn('city_id',$citys)->where('mall_active','Y')->count();
+        }
+//return $total_town;
+        $tow ='';
+        if(count($towns) > 1 ){
+            $tow.='<option value="all">All ('.$total_town.')</option>';
+        }
+
+        foreach ($towns as $town){
+            $total = MallMaster::where('country_id',$request->id)->where('city_id',$town->city_id)->where('town_id',$town->town_id)->where('mall_active','Y')->count();
+            $tow.='<option value="'.$town->town_id.'" title="'.$town->town_name.'">'.$town->town_name.' ('.$total.')</option>';
+        }
+
+        return response()->json([
+            'status' => 'success',
+            'message' => __('successfully updated mall'),
+            'town' => $tow
+        ],200);
+
+
+    }
+
+
+
+    public function getType(Request $request){
 
         $mall_types = MallMaster::with('malltype')
             ->where('country_id',$request->country_id);
