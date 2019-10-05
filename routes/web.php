@@ -40,6 +40,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('malls/getCity', 'MallController@getCity')->name('malls.getcity');
     Route::post('malls/getType', 'MallController@getType')->name('malls.getType');
     Route::post('malls/getTown', 'MallController@getTown')->name('malls.getTown');
+    Route::get('malls/images/{id}', 'MallController@mallImages')->name('malls.images');
+    Route::post('malls/uploadimage', 'MallController@uploadimage')->name('malls.uploadimage');
+
 
     Route::get('mall/info/{id}', 'MallController@mallInfo')->name('mall.info');
 

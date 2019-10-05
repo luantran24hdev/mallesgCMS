@@ -8,8 +8,11 @@ use App\EventMaster;
 use App\LevelMaster;
 use App\MallType;
 use App\MerchantLocation;
+use App\MerchantMaster;
 use App\MerchantType;
 use App\OfferMaster;
+use App\PreferenceMaster;
+use App\PromotionMaster;
 use App\TownMaster;
 use Illuminate\Http\Request;
 use App\Repositories\MallRepository;
@@ -312,6 +315,52 @@ class MallController extends Controller
         ];
         return view('main.mall_list.mall_info',$data);
 
+
+    }
+
+    public function mallImages($id)
+    {
+
+        $mall = MallMaster::find($id);
+        $data = [
+            'mall' => $mall,
+            'live_url' => env('LIVE_URL').'mall_photos/'
+        ];
+
+        return view('main.mall_list.mall_images',$data);
+    }
+
+
+    public function uploadimage(Request $request)
+    {
+        $file = $request->files->get('image');
+        try{
+
+            if($file->getMimeType()!="image/png"){
+                throw new \Exception("invalid file", 500);
+            }
+
+
+            $newfilename = md5($request->mall_id."_".round(microtime(true))) . '.png';
+
+            if(env('APP_ENV')=='live')
+                $file->move('../../admin/mall_photos/', $newfilename);
+            else
+                $file->move('../storage/app/public/', $newfilename);
+
+            $mall = MallMaster::find($request->mall_id);
+            $mall->web_image = $newfilename;
+            $mall->save();
+
+        } catch (QueryException $e) {
+            throw new \Exception($e->getMessage(), 500, $e);
+        }
+
+        return response()->json([
+            'status' => 'success' ,
+            'message' =>__('succesfully uploaded'),
+            'file' => env("LIVE_URL").$newfilename
+        ],200);
 
     }
 }

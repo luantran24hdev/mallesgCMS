@@ -156,7 +156,7 @@ class PromotionController extends Controller
             'promotion_categorys' => $current_promo->promotion_category ?? [],
             'promotion_images' => $current_promo->images ?? [],
             'promotion_tags' => $current_promo->promotion_tags ?? [],
-            'live_url' => env('LIVE_URL'),
+            'live_url' => env('LIVE_URL').'promos/',
             'mall_lists' => $mall_list,
             'sub_category_lists' => $sub_categoryies,
             'preference_lists' => $current_promo->promotion_preference ?? [],

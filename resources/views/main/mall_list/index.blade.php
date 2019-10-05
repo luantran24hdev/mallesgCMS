@@ -142,7 +142,7 @@
                                 <td> {{ @$total_event = \App\MallMaster::total_event($current_malls->mall_id) }}</td>
                                 <td> {{ @$total_promos = \App\MallMaster::total_promos($current_malls->mall_id) }}</td>
                                 <td>
-                                    <a href="javascript:;">
+                                    <a href="{{ route('malls.images',['malls'=>$current_malls->mall_id]) }}">
                                         <span class="text-info">Edit</span>
                                     </a>
                                     |
