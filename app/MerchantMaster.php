@@ -89,6 +89,10 @@ class MerchantMaster extends Model
         return $this->belongsTo('App\MerchantType', 'mt_id', 'mt_id');
     }
 
+    public function merchantImage(){
+        return $this->hasMany(MerchantImage::class, 'merchant_id', 'merchant_id');
+    }
+
 
 
 

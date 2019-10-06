@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\CountryMaster;
 use App\MallType;
+use App\MerchantImage;
 use App\MerchantMaster;
 use App\MerchantType;
 use App\PromotionOutlet;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use App\Repositories\MerchantRepository; 
@@ -210,6 +212,105 @@ class MerchantController extends Controller
             'status' => 'success',
             'message' => __('successfully updated merchant'),
             'id' => $id
+        ],200);
+    }
+
+
+    public function merchantImages($id)
+    {
+
+        $merchant = MerchantMaster::find($id);
+
+        //return $mall->mallImage;
+        $data = [
+            'merchant' => $merchant,
+            'live_url' => env('LIVE_URL').'main_merchant/'
+        ];
+
+        return view('main.merchants_list.merchant_images',$data);
+    }
+
+
+    public function uploadimage(Request $request)
+    {
+
+        $file = $request->files->get('image');
+        try{
+
+            if($file->getMimeType()!="image/png"){
+                throw new \Exception("invalid file", 500);
+            }
+
+
+            $newfilename = md5($request->mall_id."_".round(microtime(true))) . '.png';
+
+            if(env('APP_ENV')=='live')
+                $file->move('../../admin/main_merchant/', $newfilename);
+            else
+                $file->move('../storage/app/public/', $newfilename);
+
+            if(isset($request->image_count)){
+
+                $merchant = new MerchantImage();
+                $merchant->merchant_id = $request->merchant_id;
+                $merchant->image_name = $newfilename;
+                $merchant->image_count = $request->image_count;
+                $merchant->date_added = Carbon::now()->format('Y-m-d');
+                $merchant->save();
+
+            }else{
+                $merchant = MerchantMaster::find($request->merchant_id);
+                $merchant->web_image = $newfilename;
+                $merchant->save();
+            }
+
+        } catch (QueryException $e) {
+            throw new \Exception($e->getMessage(), 500, $e);
+        }
+
+        return response()->json([
+            'status' => 'success' ,
+            'message' =>__('succesfully uploaded'),
+            'file' => env("LIVE_URL").$newfilename
+        ],200);
+
+    }
+
+
+    public function webdeleteimage($id)
+    {
+
+        $image = MerchantMaster::find($id);
+
+        if(env('APP_ENV')=='live')
+            unlink('../../admin/main_merchant/'.$image->web_image);
+        else
+            unlink('../storage/app/public/'.$image->web_image);
+
+
+        $image->web_image = Null;
+        $image->save();
+
+        return response()->json([
+            'status' => $image ? 'success' : 'error',
+            'message' => $image ? __('succesfully deleted') : __('error deleting')
+        ],200);
+    }
+
+    public function deletemallimage($id){
+
+        $image = MerchantImage::find($id);
+
+        if(env('APP_ENV')=='live')
+            unlink('../../admin/main_merchant/'.$image->image_name);
+        else
+            unlink('../storage/app/public/'.$image->image_name);
+
+        $delete = MerchantImage::destroy($id);
+        return response()->json([
+            'status' => $delete ? 'success' : 'error',
+            'image_count' => @$image->image_count,
+            'message' => $delete ? __('succesfully deleted') : __('error deleting')
         ],200);
     }
 }

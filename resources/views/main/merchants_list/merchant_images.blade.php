@@ -48,13 +48,12 @@
     <div class="col-md-10">
         <div class="card card-malle">
             <div class="card-header-malle">
-                {{ $mall->mall_name }}
-                <a href="{{route('malls')}}">
-                    <span class="link_color" style="float: right">
-                        Back
-                    </span>
+                {{ $merchant->merchant_name }}
+                <a href="{{route('merchants.list')}}">
+                <span class="link_color" style="float: right">
+                    Back
+                </span>
                 </a>
-
             </div>
 
             <div class="card-header-malle" style="background: white">
@@ -62,15 +61,15 @@
             </div>
 
 
-            <div class="card-body" id="promo-image-body" data-sourceurl="{{route('malls.images',['mall__id'=>$mall->mall_id])}}">
+            <div class="card-body" id="promo-image-body" data-sourceurl="{{route('merchants.images',['merchant_id'=>$merchant->merchant_id])}}">
 
                 <div class="row" id="promo-image-content">
                    {{-- <input type="text" id="selected_image" style="display: none;">--}}
 
-                         @if($mall->web_image)
+                         @if($merchant->web_image)
                              <div class="col-md-12 mb-3 pr-0">
-                                 <img class="card-img-top fit-image" src="{{ $live_url.$mall->web_image}}" alt="image count">
-                                 <a  href="javascript:;" data-href="{{route('malls.webdeleteimage',['id'=>$mall->mall_id])}}" data-method="POST" class="btn-pi-delete" data-id="{{$mall->mall_id}}">
+                                 <img class="card-img-top fit-image" src="{{ $live_url.$merchant->web_image}}" alt="image count">
+                                 <a  href="javascript:;" data-href="{{route('merchants.webdeleteimage',['id'=>$merchant->merchant_id])}}" data-method="POST" class="btn-pi-delete" data-id="{{$merchant->merchant_id}}">
                                      <span class="text-danger">{{__('Delete')}}</span>
                                  </a>
                              </div>
@@ -100,7 +99,7 @@
             <div class="card-header-malle">
                 Images for App
             </div>
-            <div class="card-body" id="promo-image-body1" data-sourceurl="{{route('malls.images',['mall__id'=>$mall->mall_id])}}">
+            <div class="card-body" id="promo-image-body1" data-sourceurl="{{route('merchants.images',['merchant_id'=>$merchant->merchant_id])}}">
 
                 <div class="row" id="promo-image-content1">
                     <input type="text" id="selected_image" style="display: none;">
@@ -109,14 +108,14 @@
                             $empty = true;
                         @endphp
 
-                        @if(!empty($mall->mallImage))
-                        @foreach($mall->mallImage as $mall_image)
-                            @if($mall_image->image_count == $i)
+                        @if($merchant->merchantImage)
+                        @foreach($merchant->merchantImage as $merchant_image)
+                            @if($merchant_image->image_count == $i)
 
                                 <div class="col-md-4 mb-3 pr-0">
-                                    <img class="card-img-top fit-image" src="{{$live_url.$mall_image->image_name}}" alt="image count {{$mall_image->image_count}}">
+                                    <img class="card-img-top fit-image" src="{{$live_url.$merchant_image->image_name}}" alt="image count {{$merchant_image->image_count}}">
                                     {{--<a  href="javascript:;" data-href="" data-method="POST" class="btn-pi-delete" data-id="">--}}
-                                    <a  href="javascript:;" data-href="{{route('malls.deletemallimage',['id'=>$mall_image->mall_image_id])}}" data-method="POST" class="btn-pi-delete" data-id="{{$mall_image->image_count}}">
+                                    <a  href="javascript:;" data-href="{{route('merchants.deletemallimage',['id'=>$merchant_image->merchant_image_id])}}" data-method="POST" class="btn-pi-delete" data-id="{{$merchant_image->image_count}}">
                                         <span class="text-danger">{{__('Delete')}}</span>
                                     </a>
                                 </div>
@@ -246,7 +245,7 @@
             // Create a FormData and append the file
             var fd = new FormData();
             fd.append("image", blob);
-            fd.append("mall_id", "{{@$mall->mall_id}}");
+            fd.append("merchant_id", "{{@$merchant->merchant_id}}");
             //console.log($('#selected_image').val());
             if (image_count < 4) {
                 fd.append("image_count", image_count);
@@ -255,7 +254,7 @@
 
            // console.log(fd);
             $.ajax({
-                url: "{{route('malls.uploadimage')}}",
+                url: "{{route('merchants.uploadimage')}}",
                 data: fd,// the formData function is available in almost all new browsers.
                 type:"POST",
                 contentType:false,
@@ -378,7 +377,7 @@
 
 
 
-    </script>
+</script>
 
 
 @endsection

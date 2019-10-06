@@ -105,7 +105,7 @@
 
                                 <td> {{ $outlate_totel  = \App\PromotionOutlet::totalOutlate($current_merchant->merchant_id) }}</td>
                                 <td>
-                                    <a href="javascript:;">
+                                    <a href="{{ route('merchants.images',['merchants'=>$current_merchant->merchant_id]) }}">
                                         <span class="text-info">Edit</span>
                                     </a>
                                     |

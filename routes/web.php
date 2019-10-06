@@ -58,6 +58,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('merchants-list/{id?}', 'MerchantController@merchantListShow')->name('merchants.list.show');
     Route::post('merchants-list/column-update/{id?}', 'MerchantController@columnUpdate')->name('merchants.column-update');
 
+    Route::get('merchants-list/images/{id}', 'MerchantController@merchantImages')->name('merchants.images');
+    Route::post('merchants-list/uploadimage', 'MerchantController@uploadimage')->name('merchants.uploadimage');
+    Route::post('merchants-list/webdeleteimage/{id}', 'MerchantController@webdeleteimage')->name('merchants.webdeleteimage');
+    Route::post('merchants-list/deletemallimage/{id}', 'MerchantController@deletemallimage')->name('merchants.deletemallimage');
+
+
     //promotions
 
     Route::resource('promotions', 'PromotionController', ['names' => [
