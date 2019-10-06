@@ -96,6 +96,12 @@ class MallMaster extends Model
     }
 
 
+    public function mallImage()
+    {
+        return $this->hasMany(MallImage::class, 'mall_id', 'mall_id')->where('image_count','!=',NULL);
+    }
+
+
 
 
 

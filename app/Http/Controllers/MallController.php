@@ -6,6 +6,7 @@ use App\CityMaster;
 use App\CountryMaster;
 use App\EventMaster;
 use App\LevelMaster;
+use App\MallImage;
 use App\MallType;
 use App\MerchantLocation;
 use App\MerchantMaster;
@@ -14,6 +15,7 @@ use App\OfferMaster;
 use App\PreferenceMaster;
 use App\PromotionMaster;
 use App\TownMaster;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Repositories\MallRepository;
 use App\MallMaster;
@@ -322,6 +324,8 @@ class MallController extends Controller
     {
 
         $mall = MallMaster::find($id);
+
+        //return $mall->mallImage;
         $data = [
             'mall' => $mall,
             'live_url' => env('LIVE_URL').'mall_photos/'
@@ -333,6 +337,7 @@ class MallController extends Controller
 
     public function uploadimage(Request $request)
     {
+
         $file = $request->files->get('image');
         try{
 
@@ -348,9 +353,20 @@ class MallController extends Controller
             else
                 $file->move('../storage/app/public/', $newfilename);
 
-            $mall = MallMaster::find($request->mall_id);
-            $mall->web_image = $newfilename;
-            $mall->save();
+            if(isset($request->image_count)){
+
+                $mall = new MallImage();
+                $mall->mall_id = $request->mall_id;
+                $mall->image_name = $newfilename;
+                $mall->image_count = $request->image_count;
+                $mall->date_added = Carbon::now()->format('Y-m-d');
+                $mall->save();
+
+            }else{
+                $mall = MallMaster::find($request->mall_id);
+                $mall->web_image = $newfilename;
+                $mall->save();
+            }
 
         } catch (QueryException $e) {
             throw new \Exception($e->getMessage(), 500, $e);
@@ -382,6 +398,23 @@ class MallController extends Controller
         return response()->json([
             'status' => $image ? 'success' : 'error',
             'message' => $image ? __('succesfully deleted') : __('error deleting')
+        ],200);
+    }
+
+    public function deletemallimage($id){
+
+        $image = MallImage::find($id);
+
+        if(env('APP_ENV')=='live')
+            unlink('../../admin/mall_photos/'.$image->image_name);
+        else
+            unlink('../storage/app/public/'.$image->image_name);
+
+        $delete = MallImage::destroy($id);
+        return response()->json([
+            'status' => $delete ? 'success' : 'error',
+            'image_count' => @$image->image_count,
+            'message' => $delete ? __('succesfully deleted') : __('error deleting')
         ],200);
     }
 

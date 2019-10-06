@@ -62,7 +62,7 @@
             <div class="card-body" id="promo-image-body" data-sourceurl="{{route('malls.images',['mall__id'=>$mall->mall_id])}}">
 
                 <div class="row" id="promo-image-content">
-                    <input type="text" id="selected_image" style="display: none;">
+                   {{-- <input type="text" id="selected_image" style="display: none;">--}}
 
                          @if($mall->web_image)
                              <div class="col-md-12 mb-3 pr-0">
@@ -73,14 +73,14 @@
                              </div>
                          @else
                             <div class="col-md-12 mb-3 pr-0">
-                                <div class="upload-msg " style="height: 320px; width: 100%" onclick="$('#upload_1').trigger('click');">
+                                <div class="upload-msg " style="height: 320px; width: 100%" onclick="$('#upload_5').trigger('click');">
                                     <div style="display: table-cell; vertical-align: middle;">Drop Files Here or click upload a photo </div>
                                 </div>
                             </div>
                          @endif
 
 
-                        <input type="file" id="upload_1" data-count="1" class="imguploader" value="Drop Files Here to click upload a photo" accept="image/*" style="display: none;" >
+                        <input type="file" id="upload_5" data-count="5" class="imguploader" value="Drop Files Here to click upload a photo" accept="image/*" style="display: none;" >
 
 
 
@@ -97,7 +97,7 @@
             <div class="card-header-malle">
                 Images for App
             </div>
-            <div class="card-body" id="promo-image-body1" data-sourceurl="">
+            <div class="card-body" id="promo-image-body1" data-sourceurl="{{route('malls.images',['mall__id'=>$mall->mall_id])}}">
 
                 <div class="row" id="promo-image-content1">
                     <input type="text" id="selected_image" style="display: none;">
@@ -106,18 +106,32 @@
                             $empty = true;
                         @endphp
 
-                           {{--     <div class="col-md-4 mb-3 pr-0">
-                                    <img class="card-img-top fit-image" src="" alt="image count">
-                                    <a  href="javascript:;" data-href="" data-method="POST" class="btn-pi-delete" data-id="">
+                        @if(!empty($mall->mallImage))
+                        @foreach($mall->mallImage as $mall_image)
+                            @if($mall_image->image_count == $i)
+
+                                <div class="col-md-4 mb-3 pr-0">
+                                    <img class="card-img-top fit-image" src="{{$live_url.$mall_image->image_name}}" alt="image count {{$mall_image->image_count}}">
+                                    {{--<a  href="javascript:;" data-href="" data-method="POST" class="btn-pi-delete" data-id="">--}}
+                                    <a  href="javascript:;" data-href="{{route('malls.deletemallimage',['id'=>$mall_image->mall_image_id])}}" data-method="POST" class="btn-pi-delete" data-id="{{$mall_image->image_count}}">
                                         <span class="text-danger">{{__('Delete')}}</span>
                                     </a>
-                                </div>--}}
+                                </div>
+                                @php
+                                    $empty = false;
+                                @endphp
+                            @endif
 
-                            <div class="col-md-4 mb-3 pr-0"> 
-                                <div class="upload-msg " style="height: 213px; max-width: 310px; width: 100%" >
-                                   {{-- <div style="display: table-cell; vertical-align: middle;">Click to upload a file </div>--}}
+                        @endforeach
+                        @endif
+
+                        @if($empty)
+                        <div class="col-md-4 mb-3 pr-0">
+                                <div class="upload-msg " style="height: 323px; max-width: 310px; width: 100%" >
+                                    <div style="display: table-cell; vertical-align: middle;" onclick="$('#upload_{{$i}}').trigger('click');">Click to upload a file </div>
                                 </div>
                             </div>
+                        @endif
 
                         <input type="file" id="upload_{{$i}}" data-count="{{$i}}" class="imguploader" value="Choose a file" accept="image/*" style="display: none;" >
                     @endfor
@@ -225,11 +239,15 @@
 
             // Convert to blob
             var blob = b64toBlob(realData, contentType);
-
+            var image_count = $('#selected_image').val();
             // Create a FormData and append the file
             var fd = new FormData();
             fd.append("image", blob);
             fd.append("mall_id", "{{@$mall->mall_id}}");
+            //console.log($('#selected_image').val());
+            if (image_count < 4) {
+                fd.append("image_count", image_count);
+            }
             //console.log('dddddddddddd');
 
            // console.log(fd);
@@ -245,8 +263,13 @@
                     if(data.status==='error'){
                         errorReturn(data)
                     }else{
-                        $('#promo-image-body #promo-image-content').remove();
-                        $("#promo-image-body").load( $('#promo-image-body').attr('data-sourceurl') +" #promo-image-content");
+                        if (image_count < 4) {
+                            $('#promo-image-body1 #promo-image-content1').remove();
+                            $("#promo-image-body1").load( $('#promo-image-body1').attr('data-sourceurl') +" #promo-image-content1");
+                        }else{
+                            $('#promo-image-body #promo-image-content').remove();
+                            $("#promo-image-body").load( $('#promo-image-body').attr('data-sourceurl') +" #promo-image-content");
+                        }
                         $('#croppermodal').modal('hide');
                         toastr.success(data.message);
                     }
@@ -334,8 +357,14 @@
                             errorReturn(data)
                         }else{
                             $('#deletepromotionmodal').modal('hide');
-                            $('#promo-image-body #promo-image-content').remove();
-                            $("#promo-image-body").load( $('#promo-image-body').attr('data-sourceurl') +" #promo-image-content");
+                             //var image_count = $(this).attr('data-id');
+                            if (data.image_count < 4) {
+                                $('#promo-image-body1 #promo-image-content1').remove();
+                                $("#promo-image-body1").load( $('#promo-image-body1').attr('data-sourceurl') +" #promo-image-content1");
+                            }else{
+                                $('#promo-image-body #promo-image-content').remove();
+                                $("#promo-image-body").load( $('#promo-image-body').attr('data-sourceurl') +" #promo-image-content");
+                            }
                             toastr.success(data.message);
                         }
                     }
