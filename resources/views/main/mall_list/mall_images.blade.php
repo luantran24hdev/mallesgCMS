@@ -67,9 +67,9 @@
                          @if($mall->web_image)
                              <div class="col-md-12 mb-3 pr-0">
                                  <img class="card-img-top fit-image" src="{{ $live_url.$mall->web_image}}" alt="image count">
-                                 {{--<a  href="javascript:;" data-href="" data-method="POST" class="btn-pi-delete" data-id="">
+                                 <a  href="javascript:;" data-href="{{route('malls.webdeleteimage',['id'=>$mall->mall_id])}}" data-method="POST" class="btn-pi-delete" data-id="{{$mall->mall_id}}">
                                      <span class="text-danger">{{__('Delete')}}</span>
-                                 </a>--}}
+                                 </a>
                              </div>
                          @else
                             <div class="col-md-12 mb-3 pr-0">
@@ -97,9 +97,9 @@
             <div class="card-header-malle">
                 Images for App
             </div>
-            <div class="card-body" id="promo-image-body" data-sourceurl="">
+            <div class="card-body" id="promo-image-body1" data-sourceurl="">
 
-                <div class="row" id="promo-image-content">
+                <div class="row" id="promo-image-content1">
                     <input type="text" id="selected_image" style="display: none;">
                     @for($i=1;$i<4;$i++)
                         @php
@@ -131,7 +131,25 @@
     </div>
 </div>
 
-
+<div class="modal fade" id="deletepromotionmodal" tabindex="-1" role="dialog" aria-labelledby="deletemodalpromotionlabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deletemodalpromotionlabel">Delete Confirmation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body ">
+                <p class="font-12">{{__('Are you sure you want to delete Item?')}}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('No')}}</button>
+                <button type="button" class="btn btn-danger" id="btnDeletePromotion">{{__('Yes')}}</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <div class="modal fade" id="croppermodal" tabindex="-1" role="dialog" aria-labelledby="cropmodallabel" aria-hidden="true">
@@ -296,6 +314,38 @@
             return blob;
         }
     });
+
+
+
+    $(document).on('click', '.btn-pi-delete', function(e){
+        e.preventDefault();
+        var btndelete = $(this);
+
+        $('#deletepromotionmodal').modal('show');
+
+        $('#btnDeletePromotion').unbind().click(function(){
+
+                $.ajax({
+                    url: btndelete.attr('data-href'),
+                    type: btndelete.attr('data-method'),
+                    dataType:'json',
+                    success:function(data){
+                        if(data.status==='error'){
+                            errorReturn(data)
+                        }else{
+                            $('#deletepromotionmodal').modal('hide');
+                            $('#promo-image-body #promo-image-content').remove();
+                            $("#promo-image-body").load( $('#promo-image-body').attr('data-sourceurl') +" #promo-image-content");
+                            toastr.success(data.message);
+                        }
+                    }
+                });
+
+        });
+    });
+
+
+
     </script>
 
 

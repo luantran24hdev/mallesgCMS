@@ -363,4 +363,27 @@ class MallController extends Controller
         ],200);
 
     }
+
+
+    public function webdeleteimage($id)
+    {
+
+        $image = MallMaster::find($id);
+
+        if(env('APP_ENV')=='live')
+            unlink('../../admin/mall_photos/'.$image->web_image);
+        else
+            unlink('../storage/app/public/'.$image->web_image);
+
+        
+        $image->web_image = Null;
+        $image->save();
+
+        return response()->json([
+            'status' => $image ? 'success' : 'error',
+            'message' => $image ? __('succesfully deleted') : __('error deleting')
+        ],200);
+    }
+
+
 }
