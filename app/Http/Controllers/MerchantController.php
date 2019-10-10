@@ -166,8 +166,8 @@ class MerchantController extends Controller
     public function merchantList(Request $request)
     {
         $merchants = $this->merchant->all()->pluck('merchant_name', 'merchant_id');
-        $count_merchant = MerchantMaster::where('merchant_active','Y')->count();
-        $current_merchants = MerchantMaster::where('merchant_active','Y')->get();
+        $count_merchant = MerchantMaster::count();
+        $current_merchants = MerchantMaster::orderBy('merchant_id','desc')->get();
         $countrys = CountryMaster::all();
         $merchant_types = MerchantType::all();
         //return $count_all_me_type;

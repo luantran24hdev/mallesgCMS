@@ -11,6 +11,9 @@
         .merch_out .select2-container--default .select2-selection--single .select2-selection__rendered{
             line-height: 35px;
         }
+        .link_color{
+            color: blue;}
+
 
     </style>
     @endsection
@@ -79,7 +82,9 @@
                         @if(!empty($current_merchants))
                         @foreach($current_merchants as $current_merchant)
                             <tr class="row-location" data-id="{{$current_merchant->merchant_id}}">
-                                <td>{{$current_merchant->merchant_name}}</td>
+                                <td>{{$current_merchant->merchant_name}}
+                                <br><br><span class="link_color"><a href="javascript:void(0)"> Main Info </a> </span>  <span class="link_color" style="float: right"><a href="{{ route('merchants.images',['merchants'=>$current_merchant->merchant_id]) }}"> Images</a></span>
+                                </td>
                                 <td>{{ @$current_merchant->city->city_name }}</td>
                                 <td>{{ $current_merchant->country->country_name }}</td>
                                 <td>{{ $current_merchant->merchanttype->type }}</td>
@@ -92,23 +97,23 @@
                                 </td>
                                 <td>
                                     <select name="merchant_active" id="" class="merchant_column_update dd-orange" data-href="{{route('merchants.column-update',[$current_merchant->merchant_id])}}" data-method="POST">
-                                        <option value="Y" @if($current_merchant->merchant_active=='Y') selected @endif>Yes</option>
                                         <option value="N" @if($current_merchant->merchant_active=='N') selected @endif>No</option>
+                                        <option value="Y" @if($current_merchant->merchant_active=='Y') selected @endif>Yes</option>
                                     </select>
                                 </td>
                                 <td>
                                     <select name="featured" id="" class="merchant_column_update dd-orange" data-href="{{route('merchants.column-update',[$current_merchant->merchant_id])}}" data-method="POST">
-                                        <option value="Y" @if($current_merchant->featured=='Y') selected @endif>Yes</option>
                                         <option value="N" @if($current_merchant->featured=='N') selected @endif>No</option>
+                                        <option value="Y" @if($current_merchant->featured=='Y') selected @endif>Yes</option>
                                     </select>
                                 </td>
 
                                 <td> {{ $outlate_totel  = \App\PromotionOutlet::totalOutlate($current_merchant->merchant_id) }}</td>
                                 <td>
-                                    <a href="{{ route('merchants.images',['merchants'=>$current_merchant->merchant_id]) }}">
+                                    {{--<a href="{{ route('merchants.images',['merchants'=>$current_merchant->merchant_id]) }}">
                                         <span class="text-info">Edit</span>
                                     </a>
-                                    |
+                                    |--}}
                                     <a  href="javascript:;" data-href="{{route('merchants.destroy',['merchants'=>$current_merchant->merchant_id])}}" data-method="DELETE" class="btn-delete" data-id="{{$current_merchant->merchant_id}}">
                                         <span class="text-danger">Delete</span>
                                     </a>
