@@ -137,4 +137,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('promotion-preference/store', 'PreferenceMasterController@promotionPreferenceStore')->name('promotion.preference.store');
     Route::delete('promotion-preference/destroy/{id?}', 'PreferenceMasterController@promotionPreferenceDestroy')->name('promotion.preference.destroy');
     Route::post('promotion-preference/set-primary/{id?}', 'PreferenceMasterController@setPrimary')->name('promotion.preference.setprimary');
+
+    //Discount tags
+    Route::resource('discount-tags', 'DiscountController', ['names' => [
+        'index' => 'discount-tags'
+    ]]);
+    Route::get('tag/search/{name?}', 'DiscountController@search')->name('tag.search');
+    Route::post('tag/uploadimage', 'DiscountController@uploadimage')->name('tag.uploadimage');
+    Route::post('tag/deleteimage/{id}', 'DiscountController@deleteimage')->name('tag.deleteimage');
+
 });

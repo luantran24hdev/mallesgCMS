@@ -22,5 +22,12 @@ class TagMaster extends Model
     protected $fillable = [
 
     ];
+
+    public static function search($name)
+    {
+        return TagMaster::where('tag_name','LIKE', "%$name%")
+            ->orderBy('tag_name')
+            ->pluck('tag_name', 'tag_id');
+    }
 	
 }

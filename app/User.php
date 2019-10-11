@@ -45,5 +45,11 @@ class User extends Authenticatable
     {
         return $this->lara_password;
     }
+
+    public static function getUserName($id){
+         $user = User::find($id);
+
+         return $user->user_name;
+    }
  
 }
