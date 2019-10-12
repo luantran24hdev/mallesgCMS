@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5285e9c1-0bdf-4205-8850-281ec9bdfbea" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/main/discount_tag/edit_tags.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/partials/image_model.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/main/category_tag/edit_tags.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/TagMaster.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/TagMaster.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/SubCategoryMaster.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/SubCategoryMaster.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/main/discount_tag/edit_tags.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/discount_tag/edit_tags.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/partials/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/sidebar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
@@ -24,17 +23,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="451">
-              <caret line="142" column="33" selection-start-line="142" selection-start-column="20" selection-end-line="142" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/User.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="536">
-              <caret line="48" column="38" selection-start-line="48" selection-start-column="27" selection-end-line="48" selection-end-column="38" />
+            <state relative-caret-position="485">
+              <caret line="151" column="8" lean-forward="true" selection-start-line="151" selection-start-column="8" selection-end-line="151" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -42,8 +32,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/DiscountController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="553">
-              <caret line="143" column="5" lean-forward="true" selection-start-line="143" selection-start-column="5" selection-end-line="143" selection-end-column="5" />
+            <state relative-caret-position="519">
+              <caret line="218" column="5" lean-forward="true" selection-start-line="167" selection-start-column="4" selection-end-line="218" selection-end-column="5" />
               <folding>
                 <element signature="e#40#58#0#PHP" expanded="true" />
               </folding>
@@ -52,48 +42,45 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/TagMaster.php">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CategoryController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="27" column="41" selection-start-line="27" selection-start-column="41" selection-end-line="27" selection-end-column="41" />
+            <state relative-caret-position="315">
+              <caret line="211" lean-forward="true" selection-start-line="211" selection-end-line="211" />
+              <folding>
+                <element signature="e#40#63#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/main/discount_tag/edit_tags.blade.php">
+        <entry file="file://$PROJECT_DIR$/resources/views/main/category_tag/edit_tags.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="546">
-              <caret line="59" column="133" lean-forward="true" selection-start-line="59" selection-start-column="133" selection-end-line="59" selection-end-column="133" />
+            <state relative-caret-position="267">
+              <caret line="333" column="123" selection-start-line="333" selection-start-column="123" selection-end-line="333" selection-end-column="123" />
               <folding>
                 <element signature="e#1074#1112#0#HTML" expanded="true" />
-                <element signature="e#1164#1202#0#HTML" expanded="true" />
-                <element signature="e#1253#1271#0#HTML" expanded="true" />
-                <element signature="e#1216#1248#0#HTML" expanded="true" />
-                <element signature="e#1293#1327#0#HTML" expanded="true" />
-                <element signature="e#1778#1800#0#HTML" expanded="true" />
+                <element signature="e#1165#1203#0#HTML" expanded="true" />
+                <element signature="e#1255#1273#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/main/merchants_list/merchant_images.blade.php">
+        <entry file="file://$PROJECT_DIR$/resources/views/main/category_tag/category_tags.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="327">
-              <caret line="65" column="57" selection-start-line="65" selection-start-column="33" selection-end-line="65" selection-end-column="57" />
+            <state relative-caret-position="86">
+              <caret line="167" column="57" lean-forward="true" selection-start-line="167" selection-start-column="57" selection-end-line="167" selection-end-column="57" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PreferenceMasterController.php">
+        <entry file="file://$PROJECT_DIR$/resources/views/main/merchants_list/index.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="94">
-              <caret line="100" column="40" lean-forward="true" selection-start-line="100" selection-start-column="40" selection-end-line="100" selection-end-column="40" />
-              <folding>
-                <element signature="e#40#65#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="913">
+              <caret line="329" column="6" lean-forward="true" selection-start-line="329" selection-start-column="6" selection-end-line="329" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -143,11 +130,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Http/Controllers/TimeTagController.php" />
-        <option value="$PROJECT_DIR$/resources/views/main/timetag/time_tag_group.blade.php" />
-        <option value="$PROJECT_DIR$/app/DayOfWeek.php" />
-        <option value="$PROJECT_DIR$/app/PromotionOutlateDays.php" />
-        <option value="$PROJECT_DIR$/app/PromotionOutletsDay.php" />
         <option value="$PROJECT_DIR$/resources/views/main/promotions/prom_outlate.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/main/promotions/editoutlets.blade.php" />
         <option value="$PROJECT_DIR$/app/PromotionOutlateTime.php" />
@@ -185,15 +167,20 @@
         <option value="$PROJECT_DIR$/resources/views/main/mall_list/mall_images.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/MallController.php" />
         <option value="$PROJECT_DIR$/resources/views/main/merchants_list/index.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/partials/sidebar.blade.php" />
         <option value="$PROJECT_DIR$/app/TagMaster.php" />
         <option value="$PROJECT_DIR$/resources/views/main/discount_tag/discount_tags.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/partials/image_model.blade.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/MerchantController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/DiscountController.php" />
         <option value="$PROJECT_DIR$/app/User.php" />
+        <option value="$PROJECT_DIR$/app/CategoryMaster.php" />
+        <option value="$PROJECT_DIR$/resources/views/partials/sidebar.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/DiscountController.php" />
+        <option value="$PROJECT_DIR$/app/SubCategoryMaster.php" />
+        <option value="$PROJECT_DIR$/resources/views/main/category_tag/category_tags.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/main/discount_tag/edit_tags.blade.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/CategoryController.php" />
+        <option value="$PROJECT_DIR$/resources/views/main/category_tag/edit_tags.blade.php" />
       </list>
     </option>
   </component>
@@ -293,6 +280,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -335,6 +323,14 @@
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="malle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="malle" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="category_tag" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="malle" type="b2602c69:ProjectViewProjectNode" />
@@ -392,7 +388,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -404,9 +399,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\malle\resources\views\main" />
       <recent name="C:\xampp\htdocs\malle\resources\views\partials" />
       <recent name="C:\xampp\htdocs\malle\resources\views\main\discount_tag" />
-      <recent name="C:\xampp\htdocs\malle\resources\views\main" />
       <recent name="C:\xampp\htdocs\malle\resources\views\main\merchants_list" />
       <recent name="C:\xampp\htdocs\malle\resources\views\main\mall_list" />
     </key>
@@ -486,18 +481,20 @@
       <workItem from="1570390362667" duration="28000" />
       <workItem from="1570706734929" duration="2352000" />
       <workItem from="1570760120673" duration="9000" />
-      <workItem from="1570801947662" duration="10041000" />
+      <workItem from="1570801947662" duration="11138000" />
+      <workItem from="1570854650067" duration="8000" />
+      <workItem from="1570870050221" duration="8892000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="314890000" />
+    <option name="totallyTimeSpent" value="324887000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.28993288" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.29798657" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -527,51 +524,6 @@
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.log" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/PromotionOutlet.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="37" column="26" selection-start-line="37" selection-start-column="26" selection-end-line="37" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/MerchantType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="5" lean-forward="true" selection-start-line="21" selection-start-column="4" selection-end-line="27" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="59" column="4" selection-start-line="59" selection-end-line="59" selection-end-column="97" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/main/timetag/time_menu.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="6" lean-forward="true" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TimeTagController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="122" column="15" selection-start-line="116" selection-start-column="8" selection-end-line="122" selection-end-column="15" />
-          <folding>
-            <element signature="e#40#58#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/main/preference_tag/preference_tags.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="42" column="78" selection-start-line="42" selection-start-column="78" selection-end-line="42" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/PreferenceMaster.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -771,13 +723,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/main/merchants_list/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="118" column="24" selection-start-line="118" selection-start-column="24" selection-end-line="118" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PromotionTagController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="299">
@@ -788,16 +733,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/partials/sidebar.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="6" lean-forward="true" selection-start-line="21" selection-start-column="6" selection-end-line="21" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/main/discount_tag/preference_tags.blade.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/main/discount_tag/preference_tags.blade.php" />
     <entry file="file://$PROJECT_DIR$/app/MallMaster.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1590">
@@ -843,16 +779,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PreferenceMasterController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="94">
-          <caret line="100" column="40" lean-forward="true" selection-start-line="100" selection-start-column="40" selection-end-line="100" selection-end-column="40" />
-          <folding>
-            <element signature="e#40#65#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MerchantController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="502">
@@ -863,20 +789,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/TagMaster.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="27" column="41" selection-start-line="27" selection-start-column="41" selection-end-line="27" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/main/merchants_list/merchant_images.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="65" column="57" selection-start-line="65" selection-start-column="33" selection-end-line="65" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/User.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="536">
@@ -884,34 +796,114 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/main/merchants_list/merchant_images.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1105">
+          <caret line="65" column="57" selection-start-line="65" selection-start-column="33" selection-end-line="65" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PreferenceMasterController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1649">
+          <caret line="100" column="40" selection-start-line="100" selection-start-column="40" selection-end-line="100" selection-end-column="40" />
+          <folding>
+            <element signature="e#40#65#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/main/category_tag/discount_tags.blade.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/CategoryMaster.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/partials/sidebar.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="35" lean-forward="true" selection-start-line="3" selection-start-column="35" selection-end-line="3" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/TagMaster.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="30" column="5" lean-forward="true" selection-start-line="25" selection-start-column="4" selection-end-line="30" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/main/discount_tag/edit_tags.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="49" column="59" selection-start-line="49" selection-start-column="59" selection-end-line="49" selection-end-column="59" />
+          <folding>
+            <element signature="e#1165#1203#0#HTML" expanded="true" />
+            <element signature="e#1255#1273#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/SubCategoryMaster.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/main/merchants_list/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="913">
+          <caret line="329" column="6" lean-forward="true" selection-start-line="329" selection-start-column="6" selection-end-line="329" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="485">
+          <caret line="151" column="8" lean-forward="true" selection-start-line="151" selection-start-column="8" selection-end-line="151" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/DiscountController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="553">
-          <caret line="143" column="5" lean-forward="true" selection-start-line="143" selection-start-column="5" selection-end-line="143" selection-end-column="5" />
+        <state relative-caret-position="519">
+          <caret line="218" column="5" lean-forward="true" selection-start-line="167" selection-start-column="4" selection-end-line="218" selection-end-column="5" />
           <folding>
             <element signature="e#40#58#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/main/category_tag/category_tags.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
-          <caret line="142" column="33" selection-start-line="142" selection-start-column="20" selection-end-line="142" selection-end-column="33" />
+        <state relative-caret-position="86">
+          <caret line="167" column="57" lean-forward="true" selection-start-line="167" selection-start-column="57" selection-end-line="167" selection-end-column="57" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/main/discount_tag/edit_tags.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CategoryController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="59" column="133" lean-forward="true" selection-start-line="59" selection-start-column="133" selection-end-line="59" selection-end-column="133" />
+        <state relative-caret-position="315">
+          <caret line="211" lean-forward="true" selection-start-line="211" selection-end-line="211" />
+          <folding>
+            <element signature="e#40#63#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/main/category_tag/edit_tags.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="333" column="123" selection-start-line="333" selection-start-column="123" selection-end-line="333" selection-end-column="123" />
           <folding>
             <element signature="e#1074#1112#0#HTML" expanded="true" />
-            <element signature="e#1164#1202#0#HTML" expanded="true" />
-            <element signature="e#1253#1271#0#HTML" expanded="true" />
-            <element signature="e#1216#1248#0#HTML" expanded="true" />
-            <element signature="e#1293#1327#0#HTML" expanded="true" />
-            <element signature="e#1778#1800#0#HTML" expanded="true" />
+            <element signature="e#1165#1203#0#HTML" expanded="true" />
+            <element signature="e#1255#1273#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>

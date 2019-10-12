@@ -146,4 +146,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('tag/uploadimage', 'DiscountController@uploadimage')->name('tag.uploadimage');
     Route::post('tag/deleteimage/{id}', 'DiscountController@deleteimage')->name('tag.deleteimage');
 
+    //Category tags
+    Route::resource('category-tags', 'CategoryController', ['names' => [
+        'index' => 'category-tags'
+    ]]);
+    Route::get('tag/search/{name?}', 'CategoryController@search')->name('category.tag.search');
+    Route::post('tag/uploadimage', 'CategoryController@uploadimage')->name('category.tag.uploadimage');
+    Route::post('tag/deleteimage/{id}', 'CategoryController@deleteimage')->name('category.tag.deleteimage');
+
 });
