@@ -150,8 +150,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('category-tags', 'CategoryController', ['names' => [
         'index' => 'category-tags'
     ]]);
-    Route::get('tag/search/{name?}', 'CategoryController@search')->name('category.tag.search');
-    Route::post('tag/uploadimage', 'CategoryController@uploadimage')->name('category.tag.uploadimage');
-    Route::post('tag/deleteimage/{id}', 'CategoryController@deleteimage')->name('category.tag.deleteimage');
+    Route::get('tags/search/{name?}', 'CategoryController@search')->name('category.tag.search');
+    Route::post('tags/uploadimage', 'CategoryController@uploadimage')->name('category.tag.uploadimage');
+    Route::post('tags/deleteimage/{id}', 'CategoryController@deleteimage')->name('category.tag.deleteimage');
 
 });
