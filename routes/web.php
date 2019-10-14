@@ -133,6 +133,10 @@ Route::group(['middleware' => 'auth'], function () {
         'index' => 'preference-tags'
     ]]);
 
+    Route::get('preference-tags/search/{name?}', 'PreferenceMasterController@search')->name('preference.tag.search');
+    Route::post('preference-tags/uploadimage', 'PreferenceMasterController@uploadimage')->name('preference.tag.uploadimage');
+    Route::post('preference-tags/deleteimage/{id}', 'PreferenceMasterController@deleteimage')->name('preference.tag.deleteimage');
+
     //Promotion Prefernece
     Route::post('promotion-preference/store', 'PreferenceMasterController@promotionPreferenceStore')->name('promotion.preference.store');
     Route::delete('promotion-preference/destroy/{id?}', 'PreferenceMasterController@promotionPreferenceDestroy')->name('promotion.preference.destroy');

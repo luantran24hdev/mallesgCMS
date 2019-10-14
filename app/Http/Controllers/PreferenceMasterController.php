@@ -61,6 +61,9 @@ class PreferenceMasterController extends Controller
 
         $preference_master = new PreferenceMaster();
         $preference_master->preference_name = $request->preference_name;
+        $preference_master->created_on = Carbon::now();
+        $preference_master->created_by = \Auth::user()->user_id;
+        $preference_master->image = '';
         $preference_master->save();
 
         return response()->json([
@@ -90,7 +93,14 @@ class PreferenceMasterController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tagMaster = PreferenceMaster::find($id);
+
+        $data = [
+            'tagMaster' => $tagMaster,
+            'live_url' => env('LIVE_URL').'preference_images/'
+        ];
+
+        return view('main.preference_tag.edit_tags',$data);
     }
 
     /**
@@ -102,7 +112,35 @@ class PreferenceMasterController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $messages = [
+            'preference_name.required'    => 'Time Preference field is required'
+        ];
+
+        // Start Validation
+        $validator = \Validator::make($request->all(), [
+            'preference_name' => 'required|unique:preference_master,preference_name,'.$id.',preference_id',
+        ],$messages);
+
+        if($validator->fails()){
+            return response()->json([
+                'status' => 'error',
+                'message' => $validator->messages()->first()
+            ],200);
+        }
+
+
+        $tag_master = PreferenceMaster::find($id);
+        $tag_master->preference_name = $request->preference_name;
+        $tag_master->created_on = Carbon::now();
+        $tag_master->created_by = \Auth::user()->user_id;
+        $tag_master->save();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => __('successfully Updated tags'),
+            //'tag_name' => $request->time_name,
+            //'id' => $time_master->time_id
+        ],200);
     }
 
     /**
@@ -197,6 +235,64 @@ class PreferenceMasterController extends Controller
             'message' => __('successfully updated'),
             //    'id' => $id
         ],200);
+    }
+
+    public function uploadimage(Request $request)
+    {
+        $file = $request->files->get('image');
+
+        //return $file;
+        try{
+
+            if($file->getMimeType()!="image/png"){
+                throw new \Exception("invalid file", 500);
+            }
+
+
+            $newfilename = md5($request->preference_id."_".round(microtime(true))) . '.png';
+
+            if(env('APP_ENV')=='live')
+                $file->move('../../admin/preference_images/', $newfilename);
+            else
+                $file->move('../storage/app/public/', $newfilename);
+
+            $tag = PreferenceMaster::find($request->preference_id);
+            $tag->image = $newfilename;
+            $tag->save();
+
+
+        } catch (QueryException $e) {
+            throw new \Exception($e->getMessage(), 500, $e);
+        }
+
+        return response()->json([
+            'status' => 'success' ,
+            'message' =>__('succesfully uploaded'),
+            'file' => env("LIVE_URL").$newfilename
+        ],200);
+
+    }
+
+    public function deleteimage($id){
+
+        $image = PreferenceMaster::find($id);
+
+        if(env('APP_ENV')=='live')
+            unlink('../../admin/preference_images/'.$image->image);
+        else
+            unlink('../storage/app/public/'.$image->image);
+
+        $image->image = '';
+        $image->save();
+
+        return response()->json([
+            'status' => $image ? 'success' : 'error',
+            'message' => $image ? __('succesfully deleted') : __('error deleting')
+        ],200);
+    }
+
+    public function search($name){
+        return PreferenceMaster::search($name);
     }
 
 }

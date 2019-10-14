@@ -12,7 +12,7 @@
                     <div class="row">
                         <div class="col-md-3">
                             <input type="text" name="preference_name" placeholder="Enter Preference Name" id="preference_name"
-                                   class="form-control" required="" list="datalist1">
+                                   class="form-control" required="" list="datalist1" data-autocompleturl="{{route('preference.tag.search')}}">
                         </div>
                         <div class="col-md-2">
                             <div class="form-group">
@@ -39,6 +39,8 @@
                                         <td>{{ @$preference_tag->preference_name }}</td>
 
                                         <td>
+                                            <a href="{{route('preference-tags.edit',[$preference_tag->preference_id])}}"><span class="text-info">Edit</span></a>
+                                            |
                                             <a href="javascript:;"
                                                data-href="{{route('preference-tags.destroy',[$preference_tag->preference_id])}}"
                                                data-method="DELETE" class="btn-delete"
@@ -135,6 +137,25 @@
                 });
 
             });
+        });
+
+        $( "#preference_name" ).autocomplete({
+            source: function (request, response) {
+                $.getJSON($("#preference_name").attr('data-autocompleturl') +'/' + request.term, function (data) {
+                    response($.map(data, function (value, key) {
+                        return {
+                            label: value,
+                            value: key
+                        };
+                    }));
+                });
+            },
+            select: function(event, ui) {
+                $("#preference_name").val(ui.item.label);
+                $("#tag_id").val(ui.item.value);
+                // window.location.href = '{{route("malls")}}/'+ui.item.value;
+                return false;
+            }
         });
 
     </script>
