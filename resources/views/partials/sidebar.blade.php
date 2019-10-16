@@ -17,6 +17,7 @@
             <li class="list-group-item"><a class="malle-link" href="{{route('preference-tags')}}">{{__('Preference Tags')}}</a></li>
             <li class="list-group-item"><a class="malle-link" href="{{route('discount-tags')}}">{{__('Discount Tags')}}</a></li>
             <li class="list-group-item"><a class="malle-link" href="{{route('category-tags')}}">{{__('Category Tags')}}</a></li>
+            <li class="list-group-item"><a class="malle-link" href="{{route('manage.inquiry')}}">{{__('Manage Inquiry')}}</a></li>
         </ul>
         
     </div>

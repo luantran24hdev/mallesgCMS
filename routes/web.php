@@ -158,4 +158,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('tags/uploadimage', 'CategoryController@uploadimage')->name('category.tag.uploadimage');
     Route::post('tags/deleteimage/{id}', 'CategoryController@deleteimage')->name('category.tag.deleteimage');
 
+    Route::get('manage/inquiry', 'EnquiryController@getInquiry')->name('manage.inquiry');
+
 });
