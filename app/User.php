@@ -51,5 +51,14 @@ class User extends Authenticatable
 
          return $user->user_name;
     }
+
+    public static function getGender($id){
+        if($id == 1){
+            return 'Female';
+        }
+        else{
+            return 'Male';
+        }
+    }
  
 }

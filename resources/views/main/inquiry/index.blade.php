@@ -5,7 +5,7 @@
         <div class="col-md-10">
             <div class="card card-malle">
                 <div class="card-header-malle">
-                    {{__('Manage Preference Tags')}}
+                    {{__('Manage Inquiry')}}
                 </div>
 
                     @if(isset($inquirys))
