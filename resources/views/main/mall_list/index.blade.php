@@ -107,9 +107,15 @@
                         <tbody>
                         @foreach($current_mallss as $current_malls)
                             <tr class="row-location" data-id="{{$current_malls->mall_id}}">
-                                <td>{{ @$current_malls->mall_name }}</td>
-                                <td>{{ @$current_malls->town->town_name }}</td>
-                                <td>{{ @$current_malls->city->city_name }}</td>
+                                <td>{{ @$current_malls->mall_name }}
+                                    <br><br><span class="link_color"><a href="{{ route('mall-events',['id'=>$current_malls->mall_id]) }}"><b>Events</b> </a></span>
+                                </td>
+                                <td>{{ @$current_malls->town->town_name }}
+                                    <br><br><span class="link_color"><a href="javascript:void(0)"> <b> Parking Info</b> </a></span>
+                                </td>
+                                <td>{{ @$current_malls->city->city_name }}
+                                    <br><br><span class="link_color"><a href="javascript:void(0)"> <b>Offers</b> </a></span>
+                                </td>
                                 <td>{{ @$current_malls->country->country_name }}</td>
                                 <td>{{ @$current_malls->malltype->type_name }}</td>
                                 <td>

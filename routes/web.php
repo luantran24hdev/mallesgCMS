@@ -160,4 +160,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('manage/inquiry', 'EnquiryController@getInquiry')->name('manage.inquiry');
     Route::get('manage/shoppers', 'ShopperController@getShoppers')->name('manage.shoppers');
+
+    //promo tags
+    Route::resource('mall-events', 'EventController', ['names' => [
+        'index' => 'mall-events'
+    ]]);
 });
