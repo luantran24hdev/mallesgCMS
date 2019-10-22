@@ -54,7 +54,7 @@
                                     <thead>
                                     <th>Event Name</th>
                                     <th>Mall Name</th>
-                                    <th>Type</th>
+                                    <th style="display: none">Type</th>
                                     <th>Event Type</th>
                                     <th>Featured</th>
                                     <th>Created By</th>
@@ -65,7 +65,7 @@
                                     <tr class="row-location" data-id="{{@$event->event_id}}">
                                         <td>{{ @$event->event_name }}</td>
                                         <td>{{ @$event->mall->mall_name }}</td>
-                                        <td>{{ @$event->type }}</td>
+                                        <td style="display: none">{{ @$event->type }}</td>
                                         <td>
                                             <select name="type" id="" class="malls_column_update dd-orange" data-href="" data-method="POST">
                                                 <option value="P" @if($event->type=='P') selected @endif>{{ \App\EventMaster::P }}</option>
@@ -81,7 +81,7 @@
                                         </td>
                                         <td>{{ \App\User::getUserName($event->user_id) }}</td>
                                         <td>
-                                            <a href="#"><span class="text-info">Edit</span></a>
+                                            <a href="{{route('mall-events.edit',[$event->event_id])}}"><span class="text-info">Edit</span></a>
                                             |
                                             <a href="javascript:;"
                                                data-href="{{route('mall-events.destroy',[$event->event_id])}}"
