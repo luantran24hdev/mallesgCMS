@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\EventCategory;
+use App\EventImages;
 use App\EventMaster;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -105,11 +106,14 @@ class EventController extends Controller
     public function edit($id)
     {
         $event = EventMaster::find($id);
+        $event_images = EventImages::where('event_id',$id)->get();
         $events_category = EventCategory::all();
 
         $data = [
             'event' => $event,
-            'events_categorys' =>$events_category
+            'events_categorys' =>$events_category,
+            'event_images' => $event_images,
+            'live_url' => env('LIVE_URL').'event_photos/'
         ];
 
         return view('main.event.edit',$data);
@@ -173,12 +177,71 @@ class EventController extends Controller
      */
     public function destroy($id)
     {
-        $events = EventMaster::find($id);
-        $events->delete();
+        $event_image = EventImages::where('event_id',$id)->delete();
+        if($event_image){
+            $events = EventMaster::find($id);
+            $events->delete();
+        }
 
         return response()->json([
             'status' => $events ? 'success' : 'error',
             'message' => $events ? __('succesfully deleted') : __('error deleting')
         ],200);
     }
+
+    public function uploadimage(Request $request)
+    {
+
+        $file = $request->files->get('image');
+        try{
+
+            if($file->getMimeType()!="image/png"){
+                throw new \Exception("invalid file", 500);
+            }
+
+
+            $newfilename = md5($request->event_id."_".round(microtime(true))) . '.png';
+
+            if(env('APP_ENV')=='live')
+                $file->move('../../admin/event_photos/', $newfilename);
+            else
+                $file->move('../storage/app/public/', $newfilename);
+
+            $event = new EventImages();
+            $event->event_id = $request->event_id;
+            $event->event_image = $newfilename;
+            $event->user_id = \Auth::user()->user_id;
+            $event->event_count = $request->event_count;
+            $event->save();
+
+
+        } catch (QueryException $e) {
+            throw new \Exception($e->getMessage(), 500, $e);
+        }
+
+        return response()->json([
+            'status' => 'success' ,
+            'message' =>__('succesfully uploaded'),
+            'file' => env("LIVE_URL").$newfilename
+        ],200);
+
+    }
+
+    public function deleteimage($id){
+
+        $image = EventImages::find($id);
+
+        if(env('APP_ENV')=='live')
+            unlink('../../admin/event_photos/'.$image->event_image);
+        else
+            unlink('../storage/app/public/'.$image->event_image);
+
+        $delete = EventImages::destroy($id);
+        return response()->json([
+            'status' => $delete ? 'success' : 'error',
+            'image_count' => @$image->event_count,
+            'message' => $delete ? __('succesfully deleted') : __('error deleting')
+        ],200);
+    }
+
 }
