@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5285e9c1-0bdf-4205-8850-281ec9bdfbea" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/main/event/event_images.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EventController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/main/event/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/event/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/main/event/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/event/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,26 +24,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2703">
-              <caret line="168" column="71" selection-start-line="168" selection-start-column="60" selection-end-line="168" selection-end-column="71" />
+            <state relative-caret-position="264">
+              <caret line="153" column="72" selection-start-line="153" selection-start-column="72" selection-end-line="153" selection-end-column="72" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/main/event/edit.blade.php">
+        <entry file="file://$PROJECT_DIR$/resources/views/main/event/index.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6409">
-              <caret line="377" column="81" selection-start-line="377" selection-start-column="81" selection-end-line="377" selection-end-column="81" />
+            <state relative-caret-position="3893">
+              <caret line="229" column="55" selection-start-line="229" selection-start-column="35" selection-end-line="229" selection-end-column="55" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/main/event/event_images.blade.php">
+        <entry file="file://$PROJECT_DIR$/resources/views/main/mall_list/index.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" column="98" selection-start-line="22" selection-start-column="87" selection-end-line="22" selection-end-column="98" />
+            <state relative-caret-position="7514">
+              <caret line="442" column="9" selection-start-line="411" selection-start-column="6" selection-end-line="442" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -52,8 +51,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/EventController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="621">
-              <caret line="170" selection-start-line="170" selection-end-line="170" />
+            <state relative-caret-position="502">
+              <caret line="259" column="55" selection-start-line="259" selection-start-column="55" selection-end-line="259" selection-end-column="55" />
               <folding>
                 <element signature="e#40#62#0#PHP" expanded="true" />
               </folding>
@@ -64,8 +63,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MallController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6851">
-              <caret line="419" selection-start-line="403" selection-start-column="4" selection-end-line="419" />
+            <state relative-caret-position="3128">
+              <caret line="200" column="5" selection-start-line="185" selection-start-column="4" selection-end-line="200" selection-end-column="5" />
               <folding>
                 <element signature="e#40#59#0#PHP" expanded="true" />
               </folding>
@@ -86,8 +85,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>locations.store</find>
-      <find>btn-delete</find>
       <find>$preference_master_lists</find>
       <find>addPromoCategory</find>
       <find>primary_tag</find>
@@ -116,6 +113,8 @@
       <find>tag_name</find>
       <find>hasDatepicker</find>
       <find>no_end_date</find>
+      <find>malls_column_update</find>
+      <find>events_column_update</find>
     </findStrings>
     <replaceStrings>
       <replace>uploads</replace>
@@ -171,12 +170,12 @@
         <option value="$PROJECT_DIR$/resources/views/main/mall_list/event_index.blade.php" />
         <option value="$PROJECT_DIR$/app/EventMaster.php" />
         <option value="$PROJECT_DIR$/resources/views/main/mall_list/index.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/main/event/index.blade.php" />
         <option value="$PROJECT_DIR$/app/EventCategory.php" />
         <option value="$PROJECT_DIR$/app/EventImages.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/resources/views/main/event/event_images.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/main/event/edit.blade.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/resources/views/main/event/index.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/EventController.php" />
       </list>
     </option>
@@ -266,7 +265,7 @@
       <path value="$PROJECT_DIR$/vendor/sebastian/code-unit-reverse-lookup" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="65" />
     <option name="y" value="20" />
     <option name="width" value="1305" />
@@ -461,17 +460,22 @@
       <workItem from="1571738198695" duration="7143000" />
       <workItem from="1571759522329" duration="1446000" />
       <workItem from="1571795500931" duration="10000" />
-      <workItem from="1571809582432" duration="276000" />
+      <workItem from="1571809582432" duration="338000" />
+      <workItem from="1571826079089" duration="12000" />
+      <workItem from="1571886278405" duration="890000" />
+      <workItem from="1571889184475" duration="5000" />
+      <workItem from="1571893741510" duration="713000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="359669000" />
+    <option name="totallyTimeSpent" value="361351000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49858356" visible="true" weight="0.34295303" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49858356" weight="0.35234898" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.50141644" side_tool="true" weight="0.32416108" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -809,34 +813,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/main/mall_list/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="67" column="37" selection-start-line="58" selection-start-column="28" selection-end-line="67" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/main/event/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="83" column="101" selection-start-line="83" selection-start-column="53" selection-end-line="83" selection-end-column="101" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2703">
-          <caret line="168" column="71" selection-start-line="168" selection-start-column="60" selection-end-line="168" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/main/event/edit.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6409">
-          <caret line="377" column="81" selection-start-line="377" selection-start-column="81" selection-end-line="377" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/main/event/event_images.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
@@ -844,10 +820,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/main/event/edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="621">
+          <caret line="377" column="81" selection-start-line="377" selection-start-column="81" selection-end-line="377" selection-end-column="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="153" column="72" selection-start-line="153" selection-start-column="72" selection-end-line="153" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/main/event/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3893">
+          <caret line="229" column="55" selection-start-line="229" selection-start-column="35" selection-end-line="229" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/main/mall_list/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7514">
+          <caret line="442" column="9" selection-start-line="411" selection-start-column="6" selection-end-line="442" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MallController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6851">
-          <caret line="419" selection-start-line="403" selection-start-column="4" selection-end-line="419" />
+        <state relative-caret-position="3128">
+          <caret line="200" column="5" selection-start-line="185" selection-start-column="4" selection-end-line="200" selection-end-column="5" />
           <folding>
             <element signature="e#40#59#0#PHP" expanded="true" />
           </folding>
@@ -863,8 +867,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/EventController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="621">
-          <caret line="170" selection-start-line="170" selection-end-line="170" />
+        <state relative-caret-position="502">
+          <caret line="259" column="55" selection-start-line="259" selection-start-column="55" selection-end-line="259" selection-end-column="55" />
           <folding>
             <element signature="e#40#62#0#PHP" expanded="true" />
           </folding>

@@ -165,6 +165,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('mall-events', 'EventController', ['names' => [
         'index' => 'mall-events'
     ]]);
+    Route::post('events/column-update/{id?}', 'EventController@columnUpdate')->name('events.column-update');
     Route::post('events/uploadimage', 'EventController@uploadimage')->name('events.uploadimage');
     Route::post('events/deleteimage/{id}', 'EventController@deleteimage')->name('events.deleteimage');
 });

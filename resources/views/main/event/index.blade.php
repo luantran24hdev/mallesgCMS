@@ -67,14 +67,14 @@
                                         <td>{{ @$event->mall->mall_name }}</td>
                                         <td style="display: none">{{ @$event->type }}</td>
                                         <td>
-                                            <select name="type" id="" class="malls_column_update dd-orange" data-href="" data-method="POST">
+                                            <select name="type" id="" class="events_column_update dd-orange" data-href="{{route('events.column-update',[$event->event_id])}}" data-method="POST">
                                                 <option value="P" @if($event->type=='P') selected @endif>{{ \App\EventMaster::P }}</option>
                                                 <option value="C" @if($event->type=='C') selected @endif>{{ \App\EventMaster::C }}</option>
                                                 <option value="U" @if($event->type=='U') selected @endif>{{ \App\EventMaster::U }}</option>
                                             </select>
                                         </td>
                                         <td>
-                                            <select name="featured" id="" class="malls_column_update dd-orange" data-href="{{route('malls.column-update',[$event->event_id])}}" data-method="POST">
+                                            <select name="featured" id="" class="events_column_update dd-orange" data-href="{{route('events.column-update',[$event->event_id])}}" data-method="POST">
                                                 <option value="N" @if($event->featured=='N') selected @endif>No</option>
                                                 <option value="Y" @if($event->featured=='Y') selected @endif>Yes</option>
                                             </select>
@@ -224,6 +224,37 @@
                // window.location.href = '{{route("malls")}}/'+ui.item.value;
                 return false;
             }
+        });
+
+        // change promo outlate live, featured and redeem status
+        $(document).on('change', '.events_column_update', function(e){
+            e.preventDefault();
+            //debugger;
+            var selectOp = $(this);
+            var attrName = selectOp.attr("name");
+
+            $.ajax({
+                url: selectOp.attr('data-href'),
+                type: selectOp.attr('data-method'),
+                dataType:'json',
+                data: {
+                    name : selectOp.attr('name'),
+                    value : selectOp.find('option:selected').val()
+                },
+                success:function(data){
+                    console.log(data);
+                    if(data.status==='error'){
+                        errorReturn(data)
+                    }else{
+                        toastr.success(data.message);
+                    }
+                },
+                error: function(data){
+                    console.log(data);
+                    exeptionReturn(data);
+                }
+            });
+
         });
 
     </script>

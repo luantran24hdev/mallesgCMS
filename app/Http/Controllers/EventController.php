@@ -244,4 +244,22 @@ class EventController extends Controller
         ],200);
     }
 
+
+    public function columnUpdate(Request $request,$id){
+
+        /*$this->mall->update($id, [
+            request()->name => request()->value
+        ]);*/
+        $name =  $request->name;
+        $event = EventMaster::find($id);
+        $event->$name = $request->value;
+        $event->save();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => __('successfully updated event'),
+            'id' => $id
+        ],200);
+    }
+
 }
