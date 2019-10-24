@@ -161,11 +161,19 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('manage/inquiry', 'EnquiryController@getInquiry')->name('manage.inquiry');
     Route::get('manage/shoppers', 'ShopperController@getShoppers')->name('manage.shoppers');
 
-    //promo tags
+    //Mall Events
     Route::resource('mall-events', 'EventController', ['names' => [
         'index' => 'mall-events'
     ]]);
     Route::post('events/column-update/{id?}', 'EventController@columnUpdate')->name('events.column-update');
     Route::post('events/uploadimage', 'EventController@uploadimage')->name('events.uploadimage');
     Route::post('events/deleteimage/{id}', 'EventController@deleteimage')->name('events.deleteimage');
+
+    //Mall Offes
+    Route::resource('mall-offers', 'OfferController', ['names' => [
+        'index' => 'mall-offers'
+    ]]);
+    Route::post('offers/column-update/{id?}', 'OfferController@columnUpdate')->name('offers.column-update');
+    Route::post('offers/uploadimage', 'OfferController@uploadimage')->name('offers.uploadimage');
+    Route::post('offers/deleteimage/{id}', 'OfferController@deleteimage')->name('offers.deleteimage');
 });

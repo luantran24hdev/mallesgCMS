@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\EventCategory;
-use App\EventImages;
-use App\EventMaster;
+use App\OfferImages;
+use App\OfferMaster;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
-class EventController extends Controller
+class OfferController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,11 +17,11 @@ class EventController extends Controller
     public function index(Request $request)
     {
         $id = $request->get('id');
-        $events = EventMaster::where('mall_id',$id)->get();
+        $offers = OfferMaster::where('mall_id',$id)->get();
 
-        $data = ['events' => $events];
+        $data = ['offers' => $offers];
 
-        return view('main.event.index',$data);
+        return view('main.offer.index',$data);
     }
 
     /**
@@ -44,12 +43,12 @@ class EventController extends Controller
     public function store(Request $request)
     {
         $messages = [
-            'event_name.required'    => 'Event name field is required'
+            'offer_title.required'    => 'Offer Title field is required'
         ];
 
         // Start Validation
         $validator = \Validator::make($request->all(), [
-            'event_name' => 'required',
+            'offer_title' => 'required',
         ],$messages);
 
         if($validator->fails()){
@@ -59,28 +58,23 @@ class EventController extends Controller
             ],200);
         }
 
-        $event = new EventMaster();
-        $event->event_name = $request->event_name;
-        $event->event_description = '';
-        $event->type = 'U';
-        $event->featured = 'N';
-        $event->mall_id = $request->mall_id;
-        $event->start_date = Carbon::now()->format('d/m/Y');
-        $event->end_date = Carbon::now()->format('d/m/Y');
-        $event->just_1_day = '';
-        $event->daily = '';
-        $event->event_timing = '';
-        $event->all_day	 = '';
-        $event->location	 = '';
-        $event->event_group_id	 = 0;
-        $event->Open_to	 = '';
-        $event->user_id = \Auth::user()->user_id;
-        $event->created_on = Carbon::now()->format('Y-m-d');
-        $event->save();
+        $offer = new OfferMaster();
+        $offer->offer_title = $request->offer_title;
+        $offer->offer_desc = '';
+        $offer->status = '';
+        $offer->featured = 'N';
+        $offer->dated = Carbon::now()->format('Y-m-d');
+        $offer->start_date = Carbon::now()->format('d/m/Y');
+        $offer->no_end_date = '';
+        $offer->End_date = Carbon::now()->format('d/m/Y');
+        $offer->user_id = \Auth::user()->user_id;
+        $offer->live = 'N';
+        $offer->mall_id = $request->mall_id;
+        $offer->save();
 
         return response()->json([
             'status' => 'success',
-            'message' => __('successfully added event'),
+            'message' => __('successfully added offer'),
             //'tag_name' => $request->time_name,
             //'id' => $time_master->time_id
         ],200);
@@ -105,18 +99,16 @@ class EventController extends Controller
      */
     public function edit($id)
     {
-        $event = EventMaster::find($id);
-        $event_images = EventImages::where('event_id',$id)->get();
-        $events_category = EventCategory::all();
+        $offer = OfferMaster::find($id);
+        $offer_images = OfferImages::where('offer_id',$id)->get();
 
         $data = [
-            'event' => $event,
-            'events_categorys' =>$events_category,
-            'event_images' => $event_images,
-            'live_url' => env('LIVE_URL').'event_photos/'
+            'offer' => $offer,
+            'offer_images' => $offer_images,
+            'live_url' => env('LIVE_URL').'offer_images/'
         ];
 
-        return view('main.event.edit',$data);
+        return view('main.offer.edit',$data);
     }
 
     /**
@@ -128,16 +120,13 @@ class EventController extends Controller
      */
     public function update(Request $request, $id)
     {
-
         $messages = [
-            'event_name.required'    => 'Event name field is required',
-            'ec_id.required'    => 'Category field is required'
+            'offer_title.required'    => 'Offer Title field is required',
         ];
 
         // Start Validation
         $validator = \Validator::make($request->all(), [
-            'event_name' => 'required',
-            'ec_id' => 'required'
+            'offer_title' => 'required',
         ],$messages);
 
         if($validator->fails()){
@@ -147,17 +136,13 @@ class EventController extends Controller
             ],200);
         }
 
-        $event = EventMaster::find($id);
-        $event->event_name = $request->event_name;
-        $event->ec_id = $request->ec_id;
-        $event->event_description = $request->event_description ? $request->event_description : "";
-        $event->start_date = $request->start_date;
-        $event->end_date = $request->no_end_date ? "": $request->end_date;
-        $event->just_1_day = $request->just_1_day ? $request->just_1_day: "";
-        $event->event_timing = $request->event_timing ? $request->event_timing: "";
-        $event->all_day	 = $request->all_day ? $request->all_day: "";
-        $event->location = $request->location ? $request->location: "";
-        $event->save();
+        $offer = OfferMaster::find($id);
+        $offer->offer_title = $request->offer_title;
+        $offer->offer_desc = $request->offer_desc ? $request->offer_desc : "";
+        $offer->start_date = $request->start_date;
+        $offer->no_end_date = $request->no_end_date ? $request->no_end_date: "";
+        $offer->End_date = $request->no_end_date ? "": $request->End_date;
+        $offer->save();
 
         return response()->json([
             'status' => 'success',
@@ -165,8 +150,6 @@ class EventController extends Controller
             //'tag_name' => $request->time_name,
             //'id' => $time_master->time_id
         ],200);
-
-
     }
 
     /**
@@ -177,26 +160,23 @@ class EventController extends Controller
      */
     public function destroy($id)
     {
-        $event_image = EventImages::where('event_id',$id)->get();
-
-        foreach ($event_image as $image){
-
+        $offer_images = OfferImages::where('offer_id',$id)->get();
+        foreach ($offer_images as $image){
             if(env('APP_ENV')=='live')
-                unlink('../../admin/event_photos/'.$image->event_image);
+                unlink('../../admin/offer_images/'.$image->Image_name);
             else
-                unlink('../storage/app/public/'.$image->event_image);
+                unlink('../storage/app/public/'.$image->Image_name);
 
-            EventImages::destroy($image->event_image_id);
+            OfferImages::destroy($image->moi_id);
         }
 
-
-        $events = EventMaster::find($id);
-        $events->delete();
+        $offers = OfferMaster::find($id);
+        $offers->delete();
 
 
         return response()->json([
-            'status' => $events ? 'success' : 'error',
-            'message' => $events ? __('succesfully deleted') : __('error deleting')
+            'status' => $offers ? 'success' : 'error',
+            'message' => $offers ? __('succesfully deleted') : __('error deleting')
         ],200);
     }
 
@@ -211,19 +191,21 @@ class EventController extends Controller
             }
 
 
-            $newfilename = md5($request->event_id."_".round(microtime(true))) . '.png';
+            $newfilename = md5($request->offer_id."_".round(microtime(true))) . '.png';
 
             if(env('APP_ENV')=='live')
-                $file->move('../../admin/event_photos/', $newfilename);
+                $file->move('../../admin/offer_images/', $newfilename);
             else
                 $file->move('../storage/app/public/', $newfilename);
 
-            $event = new EventImages();
-            $event->event_id = $request->event_id;
-            $event->event_image = $newfilename;
-            $event->user_id = \Auth::user()->user_id;
-            $event->event_count = $request->event_count;
-            $event->save();
+            $offer = new OfferImages();
+            $offer->offer_id = $request->offer_id;
+            $offer->mall_id = $request->mall_id;
+            $offer->Image_name = $newfilename;
+            $offer->user_id = \Auth::user()->user_id;
+            $offer->dated = Carbon::now()->format('d-m-Y');
+            $offer->count = $request->count;
+            $offer->save();
 
 
         } catch (QueryException $e) {
@@ -240,14 +222,14 @@ class EventController extends Controller
 
     public function deleteimage($id){
 
-        $image = EventImages::find($id);
+        $image = OfferImages::find($id);
 
         if(env('APP_ENV')=='live')
-            unlink('../../admin/event_photos/'.$image->event_image);
+            unlink('../../admin/offer_images/'.$image->Image_name);
         else
-            unlink('../storage/app/public/'.$image->event_image);
+            unlink('../storage/app/public/'.$image->Image_name);
 
-        $delete = EventImages::destroy($id);
+        $delete = OfferImages::destroy($id);
         return response()->json([
             'status' => $delete ? 'success' : 'error',
             'image_count' => @$image->event_count,
@@ -262,15 +244,14 @@ class EventController extends Controller
             request()->name => request()->value
         ]);*/
         $name =  $request->name;
-        $event = EventMaster::find($id);
-        $event->$name = $request->value;
-        $event->save();
+        $offer = OfferMaster::find($id);
+        $offer->$name = $request->value;
+        $offer->save();
 
         return response()->json([
             'status' => 'success',
-            'message' => __('successfully updated event'),
+            'message' => __('successfully updated offer'),
             'id' => $id
         ],200);
     }
-
 }
