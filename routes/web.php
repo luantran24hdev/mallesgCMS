@@ -176,4 +176,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('offers/column-update/{id?}', 'OfferController@columnUpdate')->name('offers.column-update');
     Route::post('offers/uploadimage', 'OfferController@uploadimage')->name('offers.uploadimage');
     Route::post('offers/deleteimage/{id}', 'OfferController@deleteimage')->name('offers.deleteimage');
+
+    Route::resource('mall-parking', 'ParkingController', ['names' => [
+        'index' => 'mall-parking'
+    ]]);
+    Route::post('parking/uploadimage', 'ParkingController@uploadimage')->name('parking.uploadimage');
+    Route::post('parking/deleteimage/{id}', 'ParkingController@deleteimage')->name('parking.deleteimage');
 });

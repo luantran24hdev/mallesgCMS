@@ -146,7 +146,7 @@ class OfferController extends Controller
 
         return response()->json([
             'status' => 'success',
-            'message' => __('successfully updated event'),
+            'message' => __('successfully updated offer'),
             //'tag_name' => $request->time_name,
             //'id' => $time_master->time_id
         ],200);

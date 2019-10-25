@@ -111,7 +111,7 @@
                                     <br><br><span class="link_color"><a href="{{ route('mall-events',['id'=>$current_malls->mall_id]) }}"><b>Events</b> </a></span>
                                 </td>
                                 <td>{{ @$current_malls->town->town_name }}
-                                    <br><br><span class="link_color"><a href="javascript:void(0)"> <b> Parking Info</b> </a></span>
+                                    <br><br><span class="link_color"><a href="{{ route('mall-parking.edit',[$current_malls->mall_id]) }}"> <b> Parking Info</b> </a></span>
                                 </td>
                                 <td>{{ @$current_malls->city->city_name }}
                                     <br><br><span class="link_color"><a href="{{ route('mall-offers',['id'=>$current_malls->mall_id]) }}"> <b>Offers</b> </a></span>
