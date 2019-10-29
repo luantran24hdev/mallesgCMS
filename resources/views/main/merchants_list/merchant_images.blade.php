@@ -35,8 +35,8 @@
         }
 
         .fit-image{
-            width: 100%;
-            object-fit: cover;
+            /*width: 100%;
+            object-fit: cover;*/
             height: 320px; /* only if you want fixed height */
         }
 
@@ -147,48 +147,62 @@
     </div>
 </div>
 
-<div class="modal fade" id="deletepromotionmodal" tabindex="-1" role="dialog" aria-labelledby="deletemodalpromotionlabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="deletemodalpromotionlabel">Delete Confirmation</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+<div class="row">
+    <div class="col-md-10">
+        <div class="card card-malle">
+            <div class="card-header-malle">
+                Merchant Logo
             </div>
-            <div class="modal-body ">
-                <p class="font-12">{{__('Are you sure you want to delete Item?')}}</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('No')}}</button>
-                <button type="button" class="btn btn-danger" id="btnDeletePromotion">{{__('Yes')}}</button>
-            </div>
-        </div>
-    </div>
-</div>
+            <div class="card-body" id="promo-image-body2" data-sourceurl="{{route('merchants.images',['merchant_id'=>$merchant->merchant_id])}}">
+
+                <div class="row" id="promo-image-content2">
+                    <input type="text" id="selected_image" style="display: none;">
+                    @for($i=0;$i<1;$i++)
+                        @php
+                            $empty = true;
+                        @endphp
+
+                        @if($merchant->merchantImage)
+                            @foreach($merchant->merchantImage as $merchant_image)
+                                @if($merchant_image->image_count == $i)
+
+                                    <div class="col-md-4 mb-3 pr-0">
+                                        <img class="card-img-top fit-image" src="{{$logo_live_url.$merchant_image->image_name}}" alt="image count {{$merchant_image->image_count}}">
+                                        {{--<a  href="javascript:;" data-href="" data-method="POST" class="btn-pi-delete" data-id="">--}}
+                                        <a  href="javascript:;" data-href="{{route('merchants.deletemallimage',['id'=>$merchant_image->merchant_image_id])}}" data-method="POST" class="btn-pi-delete" data-id="{{$merchant_image->image_count}}">
+                                            <span class="text-danger">{{__('Delete')}}</span>
+                                        </a>
+                                    </div>
+                                    @php
+                                        $empty = false;
+                                    @endphp
+                                @endif
+
+                            @endforeach
+                        @endif
+
+                        @if($empty)
+                            <div class="col-md-4 mb-3 pr-0">
+                                <div class="upload-msg " style="height: 323px; max-width: 310px; width: 100%" >
+                                    <div style="display: table-cell; vertical-align: middle;" onclick="$('#upload_{{$i}}').trigger('click');">Click to upload a file </div>
+                                </div>
+                            </div>
+                        @endif
+
+                        <input type="file" id="upload_{{$i}}" data-count="{{$i}}" class="imguploader" value="Choose a file" accept="image/*" style="display: none;" >
+                    @endfor
 
 
-<div class="modal fade" id="croppermodal" tabindex="-1" role="dialog" aria-labelledby="cropmodallabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="cropmodallabel">Image Cropper</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body ">
-                <div class="upload-demo-wrap" style="display: none">
-                    <div id="upload-demo"></div>
+
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Cancel')}}</button>
-                <button type="button" class="btn upload-result">{{__('Upload')}}</button>
+
             </div>
         </div>
     </div>
 </div>
+
+
+@include('partials.image_model')
 
 @endsection
 
@@ -265,9 +279,12 @@
                     if(data.status==='error'){
                         errorReturn(data)
                     }else{
-                        if (image_count < 4) {
+                        if (data.image_count > 1) {
                             $('#promo-image-body1 #promo-image-content1').remove();
                             $("#promo-image-body1").load( $('#promo-image-body1').attr('data-sourceurl') +" #promo-image-content1");
+                        }else if(data.image_count == 0){
+                            $('#promo-image-body2 #promo-image-content2').remove();
+                            $("#promo-image-body2").load( $('#promo-image-body2').attr('data-sourceurl') +" #promo-image-content2");
                         }else{
                             $('#promo-image-body #promo-image-content').remove();
                             $("#promo-image-body").load( $('#promo-image-body').attr('data-sourceurl') +" #promo-image-content");
@@ -360,9 +377,12 @@
                         }else{
                             $('#deletepromotionmodal').modal('hide');
                              //var image_count = $(this).attr('data-id');
-                            if (data.image_count < 4) {
+                            if (data.image_count > 1) {
                                 $('#promo-image-body1 #promo-image-content1').remove();
                                 $("#promo-image-body1").load( $('#promo-image-body1').attr('data-sourceurl') +" #promo-image-content1");
+                            }else if(data.image_count == 0){
+                                $('#promo-image-body2 #promo-image-content2').remove();
+                                $("#promo-image-body2").load( $('#promo-image-body2').attr('data-sourceurl') +" #promo-image-content2");
                             }else{
                                 $('#promo-image-body #promo-image-content').remove();
                                 $("#promo-image-body").load( $('#promo-image-body').attr('data-sourceurl') +" #promo-image-content");

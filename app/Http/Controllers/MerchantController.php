@@ -39,6 +39,7 @@ class MerchantController extends Controller
      */
     public function __construct(MerchantRepository $merchant, MallRepository $mall)
     {
+//        /return "ddddtt";
         $this->merchant =  $merchant; 
         $this->mall =  $mall; 
     }
@@ -77,7 +78,39 @@ class MerchantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $messages = [
+            'merchant_name.required'    => 'Merchant name field is required'
+        ];
+
+        // Start Validation
+        $validator = \Validator::make($request->all(), [
+            'merchant_name' => 'required',
+        ],$messages);
+
+        if($validator->fails()){
+            return response()->json([
+                'status' => 'error',
+                'message' => $validator->messages()->first()
+            ],200);
+        }
+
+        $merchant = new MerchantMaster();
+        $merchant->merchant_name = $request->merchant_name;
+        $merchant->city_id = 0;
+        $merchant->country_id = 1;
+        $merchant->town_id = 0;
+        $merchant->company_id = 0;
+        $merchant->mt_id = 1;
+        $merchant->featured = 'N';
+        $merchant->youtube = '';
+        $merchant->save();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => __('successfully added merchant'),
+            //'tag_name' => $request->time_name,
+            //'id' => $time_master->time_id
+        ],200);
     }
 
     /**
@@ -224,8 +257,11 @@ class MerchantController extends Controller
         //return $mall->mallImage;
         $data = [
             'merchant' => $merchant,
-            'live_url' => env('LIVE_URL').'main_merchant/'
+            'live_url' => env('LIVE_URL').'main_merchant/',
+            'logo_live_url' => env('LIVE_URL').'uploads/'
         ];
+
+        //return $data;
 
         return view('main.merchants_list.merchant_images',$data);
     }
@@ -245,7 +281,11 @@ class MerchantController extends Controller
             $newfilename = md5($request->mall_id."_".round(microtime(true))) . '.png';
 
             if(env('APP_ENV')=='live')
-                $file->move('../../admin/main_merchant/', $newfilename);
+                if(isset($request->image_count) && $request->image_count == 0){
+                    $file->move('../../admin/uploads/', $newfilename);
+                }else{
+                    $file->move('../../admin/main_merchant/', $newfilename);
+                }
             else
                 $file->move('../storage/app/public/', $newfilename);
 
@@ -270,6 +310,7 @@ class MerchantController extends Controller
 
         return response()->json([
             'status' => 'success' ,
+            'image_count' => @$request->image_count,
             'message' =>__('succesfully uploaded'),
             'file' => env("LIVE_URL").$newfilename
         ],200);
@@ -302,7 +343,11 @@ class MerchantController extends Controller
         $image = MerchantImage::find($id);
 
         if(env('APP_ENV')=='live')
-            unlink('../../admin/main_merchant/'.$image->image_name);
+            if($image->image_count == 0){
+                unlink('../../admin/uploads/'.$image->image_name);
+            }else{
+                unlink('../../admin/main_merchant/'.$image->image_name);
+            }
         else
             unlink('../storage/app/public/'.$image->image_name);
 

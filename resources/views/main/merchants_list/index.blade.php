@@ -23,44 +23,52 @@
         <div class="card card-malle">
             <div class="card-header-malle">{{__('Manage Merchants')}} ({{@$total_merchant}})</div>
             <div class="card-body">
+                <form method="POST" action="{{ route('merchants.store') }}" id="InsertMerchants">
+                    <div class="row merch_out">
+                        <div class="col-md-3">
+                            <label class="mb-2 font-12">{{__('Merchant')}}</label>
+                            <input type="text" name="merchant_name" placeholder="Type Merchant Name" id="merchant_name" class="form-control" required="" value="{{@$current_merchant->merchant_name}}"  data-autocompleturl="{{route('merchants.search')}}"/>
 
-            <div class="row merch_out">
-                <div class="col-md-3">
-                    <label class="mb-2 font-12">{{__('Merchant')}}</label>
-                    <input type="text" name="merchant_name" placeholder="Type Merchant Name" id="merchant_name" class="form-control" required="" value="{{@$current_merchant->merchant_name}}"  data-autocompleturl="{{route('merchants.search')}}"/>
+                        </div>
+                        @if(!isset($id))
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="mb-2 font-12">{{__('Country')}}</label>
+                                <br>
+                                <select id="country_select">
+                                    @if(!empty($countrys))
+                                        @foreach($countrys as $country)
+                                            <?php $country_total = \App\CountryMaster::totalCountryMerchant($country->country_id);?>
+                                            <option value="{{ $country->country_name }}">{{ $country->country_name }} ({{ $country_total }})</option>
+                                        @endforeach
+                                    @endif
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="mb-2 font-12">{{__('Merchant Type')}}</label>
+                                <select id="merchant_type">
+                                    @if(!empty($merchant_types))
+                                        <option value="all">All ({{ @$total_merchant }})</option>
+                                        @foreach($merchant_types as $merchant_type)
+                                            <?php $type_total = \App\MerchantType::totalTypeMerchant($merchant_type->mt_id);?>
+                                            <option value="{{ $merchant_type->type }}">{{ $merchant_type->type }} ({{ $type_total }})</option>
+                                        @endforeach
+                                    @endif
+                                </select>
+                            </div>
+                        </div>
+                        @endif
+                    </div>
 
-                </div>
-                @if(!isset($id))
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label class="mb-2 font-12">{{__('Country')}}</label>
-                        <br>
-                        <select id="country_select">
-                            @if(!empty($countrys))
-                                @foreach($countrys as $country)
-                                    <?php $country_total = \App\CountryMaster::totalCountryMerchant($country->country_id);?>
-                                    <option value="{{ $country->country_name }}">{{ $country->country_name }} ({{ $country_total }})</option>
-                                @endforeach
-                            @endif
-                        </select>
+
+                    <div class="col-md-12 row insert_merchant" style="display: none">
+                        <div class="form-group">
+                            <button class="btn btn-primary" id="out-form">Update</button>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label class="mb-2 font-12">{{__('Merchant Type')}}</label>
-                        <select id="merchant_type">
-                            @if(!empty($merchant_types))
-                                <option value="all">All ({{ @$total_merchant }})</option>
-                                @foreach($merchant_types as $merchant_type)
-                                    <?php $type_total = \App\MerchantType::totalTypeMerchant($merchant_type->mt_id);?>
-                                    <option value="{{ $merchant_type->type }}">{{ $merchant_type->type }} ({{ $type_total }})</option>
-                                @endforeach
-                            @endif
-                        </select>
-                    </div>
-                </div>
-                @endif
-            </div>
+                </form>
 
             @if(isset($current_merchants))
             <br />
@@ -156,6 +164,34 @@
 @section('script')
 <script>
 
+
+    $(document).on('submit','#InsertMerchants', function(e){
+        e.preventDefault();
+        var data = $(this).serialize();
+        var url = $(this).attr('action');
+        var type =  $(this).attr('method');
+
+        $.ajax({
+            url: url,
+            type: type,
+            dataType:'json',
+            data:data,
+            success:function(data){
+                if(data.status==='error'){
+                    toastr.error(data.message, 'Error');
+                }else{
+                    //$("#event-table").load( $('#event-table').attr('data-sourceurl') +" #event-table");
+                    $("#merchant-list-table").load( $('#merchant-list-table').attr('data-sourceurl') +" #merchant-list-table");
+                    toastr.success(data.message);
+                }
+            },
+            error: function(data){
+                exeptionReturn(data);
+            }
+        });
+    });
+
+
     $(document).ready(function() {
         var dataTables =  $('#merchant-list-table').DataTable({
             responsive: true,
@@ -206,6 +242,11 @@
     $( "#merchant_name" ).autocomplete({
         source: function (request, response) {
             $.getJSON($("#merchant_name").attr('data-autocompleturl') +'/' + request.term , function (data) {
+                if(data.length == 0){
+                    $('.insert_merchant').show();
+                }else{
+                    $('.insert_merchant').hide();
+                }
                 response($.map(data, function (value, key) {
                     return {
                         label: value,
@@ -317,7 +358,7 @@
                       errorReturn(data)
                   }else{
                       //$('#merchant-list-table tbody').remove();
-                      //$("#merchant-list-table").load( $('#merchant-list-table').attr('data-sourceurl') +" #merchant-list-table");
+                    //  $("#merchant-list-table").load( $('#merchant-list-table').attr('data-sourceurl') +" #merchant-list-table");
                       toastr.success(data.message);
                   }
               },
@@ -328,6 +369,9 @@
           });
 
       });
+
+
+
 
 
   });
