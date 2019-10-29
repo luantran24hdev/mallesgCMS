@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\CompanyMaster;
 use App\CountryMaster;
 use App\MallType;
 use App\MerchantImage;
@@ -151,7 +152,18 @@ class MerchantController extends Controller
      */
     public function edit($id)
     {
-        //
+        $merchant = MerchantMaster::find($id);
+        $merchantTypes = MerchantType::all();
+        $countrys = CountryMaster::all();
+        $companys = CompanyMaster::all();
+
+        $data = [
+            'merchant' => $merchant,
+            'countries' => $countrys,
+            'merchantTypes' => $merchantTypes,
+            'companys' => $companys
+        ];
+        return view('main.merchants_list.merchant_info',$data);
     }
 
     /**
@@ -163,7 +175,47 @@ class MerchantController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $messages = [
+            'merchant_name.required'    => 'Merchant name field is required'
+        ];
+
+        // Start Validation
+        $validator = \Validator::make($request->all(), [
+            'merchant_name' => 'required',
+        ],$messages);
+
+        if($validator->fails()){
+            return response()->json([
+                'status' => 'error',
+                'message' => $validator->messages()->first()
+            ],200);
+        }
+
+        $merchant = MerchantMaster::find($id);
+        $merchant->merchant_name = $request->merchant_name ?  $request->merchant_name : '';
+        $merchant->mt_id = $request->mt_id ? $request->mt_id : 1;
+        $merchant->merchant_address = $request->merchant_address ? $request->merchant_address : '';
+        $merchant->country_id = $request->country_id ? $request->country_id : 1;
+        $merchant->postal_code = $request->postal_code ? $request->postal_code : '';
+        $merchant->telephone = $request->telephone ? $request->telephone : '';
+        $merchant->website = $request->website ? $request->website : '';
+        $merchant->facebook = $request->facebook ? $request->facebook : '';
+        $merchant->instagram = $request->instagram ? $request->instagram : '';
+        $merchant->twitter = $request->twitter ? $request->twitter : '';
+        $merchant->youtube = $request->youtube ? $request->youtube : '';
+        $merchant->opening_hour = $request->opening_hour ? $request->opening_hour : '';
+        $merchant->company_id = $request->company_id ? $request->company_id : 0;
+        $merchant->about_us = $request->about_us ? $request->about_us : '';
+        $merchant->save();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => __('successfully updated merchant'),
+            //'tag_name' => $request->time_name,
+            //'id' => $time_master->time_id
+        ],200);
+
+
     }
 
     /**
@@ -243,7 +295,7 @@ class MerchantController extends Controller
 
         return response()->json([
             'status' => 'success',
-            'message' => __('successfully updated merchant'),
+            'message' => __('successfully updated '. request()->name),
             'id' => $id
         ],200);
     }
@@ -358,4 +410,6 @@ class MerchantController extends Controller
             'message' => $delete ? __('succesfully deleted') : __('error deleting')
         ],200);
     }
+
+
 }
