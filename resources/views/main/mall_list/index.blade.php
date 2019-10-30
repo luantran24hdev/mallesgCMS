@@ -108,15 +108,17 @@
                         @foreach($current_mallss as $current_malls)
                             <tr class="row-location" data-id="{{$current_malls->mall_id}}">
                                 <td>{{ @$current_malls->mall_name }}
-                                    <br><br><span class="link_color"><a href="{{ route('mall-events',['id'=>$current_malls->mall_id]) }}"><b>Events</b> </a></span>
+                                    <br><br><span class="link_color"><a href="javascript:void(0)"><b>Mall Info</b> </a></span> <span class="link_color"><a href="{{ route('malls.images',['malls'=>$current_malls->mall_id]) }}"><b>Images</b> </a></span>
                                 </td>
                                 <td>{{ @$current_malls->town->town_name }}
-                                    <br><br><span class="link_color"><a href="{{ route('mall-parking.edit',[$current_malls->mall_id]) }}"> <b> Parking Info</b> </a></span>
+                                    <br><br><span class="link_color"><a href="{{ route('mall-events',['id'=>$current_malls->mall_id]) }}"><b>Events</b> </a></span>
                                 </td>
                                 <td>{{ @$current_malls->city->city_name }}
+                                    <br><br> <span class="link_color"><a href="{{ route('mall-parking.edit',[$current_malls->mall_id]) }}"> <b> Parking Info</b> </a></span>
+                                </td>
+                                <td>{{ @$current_malls->country->country_name }}
                                     <br><br><span class="link_color"><a href="{{ route('mall-offers',['id'=>$current_malls->mall_id]) }}"> <b>Offers</b> </a></span>
                                 </td>
-                                <td>{{ @$current_malls->country->country_name }}</td>
                                 <td>{{ @$current_malls->malltype->type_name }}</td>
                                 <td>
                                     <select name="beta" id="" class="malls_column_update dd-orange" data-href="{{route('malls.column-update',[$current_malls->mall_id])}}" data-method="POST">
@@ -148,15 +150,13 @@
                                 <td> {{ @$total_event = \App\MallMaster::total_event($current_malls->mall_id) }}</td>
                                 <td> {{ @$total_promos = \App\MallMaster::total_promos($current_malls->mall_id) }}</td>
                                 <td>
-                                    <a href="{{ route('malls.images',['malls'=>$current_malls->mall_id]) }}">
-                                        <span class="text-info">Edit</span>
-                                    </a>
-                                    |
+
                                     <a  href="javascript:;" data-href="{{route('malls.destroy',['malls'=>$current_malls->mall_id])}}" data-method="DELETE" class="btn-delete" data-id="{{$current_malls->mall_id}}">
                                         <span class="text-danger">Delete</span>
                                     </a>
                                 </td>
                             </tr>
+
                         @endforeach
                         </tbody>
                     </table>
