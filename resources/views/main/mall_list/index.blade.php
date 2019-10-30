@@ -108,18 +108,20 @@
                         @foreach($current_mallss as $current_malls)
                             <tr class="row-location" data-id="{{$current_malls->mall_id}}">
                                 <td>{{ @$current_malls->mall_name }}
-                                    <br><br><span class="link_color"><a href="javascript:void(0)"><b>Mall Info</b> </a></span> <span class="link_color"><a href="{{ route('malls.images',['malls'=>$current_malls->mall_id]) }}"><b>Images</b> </a></span>
+                                    <br><br><span class="link_color"><a href="javascript:void(0)"><b>Mall Info</b> </a></span>
                                 </td>
                                 <td>{{ @$current_malls->town->town_name }}
-                                    <br><br><span class="link_color"><a href="{{ route('mall-events',['id'=>$current_malls->mall_id]) }}"><b>Events</b> </a></span>
+                                    <br><br><span class="link_color"><a href="{{ route('malls.images',['malls'=>$current_malls->mall_id]) }}"><b>Images</b> </a></span>
                                 </td>
                                 <td>{{ @$current_malls->city->city_name }}
-                                    <br><br> <span class="link_color"><a href="{{ route('mall-parking.edit',[$current_malls->mall_id]) }}"> <b> Parking Info</b> </a></span>
+                                    <br><br><span class="link_color"><a href="{{ route('mall-events',['id'=>$current_malls->mall_id]) }}"><b>Events</b> </a></span>
                                 </td>
                                 <td>{{ @$current_malls->country->country_name }}
+                                    <br><br> <span class="link_color"><a href="{{ route('mall-parking.edit',[$current_malls->mall_id]) }}"> <b> Parking Info</b> </a></span>
+                                </td>
+                                <td>{{ @$current_malls->malltype->type_name }}
                                     <br><br><span class="link_color"><a href="{{ route('mall-offers',['id'=>$current_malls->mall_id]) }}"> <b>Offers</b> </a></span>
                                 </td>
-                                <td>{{ @$current_malls->malltype->type_name }}</td>
                                 <td>
                                     <select name="beta" id="" class="malls_column_update dd-orange" data-href="{{route('malls.column-update',[$current_malls->mall_id])}}" data-method="POST">
                                         <option value="N" @if($current_malls->beta=='N') selected @endif>No</option>
