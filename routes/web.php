@@ -43,6 +43,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('malls/images/{id}', 'MallController@mallImages')->name('malls.images');
     Route::post('malls/uploadimage', 'MallController@uploadimage')->name('malls.uploadimage');
     Route::post('malls/webdeleteimage/{id}', 'MallController@webdeleteimage')->name('malls.webdeleteimage');
+    Route::post('malls/logodeleteimage/{id}', 'MallController@logodeleteimage')->name('malls.logodeleteimage');
     Route::post('malls/deletemallimage/{id}', 'MallController@deletemallimage')->name('malls.deletemallimage');
 
 

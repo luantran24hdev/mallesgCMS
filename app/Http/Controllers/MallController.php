@@ -364,8 +364,14 @@ class MallController extends Controller
 
             }else{
                 $mall = MallMaster::find($request->mall_id);
-                $mall->web_image = $newfilename;
+
+                if(isset($request->logo_image)) {
+                    $mall->main_image = $newfilename;
+                }else{
+                    $mall->web_image = $newfilename;
+                }
                 $mall->save();
+
             }
 
         } catch (QueryException $e) {
@@ -415,6 +421,27 @@ class MallController extends Controller
             'status' => $delete ? 'success' : 'error',
             'image_count' => @$image->image_count,
             'message' => $delete ? __('succesfully deleted') : __('error deleting')
+        ],200);
+    }
+
+    public function logodeleteimage($id)
+    {
+
+        $image = MallMaster::find($id);
+
+        if(env('APP_ENV')=='live')
+            unlink('../../admin/mall_photos/'.$image->main_image);
+        else
+            unlink('../storage/app/public/'.$image->main_image);
+
+
+        $image->main_image = Null;
+        $image->save();
+
+        return response()->json([
+            'status' => $image ? 'success' : 'error',
+            'image_count' => 9,
+            'message' => $image ? __('succesfully deleted') : __('error deleting')
         ],200);
     }
 

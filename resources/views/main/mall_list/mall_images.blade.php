@@ -148,48 +148,49 @@
     </div>
 </div>
 
-<div class="modal fade" id="deletepromotionmodal" tabindex="-1" role="dialog" aria-labelledby="deletemodalpromotionlabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="deletemodalpromotionlabel">Delete Confirmation</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+<div class="row">
+    <div class="col-md-10">
+        <div class="card card-malle">
+
+            <div class="card-header-malle">
+                Mall Logo
             </div>
-            <div class="modal-body ">
-                <p class="font-12">{{__('Are you sure you want to delete Item?')}}</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('No')}}</button>
-                <button type="button" class="btn btn-danger" id="btnDeletePromotion">{{__('Yes')}}</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 
-<div class="modal fade" id="croppermodal" tabindex="-1" role="dialog" aria-labelledby="cropmodallabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="cropmodallabel">Image Cropper</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body ">
-                <div class="upload-demo-wrap" style="display: none">
-                    <div id="upload-demo"></div>
+            <div class="card-body" id="promo-image-body2" data-sourceurl="{{route('malls.images',['mall__id'=>$mall->mall_id])}}">
+
+                <div class="row" id="promo-image-content2">
+                     <input type="text" id="selected_image1" style="display: none;">
+
+                    @if($mall->main_image)
+                        <div class="col-md-12 mb-3 pr-0">
+                            <img class="card-img-top" src="{{ $live_url.$mall->main_image}}" alt="image count" style="width: 300px !important;" >
+                            <br>
+                            <a  href="javascript:;" data-href="{{route('malls.logodeleteimage',['id'=>$mall->mall_id])}}" data-method="POST" class="btn-pi-delete" data-id="{{$mall->mall_id}}">
+                                <span class="text-danger">{{__('Delete')}}</span>
+                            </a>
+                        </div>
+                    @else
+                        <div class="col-md-12 mb-3 pr-0">
+                            <div class="upload-msg " style="height: 320px; width: 100%" onclick="$('#upload_9').trigger('click');">
+                                <div style="display: table-cell; vertical-align: middle;">Drop Files Here or click upload a photo </div>
+                            </div>
+                        </div>
+                    @endif
+
+
+                    <input type="file" id="upload_9" data-count="9" class="imguploader" value="Drop Files Here to click upload a photo" accept="image/*" style="display: none;" >
+
+
+
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Cancel')}}</button>
-                <button type="button" class="btn upload-result">{{__('Upload')}}</button>
+
             </div>
         </div>
     </div>
 </div>
+
+@include('partials.image_model')
 
 @endsection
 
@@ -243,6 +244,7 @@
             // Convert to blob
             var blob = b64toBlob(realData, contentType);
             var image_count = $('#selected_image').val();
+            var logo_image = $('#selected_image1').val();
             // Create a FormData and append the file
             var fd = new FormData();
             fd.append("image", blob);
@@ -250,6 +252,9 @@
             //console.log($('#selected_image').val());
             if (image_count < 4) {
                 fd.append("image_count", image_count);
+            }
+            if(logo_image == 9){
+                fd.append("logo_image", logo_image);
             }
             //console.log('dddddddddddd');
 
@@ -269,7 +274,12 @@
                         if (image_count < 4) {
                             $('#promo-image-body1 #promo-image-content1').remove();
                             $("#promo-image-body1").load( $('#promo-image-body1').attr('data-sourceurl') +" #promo-image-content1");
-                        }else{
+                        }
+                        else if(logo_image == 9){
+                            $('#promo-image-body2 #promo-image-content2').remove();
+                            $("#promo-image-body2").load( $('#promo-image-body2').attr('data-sourceurl') +" #promo-image-content2");
+                        }
+                        else{
                             $('#promo-image-body #promo-image-content').remove();
                             $("#promo-image-body").load( $('#promo-image-body').attr('data-sourceurl') +" #promo-image-content");
                         }
@@ -290,6 +300,7 @@
         $(document).on('change', '.imguploader', function () {
             readFile(this);
             $('#selected_image').val($(this).attr('data-count'));
+            $('#selected_image1').val($(this).attr('data-count'));
         });
 
         function readFile(input) {
@@ -364,7 +375,11 @@
                             if (data.image_count < 4) {
                                 $('#promo-image-body1 #promo-image-content1').remove();
                                 $("#promo-image-body1").load( $('#promo-image-body1').attr('data-sourceurl') +" #promo-image-content1");
-                            }else{
+                            }
+                            else if (data.image_count == 9){
+                                $('#promo-image-body2 #promo-image-content2').remove();
+                                $("#promo-image-body2").load( $('#promo-image-body1').attr('data-sourceurl') +" #promo-image-content2");
+                            } else{
                                 $('#promo-image-body #promo-image-content').remove();
                                 $("#promo-image-body").load( $('#promo-image-body').attr('data-sourceurl') +" #promo-image-content");
                             }
