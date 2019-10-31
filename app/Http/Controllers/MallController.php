@@ -135,7 +135,22 @@ class MallController extends Controller
      */
     public function edit($id)
     {
-        //
+        $mall = MallMaster::find($id);
+        $malltypes = MallType::all();
+        $countrys = CountryMaster::all();
+        $cities = CityMaster::where('country_id',$mall->country_id)->get();
+        $towns = TownMaster::where('city_id',$mall->city_id)->get();
+
+
+        $data = [
+            'mall' => $mall,
+            'countries' => $countrys,
+            'malltypes' => $malltypes,
+            'cities' => $cities,
+            'towns' => $towns
+            //'companys' => $companys
+        ];
+        return view('main.mall_list.mall_info',$data);
     }
 
     /**
@@ -147,7 +162,66 @@ class MallController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $messages = [
+            'mall_name.required'    => 'Mall name field is required',
+            'mt_id.required' => 'Mall type field is required',
+            'country_id.required' => 'Country field is required',
+            'city_id.required' => 'City field is required',
+            'town_id.required' => 'Town field is required',
+            'business_address.required' => 'Business Address field is required',
+
+        ];
+
+        // Start Validation
+        $validator = \Validator::make($request->all(), [
+            'mall_name' => 'required',
+            'mt_id' => 'required',
+            'country_id' => 'required',
+            'city_id' => 'required',
+            'town_id' => 'required',
+            'postal_code' => 'required',
+            'telephone' => 'required',
+            'business_address' => 'required',
+            'website' => 'required',
+        ],$messages);
+
+        if($validator->fails()){
+            return response()->json([
+                'status' => 'error',
+                'message' => $validator->messages()->first()
+            ],200);
+        }
+
+
+        $mall = MallMaster::find($id);
+        $mall->mall_name = $request->mall_name ? $request->mall_name : '';
+        $mall->managed_by = $request->managed_by ? $request->managed_by : '';
+        $mall->mt_id = $request->mt_id ? $request->mt_id : 1;
+        $mall->country_id = $request->country_id ? $request->country_id : 1;
+        $mall->city_id = $request->city_id ? $request->city_id : 1;
+        $mall->town_id = $request->town_id ? $request->town_id :1;
+        $mall->postal_code = $request->postal_code ? $request->postal_code : '';
+        $mall->telephone = $request->telephone ? $request->telephone : '';
+        $mall->business_address = $request->business_address ? $request->business_address : '';
+        $mall->website = $request->website ? $request->website : '';
+        $mall->lat = $request->lat ? $request->lat :'';
+        $mall->long = $request->long ? $request->long : '';
+        $mall->facebook = $request->facebook ? $request->facebook : '';
+        $mall->instagram = $request->instagram ? $request->instagram : '';
+        $mall->twitter = $request->twitter ? $request->twitter : '';
+        $mall->youtube = $request->youtube ? $request->youtube : '';
+        $mall->opening_hour = $request->opening_hour ? $request->opening_hour : '';
+        $mall->about_us = $request->about_us ? $request->about_us : '';
+        $mall->save();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => __('successfully updated mall'),
+            //'tag_name' => $request->time_name,
+            //'id' => $time_master->time_id
+        ],200);
+
+
     }
 
     /**
@@ -298,7 +372,7 @@ class MallController extends Controller
 
     }
 
-    public function mallInfo($mall_id){
+    public function mallMerchantInfo($mall_id){
         //return $id;
         $mall = MallMaster::find($mall_id);
         $total_merchant = MallMaster::total_merchant($mall_id);
@@ -315,7 +389,7 @@ class MallController extends Controller
             'locations' => $locations,
             'levels' => $levels
         ];
-        return view('main.mall_list.mall_info',$data);
+        return view('main.mall_list.mall_merchant_info',$data);
 
 
     }
@@ -442,6 +516,45 @@ class MallController extends Controller
             'status' => $image ? 'success' : 'error',
             'image_count' => 9,
             'message' => $image ? __('succesfully deleted') : __('error deleting')
+        ],200);
+    }
+
+    public function getCityMall(Request $request){
+
+
+        $citys = CityMaster::where('country_id',$request->id)->get();
+
+        $cit ='';
+
+        $cit.='<option value="">--- Select ----</option>';
+
+        foreach ($citys as $city){
+
+            $cit.='<option value="'.$city->city_id.'" title="'.$city->city_name.'">'.$city->city_name.'</option>';
+        }
+        //$city = ''
+        return response()->json([
+            'status' => 'success',
+            'message' => __('successfully updated mall'),
+            'city' => $cit
+        ],200);
+    }
+
+    public function getTownMall(Request $request){
+
+
+        $towns = TownMaster::where('city_id',$request->id)->get(['town_id','town_name','city_id']);
+        $tow ='';
+        $tow.='<option value="all">--- Select ----</option>';
+
+        foreach ($towns as $town){
+            $tow.='<option value="'.$town->town_id.'" title="'.$town->town_name.'">'.$town->town_name.'</option>';
+        }
+
+        return response()->json([
+            'status' => 'success',
+            'message' => __('successfully updated mall'),
+            'town' => $tow
         ],200);
     }
 

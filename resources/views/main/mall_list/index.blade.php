@@ -108,7 +108,7 @@
                         @foreach($current_mallss as $current_malls)
                             <tr class="row-location" data-id="{{$current_malls->mall_id}}">
                                 <td>{{ @$current_malls->mall_name }}
-                                    <br><br><span class="link_color"><a href="javascript:void(0)"><b>Mall Info</b> </a></span>
+                                    <br><br><span class="link_color"><a href="{{ route('malls.edit',[$current_malls->mall_id]) }}"><b>Mall Info</b> </a></span>
                                 </td>
                                 <td>{{ @$current_malls->town->town_name }}
                                     <br><br><span class="link_color"><a href="{{ route('malls.images',['malls'=>$current_malls->mall_id]) }}"><b>Images</b> </a></span>
@@ -144,7 +144,7 @@
 
                                 <?php $total_merchant = \App\MallMaster::total_merchant($current_malls->mall_id) ?>
                                 <td>@if($total_merchant > 0)
-                                        <a href="{{ route('mall.info',[$current_malls->mall_id]) }}"><span style="color: blue"><b> {{ @$total_merchant }}</b></span></a>
+                                        <a href="{{ route('mall.merchant.info',[$current_malls->mall_id]) }}"><span style="color: blue"><b> {{ @$total_merchant }}</b></span></a>
                                     @else
                                         {{ @$total_merchant }}
                                     @endif

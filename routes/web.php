@@ -47,7 +47,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('malls/deletemallimage/{id}', 'MallController@deletemallimage')->name('malls.deletemallimage');
 
 
-    Route::get('mall/info/{id}', 'MallController@mallInfo')->name('mall.info');
+
+    Route::get('mall-merchant/info/{id}', 'MallController@mallMerchantInfo')->name('mall.merchant.info');
+    Route::post('malls/getCityMall', 'MallController@getCityMall')->name('malls.getcitymall');
+    Route::post('malls/getTownMall', 'MallController@getTownMall')->name('malls.gettownmall');
 
     //merchants
     Route::resource('merchants', 'MerchantController', ['names' => [
