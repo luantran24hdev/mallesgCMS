@@ -92,7 +92,44 @@ class MallController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $messages = [
+            'mall_name.required'    => 'Mall name field is required'
+        ];
+
+        // Start Validation
+        $validator = \Validator::make($request->all(), [
+            'mall_name' => 'required|unique:mall_master',
+        ],$messages);
+
+        if($validator->fails()){
+            return response()->json([
+                'status' => 'error',
+                'message' => $validator->messages()->first()
+            ],200);
+        }
+
+        $mall = new MallMaster();
+        $mall->mall_name = $request->mall_name;
+        $mall->managed_by = '';
+        $mall->mt_id = 1;
+        $mall->city_id = 1;
+        $mall->country_id = 1;
+        $mall->town_id = 1;
+        $mall->postal_code = 0;
+        $mall->mall_active = 'Y';
+        $mall->featured = 'N';
+        $mall->telephone = '';
+        $mall->business_address = '';
+        $mall->website = '';
+        $mall->youtube = '';
+        $mall->save();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => __('successfully added mall'),
+            //'tag_name' => $request->time_name,
+            //'id' => $time_master->time_id
+        ],200);
     }
 
     /**

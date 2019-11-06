@@ -21,69 +21,78 @@
             <div class="card-header-malle">{{__('Manage Malls')}} ({{ @$total_mall }})</div>
             <div class="card-body">
 
-            <div class="row mall_out">
-                <div class="col-md-3">
-                    <label class="mb-2 font-12">Mall Name</label>
-                    <input type="text" name="mall_name" placeholder="Enter Mall Name" id="mall_name" class="form-control" required="" list="datalist1" data-autocompleturl="{{route('malls.search')}}" value="{{ @$current_malls->mall_name}}">
+            <form method="POST" action="{{ route('malls.store') }}" id="InsertMalls">
 
+                <div class="row mall_out">
+                    <div class="col-md-3">
+                        <label class="mb-2 font-12">Mall Name</label>
+                        <input type="text" name="mall_name" placeholder="Enter Mall Name" id="mall_name" class="form-control" required="" list="datalist1" data-autocompleturl="{{route('malls.search')}}" value="{{ @$current_malls->mall_name}}">
+
+                    </div>
+                    @if(!isset($id))
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="mb-2 font-12">{{__('Country')}}</label>
+                                <br>
+                                <select id="country_select">
+                                    @if(!empty($countrys))
+                                        @foreach($countrys as $country)
+                                            <?php $country_total = \App\CountryMaster::totalCountryMall($country->country_id);?>
+                                            <option value="{{ $country->country_id }}" title="{{$country->country_name}}">{{ $country->country_name }} ({{ $country_total }})</option>
+                                        @endforeach
+                                    @endif
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="mb-2 font-12">{{__('City')}}</label>
+                                <br>
+                                <select id="city_control" class="form-control">
+                                    <?php $country_total = \App\CountryMaster::totalCountryMall(1);?>
+                                        <option value="{{ @$citymaster->city_id }}" title="{{ @$citymaster->city_name }}">{{ @$citymaster->city_name }} ({{ $country_total }})</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="mb-2 font-12">{{__('Town')}}</label>
+                                <br>
+                                <select id="town_control" class="form-control">
+
+                                    @if(!empty($townmasters))
+                                        <option value="all">All ({{ $country_total = \App\CountryMaster::totalCountryMall(1)}})</option>
+                                        @foreach($townmasters as $townmaster)
+                                            <?php $town_total = \App\TownMaster::totalTownMall(1,$townmaster->city_id,$townmaster->town_id);?>
+                                            <option value="{{ @$townmaster->town_id }}" title="{{ @$townmaster->town_name }}">{{ @$townmaster->town_name }} ({{ $town_total }})</option>
+                                        @endforeach
+                                    @endif
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="mb-2 font-12">{{__('Mall Type')}}</label>
+                                <select id="mall_type">
+                                    @if(!empty($mall_types))
+                                        <option value="all">All ({{ $country_total = \App\CountryMaster::totalCountryMall(1)}})</option>
+                                        @foreach($mall_types as $mall_type)
+                                            <?php $type_total = \App\MallType::totalTypeMall($mall_type->country_id,$mall_type->city_id,$mall_type->mt_id);?>
+                                            <option value="{{ $mall_type->malltype->type_name }}">{{ $mall_type->malltype->type_name }} ({{ $type_total }})</option>
+                                        @endforeach
+                                    @endif
+                                </select>
+                            </div>
+                        </div>
+                    @endif
                 </div>
-                @if(!isset($id))
-                    <div class="col-md-2">
-                        <div class="form-group">
-                            <label class="mb-2 font-12">{{__('Country')}}</label>
-                            <br>
-                            <select id="country_select">
-                                @if(!empty($countrys))
-                                    @foreach($countrys as $country)
-                                        <?php $country_total = \App\CountryMaster::totalCountryMall($country->country_id);?>
-                                        <option value="{{ $country->country_id }}" title="{{$country->country_name}}">{{ $country->country_name }} ({{ $country_total }})</option>
-                                    @endforeach
-                                @endif
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="form-group">
-                            <label class="mb-2 font-12">{{__('City')}}</label>
-                            <br>
-                            <select id="city_control" class="form-control">
-                                <?php $country_total = \App\CountryMaster::totalCountryMall(1);?>
-                                    <option value="{{ @$citymaster->city_id }}" title="{{ @$citymaster->city_name }}">{{ @$citymaster->city_name }} ({{ $country_total }})</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="form-group">
-                            <label class="mb-2 font-12">{{__('Town')}}</label>
-                            <br>
-                            <select id="town_control" class="form-control">
 
-                                @if(!empty($townmasters))
-                                    <option value="all">All ({{ $country_total = \App\CountryMaster::totalCountryMall(1)}})</option>
-                                    @foreach($townmasters as $townmaster)
-                                        <?php $town_total = \App\TownMaster::totalTownMall(1,$townmaster->city_id,$townmaster->town_id);?>
-                                        <option value="{{ @$townmaster->town_id }}" title="{{ @$townmaster->town_name }}">{{ @$townmaster->town_name }} ({{ $town_total }})</option>
-                                    @endforeach
-                                @endif
-                            </select>
-                        </div>
+                <div class="col-md-12 row insert_mall" style="display: none;">
+                    <div class="form-group">
+                        <button class="btn btn-primary" id="out-form">Update</button>
                     </div>
-                    <div class="col-md-2">
-                        <div class="form-group">
-                            <label class="mb-2 font-12">{{__('Mall Type')}}</label>
-                            <select id="mall_type">
-                                @if(!empty($mall_types))
-                                    <option value="all">All ({{ $country_total = \App\CountryMaster::totalCountryMall(1)}})</option>
-                                    @foreach($mall_types as $mall_type)
-                                        <?php $type_total = \App\MallType::totalTypeMall($mall_type->country_id,$mall_type->city_id,$mall_type->mt_id);?>
-                                        <option value="{{ $mall_type->malltype->type_name }}">{{ $mall_type->malltype->type_name }} ({{ $type_total }})</option>
-                                    @endforeach
-                                @endif
-                            </select>
-                        </div>
-                    </div>
-                @endif
-            </div>
+                </div>
+             </form>
 
             @if(isset($current_mallss))
             <br />
@@ -170,31 +179,40 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="deletelocationmodal" tabindex="-1" role="dialog" aria-labelledby="deletemodallocationlabel" aria-hidden="true">
-<div class="modal-dialog" role="document">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h5 class="modal-title" id="deletemodallocationlabel">Delete Confirmation</h5>
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body ">
-      <p class="font-12">Are you sure you want to delete this location?</p>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-      <button type="button" class="btn btn-danger" id="btnDeleteLocation">Yes</button>
-    </div>
-  </div>
-</div>
-</div>
+
+    @include('partials.delete_model')
 @endsection
 
 
 @section('script')
 <script>
 
+
+    $(document).on('submit','#InsertMalls', function(e){
+        e.preventDefault();
+        var data = $(this).serialize();
+        var url = $(this).attr('action');
+        var type =  $(this).attr('method');
+
+        $.ajax({
+            url: url,
+            type: type,
+            dataType:'json',
+            data:data,
+            success:function(data){
+                if(data.status==='error'){
+                    toastr.error(data.message, 'Error');
+                }else{
+                    //$("#event-table").load( $('#event-table').attr('data-sourceurl') +" #event-table");
+                    $("#mall-list-table").load( $('#mall-list-table').attr('data-sourceurl') +" #mall-list-table");
+                    toastr.success(data.message);
+                }
+            },
+            error: function(data){
+                exeptionReturn(data);
+            }
+        });
+    });
 
     $(document).ready(function() {
         var dataTables =  $('#mall-list-table').DataTable({
@@ -339,6 +357,11 @@
     $( "#mall_name" ).autocomplete({
         source: function (request, response) {
             $.getJSON($("#mall_name").attr('data-autocompleturl') +'/' + request.term, function (data) {
+                if(data.length == 0){
+                    $('.insert_mall').show();
+                }else{
+                    $('.insert_mall').hide();
+                }
                 response($.map(data, function (value, key) {
                     return {
                         label: value,
