@@ -59,7 +59,9 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="mb-2 font-12">Paid Parking</label>
+                                    <span style="float: right"><input type="checkbox" name="no_parking_info" value="Y" @if($parking->no_parking_info == "Y") checked @endif><label class="mb-2 font-12">No Parking Info</label></span>
                                     <textarea style="height: 300px;" type="text" name="paid_parking" id="description" value="{{$parking->paid_parking}}" class="form-control">{{$parking->paid_parking}}</textarea>
+
                                 </div>
                             </div>
 

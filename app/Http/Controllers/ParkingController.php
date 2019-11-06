@@ -78,7 +78,7 @@ class ParkingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $messages = [
+        /*$messages = [
             'paid_parking.required'    => 'Paid Parking field is required',
             'free_parking.required'    => 'Free parking field is required',
             'grace_period.required'    => 'Grace Period field is required',
@@ -101,13 +101,15 @@ class ParkingController extends Controller
                 'status' => 'error',
                 'message' => $validator->messages()->first()
             ],200);
-        }
+        }*/
+
         $parking = MallMaster::find($id);
-        $parking->paid_parking = $request->paid_parking;
-        $parking->free_parking = $request->free_parking;
-        $parking->grace_period = $request->grace_period;
-        $parking->total_parking = $request->total_parking;
-        $parking->available_parking = $request->available_parking;
+        $parking->no_parking_info = $request->no_parking_info ? $request->no_parking_info : 'N';
+        $parking->paid_parking = $request->paid_parking ? $request->paid_parking : '';
+        $parking->free_parking = $request->free_parking ? $request->free_parking : '';
+        $parking->grace_period = $request->grace_period ? $request->grace_period : '10 Mins';
+        $parking->total_parking = $request->total_parking ? $request->total_parking : 0;
+        $parking->available_parking = $request->available_parking ? $request->available_parking : 0;
         $parking->save();
 
         return response()->json([
