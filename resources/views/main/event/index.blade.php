@@ -26,6 +26,12 @@
                                 <button type="submit" class="btn btn-primary" id="out-form">Update</button>
                             </div>
                         </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <input type="checkbox" name="no_events" class="no_events" data-href="{{route('malls.column-update',[$events[0]->mall_id])}}" data-method="POST" @if($events[0]->mall->no_events == 'Y') checked @endif> No Events
+                            </div>
+                        </div>
+
 
                     </div>
 
@@ -210,6 +216,8 @@
 
         // change promo outlate live, featured and redeem status
         $(document).on('change', '.events_column_update', function(e){
+
+            //alert('sdsds');
             e.preventDefault();
             //debugger;
             var selectOp = $(this);
@@ -239,5 +247,44 @@
 
         });
 
+
+        $(document).on('change', '.no_events', function(e){
+
+            //alert('sdsds');
+            e.preventDefault();
+            //debugger;
+            var selectOp = $(this);
+            var attrName = selectOp.attr("name");
+
+            if($(this).is(":checked")) {
+                var value = 'Y';
+            }
+            else{
+                var value = 'N';
+            }
+
+            $.ajax({
+                url: selectOp.attr('data-href'),
+                type: selectOp.attr('data-method'),
+                dataType:'json',
+                data: {
+                    name : selectOp.attr('name'),
+                    value : value
+                },
+                success:function(data){
+                    console.log(data);
+                    if(data.status==='error'){
+                        errorReturn(data)
+                    }else{
+                        toastr.success(data.message);
+                    }
+                },
+                error: function(data){
+                    console.log(data);
+                    exeptionReturn(data);
+                }
+            });
+
+        });
     </script>
 @endsection

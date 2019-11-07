@@ -5,7 +5,7 @@
         <div class="col-md-10">
             <div class="card card-malle">
                 <div class="card-header-malle">
-                  {{ @$offers[0]->mall->mall_name  }} Events
+                  {{ @$offers[0]->mall->mall_name  }} Offers
 
                     <a href="{{route('malls')}}">
                     <span class="link_color" style="float: right">
@@ -24,6 +24,12 @@
                         <div class="col-md-2">
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary" id="out-form">Update</button>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <input type="checkbox" name="no_offers" class="no_offers" data-href="{{route('malls.column-update',[$offers[0]->mall_id])}}" data-method="POST" @if($offers[0]->mall->no_offers == 'Y') checked @endif> No Offers
                             </div>
                         </div>
 
@@ -160,6 +166,45 @@
                 data: {
                     name : selectOp.attr('name'),
                     value : selectOp.find('option:selected').val()
+                },
+                success:function(data){
+                    console.log(data);
+                    if(data.status==='error'){
+                        errorReturn(data)
+                    }else{
+                        toastr.success(data.message);
+                    }
+                },
+                error: function(data){
+                    console.log(data);
+                    exeptionReturn(data);
+                }
+            });
+
+        });
+
+        $(document).on('change', '.no_offers', function(e){
+
+            //alert('sdsds');
+            e.preventDefault();
+            //debugger;
+            var selectOp = $(this);
+            var attrName = selectOp.attr("name");
+
+            if($(this).is(":checked")) {
+                var value = 'Y';
+            }
+            else{
+                var value = 'N';
+            }
+
+            $.ajax({
+                url: selectOp.attr('data-href'),
+                type: selectOp.attr('data-method'),
+                dataType:'json',
+                data: {
+                    name : selectOp.attr('name'),
+                    value : value
                 },
                 success:function(data){
                     console.log(data);
