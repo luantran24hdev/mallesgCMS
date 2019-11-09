@@ -202,31 +202,21 @@ class MallController extends Controller
         $messages = [
             'mall_name.required'    => 'Mall name field is required',
             'mt_id.required' => 'Mall type field is required',
-            'country_id.required' => 'Country field is required',
-            'city_id.required' => 'City field is required',
-            'town_id.required' => 'Town field is required',
-            'business_address.required' => 'Business Address field is required',
-
         ];
 
         // Start Validation
         $validator = \Validator::make($request->all(), [
             'mall_name' => 'required',
             'mt_id' => 'required',
-            'country_id' => 'required',
-            'city_id' => 'required',
-            'town_id' => 'required',
-            'postal_code' => 'required',
-            'telephone' => 'required',
-            'business_address' => 'required',
-            'website' => 'required',
         ],$messages);
 
         if($validator->fails()){
-            return response()->json([
+           /* return response()->json([
                 'status' => 'error',
                 'message' => $validator->messages()->first()
-            ],200);
+            ],200);*/
+
+            return redirect()->back()->withInput()->withErrors($validator->errors());
         }
 
 
@@ -237,7 +227,7 @@ class MallController extends Controller
         $mall->country_id = $request->country_id ? $request->country_id : 1;
         $mall->city_id = $request->city_id ? $request->city_id : 1;
         $mall->town_id = $request->town_id ? $request->town_id :1;
-        $mall->postal_code = $request->postal_code ? $request->postal_code : '';
+        $mall->postal_code = $request->postal_code ? $request->postal_code : 0;
         $mall->telephone = $request->telephone ? $request->telephone : '';
         $mall->business_address = $request->business_address ? $request->business_address : '';
         $mall->website = $request->website ? $request->website : '';
@@ -251,12 +241,14 @@ class MallController extends Controller
         $mall->about_us = $request->about_us ? $request->about_us : '';
         $mall->save();
 
-        return response()->json([
+        /*return response()->json([
             'status' => 'success',
             'message' => __('successfully updated mall'),
             //'tag_name' => $request->time_name,
             //'id' => $time_master->time_id
-        ],200);
+        ],200);*/
+
+        return redirect()->route('malls.edit',[$id])->with('success','Updated successfully!.');
 
 
     }

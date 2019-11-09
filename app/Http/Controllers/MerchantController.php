@@ -85,7 +85,7 @@ class MerchantController extends Controller
 
         // Start Validation
         $validator = \Validator::make($request->all(), [
-            'merchant_name' => 'required',
+            'merchant_name' => 'required|unique:merchant_master',
         ],$messages);
 
         if($validator->fails()){

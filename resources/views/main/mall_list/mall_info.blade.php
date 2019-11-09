@@ -31,12 +31,18 @@
 @section('content')
 <div class="row">
     <div class="col-md-10">
+        @include('partials.flash_message')
         <div class="row">
+
             <div class="col-md-12">
                 <div class="card card-malle">
                     <div class="card-header-malle">Mall Info</div>
                     <div class="card-body">
-                        <form  method="patch" action="{{ route('malls.update',[$mall->mall_id]) }}" id="editmallform" autocomplete="off">
+                        <form  method="post" action="{{ route('malls.update',[$mall->mall_id]) }}">
+
+                            @csrf
+                            {{ method_field('PATCH') }}
+
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
