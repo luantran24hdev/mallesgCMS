@@ -132,6 +132,7 @@
                                     <br><br><span class="link_color"><a href="{{ route('mall-offers',['id'=>$current_malls->mall_id]) }}"> <b>Offers</b> </a></span>
                                 </td>
                                 <td>
+                                    <span style="display: none"> {{ $current_malls->beta }} </span>
                                     <select name="beta" id="" class="malls_column_update dd-orange" data-href="{{route('malls.column-update',[$current_malls->mall_id])}}" data-method="POST">
                                         <option value="N" @if($current_malls->beta=='N') selected @endif>No</option>
                                         <option value="Y" @if($current_malls->beta=='Y') selected @endif>Yes</option>
