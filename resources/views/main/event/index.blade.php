@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="row">
+        @if(!empty($event))
         <div class="col-md-10">
             <div class="card card-malle">
                 <div class="card-header-malle">
@@ -107,6 +108,16 @@
                 </div>
             </div>
         </div>
+         @else
+
+            <div class="col-md-12 mt-4">
+                <div class="alert alert-danger">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    No Events Found...
+                </div>
+            </div>
+
+        @endif
     </div>
     @include('partials.delete_model')
 @endsection

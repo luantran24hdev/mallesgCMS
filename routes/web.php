@@ -86,6 +86,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('locations', 'LocationController', ['names' => [
         'index' => 'locations'
     ]]);
+    Route::post('locations/uploadimage', 'LocationController@uploadimage')->name('locations.uploadimage');
+    Route::post('locations/deleteimage/{id}', 'LocationController@deleteimage')->name('locations.deleteimage');
 
     //promo tags
     Route::resource('promo-tags', 'PromotionTagController', ['names' => [

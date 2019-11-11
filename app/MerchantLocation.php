@@ -35,4 +35,9 @@ class MerchantLocation extends Model
     {
         return $this->hasOne('App\MallMaster', 'mall_id', 'mall_id');
     }
+
+    public function merchant()
+    {
+        return $this->hasOne(MerchantMaster::class, 'merchant_id', 'merchant_id');
+    }
 }

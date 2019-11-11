@@ -76,6 +76,11 @@
                                                 <a  href="javascript:;" data-href="{{route('locations.destroy',[$location->merchantlocation_id])}}" data-method="DELETE" class="btn-delete" data-id="{{$location->merchantlocation_id}}">
                                                     <span class="text-danger">Delete</span>
                                                 </a>
+                                                &nbsp;
+                                                <span class="link_color">
+                                                <a href="{{route('locations.edit',[$location->merchantlocation_id])}}/?mid={{$current_merchant->merchant_id  }}" >
+                                                  <b> Images</b>
+                                                </a></span>
                                             </td>
 
                                         </tr>
