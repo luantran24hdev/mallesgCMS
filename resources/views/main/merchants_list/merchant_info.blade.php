@@ -68,6 +68,15 @@
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="form-group">
+                                        <label class="mb-2 font-12">Short Name</label>
+                                        <input type="text" name="short_name" id="short_name" placeholder="Short Name" class="form-control" value=" {{ $merchant->short_name }} ">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
                                         <label class="mb-2 font-12">Address</label>
                                         <textarea rows="4" class="form-control" name="merchant_address" placeholder="Address">{{ $merchant->merchant_address }}</textarea>
                                     </div>

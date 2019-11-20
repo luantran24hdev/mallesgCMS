@@ -193,6 +193,7 @@ class MerchantController extends Controller
 
         $merchant = MerchantMaster::find($id);
         $merchant->merchant_name = $request->merchant_name ?  $request->merchant_name : '';
+        $merchant->short_name = $request->short_name ?  $request->short_name : '';
         $merchant->mt_id = $request->mt_id ? $request->mt_id : 1;
         $merchant->merchant_address = $request->merchant_address ? $request->merchant_address : '';
         $merchant->country_id = $request->country_id ? $request->country_id : 1;
