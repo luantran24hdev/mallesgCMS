@@ -75,15 +75,22 @@
                                  </a>
                              </div>
                          @else
-                            <div class="col-md-12 mb-3 pr-0">
+                            {{--<div class="col-md-12 mb-3 pr-0">
                                 <div class="upload-msg " style="height: 320px; width: 100%" onclick="$('#upload_5').trigger('click');">
                                     <div style="display: table-cell; vertical-align: middle;">Drop Files Here or click upload a photo </div>
                                 </div>
                             </div>
+--}}
+                            <div class="col-md-4">
+                                <form action="{{ route('malls.uploadimage') }}" class="dropzone" id="image_5">
+                                    @csrf
+                                    <input type="hidden" name="mall_id" value="{{ $mall->mall_id }}">
+                                </form>
+                            </div>
                          @endif
 
 
-                        <input type="file" id="upload_5" data-count="5" class="imguploader" value="Drop Files Here to click upload a photo" accept="image/*" style="display: none;" >
+                        {{--<input type="file" id="upload_5" data-count="5" class="imguploader" value="Drop Files Here to click upload a photo" accept="image/*" style="display: none;" >--}}
 
 
 
@@ -129,18 +136,26 @@
                         @endif
 
                         @if($empty)
-                        <div class="col-md-4 mb-3 pr-0">
+                        {{--<div class="col-md-4 mb-3 pr-0">
                                 <div class="upload-msg " style="height: 323px; max-width: 310px; width: 100%" >
                                     <div style="display: table-cell; vertical-align: middle;" onclick="$('#upload_{{$i}}').trigger('click');">Click to upload a file </div>
                                 </div>
+                            </div>--}}
+
+                            <div class="col-md-4">
+                                <form action="{{ route('malls.uploadimage') }}" class="dropzone" id="image_{{$i}}">
+                                    @csrf
+                                    <input type="hidden" name="image_count" value="{{ $i }}">
+                                    <input type="hidden" name="mall_id" value="{{ $mall->mall_id }}">
+                                </form>
                             </div>
                         @endif
 
-                        <input type="file" id="upload_{{$i}}" data-count="{{$i}}" class="imguploader" value="Choose a file" accept="image/*" style="display: none;" >
+                        {{--<input type="file" id="upload_{{$i}}" data-count="{{$i}}" class="imguploader" value="Choose a file" accept="image/*" style="display: none;" >--}}
                     @endfor
 
-                    
- 
+
+
                 </div>
 
              </div>
@@ -171,15 +186,23 @@
                             </a>
                         </div>
                     @else
-                        <div class="col-md-12 mb-3 pr-0">
+                        {{--<div class="col-md-12 mb-3 pr-0">
                             <div class="upload-msg " style="height: 320px; width: 100%" onclick="$('#upload_9').trigger('click');">
                                 <div style="display: table-cell; vertical-align: middle;">Drop Files Here or click upload a photo </div>
                             </div>
+                        </div>--}}
+
+                        <div class="col-md-4">
+                            <form action="{{ route('malls.uploadimage') }}" class="dropzone" id="my-awesome-dropzone">
+                                @csrf
+                                <input type="hidden" name="logo_image" value="9">
+                                <input type="hidden" name="mall_id" value="{{ $mall->mall_id }}">
+                            </form>
                         </div>
                     @endif
 
 
-                    <input type="file" id="upload_9" data-count="9" class="imguploader" value="Drop Files Here to click upload a photo" accept="image/*" style="display: none;" >
+                    {{--<input type="file" id="upload_9" data-count="9" class="imguploader" value="Drop Files Here to click upload a photo" accept="image/*" style="display: none;" >--}}
 
 
 
@@ -197,159 +220,39 @@
 
 @section('script')
 
+
+<script type="text/javascript" src="{{ asset('js/dropzone.js') }}"></script>
 <link rel="stylesheet" type="text/css" href="{{asset('css/croppie.css')}}">
 <script type="text/javascript" src="{{asset('js/croppie.min.js')}}"></script>
 <script>
 
 
     $( function() {
-        var $uploadCrop = $('#upload-demo');
-        $uploadCrop.croppie({
-            enableResize: true,
-            enableExif: true,
-            viewport: {
-                width: 550,
-                height: 390,
+
+
+        Dropzone.options.myAwesomeDropzone = {
+            paramName: "file", // The name that will be used to transfer the file
+            maxFilesize: 2, // MB
+            accept: function(file, done) {
+                done();
             },
-            boundary: {
-                width: 647,
-                height: 459
+            init: function() {
+                this.on("maxfilesexceeded", function(file){
+                    toastr['error']('Upload one file only');
+
+                });
+                this.on("success", function(file, responseText) {
+                    console.log('asdasdasdsad');
+                    toastr.success(responseText);
+                    console.log(responseText);
+                    //ndow.location.reload();
+                    //location.reload();
+                });
             }
-        });
-
-        $('#croppermodal').on('shown.bs.modal', function() {
-            $uploadCrop.croppie('bind');
-        });
+        };
 
 
 
-        $(document).on('click','.upload-result', function (ev) {
-        $uploadCrop.croppie('result', {
-            type: 'canvas',
-            size: 'viewport'
-        }).then(function (resp) {
-
-            var ImageURL = resp;
-
-            //console.log(ImageURL);
-            // Split the base64 string in data and contentType
-            var block = ImageURL.split(";");
-            // Get the content type
-
-           // console.log(block);
-            var contentType = block[0].split(":")[1];// In this case "image/gif"
-            // get the real base64 content of the file
-            var realData = block[1].split(",")[1];// In this case "iVBORw0KGg...."
-
-            // Convert to blob
-            var blob = b64toBlob(realData, contentType);
-            var image_count = $('#selected_image').val();
-            var logo_image = $('#selected_image1').val();
-            // Create a FormData and append the file
-            var fd = new FormData();
-            fd.append("image", blob);
-            fd.append("mall_id", "{{@$mall->mall_id}}");
-            //console.log($('#selected_image').val());
-            if (image_count < 4) {
-                fd.append("image_count", image_count);
-            }
-            if(logo_image == 9){
-                fd.append("logo_image", logo_image);
-            }
-            //console.log('dddddddddddd');
-
-           // console.log(fd);
-            $.ajax({
-                url: "{{route('malls.uploadimage')}}",
-                data: fd,// the formData function is available in almost all new browsers.
-                type:"POST",
-                contentType:false,
-                processData:false,
-                cache:false,
-                dataType:"json", // Cha
-                success:function(data){
-                    if(data.status==='error'){
-                        errorReturn(data)
-                    }else{
-                        if (image_count < 4) {
-                            $('#promo-image-body1 #promo-image-content1').remove();
-                            $("#promo-image-body1").load( $('#promo-image-body1').attr('data-sourceurl') +" #promo-image-content1");
-                        }
-                        else if(logo_image == 9){
-                            $('#promo-image-body2 #promo-image-content2').remove();
-                            $("#promo-image-body2").load( $('#promo-image-body2').attr('data-sourceurl') +" #promo-image-content2");
-                        }
-                        else{
-                            $('#promo-image-body #promo-image-content').remove();
-                            $("#promo-image-body").load( $('#promo-image-body').attr('data-sourceurl') +" #promo-image-content");
-                        }
-                        $('#croppermodal').modal('hide');
-                        toastr.success(data.message);
-                    }
-                },
-                error: function(data){
-                    exeptionReturn(data);
-                }
-            });
-
-        });
-        });
-
-
-
-        $(document).on('change', '.imguploader', function () {
-            readFile(this);
-            $('#selected_image').val($(this).attr('data-count'));
-            $('#selected_image1').val($(this).attr('data-count'));
-        });
-
-        function readFile(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-
-                $('#croppermodal').modal('show');
-
-                reader.onload = function (e) {
-                    $('.upload-demo-wrap').show();
-                    $uploadCrop.croppie('bind', {
-                        url: e.target.result
-                    }).then(function(){
-                        console.log('jQuery bind complete');
-                    });
-
-                }
-
-                reader.readAsDataURL(input.files[0]);
-
-            }
-            else {
-                alert("Sorry - you're browser doesn't support the FileReader API");
-            }
-        }
-
-        function b64toBlob(b64Data, contentType, sliceSize) {
-            contentType = contentType || '';
-            sliceSize = sliceSize || 512;
-
-            var byteCharacters = atob(b64Data);
-            var byteArrays = [];
-
-            for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
-                var slice = byteCharacters.slice(offset, offset + sliceSize);
-
-                var byteNumbers = new Array(slice.length);
-                for (var i = 0; i < slice.length; i++) {
-                    byteNumbers[i] = slice.charCodeAt(i);
-                }
-
-                var byteArray = new Uint8Array(byteNumbers);
-
-                byteArrays.push(byteArray);
-            }
-
-            var blob = new Blob(byteArrays, {type: contentType});
-            return blob;
-        }
     });
 
 
@@ -384,6 +287,8 @@
                                 $("#promo-image-body").load( $('#promo-image-body').attr('data-sourceurl') +" #promo-image-content");
                             }
                             toastr.success(data.message);
+
+                            window.location.reload();
                         }
                     }
                 });

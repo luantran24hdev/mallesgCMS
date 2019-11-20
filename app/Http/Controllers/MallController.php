@@ -440,11 +440,15 @@ class MallController extends Controller
 
     public function uploadimage(Request $request)
     {
+        //return $request->files->get('file');
+        //return $request->all();
 
-        $file = $request->files->get('image');
+        $file = $request->files->get('file');
+
+        //return $file->getMimeType();
         try{
 
-            if($file->getMimeType()!="image/png"){
+            if($file->getMimeType()!="image/png" && $file->getMimeType()!="image/jpeg" && $file->getMimeType()!="image/jpg"){
                 throw new \Exception("invalid file", 500);
             }
 
@@ -481,11 +485,11 @@ class MallController extends Controller
             throw new \Exception($e->getMessage(), 500, $e);
         }
 
-        return response()->json([
-            'status' => 'success' ,
-            'message' =>__('succesfully uploaded'),
-            'file' => env("LIVE_URL").$newfilename
-        ],200);
+        //return redirect()->route('malls.images',['mall__id'=>$request->mall_id])->with('success','Uploaded successfully!.');
+
+        //$request->session()->flash('status', 'Document(s) has been uploaded.');
+        //return "succeesss upaldsa";
+        return response()->json(['success' ,'succesfully uploaded']);
 
     }
 

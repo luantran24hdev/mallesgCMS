@@ -2,16 +2,1491 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5285e9c1-0bdf-4205-8850-281ec9bdfbea" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/main/merchants/merchant_locations_images.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LocationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LocationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/MerchantLocation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/MerchantLocation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MallController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MallController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/avatar.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/bootstrap-grid.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/bootstrap-grid.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/bootstrap-grid.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/bootstrap-grid.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/bootstrap-reboot.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/bootstrap-reboot.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/bootstrap-reboot.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/bootstrap-reboot.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/bootstrap.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/bootstrap.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/bootstrap.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/dropzone.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/jqueryui.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/malle_style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/swiper.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/toastr.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/css/all.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/css/all.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/css/brands.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/css/brands.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/css/fontawesome.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/css/fontawesome.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/css/regular.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/css/regular.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/css/solid.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/css/solid.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/css/svg-with-js.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/css/svg-with-js.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/css/v4-shims.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/css/v4-shims.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/js/all.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/js/all.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/js/brands.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/js/brands.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/js/fontawesome.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/js/fontawesome.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/js/regular.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/js/regular.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/js/solid.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/js/solid.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/js/v4-shims.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/js/v4-shims.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/less/_animated.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/less/_bordered-pulled.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/less/_core.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/less/_fixed-width.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/less/_icons.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/less/_larger.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/less/_list.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/less/_mixins.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/less/_rotated-flipped.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/less/_screen-reader.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/less/_shims.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/less/_stacked.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/less/_variables.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/less/brands.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/less/fontawesome.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/less/regular.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/less/solid.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/less/v4-shims.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/metadata/categories.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/metadata/icons.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/metadata/icons.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/metadata/shims.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/metadata/shims.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/metadata/sponsors.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/scss/_animated.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/scss/_bordered-pulled.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/scss/_core.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/scss/_fixed-width.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/scss/_icons.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/scss/_larger.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/scss/_list.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/scss/_mixins.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/scss/_rotated-flipped.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/scss/_screen-reader.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/scss/_shims.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/scss/_stacked.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/scss/_variables.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/scss/brands.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/scss/fontawesome.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/scss/regular.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/scss/solid.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/scss/v4-shims.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/sprites/brands.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/sprites/regular.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/sprites/solid.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/500px.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/accessible-icon.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/accusoft.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/adn.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/adversal.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/affiliatetheme.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/algolia.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/amazon-pay.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/amazon.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/amilia.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/android.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/angellist.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/angrycreative.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/angular.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/app-store-ios.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/app-store.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/apper.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/apple-pay.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/apple.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/asymmetrik.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/audible.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/autoprefixer.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/avianex.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/aviato.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/aws.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/bandcamp.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/behance-square.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/behance.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/bimobject.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/bitbucket.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/bitcoin.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/bity.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/black-tie.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/blackberry.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/blogger-b.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/blogger.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/bluetooth-b.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/bluetooth.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/btc.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/buromobelexperte.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/buysellads.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/cc-amazon-pay.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/cc-amex.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/cc-apple-pay.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/cc-diners-club.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/cc-discover.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/cc-jcb.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/cc-mastercard.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/cc-paypal.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/cc-stripe.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/cc-visa.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/centercode.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/chrome.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/cloudscale.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/cloudsmith.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/cloudversify.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/codepen.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/codiepie.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/connectdevelop.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/contao.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/cpanel.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/creative-commons-by.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/creative-commons-nc-eu.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/creative-commons-nc-jp.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/creative-commons-nc.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/creative-commons-nd.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/creative-commons-pd-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/creative-commons-pd.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/creative-commons-remix.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/creative-commons-sa.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/creative-commons-sampling-plus.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/creative-commons-sampling.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/creative-commons-share.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/creative-commons.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/css3-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/css3.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/cuttlefish.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/d-and-d.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/dashcube.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/delicious.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/deploydog.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/deskpro.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/deviantart.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/digg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/digital-ocean.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/discord.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/discourse.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/dochub.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/docker.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/draft2digital.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/dribbble-square.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/dribbble.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/dropbox.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/drupal.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/dyalog.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/earlybirds.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/ebay.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/edge.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/elementor.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/ember.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/empire.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/envira.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/erlang.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/ethereum.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/etsy.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/expeditedssl.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/facebook-f.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/facebook-messenger.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/facebook-square.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/facebook.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/firefox.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/first-order-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/first-order.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/firstdraft.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/flickr.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/flipboard.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/fly.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/font-awesome-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/font-awesome-flag.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/font-awesome-logo-full.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/font-awesome.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/fonticons-fi.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/fonticons.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/fort-awesome-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/fort-awesome.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/forumbee.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/foursquare.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/free-code-camp.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/freebsd.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/fulcrum.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/galactic-republic.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/galactic-senate.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/get-pocket.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/gg-circle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/gg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/git-square.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/git.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/github-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/github-square.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/github.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/gitkraken.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/gitlab.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/gitter.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/glide-g.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/glide.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/gofore.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/goodreads-g.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/goodreads.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/google-drive.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/google-play.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/google-plus-g.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/google-plus-square.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/google-plus.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/google-wallet.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/google.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/gratipay.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/grav.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/gripfire.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/grunt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/gulp.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/hacker-news-square.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/hacker-news.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/hips.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/hire-a-helper.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/hooli.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/hornbill.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/hotjar.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/houzz.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/html5.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/hubspot.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/imdb.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/instagram.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/internet-explorer.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/ioxhost.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/itunes-note.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/itunes.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/java.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/jedi-order.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/jenkins.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/joget.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/joomla.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/js-square.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/js.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/jsfiddle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/keybase.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/keycdn.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/kickstarter-k.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/kickstarter.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/korvue.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/laravel.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/lastfm-square.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/lastfm.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/leanpub.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/less.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/line.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/linkedin-in.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/linkedin.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/linode.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/linux.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/lyft.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/magento.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/mailchimp.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/mandalorian.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/mastodon.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/maxcdn.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/medapps.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/medium-m.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/medium.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/medrt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/meetup.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/megaport.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/microsoft.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/mix.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/mixcloud.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/mizuni.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/modx.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/monero.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/napster.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/nimblr.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/nintendo-switch.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/node-js.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/node.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/npm.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/ns8.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/nutritionix.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/odnoklassniki-square.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/odnoklassniki.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/old-republic.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/opencart.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/openid.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/opera.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/optin-monster.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/osi.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/page4.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/pagelines.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/palfed.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/patreon.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/paypal.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/periscope.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/phabricator.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/phoenix-framework.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/phoenix-squadron.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/php.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/pied-piper-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/pied-piper-hat.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/pied-piper-pp.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/pied-piper.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/pinterest-p.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/pinterest-square.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/pinterest.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/playstation.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/product-hunt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/pushed.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/python.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/qq.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/quinscape.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/quora.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/r-project.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/ravelry.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/react.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/readme.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/rebel.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/red-river.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/reddit-alien.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/reddit-square.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/reddit.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/rendact.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/renren.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/replyd.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/researchgate.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/resolving.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/rev.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/rocketchat.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/rockrms.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/safari.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/sass.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/schlix.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/scribd.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/searchengin.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/sellcast.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/sellsy.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/servicestack.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/shirtsinbulk.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/shopware.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/simplybuilt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/sistrix.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/sith.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/skyatlas.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/skype.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/slack-hash.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/slack.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/slideshare.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/snapchat-ghost.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/snapchat-square.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/snapchat.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/soundcloud.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/speakap.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/spotify.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/squarespace.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/stack-exchange.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/stack-overflow.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/staylinked.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/steam-square.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/steam-symbol.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/steam.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/sticker-mule.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/strava.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/stripe-s.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/stripe.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/studiovinari.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/stumbleupon-circle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/stumbleupon.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/superpowers.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/supple.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/teamspeak.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/telegram-plane.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/telegram.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/tencent-weibo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/themeco.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/themeisle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/trade-federation.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/trello.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/tripadvisor.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/tumblr-square.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/tumblr.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/twitch.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/twitter-square.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/twitter.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/typo3.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/uber.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/uikit.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/uniregistry.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/untappd.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/usb.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/ussunnah.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/vaadin.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/viacoin.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/viadeo-square.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/viadeo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/viber.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/vimeo-square.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/vimeo-v.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/vimeo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/vine.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/vk.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/vnv.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/vuejs.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/weebly.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/weibo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/weixin.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/whatsapp-square.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/whatsapp.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/whmcs.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/wikipedia-w.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/windows.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/wix.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/wolf-pack-battalion.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/wordpress-simple.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/wordpress.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/wpbeginner.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/wpexplorer.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/wpforms.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/xbox.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/xing-square.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/xing.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/y-combinator.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/yahoo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/yandex-international.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/yandex.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/yelp.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/yoast.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/youtube-square.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/brands/youtube.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/address-book.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/address-card.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/angry.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/arrow-alt-circle-down.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/arrow-alt-circle-left.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/arrow-alt-circle-right.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/arrow-alt-circle-up.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/bell-slash.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/bell.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/bookmark.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/building.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/calendar-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/calendar-check.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/calendar-minus.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/calendar-plus.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/calendar-times.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/calendar.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/caret-square-down.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/caret-square-left.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/caret-square-right.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/caret-square-up.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/chart-bar.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/check-circle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/check-square.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/circle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/clipboard.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/clock.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/clone.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/closed-captioning.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/comment-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/comment-dots.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/comment.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/comments.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/compass.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/copy.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/copyright.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/credit-card.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/dizzy.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/dot-circle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/edit.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/envelope-open.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/envelope.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/eye-slash.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/eye.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/file-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/file-archive.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/file-audio.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/file-code.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/file-excel.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/file-image.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/file-pdf.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/file-powerpoint.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/file-video.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/file-word.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/file.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/flag.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/flushed.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/folder-open.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/folder.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/font-awesome-logo-full.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/frown-open.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/frown.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/futbol.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/gem.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/grimace.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/grin-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/grin-beam-sweat.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/grin-beam.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/grin-hearts.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/grin-squint-tears.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/grin-squint.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/grin-stars.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/grin-tears.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/grin-tongue-squint.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/grin-tongue-wink.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/grin-tongue.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/grin-wink.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/grin.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/hand-lizard.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/hand-paper.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/hand-peace.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/hand-point-down.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/hand-point-left.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/hand-point-right.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/hand-point-up.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/hand-pointer.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/hand-rock.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/hand-scissors.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/hand-spock.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/handshake.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/hdd.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/heart.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/hospital.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/hourglass.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/id-badge.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/id-card.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/image.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/images.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/keyboard.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/kiss-beam.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/kiss-wink-heart.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/kiss.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/laugh-beam.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/laugh-squint.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/laugh-wink.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/laugh.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/lemon.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/life-ring.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/lightbulb.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/list-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/map.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/meh-blank.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/meh-rolling-eyes.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/meh.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/minus-square.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/money-bill-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/moon.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/newspaper.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/object-group.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/object-ungroup.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/paper-plane.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/pause-circle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/play-circle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/plus-square.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/question-circle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/registered.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/sad-cry.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/sad-tear.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/save.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/share-square.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/smile-beam.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/smile-wink.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/smile.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/snowflake.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/square.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/star-half.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/star.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/sticky-note.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/stop-circle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/sun.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/surprise.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/thumbs-down.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/thumbs-up.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/times-circle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/tired.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/trash-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/user-circle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/user.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/window-close.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/window-maximize.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/window-minimize.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/regular/window-restore.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/address-book.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/address-card.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/adjust.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/align-center.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/align-justify.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/align-left.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/align-right.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/allergies.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/ambulance.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/american-sign-language-interpreting.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/anchor.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/angle-double-down.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/angle-double-left.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/angle-double-right.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/angle-double-up.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/angle-down.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/angle-left.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/angle-right.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/angle-up.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/angry.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/archive.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/archway.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/arrow-alt-circle-down.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/arrow-alt-circle-left.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/arrow-alt-circle-right.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/arrow-alt-circle-up.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/arrow-circle-down.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/arrow-circle-left.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/arrow-circle-right.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/arrow-circle-up.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/arrow-down.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/arrow-left.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/arrow-right.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/arrow-up.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/arrows-alt-h.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/arrows-alt-v.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/arrows-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/assistive-listening-systems.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/asterisk.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/at.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/atlas.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/audio-description.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/award.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/backspace.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/backward.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/balance-scale.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/ban.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/band-aid.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/barcode.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/bars.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/baseball-ball.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/basketball-ball.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/bath.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/battery-empty.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/battery-full.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/battery-half.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/battery-quarter.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/battery-three-quarters.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/bed.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/beer.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/bell-slash.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/bell.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/bezier-curve.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/bicycle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/binoculars.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/birthday-cake.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/blender.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/blind.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/bold.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/bolt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/bomb.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/bong.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/book-open.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/book.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/bookmark.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/bowling-ball.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/box-open.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/box.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/boxes.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/braille.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/briefcase-medical.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/briefcase.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/broadcast-tower.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/broom.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/brush.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/bug.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/building.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/bullhorn.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/bullseye.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/burn.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/bus-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/bus.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/calculator.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/calendar-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/calendar-check.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/calendar-minus.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/calendar-plus.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/calendar-times.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/calendar.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/camera-retro.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/camera.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/cannabis.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/capsules.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/car.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/caret-down.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/caret-left.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/caret-right.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/caret-square-down.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/caret-square-left.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/caret-square-right.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/caret-square-up.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/caret-up.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/cart-arrow-down.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/cart-plus.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/certificate.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/chalkboard-teacher.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/chalkboard.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/chart-area.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/chart-bar.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/chart-line.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/chart-pie.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/check-circle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/check-double.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/check-square.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/check.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/chess-bishop.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/chess-board.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/chess-king.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/chess-knight.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/chess-pawn.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/chess-queen.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/chess-rook.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/chess.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/chevron-circle-down.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/chevron-circle-left.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/chevron-circle-right.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/chevron-circle-up.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/chevron-down.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/chevron-left.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/chevron-right.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/chevron-up.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/child.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/church.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/circle-notch.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/circle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/clipboard-check.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/clipboard-list.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/clipboard.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/clock.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/clone.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/closed-captioning.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/cloud-download-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/cloud-upload-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/cloud.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/cocktail.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/code-branch.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/code.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/coffee.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/cog.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/cogs.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/coins.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/columns.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/comment-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/comment-dots.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/comment-slash.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/comment.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/comments.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/compact-disc.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/compass.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/compress.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/concierge-bell.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/cookie-bite.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/cookie.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/copy.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/copyright.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/couch.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/credit-card.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/crop-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/crop.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/crosshairs.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/crow.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/crown.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/cube.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/cubes.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/cut.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/database.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/deaf.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/desktop.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/diagnoses.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/dice-five.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/dice-four.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/dice-one.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/dice-six.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/dice-three.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/dice-two.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/dice.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/digital-tachograph.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/divide.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/dizzy.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/dna.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/dollar-sign.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/dolly-flatbed.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/dolly.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/donate.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/door-closed.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/door-open.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/dot-circle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/dove.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/download.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/drafting-compass.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/drum-steelpan.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/drum.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/dumbbell.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/edit.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/eject.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/ellipsis-h.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/ellipsis-v.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/envelope-open.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/envelope-square.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/envelope.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/equals.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/eraser.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/euro-sign.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/exchange-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/exclamation-circle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/exclamation-triangle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/exclamation.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/expand-arrows-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/expand.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/external-link-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/external-link-square-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/eye-dropper.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/eye-slash.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/eye.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/fast-backward.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/fast-forward.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/fax.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/feather-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/feather.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/female.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/fighter-jet.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/file-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/file-archive.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/file-audio.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/file-code.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/file-contract.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/file-download.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/file-excel.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/file-export.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/file-image.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/file-import.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/file-invoice-dollar.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/file-invoice.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/file-medical-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/file-medical.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/file-pdf.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/file-powerpoint.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/file-prescription.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/file-signature.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/file-upload.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/file-video.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/file-word.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/file.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/fill-drip.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/fill.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/film.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/filter.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/fingerprint.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/fire-extinguisher.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/fire.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/first-aid.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/fish.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/flag-checkered.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/flag.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/flask.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/flushed.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/folder-open.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/folder.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/font-awesome-logo-full.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/font.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/football-ball.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/forward.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/frog.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/frown-open.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/frown.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/futbol.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/gamepad.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/gas-pump.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/gavel.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/gem.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/genderless.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/gift.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/glass-martini-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/glass-martini.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/glasses.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/globe-africa.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/globe-americas.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/globe-asia.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/globe.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/golf-ball.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/graduation-cap.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/greater-than-equal.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/greater-than.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/grimace.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/grin-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/grin-beam-sweat.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/grin-beam.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/grin-hearts.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/grin-squint-tears.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/grin-squint.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/grin-stars.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/grin-tears.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/grin-tongue-squint.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/grin-tongue-wink.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/grin-tongue.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/grin-wink.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/grin.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/grip-horizontal.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/grip-vertical.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/h-square.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/hand-holding-heart.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/hand-holding-usd.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/hand-holding.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/hand-lizard.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/hand-paper.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/hand-peace.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/hand-point-down.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/hand-point-left.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/hand-point-right.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/hand-point-up.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/hand-pointer.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/hand-rock.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/hand-scissors.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/hand-spock.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/hands-helping.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/hands.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/handshake.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/hashtag.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/hdd.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/heading.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/headphones-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/headphones.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/headset.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/heart.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/heartbeat.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/helicopter.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/highlighter.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/history.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/hockey-puck.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/home.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/hospital-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/hospital-symbol.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/hospital.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/hot-tub.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/hotel.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/hourglass-end.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/hourglass-half.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/hourglass-start.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/hourglass.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/i-cursor.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/id-badge.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/id-card-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/id-card.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/image.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/images.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/inbox.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/indent.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/industry.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/infinity.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/info-circle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/info.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/italic.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/joint.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/key.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/keyboard.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/kiss-beam.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/kiss-wink-heart.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/kiss.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/kiwi-bird.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/language.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/laptop.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/laugh-beam.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/laugh-squint.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/laugh-wink.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/laugh.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/leaf.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/lemon.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/less-than-equal.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/less-than.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/level-down-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/level-up-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/life-ring.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/lightbulb.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/link.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/lira-sign.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/list-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/list-ol.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/list-ul.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/list.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/location-arrow.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/lock-open.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/lock.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/long-arrow-alt-down.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/long-arrow-alt-left.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/long-arrow-alt-right.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/long-arrow-alt-up.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/low-vision.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/luggage-cart.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/magic.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/magnet.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/male.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/map-marked-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/map-marked.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/map-marker-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/map-marker.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/map-pin.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/map-signs.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/map.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/marker.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/mars-double.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/mars-stroke-h.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/mars-stroke-v.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/mars-stroke.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/mars.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/medal.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/medkit.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/meh-blank.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/meh-rolling-eyes.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/meh.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/memory.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/mercury.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/microchip.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/microphone-alt-slash.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/microphone-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/microphone-slash.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/microphone.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/minus-circle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/minus-square.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/minus.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/mobile-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/mobile.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/money-bill-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/money-bill-wave-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/money-bill-wave.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/money-bill.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/money-check-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/money-check.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/monument.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/moon.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/mortar-pestle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/motorcycle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/mouse-pointer.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/music.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/neuter.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/newspaper.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/not-equal.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/notes-medical.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/object-group.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/object-ungroup.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/outdent.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/paint-brush.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/paint-roller.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/palette.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/pallet.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/paper-plane.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/paperclip.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/parachute-box.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/paragraph.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/parking.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/passport.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/paste.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/pause-circle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/pause.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/paw.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/pen-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/pen-fancy.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/pen-nib.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/pen-square.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/pen.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/pencil-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/pencil-ruler.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/people-carry.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/percent.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/percentage.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/phone-slash.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/phone-square.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/phone-volume.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/phone.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/piggy-bank.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/pills.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/plane-arrival.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/plane-departure.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/plane.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/play-circle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/play.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/plug.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/plus-circle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/plus-square.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/plus.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/podcast.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/poo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/portrait.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/pound-sign.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/power-off.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/prescription-bottle-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/prescription-bottle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/prescription.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/print.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/procedures.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/project-diagram.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/puzzle-piece.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/qrcode.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/question-circle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/question.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/quidditch.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/quote-left.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/quote-right.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/random.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/receipt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/recycle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/redo-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/redo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/registered.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/reply-all.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/reply.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/retweet.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/ribbon.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/road.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/robot.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/rocket.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/rss-square.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/rss.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/ruble-sign.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/ruler-combined.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/ruler-horizontal.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/ruler-vertical.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/ruler.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/rupee-sign.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/sad-cry.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/sad-tear.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/save.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/school.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/screwdriver.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/search-minus.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/search-plus.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/search.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/seedling.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/server.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/share-alt-square.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/share-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/share-square.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/share.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/shekel-sign.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/shield-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/ship.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/shipping-fast.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/shoe-prints.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/shopping-bag.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/shopping-basket.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/shopping-cart.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/shower.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/shuttle-van.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/sign-in-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/sign-language.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/sign-out-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/sign.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/signal.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/signature.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/sitemap.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/skull.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/sliders-h.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/smile-beam.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/smile-wink.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/smile.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/smoking-ban.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/smoking.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/snowflake.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/solar-panel.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/sort-alpha-down.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/sort-alpha-up.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/sort-amount-down.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/sort-amount-up.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/sort-down.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/sort-numeric-down.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/sort-numeric-up.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/sort-up.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/sort.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/spa.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/space-shuttle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/spinner.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/splotch.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/spray-can.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/square-full.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/square.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/stamp.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/star-half-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/star-half.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/star.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/step-backward.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/step-forward.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/stethoscope.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/sticky-note.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/stop-circle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/stop.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/stopwatch.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/store-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/store.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/stream.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/street-view.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/strikethrough.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/stroopwafel.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/subscript.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/subway.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/suitcase-rolling.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/suitcase.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/sun.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/superscript.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/surprise.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/swatchbook.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/swimmer.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/swimming-pool.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/sync-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/sync.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/syringe.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/table-tennis.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/table.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/tablet-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/tablet.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/tablets.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/tachometer-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/tag.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/tags.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/tape.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/tasks.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/taxi.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/terminal.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/text-height.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/text-width.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/th-large.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/th-list.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/th.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/thermometer-empty.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/thermometer-full.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/thermometer-half.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/thermometer-quarter.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/thermometer-three-quarters.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/thermometer.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/thumbs-down.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/thumbs-up.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/thumbtack.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/ticket-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/times-circle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/times.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/tint-slash.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/tint.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/tired.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/toggle-off.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/toggle-on.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/toolbox.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/tooth.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/trademark.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/train.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/transgender-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/transgender.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/trash-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/trash.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/tree.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/trophy.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/truck-loading.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/truck-moving.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/truck.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/tshirt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/tty.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/tv.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/umbrella-beach.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/umbrella.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/underline.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/undo-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/undo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/universal-access.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/university.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/unlink.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/unlock-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/unlock.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/upload.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/user-alt-slash.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/user-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/user-astronaut.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/user-check.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/user-circle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/user-clock.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/user-cog.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/user-edit.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/user-friends.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/user-graduate.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/user-lock.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/user-md.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/user-minus.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/user-ninja.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/user-plus.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/user-secret.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/user-shield.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/user-slash.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/user-tag.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/user-tie.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/user-times.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/user.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/users-cog.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/users.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/utensil-spoon.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/utensils.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/vector-square.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/venus-double.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/venus-mars.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/venus.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/vial.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/vials.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/video-slash.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/video.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/volleyball-ball.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/volume-down.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/volume-off.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/volume-up.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/walking.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/wallet.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/warehouse.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/weight-hanging.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/weight.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/wheelchair.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/wifi.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/window-close.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/window-maximize.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/window-minimize.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/window-restore.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/wine-glass-alt.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/wine-glass.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/won-sign.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/wrench.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/x-ray.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/svgs/solid/yen-sign.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/webfonts/fa-brands-400.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/webfonts/fa-brands-400.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/webfonts/fa-brands-400.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/webfonts/fa-brands-400.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/webfonts/fa-brands-400.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/webfonts/fa-regular-400.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/webfonts/fa-regular-400.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/webfonts/fa-regular-400.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/webfonts/fa-regular-400.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/webfonts/fa-regular-400.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/webfonts/fa-solid-900.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/webfonts/fa-solid-900.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/webfonts/fa-solid-900.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/webfonts/fa-solid-900.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/fontawesome/webfonts/fa-solid-900.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/docs.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/getting_started.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/esm/AttrPlugin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/esm/BezierPlugin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/esm/CSSPlugin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/esm/CSSRulePlugin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/esm/ColorPropsPlugin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/esm/DirectionalRotationPlugin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/esm/Draggable.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/esm/EasePack.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/esm/EaselPlugin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/esm/EndArrayPlugin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/esm/ModifiersPlugin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/esm/PixiPlugin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/esm/RoundPropsPlugin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/esm/ScrollToPlugin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/esm/TEMPLATE_Plugin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/esm/TextPlugin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/esm/TimelineLite.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/esm/TimelineMax.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/esm/TweenLite.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/esm/TweenMax.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/esm/TweenMaxBase.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/esm/all.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/esm/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/esm/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/minified/TimelineLite.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/minified/TimelineMax.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/minified/TweenLite.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/minified/TweenMax.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/minified/easing/EasePack.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/minified/jquery.gsap.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/minified/plugins/AttrPlugin.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/minified/plugins/BezierPlugin.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/minified/plugins/CSSPlugin.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/minified/plugins/CSSRulePlugin.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/minified/plugins/ColorPropsPlugin.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/minified/plugins/DirectionalRotationPlugin.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/minified/plugins/EaselPlugin.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/minified/plugins/EndArrayPlugin.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/minified/plugins/ModifiersPlugin.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/minified/plugins/PixiPlugin.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/minified/plugins/RaphaelPlugin.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/minified/plugins/RoundPropsPlugin.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/minified/plugins/ScrollToPlugin.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/minified/plugins/TextPlugin.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/minified/utils/Draggable.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/uncompressed/TimelineLite.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/uncompressed/TimelineMax.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/uncompressed/TweenLite.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/uncompressed/TweenMax.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/uncompressed/easing/EasePack.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/uncompressed/jquery.gsap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/uncompressed/plugins/AttrPlugin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/uncompressed/plugins/BezierPlugin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/uncompressed/plugins/CSSPlugin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/uncompressed/plugins/CSSRulePlugin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/uncompressed/plugins/ColorPropsPlugin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/uncompressed/plugins/DirectionalRotationPlugin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/uncompressed/plugins/EaselPlugin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/uncompressed/plugins/EndArrayPlugin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/uncompressed/plugins/ModifiersPlugin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/uncompressed/plugins/PixiPlugin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/uncompressed/plugins/RaphaelPlugin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/uncompressed/plugins/RoundPropsPlugin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/uncompressed/plugins/ScrollToPlugin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/uncompressed/plugins/TEMPLATE_Plugin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/uncompressed/plugins/TextPlugin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/greensock-js/src/uncompressed/utils/Draggable.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/logo/malle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/logo/rec.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/src/IPhone_X.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/src/andoird.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/src/au.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/src/aulogo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/src/bck.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/src/cc.JPG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/src/ccl.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/src/deals.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/src/donut.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/src/girl.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/src/gn.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/src/gnl.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/src/ios.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/src/kn.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/src/knl.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/src/lp.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/src/malls.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/src/merchant.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/avatar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/bootbox.locales.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/bootbox.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/bootstrap.bundle.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/bootstrap.bundle.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/bootstrap.bundle.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/bootstrap.bundle.min.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/bootstrap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/bootstrap.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/bootstrap.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/bootstrap.min.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/dropzone.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/jquery.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/jqueryui.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/malle.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/moment.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/popper.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/swiper.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/toastr.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/auth.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/auth.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/main/event/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/event/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/main/merchants/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/merchants/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/main/offer/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/offer/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/main/offer/offer_images.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/offer/offer_images.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/main/mall_list/mall_images.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/mall_list/mall_images.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,79 +1505,38 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="332">
-              <caret line="89" column="96" selection-start-line="89" selection-start-column="87" selection-end-line="89" selection-end-column="96" />
+            <state relative-caret-position="561">
+              <caret line="42" column="84" selection-start-line="42" selection-start-column="72" selection-end-line="42" selection-end-column="84" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/main/merchants/index.blade.php">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MallController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="491">
-              <caret line="87" lean-forward="true" selection-start-line="87" selection-end-line="87" />
+            <state relative-caret-position="485">
+              <caret line="490" column="10" selection-start-line="490" selection-start-column="10" selection-end-line="490" selection-end-column="10" />
               <folding>
-                <element signature="e#4775#4781#0#HTML" expanded="true" />
+                <element signature="e#40#59#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/LocationController.php">
+        <entry file="file://$PROJECT_DIR$/resources/views/main/mall_list/mall_images.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="73" column="15" lean-forward="true" selection-start-line="73" selection-start-column="15" selection-end-line="73" selection-end-column="15" />
-              <folding>
-                <element signature="e#40#71#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="213">
+              <caret line="173" selection-start-line="173" selection-end-line="173" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/main/merchants/merchant_locations_images.blade.php">
+        <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="47" column="60" selection-start-line="47" selection-start-column="50" selection-end-line="47" selection-end-column="60" />
-              <folding>
-                <element signature="e#1068#1088#0#HTML" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/MerchantLocation.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="553">
-              <caret line="38" column="30" lean-forward="true" selection-start-line="38" selection-start-column="30" selection-end-line="38" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/main/event/edit.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="168" column="36" lean-forward="true" selection-start-line="168" selection-start-column="4" selection-end-line="168" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/main/event/event_images.blade.php">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/EventController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="256" lean-forward="true" selection-start-line="202" selection-start-column="4" selection-end-line="256" />
-              <folding>
-                <element signature="e#40#62#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="230">
+              <caret line="56" column="10" selection-start-line="56" selection-start-column="10" selection-end-line="56" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -152,8 +1586,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/InquiryMaster.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/EnquiryController.php" />
         <option value="$PROJECT_DIR$/app/ShopperMaster.php" />
         <option value="$PROJECT_DIR$/resources/views/partials/sidebar.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/main/inquiry/index.blade.php" />
@@ -178,7 +1610,6 @@
         <option value="$PROJECT_DIR$/resources/views/main/merchants_list/merchant_info.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/main/promotions/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/main/merchants_list/merchant_images.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/main/mall_list/mall_images.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/partials/delete_model.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/main/merchants_list/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/main/timetag/time_tags.blade.php" />
@@ -191,8 +1622,6 @@
         <option value="$PROJECT_DIR$/resources/views/partials/flash_message.blade.php" />
         <option value="$PROJECT_DIR$/app/Console/Commands/BackupDatabase.php" />
         <option value="$PROJECT_DIR$/resources/views/main/mall_list/index.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/MallController.php" />
-        <option value="$PROJECT_DIR$/resources/views/main/event/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/main/offer/index.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/EventController.php" />
         <option value="$PROJECT_DIR$/resources/views/main/offer/offer_images.blade.php" />
@@ -200,9 +1629,14 @@
         <option value="$PROJECT_DIR$/app/MerchantLocationImages.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/LocationController.php" />
         <option value="$PROJECT_DIR$/app/MerchantLocation.php" />
-        <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/main/merchants/merchant_locations_images.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/main/merchants/index.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/main/event/index.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/auth/login.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/layouts/auth.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/main/mall_list/mall_images.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/MallController.php" />
       </list>
     </option>
   </component>
@@ -323,9 +1757,13 @@
             <path>
               <item name="malle" type="b2602c69:ProjectViewProjectNode" />
               <item name="malle" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="malle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="malle" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="malle" type="b2602c69:ProjectViewProjectNode" />
@@ -358,7 +1796,7 @@
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="event" type="462c0819:PsiDirectoryNode" />
+              <item name="mall_list" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="malle" type="b2602c69:ProjectViewProjectNode" />
@@ -367,6 +1805,14 @@
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="merchants" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="malle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="malle" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="parking" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="malle" type="b2602c69:ProjectViewProjectNode" />
@@ -542,18 +1988,20 @@
       <workItem from="1573121035618" duration="2599000" />
       <workItem from="1573268279947" duration="4358000" />
       <workItem from="1573372778356" duration="1404000" />
-      <workItem from="1573471678878" duration="5950000" />
+      <workItem from="1573471678878" duration="6438000" />
+      <workItem from="1574159908174" duration="12813000" />
+      <workItem from="1574218317161" duration="688000" />
+      <workItem from="1574238885741" duration="760000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="426779000" />
+    <option name="totallyTimeSpent" value="441528000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49858356" visible="true" weight="0.22550336" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49858356" visible="true" weight="0.23221476" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.50141644" side_tool="true" weight="0.32416108" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -605,50 +2053,6 @@
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.log" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/config/app.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="485">
-          <caret line="123" column="30" lean-forward="true" selection-start-line="123" selection-start-column="30" selection-end-line="123" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/auth.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="14" lean-forward="true" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/partials/image_model.blade.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/MerchantType.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/CompanyMaster.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/main/promotions/edit.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-22">
-          <caret line="4" column="29" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/croppie.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="21340" selection-start-column="21340" selection-end-column="21340" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PromotionController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4692">
@@ -681,13 +2085,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="18" column="6" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/main/mall_list/mall_images.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="458">
-          <caret line="171" column="30" selection-start-line="171" selection-start-column="30" selection-end-line="171" selection-end-column="30" />
         </state>
       </provider>
     </entry>
@@ -737,13 +2134,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="93" column="37" lean-forward="true" selection-start-line="93" selection-start-column="37" selection-end-line="93" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/main/parking/edit.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="64" column="38" selection-start-line="64" selection-start-column="38" selection-end-line="64" selection-end-column="38" />
         </state>
       </provider>
     </entry>
@@ -817,16 +2207,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MallController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1080">
-          <caret line="64" column="47" selection-start-line="64" selection-start-column="47" selection-end-line="64" selection-end-column="47" />
-          <folding>
-            <element signature="e#40#59#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/main/mall_list/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="338">
@@ -838,13 +2218,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="406">
           <caret line="31" column="24" lean-forward="true" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/main/event/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="864">
-          <caret line="54" column="39" lean-forward="true" selection-start-line="54" selection-start-column="39" selection-end-line="54" selection-end-column="39" />
         </state>
       </provider>
     </entry>
@@ -883,78 +2256,137 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/EventController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="256" lean-forward="true" selection-start-line="202" selection-start-column="4" selection-end-line="256" />
-          <folding>
-            <element signature="e#40#62#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/main/event/event_images.blade.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/main/event/edit.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="168" column="36" lean-forward="true" selection-start-line="168" selection-start-column="4" selection-end-line="168" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/MerchantLocation.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="553">
-          <caret line="38" column="30" lean-forward="true" selection-start-line="38" selection-start-column="30" selection-end-line="38" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/css/malle_style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-408" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="24" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="89" column="96" selection-start-line="89" selection-start-column="87" selection-end-line="89" selection-end-column="96" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/main/merchants/merchant_locations_images.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="47" column="60" selection-start-line="47" selection-start-column="50" selection-end-line="47" selection-end-column="60" />
-          <folding>
-            <element signature="e#1068#1088#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/css/malle_style.css" />
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/LocationController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="73" column="15" lean-forward="true" selection-start-line="73" selection-start-column="15" selection-end-line="73" selection-end-column="15" />
+        <state relative-caret-position="1156">
+          <caret line="73" column="15" selection-start-line="73" selection-start-column="15" selection-end-line="73" selection-end-column="15" />
           <folding>
             <element signature="e#40#71#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/main/merchants/merchant_locations_images.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="799">
+          <caret line="47" column="60" selection-start-line="47" selection-start-column="50" selection-end-line="47" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/MerchantLocation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="38" column="30" selection-start-line="38" selection-start-column="30" selection-end-line="38" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/main/event/edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2856">
+          <caret line="168" column="36" selection-start-line="168" selection-start-column="4" selection-end-line="168" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/main/event/event_images.blade.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/main/merchants/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="491">
-          <caret line="87" lean-forward="true" selection-start-line="87" selection-end-line="87" />
+          <caret line="87" selection-start-line="87" selection-end-line="87" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/main/event/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="30" lean-forward="true" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/main/parking/edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="24" lean-forward="true" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/main/parking/parking_images.blade.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/EventController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="38" lean-forward="true" selection-start-line="22" selection-start-column="38" selection-end-line="22" selection-end-column="38" />
           <folding>
-            <element signature="e#4775#4781#0#HTML" expanded="true" />
+            <element signature="e#40#62#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/js/dropzone.js" />
+    <entry file="file://$PROJECT_DIR$/resources/views/partials/image_model.blade.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/auth.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="21" lean-forward="true" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/auth/login.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="15" selection-start-line="20" selection-start-column="15" selection-end-line="20" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/fontawesome/svgs/regular/envelope.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="8" selection-start-line="5" selection-end-line="5" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Support/helpers.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-165">
+          <caret line="641" column="5" lean-forward="true" selection-start-line="641" selection-start-column="5" selection-end-line="641" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="42" column="84" selection-start-line="42" selection-start-column="72" selection-end-line="42" selection-end-column="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="56" column="10" selection-start-line="56" selection-start-column="10" selection-end-line="56" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/main/mall_list/mall_images.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="173" selection-start-line="173" selection-end-line="173" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MallController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="485">
+          <caret line="490" column="10" selection-start-line="490" selection-start-column="10" selection-end-line="490" selection-end-column="10" />
+          <folding>
+            <element signature="e#40#59#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

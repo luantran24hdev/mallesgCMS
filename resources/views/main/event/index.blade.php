@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="row">
-        @if(!empty($event))
+        @if(count($events) > 0)
         <div class="col-md-10">
             <div class="card card-malle">
                 <div class="card-header-malle">

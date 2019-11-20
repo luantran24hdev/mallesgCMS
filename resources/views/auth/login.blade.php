@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="card card-container">
-        <img class="img-card-admin" src="{{asset('assets/images/logo/malle.png')}}">
+        <img class="img-card-admin" src="{{asset('images/logo/malle.png')}}">
         <form class="form-admin-login" method="POST" action="{{ route('login') }}" autocomplete="off">
             @csrf
             <div class="form-group">
