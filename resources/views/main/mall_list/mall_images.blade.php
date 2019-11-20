@@ -121,7 +121,7 @@
                             @if($mall_image->image_count == $i)
 
                                 <div class="col-md-4 mb-3 pr-0">
-                                    <img class="card-img-top fit-image" src="{{$live_url.$mall_image->image_name}}" alt="image count {{$mall_image->image_count}}">
+                                    <img class="card-img-top" src="{{$live_url.$mall_image->image_name}}" alt="image count {{$mall_image->image_count}}">
                                     {{--<a  href="javascript:;" data-href="" data-method="POST" class="btn-pi-delete" data-id="">--}}
                                     <a  href="javascript:;" data-href="{{route('malls.deletemallimage',['id'=>$mall_image->mall_image_id])}}" data-method="POST" class="btn-pi-delete" data-id="{{$mall_image->image_count}}">
                                         <span class="text-danger">{{__('Delete')}}</span>
@@ -179,7 +179,7 @@
 
                     @if($mall->main_image)
                         <div class="col-md-12 mb-3 pr-0">
-                            <img class="card-img-top" src="{{ $live_url.$mall->main_image}}" alt="image count" style="width: 300px !important;" >
+                            <img class="card-img-top" src="{{ $live_url.$mall->main_image}}" alt="image count" style="width: 200px !important;" >
                             <br>
                             <a  href="javascript:;" data-href="{{route('malls.logodeleteimage',['id'=>$mall->mall_id])}}" data-method="POST" class="btn-pi-delete" data-id="{{$mall->mall_id}}">
                                 <span class="text-danger">{{__('Delete')}}</span>
