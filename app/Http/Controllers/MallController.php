@@ -431,7 +431,7 @@ class MallController extends Controller
         //return $mall->mallImage;
         $data = [
             'mall' => $mall,
-            'live_url' => env('LIVE_URL').'mall_photos/'
+            'live_url' => env('LIVE_URL').'uploads/'
         ];
 
         return view('main.mall_list.mall_images',$data);
@@ -456,7 +456,7 @@ class MallController extends Controller
             $newfilename = md5($request->mall_id."_".round(microtime(true))) . '.png';
 
             if(env('APP_ENV')=='live')
-                $file->move('../../admin/mall_photos/', $newfilename);
+                $file->move('../../admin/uploads/', $newfilename);
             else
                 $file->move('../storage/app/public/', $newfilename);
 
@@ -500,7 +500,7 @@ class MallController extends Controller
         $image = MallMaster::find($id);
 
         if(env('APP_ENV')=='live')
-            unlink('../../admin/mall_photos/'.$image->web_image);
+            unlink('../../admin/uploads/'.$image->web_image);
         else
             unlink('../storage/app/public/'.$image->web_image);
 
@@ -519,7 +519,7 @@ class MallController extends Controller
         $image = MallImage::find($id);
 
         if(env('APP_ENV')=='live')
-            unlink('../../admin/mall_photos/'.$image->image_name);
+            unlink('../../admin/uploads/'.$image->image_name);
         else
             unlink('../storage/app/public/'.$image->image_name);
 
@@ -537,7 +537,7 @@ class MallController extends Controller
         $image = MallMaster::find($id);
 
         if(env('APP_ENV')=='live')
-            unlink('../../admin/mall_photos/'.$image->main_image);
+            unlink('../../admin/uploads/'.$image->main_image);
         else
             unlink('../storage/app/public/'.$image->main_image);
 

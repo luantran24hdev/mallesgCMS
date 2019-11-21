@@ -2,11 +2,11 @@
 
 @section('content')
     <div class="row">
-        @if(count($events) > 0)
+
         <div class="col-md-10">
             <div class="card card-malle">
                 <div class="card-header-malle">
-                  {{ @$events[0]->mall->mall_name  }} Events
+                  {{ @$mall->mall_name  }} Events
 
                     <a href="{{route('malls')}}">
                     <span class="link_color" style="float: right">
@@ -20,7 +20,7 @@
                         <div class="col-md-6">
                             <input type="text" name="event_name" placeholder="Event Name" id="event_name"
                                    class="form-control" required="" list="datalist1" data-autocompleturl="">
-                            <input type="hidden" name="mall_id" value="{{$events[0]->mall_id}}">
+                            <input type="hidden" name="mall_id" value="{{$mall->mall_id}}">
                         </div>
                         <div class="col-md-2">
                             <div class="form-group">
@@ -29,7 +29,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <input type="checkbox" name="no_events" class="no_events" data-href="{{route('malls.column-update',[$events[0]->mall_id])}}" data-method="POST" @if($events[0]->mall->no_events == 'Y') checked @endif> No Events
+                                <input type="checkbox" name="no_events" class="no_events" data-href="{{route('malls.column-update',[$mall->mall_id])}}" data-method="POST" @if($mall->no_events == 'Y') checked @endif> No Events
                             </div>
                         </div>
 
@@ -51,13 +51,12 @@
                         </div>
 
                     </div>
-
                     @if(isset($events))
                         <br/>
                         <div class="row">
                             <div class="col-md-12">
                                 <table class="table table-striped malle-table" id="event-table"
-                                       data-sourceurl="{{ route('mall-events',['id'=>$events[0]->mall_id]) }}">
+                                       data-sourceurl="{{ route('mall-events',['id'=>$mall->mall_id]) }}">
                                     <thead>
                                     <th>Event Name</th>
                                     <th>Mall Name</th>
@@ -105,19 +104,13 @@
                         </div>
                     @endif
 
+
                 </div>
             </div>
         </div>
-         @else
 
-            <div class="col-md-12 mt-4">
-                <div class="alert alert-danger">
-                    <button type="button" class="close" data-dismiss="alert">×</button>
-                    No Events Found...
-                </div>
-            </div>
 
-        @endif
+
     </div>
     @include('partials.delete_model')
 @endsection

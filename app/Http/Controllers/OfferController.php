@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\MallMaster;
 use App\OfferImages;
 use App\OfferMaster;
 use Carbon\Carbon;
@@ -18,8 +19,10 @@ class OfferController extends Controller
     {
         $id = $request->get('id');
         $offers = OfferMaster::where('mall_id',$id)->get();
+        $mall = MallMaster::find($id);
 
-        $data = ['offers' => $offers];
+        $data = ['offers' => $offers,
+            'mall' => $mall];
 
         return view('main.offer.index',$data);
     }

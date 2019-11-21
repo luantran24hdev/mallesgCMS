@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\EventCategory;
 use App\EventImages;
 use App\EventMaster;
+use App\MallMaster;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -19,9 +20,11 @@ class EventController extends Controller
     {
         $id = $request->get('id');
         $events = EventMaster::where('mall_id',$id)->get();
+        $mall = MallMaster::find($id);
 
-        $data = ['events' => $events];
-
+        $data = ['events' => $events,
+        'mall' => $mall];
+        //return $mall;
         return view('main.event.index',$data);
     }
 

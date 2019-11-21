@@ -2,11 +2,11 @@
 
 @section('content')
     <div class="row">
-        @if(!empty($offer))
+
         <div class="col-md-10">
             <div class="card card-malle">
                 <div class="card-header-malle">
-                  {{ @$offers[0]->mall->mall_name  }} Offers
+                  {{ @$mall->mall_name  }} Offers
 
                     <a href="{{route('malls')}}">
                     <span class="link_color" style="float: right">
@@ -20,7 +20,7 @@
                         <div class="col-md-6">
                             <input type="text" name="offer_title" placeholder="Offer Title" id="offer_title"
                                    class="form-control" list="datalist1" data-autocompleturl="">
-                            <input type="hidden" name="mall_id" value="{{$offers[0]->mall_id}}">
+                            <input type="hidden" name="mall_id" value="{{$mall->mall_id}}">
                         </div>
                         <div class="col-md-2">
                             <div class="form-group">
@@ -30,7 +30,7 @@
 
                         <div class="col-md-3">
                             <div class="form-group">
-                                <input type="checkbox" name="no_offers" class="no_offers" data-href="{{route('malls.column-update',[$offers[0]->mall_id])}}" data-method="POST" @if($offers[0]->mall->no_offers == 'Y') checked @endif> No Offers
+                                <input type="checkbox" name="no_offers" class="no_offers" data-href="{{route('malls.column-update',[$mall->mall_id])}}" data-method="POST" @if($mall->no_offers == 'Y') checked @endif> No Offers
                             </div>
                         </div>
 
@@ -43,7 +43,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <table class="table table-striped malle-table" id="offer-table"
-                                       data-sourceurl="{{ route('mall-offers',['id'=>$offers[0]->mall_id]) }}">
+                                       data-sourceurl="{{ route('mall-offers',['id'=>$mall->mall_id]) }}">
                                     <thead>
                                     <th>Offer Title</th>
                                     <th>Mall Name</th>
@@ -91,14 +91,7 @@
                 </div>
             </div>
         </div>
-        @else
-            <div class="col-md-12 mt-4">
-                <div class="alert alert-danger">
-                    <button type="button" class="close" data-dismiss="alert">×</button>
-                    No Offers Found...
-                </div>
-            </div>
-        @endif
+
     </div>
     @include('partials.delete_model')
 @endsection
