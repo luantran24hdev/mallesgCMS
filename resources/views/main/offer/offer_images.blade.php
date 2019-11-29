@@ -2,7 +2,7 @@
     <div class="col-md-10">
         <div class="card card-malle">
             <div class="card-header-malle">
-                Images for Parking
+                Images for Event
             </div>
             <div class="card-body" id="promo-image-body1" data-sourceurl="{{route('mall-offers.edit',[$offer->offer_id])}}">
 

@@ -12,8 +12,8 @@ use App\PromotionOutlet;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
-use App\Repositories\MerchantRepository; 
-use App\Repositories\MallRepository; 
+use App\Repositories\MerchantRepository;
+use App\Repositories\MallRepository;
 
 use App\LevelMaster;
 
@@ -22,15 +22,15 @@ class MerchantController extends Controller
 {
 
     /**
-    * @var MerchantRepository
-    *
-    */
+     * @var MerchantRepository
+     *
+     */
     protected $merchant;
 
     /**
-    * @var MallRepository
-    *
-    */
+     * @var MallRepository
+     *
+     */
     protected $mall;
 
     /**
@@ -41,8 +41,8 @@ class MerchantController extends Controller
     public function __construct(MerchantRepository $merchant, MallRepository $mall)
     {
 //        /return "ddddtt";
-        $this->merchant =  $merchant; 
-        $this->mall =  $mall; 
+        $this->merchant =  $merchant;
+        $this->mall =  $mall;
     }
 
     /**
@@ -55,10 +55,10 @@ class MerchantController extends Controller
         $merchants = $this->merchant->all()->pluck('merchant_name', 'merchant_id');
 
         $data = [
-           'merchantOptions' => $merchants->toJson()
+            'merchantOptions' => $merchants->toJson()
         ];
 
-         return view('main.merchants.index',$data);
+        return view('main.merchants.index',$data);
     }
 
     /**
@@ -239,7 +239,7 @@ class MerchantController extends Controller
     }
 
     /**
-     * 
+     *
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -273,13 +273,13 @@ class MerchantController extends Controller
         $merchantOptions = $this->merchant->all()->pluck('merchant_name', 'merchant_id')->toJson() ?? [];
         $current_merchants = MerchantMaster::where('merchant_id',$id)->get() ?? [];
         $count_merchant = MerchantMaster::where('merchant_active','Y')->count();
-       // $outlate_totel = PromotionOutlet::where('merchant_id',$id)->count();
+        // $outlate_totel = PromotionOutlet::where('merchant_id',$id)->count();
         $countrys = CountryMaster::all();
 //return $current_merchant;
         $data = [
             'merchantOptions' => $merchantOptions,
             'current_merchants' => $current_merchants,
-           //'outlate_totel' => $outlate_totel,
+            //'outlate_totel' => $outlate_totel,
             'total_merchant' => $count_merchant,
             'countrys' => $countrys,
             'id' => $id
@@ -305,6 +305,8 @@ class MerchantController extends Controller
     public function merchantImages($id)
     {
 
+        //return "hello".env('APP_URL');
+
         $merchant = MerchantMaster::find($id);
 
         //return $mall->mallImage;
@@ -324,23 +326,26 @@ class MerchantController extends Controller
     {
 
         $file = $request->files->get('image');
-        try{
+        try {
 
-            if($file->getMimeType()!="image/png"){
+            if ($file->getMimeType() != "image/png") {
                 throw new \Exception("invalid file", 500);
             }
 
 
-            $newfilename = md5($request->mall_id."_".round(microtime(true))) . '.png';
+            $newfilename = md5($request->mall_id . "_" . round(microtime(true))) . '.png';
 
-            if(env('APP_ENV')=='live')
-                if(isset($request->image_count) && $request->image_count == 0){
+            if (env('APP_ENV') == 'live'){
+                if (isset($request->image_count) && $request->image_count == 0) {
                     $file->move('../../admin/uploads/', $newfilename);
-                }else{
+                    \File::copy('../../admin/uploads/'.$newfilename,'../../admin/main_merchant/'.$newfilename);
+                } else {
                     $file->move('../../admin/main_merchant/', $newfilename);
                 }
-            else
+            }
+            else {
                 $file->move('../storage/app/public/', $newfilename);
+            }
 
             if(isset($request->image_count)){
 
@@ -350,6 +355,12 @@ class MerchantController extends Controller
                 $merchant->image_count = $request->image_count;
                 $merchant->date_added = Carbon::now()->format('Y-m-d');
                 $merchant->save();
+
+                if($request->image_count == 0){
+                    $merchant = MerchantMaster::find($request->merchant_id);
+                    $merchant->merchant_logo = $newfilename;
+                    $merchant->save();
+                }
 
             }else{
                 $merchant = MerchantMaster::find($request->merchant_id);
@@ -395,14 +406,21 @@ class MerchantController extends Controller
 
         $image = MerchantImage::find($id);
 
-        if(env('APP_ENV')=='live')
-            if($image->image_count == 0){
-                unlink('../../admin/uploads/'.$image->image_name);
-            }else{
-                unlink('../../admin/main_merchant/'.$image->image_name);
+        if(env('APP_ENV')=='live') {
+            if ($image->image_count == 0) {
+                unlink('../../admin/uploads/' . $image->image_name);
+                unlink('../../admin/main_merchant/' . $image->image_name);
+            } else {
+                unlink('../../admin/main_merchant/' . $image->image_name);
             }
-        else
-            unlink('../storage/app/public/'.$image->image_name);
+        }
+        else {
+            unlink('../storage/app/public/' . $image->image_name);
+        }
+
+        $image1 = MerchantMaster::find($image->merchant_id);
+        $image1->merchant_logo = Null;
+        $image1->save();
 
         $delete = MerchantImage::destroy($id);
         return response()->json([

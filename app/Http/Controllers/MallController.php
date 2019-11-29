@@ -141,21 +141,21 @@ class MallController extends Controller
     public function show($id)
     {
         //$merchantOptions = $this->merchant->all()->pluck('merchant_name', 'merchant_id')->toJson() ?? [];
-       // $mallOptions = $this->mall->all()->pluck('mall_name', 'mall_id')->toJson() ?? [];
+        // $mallOptions = $this->mall->all()->pluck('mall_name', 'mall_id')->toJson() ?? [];
         $current_malls = MallMaster::where('mall_id',$id)->get() ?? [] ;
         $total_mall = MallMaster::where('mall_active','Y')->count();
         //$locations = $current_merchant->locations;
         //$floors = LevelMaster::all();
 //return $current_malls;
         $data = [
-           // 'merchantOptions' => $merchantOptions,
+            // 'merchantOptions' => $merchantOptions,
             'current_mallss' => $current_malls,
             'total_mall' => $total_mall,
-           /*'total_merchant' => $total_merchant,
-            'total_event' => $total_event,
-            'total_promos' => $total_promos,*/
-           // 'floors' => $floors,
-           'id' => $id
+            /*'total_merchant' => $total_merchant,
+             'total_event' => $total_event,
+             'total_promos' => $total_promos,*/
+            // 'floors' => $floors,
+            'id' => $id
         ];
 
 
@@ -211,10 +211,10 @@ class MallController extends Controller
         ],$messages);
 
         if($validator->fails()){
-           /* return response()->json([
-                'status' => 'error',
-                'message' => $validator->messages()->first()
-            ],200);*/
+            /* return response()->json([
+                 'status' => 'error',
+                 'message' => $validator->messages()->first()
+             ],200);*/
 
             return redirect()->back()->withInput()->withErrors($validator->errors());
         }
@@ -270,7 +270,7 @@ class MallController extends Controller
 
 
     /**
-     * 
+     *
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -291,7 +291,7 @@ class MallController extends Controller
         /*$this->mall->update($id, [
             request()->name => request()->value
         ]);*/
-                   $name =  $request->name;
+        $name =  $request->name;
         $mall = MallMaster::find($id);
         $mall->$name = $request->value;
         $mall->save();
@@ -304,20 +304,20 @@ class MallController extends Controller
     }
 
     public function getCity(Request $request){
-            //return $request->id;
+        //return $request->id;
 
-            $citys = CityMaster::where('country_id',$request->id)->get();
-            $mall_count = MallMaster::where('country_id',$request->id)->count();
-            $cit ='';
-            if(count($citys) > 1 ){
-                $cit.='<option value="all">All ('.$mall_count.')</option>';
-            }
+        $citys = CityMaster::where('country_id',$request->id)->get();
+        $mall_count = MallMaster::where('country_id',$request->id)->count();
+        $cit ='';
+        if(count($citys) > 1 ){
+            $cit.='<option value="all">All ('.$mall_count.')</option>';
+        }
 
-            foreach ($citys as $city){
-                $mall_by_city = MallMaster::where('city_id',$city->city_id)->where('mall_active','Y')->count();
-                $cit.='<option value="'.$city->city_id.'" title="'.$city->city_name.'">'.$city->city_name.' ('.$mall_by_city.')</option>';
-            }
-            //$city = ''
+        foreach ($citys as $city){
+            $mall_by_city = MallMaster::where('city_id',$city->city_id)->where('mall_active','Y')->count();
+            $cit.='<option value="'.$city->city_id.'" title="'.$city->city_name.'">'.$city->city_name.' ('.$mall_by_city.')</option>';
+        }
+        //$city = ''
         return response()->json([
             'status' => 'success',
             'message' => __('successfully updated mall'),
@@ -380,17 +380,17 @@ class MallController extends Controller
             $cit.='<option value="all">All </option>';
         }
 
-       foreach($mall_types as $mall_type){
+        foreach($mall_types as $mall_type){
 
-           $total = MallMaster::where('country_id',$mall_type->country_id);
-           if(isset($request->city_id)){
-               $total = $total->where('city_id',$mall_type->city_id);
-           }
-           $total = $total->where('mt_id',$mall_type->mt_id)->where('mall_active','Y')->count();
+            $total = MallMaster::where('country_id',$mall_type->country_id);
+            if(isset($request->city_id)){
+                $total = $total->where('city_id',$mall_type->city_id);
+            }
+            $total = $total->where('mt_id',$mall_type->mt_id)->where('mall_active','Y')->count();
 
             $cit.='<option value="'.@$mall_type->malltype->type_name.'" title="'.@$mall_type->malltype->type_name.'">'.@$mall_type->malltype->type_name.' ('.$total.')</option>';
 
-       }
+        }
 
         //$city = ''
         return response()->json([
@@ -410,7 +410,7 @@ class MallController extends Controller
 
         $levels = LevelMaster::all();
         //$merchant_types = MerchantType::all();
-      //return $locations;
+        //return $locations;
 
         $data = [
             'mall' => $mall,
@@ -474,6 +474,7 @@ class MallController extends Controller
 
                 if(isset($request->logo_image)) {
                     $mall->main_image = $newfilename;
+                    $mall->mall_logo = $newfilename;
                 }else{
                     $mall->web_image = $newfilename;
                 }
@@ -504,7 +505,7 @@ class MallController extends Controller
         else
             unlink('../storage/app/public/'.$image->web_image);
 
-        
+
         $image->web_image = Null;
         $image->save();
 
@@ -543,6 +544,7 @@ class MallController extends Controller
 
 
         $image->main_image = Null;
+        $image->mall_logo = Null;
         $image->save();
 
         return response()->json([
