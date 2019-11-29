@@ -61,7 +61,7 @@ class LoginController extends Controller
 
     public function logout(Request $request){
         Auth::logout();
-        return redirect('https://admin.mall-e.net/account/logout');
+        return redirect(env('APP_URL'));
     }
  
 }
