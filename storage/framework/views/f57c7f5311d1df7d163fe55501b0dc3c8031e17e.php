@@ -1,5 +1,4 @@
-@extends('layouts.app')
-@section('style')
+<?php $__env->startSection('style'); ?>
 
     <style>
         .card{
@@ -36,31 +35,31 @@
 
 
     </style>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
     <div class="row">
         <div class="col-md-10">
             <div class="card card-malle">
 
                 <div class="card-header-malle">
-                    {{ @$parking->mall_name  }} Parking Info
+                    <?php echo e(@$parking->mall_name); ?> Parking Info
 
-                    <a href="{{route('malls')}}">
+                    <a href="<?php echo e(route('malls')); ?>">
                     <span class="link_color" style="float: right">
                         Back
                     </span>
                     </a>
                 </div>
 
-                <div class="card-body" id="tag-image-body" data-sourceurl="{{route('mall-parking.edit',[$parking->mall_id])}}">
-                    <form method="PATCH" action="{{route('mall-parking.update',[$parking->mall_id])}}" id="editDiscountTag">
+                <div class="card-body" id="tag-image-body" data-sourceurl="<?php echo e(route('mall-parking.edit',[$parking->mall_id])); ?>">
+                    <form method="PATCH" action="<?php echo e(route('mall-parking.update',[$parking->mall_id])); ?>" id="editDiscountTag">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="mb-2 font-12">Paid Parking</label>
-                                    <span style="float: right"><input type="checkbox" name="no_parking_info" value="Y" @if($parking->no_parking_info == "Y") checked @endif><label class="mb-2 font-12">No Parking Info</label></span>
-                                    <textarea style="height: 300px;" type="text" name="paid_parking" id="description" value="{{$parking->paid_parking}}" class="form-control">{{$parking->paid_parking}}</textarea>
+                                    <span style="float: right"><input type="checkbox" name="no_parking_info" value="Y" <?php if($parking->no_parking_info == "Y"): ?> checked <?php endif; ?>><label class="mb-2 font-12">No Parking Info</label></span>
+                                    <textarea style="height: 300px;" type="text" name="paid_parking" id="description" value="<?php echo e($parking->paid_parking); ?>" class="form-control"><?php echo e($parking->paid_parking); ?></textarea>
 
                                 </div>
 
@@ -71,40 +70,40 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="mb-2 font-12">Free Parking</label>
-                                        <textarea style="height: 100px;" type="text" name="free_parking" id="location" class="form-control" value="{{$parking->free_parking}}">{{$parking->free_parking}}</textarea>
+                                        <textarea style="height: 100px;" type="text" name="free_parking" id="location" class="form-control" value="<?php echo e($parking->free_parking); ?>"><?php echo e($parking->free_parking); ?></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="mb-2 font-12">{{__('Grace Period')}}</label>
+                                        <label class="mb-2 font-12"><?php echo e(__('Grace Period')); ?></label>
                                         <div class="input-group mb-3">
-                                            <input type="text" value="{{$parking->grace_period}}" required="" name="grace_period" class="form-control">
+                                            <input type="text" value="<?php echo e($parking->grace_period); ?>" required="" name="grace_period" class="form-control">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-12 row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="mb-2 font-12">{{__('Parking Spaces')}}</label>
+                                            <label class="mb-2 font-12"><?php echo e(__('Parking Spaces')); ?></label>
                                             <div class="input-group mb-3">
-                                                <input type="text" value="{{$parking->total_parking}}" class="form-control" name="total_parking">
+                                                <input type="text" value="<?php echo e($parking->total_parking); ?>" class="form-control" name="total_parking">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="mb-2 font-12">{{__('Available Now')}}</label>
+                                            <label class="mb-2 font-12"><?php echo e(__('Available Now')); ?></label>
                                             <div class="input-group mb-3">
-                                                <input type="text" value="{{$parking->available_parking}}" class="form-control" name="available_parking">
+                                                <input type="text" value="<?php echo e($parking->available_parking); ?>" class="form-control" name="available_parking">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-12 ">
-                                    <label class="mb-2 font-12">{{__('Featured')}}</label>
+                                    <label class="mb-2 font-12"><?php echo e(__('Featured')); ?></label>
                                     <div class="form-group">
-                                        <input type="radio" value="Y"  name="featured_park" @if($parking->featured_park == 'Y') checked @endif> <span>Yes </span>
-                                        <input type="radio" value="N"  name="featured_park" @if($parking->featured_park == 'N') checked @endif> <span>No </span>
+                                        <input type="radio" value="Y"  name="featured_park" <?php if($parking->featured_park == 'Y'): ?> checked <?php endif; ?>> <span>Yes </span>
+                                        <input type="radio" value="N"  name="featured_park" <?php if($parking->featured_park == 'N'): ?> checked <?php endif; ?>> <span>No </span>
                                     </div>
                                 </div>
 
@@ -122,15 +121,15 @@
         </div>
     </div>
 
-     @include('main.parking.parking_images')
+     <?php echo $__env->make('main.parking.parking_images', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
-    @include('partials.image_model')
-@endsection
+    <?php echo $__env->make('partials.image_model', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<?php $__env->stopSection(); ?>
 
 
-@section('script')
-    <link rel="stylesheet" type="text/css" href="{{asset('css/croppie.css')}}">
-    <script type="text/javascript" src="{{asset('js/croppie.min.js')}}"></script>
+<?php $__env->startSection('script'); ?>
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('css/croppie.css')); ?>">
+    <script type="text/javascript" src="<?php echo e(asset('js/croppie.min.js')); ?>"></script>
     <script>
 
 
@@ -208,7 +207,7 @@
                     // Create a FormData and append the file
                     var fd = new FormData();
                     fd.append("image", blob);
-                    fd.append("mall_id", "{{@$parking->mall_id}}");
+                    fd.append("mall_id", "<?php echo e(@$parking->mall_id); ?>");
                     fd.append("image_count", image_count);
 
 
@@ -216,7 +215,7 @@
 
                     // console.log(fd);
                     $.ajax({
-                        url: "{{route('parking.uploadimage')}}",
+                        url: "<?php echo e(route('parking.uploadimage')); ?>",
                         data: fd,// the formData function is available in almost all new browsers.
                         type:"POST",
                         contentType:false,
@@ -328,4 +327,5 @@
 
 
     </script>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\adminlaravel3\resources\views/main/parking/edit.blade.php ENDPATH**/ ?>

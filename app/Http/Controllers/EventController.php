@@ -68,8 +68,8 @@ class EventController extends Controller
         $event->type = 'U';
         $event->featured = 'N';
         $event->mall_id = $request->mall_id;
-        $event->start_date = Carbon::now()->format('d/m/Y');
-        $event->end_date = Carbon::now()->format('d/m/Y');
+        $event->start_date = '';
+        $event->end_date = '';
         $event->just_1_day = '';
         $event->daily = '';
         $event->event_timing = '';
@@ -78,7 +78,7 @@ class EventController extends Controller
         $event->event_group_id	 = 0;
         $event->Open_to	 = '';
         $event->user_id = \Auth::user()->user_id;
-        $event->created_on = Carbon::now()->format('Y-m-d');
+        $event->created_on = Carbon::now()->format('d/m/Y');
         $event->save();
 
         return response()->json([

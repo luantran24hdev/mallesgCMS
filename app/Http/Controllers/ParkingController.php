@@ -110,6 +110,7 @@ class ParkingController extends Controller
         $parking->grace_period = $request->grace_period ? $request->grace_period : '10 Mins';
         $parking->total_parking = $request->total_parking ? $request->total_parking : 0;
         $parking->available_parking = $request->available_parking ? $request->available_parking : 0;
+        $parking->featured_park = $request->featured_park;
         $parking->save();
 
         return response()->json([
