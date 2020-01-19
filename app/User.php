@@ -20,11 +20,11 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'user_name', 
-        'short_name', 
-        'email_id', 
-        'lara_password', 
-        'user_type', 
+        'user_name',
+        'short_name',
+        'email_id',
+        'lara_password',
+        'user_type',
         'created_on',
         'active',
         'confirmed',
@@ -53,12 +53,12 @@ class User extends Authenticatable
     }
 
     public static function getGender($id){
-        if($id == 1){
+        if($id == 1 || $id == 'F'){
             return 'Female';
         }
         else{
             return 'Male';
         }
     }
- 
+
 }

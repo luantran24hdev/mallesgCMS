@@ -20,6 +20,7 @@
                                         <th>Gender</th>
                                         <th>Mobile #</th>
                                         <th>Email ID</th>
+                                        <th>Action</th>
                                     </thead>
                                     <tbody>
                                     @foreach($shoppers as $shopper)
@@ -29,6 +30,7 @@
                                             <td>{{ \App\User::getGender(@$shopper->Gender) }}</td>
                                             <td>{{ @$shopper->Mobile_number }}</td>
                                             <td>{{ @$shopper->Email_id }}</td>
+                                            <td><a href="{{ route('manage.edit.shoppers',$shopper->Shopper_id) }}"> Edit </a></td>
                                         </tr>
                                     @endforeach
                                     </tbody>

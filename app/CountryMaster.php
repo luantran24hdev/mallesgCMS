@@ -13,7 +13,7 @@ class CountryMaster extends Model
     public $timestamps = false;
     protected $table = 'country_master';
     protected $primaryKey = 'country_id';
-	
+
 	/**
      * The attributes that are mass assignable.
      *
@@ -51,5 +51,18 @@ class CountryMaster extends Model
         }
         return 0;
     }
-	
+
+    public static function getCountryName($id){
+
+        if(!empty($id)){
+            $country = CountryMaster::find($id);
+
+            return $country->country_name;
+        }
+
+        return '---';
+
+
+    }
+
 }

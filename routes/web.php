@@ -166,6 +166,10 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('manage/inquiry', 'EnquiryController@getInquiry')->name('manage.inquiry');
     Route::get('manage/shoppers', 'ShopperController@getShoppers')->name('manage.shoppers');
+    Route::get('manage/editshoppers/{id}', 'ShopperController@editShoppers')->name('manage.edit.shoppers');
+    Route::patch('manage/updateshoppers/{id}', 'ShopperController@updateShoppers')->name('manage.update.shoppers');
+    Route::post('shopper/uploadimage', 'ShopperController@uploadimage')->name('shopper.image.uploadimage');
+    Route::post('shopper/deleteimage/{id}', 'ShopperController@deleteimage')->name('shopper.image.deleteimage');
 
     //Mall Events
     Route::resource('mall-events', 'EventController', ['names' => [
