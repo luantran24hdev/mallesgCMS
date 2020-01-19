@@ -8,12 +8,24 @@ use Illuminate\Http\Request;
 
 class ShopperController extends Controller
 {
+    public function destroy($id)
+    {
+        $tagMaster = ShopperMaster::find($id);
+        $tagMaster->delete();
+
+        return response()->json([
+            'status' => $tagMaster ? 'success' : 'error',
+            'message' => $tagMaster ? __('succesfully deleted') : __('error deleting')
+        ],200);
+    }
+
     public function getShoppers(){
 
         $shoppers = ShopperMaster::all();
 
         $data = [
-            'shoppers' => $shoppers
+            'shoppers' => $shoppers,
+            'live_url' => env('LIVE_URL').'images/shopper/'
         ];
 
         return view('main.shoppers.index',$data);

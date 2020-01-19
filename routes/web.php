@@ -170,6 +170,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::patch('manage/updateshoppers/{id}', 'ShopperController@updateShoppers')->name('manage.update.shoppers');
     Route::post('shopper/uploadimage', 'ShopperController@uploadimage')->name('shopper.image.uploadimage');
     Route::post('shopper/deleteimage/{id}', 'ShopperController@deleteimage')->name('shopper.image.deleteimage');
+    Route::delete('shopper/delete/{id}', 'ShopperController@destroy')->name('shopper.delete');
 
     //Mall Events
     Route::resource('mall-events', 'EventController', ['names' => [

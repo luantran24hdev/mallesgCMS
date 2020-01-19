@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b78cfcb-942f-4cbe-bdc3-7ba4e2bc8d2a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/main/shoppers/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/adminlaravel3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/adminlaravel3.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/CountryMaster.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/CountryMaster.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ShopperController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ShopperController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/main/shoppers/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/shoppers/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/6e5e4e50904c683add69ce20e7651d579c5172de.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/6e5e4e50904c683add69ce20e7651d579c5172de.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +115,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/main/shoppers" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../malle_api" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -173,7 +170,8 @@
       <workItem from="1579193169753" duration="968000" />
       <workItem from="1579229729235" duration="3184000" />
       <workItem from="1579343378489" duration="12746000" />
-      <workItem from="1579405433275" duration="23000" />
+      <workItem from="1579405433275" duration="4783000" />
+      <workItem from="1579419494316" duration="1315000" />
     </task>
     <servers />
   </component>
@@ -181,14 +179,14 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="499" y="171" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1579365164337">
+    <state x="499" y="171" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1579420051019">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="499" y="171" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1579365164337" />
-    <state x="549" y="171" key="FileChooserDialogImpl" timestamp="1579169139959">
+    <state x="499" y="171" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1579420051019" />
+    <state x="549" y="171" key="FileChooserDialogImpl" timestamp="1579415890454">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="171" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1579169139959" />
+    <state x="549" y="171" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1579415890454" />
     <state x="587" y="127" key="RollbackChangesDialog" timestamp="1579078944592">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
