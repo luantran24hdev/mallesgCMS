@@ -11,6 +11,11 @@ class ShopperController extends Controller
     public function destroy($id)
     {
         $tagMaster = ShopperMaster::find($id);
+
+        if(!empty($tagMaster->image)){
+            unlink('../../admin/images/shopper/'.$tagMaster->image);
+        }
+
         $tagMaster->delete();
 
         return response()->json([

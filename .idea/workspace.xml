@@ -4,9 +4,8 @@
     <list default="true" id="5b78cfcb-942f-4cbe-bdc3-7ba4e2bc8d2a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ShopperController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ShopperController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/main/shoppers/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/shoppers/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/views/6e5e4e50904c683add69ce20e7651d579c5172de.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/6e5e4e50904c683add69ce20e7651d579c5172de.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/main/inquiry/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/inquiry/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/326892160dc387626736ee957fb661f9071c6d75.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/326892160dc387626736ee957fb661f9071c6d75.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,7 +170,17 @@
       <workItem from="1579229729235" duration="3184000" />
       <workItem from="1579343378489" duration="12746000" />
       <workItem from="1579405433275" duration="4783000" />
-      <workItem from="1579419494316" duration="1315000" />
+      <workItem from="1579419494316" duration="1770000" />
+      <workItem from="1579495789348" duration="467000" />
+      <workItem from="1579496273053" duration="1673000" />
+      <workItem from="1579513466986" duration="25000" />
+      <workItem from="1579516367322" duration="93000" />
+      <workItem from="1579517539620" duration="142000" />
+      <workItem from="1579519280863" duration="1409000" />
+      <workItem from="1579579977516" duration="1414000" />
+      <workItem from="1579594372502" duration="2193000" />
+      <workItem from="1579602638431" duration="138000" />
+      <workItem from="1579606954613" duration="969000" />
     </task>
     <servers />
   </component>
@@ -183,18 +192,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="171" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1579420051019" />
+    <state x="128" y="71" key="DiffContextDialog" timestamp="1579607254412">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="128" y="71" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1579607254412" />
     <state x="549" y="171" key="FileChooserDialogImpl" timestamp="1579415890454">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="171" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1579415890454" />
-    <state x="587" y="127" key="RollbackChangesDialog" timestamp="1579078944592">
+    <state x="587" y="127" key="RollbackChangesDialog" timestamp="1579607256268">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="587" y="127" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1579078944592" />
-    <state x="477" y="241" key="com.intellij.ide.util.TipDialog" timestamp="1579229816451">
+    <state x="587" y="127" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1579607256268" />
+    <state x="477" y="241" key="com.intellij.ide.util.TipDialog" timestamp="1579513483452">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="477" y="241" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1579229816451" />
+    <state x="477" y="241" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1579513483452" />
     <state x="473" y="46" width="590" height="732" key="find.popup" timestamp="1579102488451">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -203,9 +216,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1579233729120" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1579367693063">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1579602658222">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1579367693063" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1579602658222" />
   </component>
 </project>
