@@ -431,7 +431,8 @@ class MallController extends Controller
         //return $mall->mallImage;
         $data = [
             'mall' => $mall,
-            'live_url' => env('LIVE_URL').'uploads/'
+            'live_url' => env('LIVE_URL').'images/mall_images/',
+            'logo_url' => env('LIVE_URL').'images/mall_logo/'
         ];
 
         return view('main.mall_list.mall_images',$data);
@@ -452,15 +453,11 @@ class MallController extends Controller
                 throw new \Exception("invalid file", 500);
             }
 
-
             $newfilename = md5($request->mall_id."_".round(microtime(true))) . '.png';
 
-            if(env('APP_ENV')=='live')
-                $file->move('../../admin/uploads/', $newfilename);
-            else
-                $file->move('../storage/app/public/', $newfilename);
-
             if(isset($request->image_count)){
+
+                $file->move('../../admin/images/mall_images/', $newfilename);
 
                 $mall = new MallImage();
                 $mall->mall_id = $request->mall_id;
@@ -473,9 +470,11 @@ class MallController extends Controller
                 $mall = MallMaster::find($request->mall_id);
 
                 if(isset($request->logo_image)) {
+                    $file->move('../../admin/images/mall_logo/', $newfilename);
                     $mall->main_image = $newfilename;
                     $mall->mall_logo = $newfilename;
                 }else{
+                    $file->move('../../admin/images/mall_images/', $newfilename);
                     $mall->web_image = $newfilename;
                 }
                 $mall->save();
@@ -500,14 +499,11 @@ class MallController extends Controller
 
         $image = MallMaster::find($id);
 
-        if(env('APP_ENV')=='live')
-            unlink('../../admin/uploads/'.$image->web_image);
-        else
-            unlink('../storage/app/public/'.$image->web_image);
-
-
-        $image->web_image = Null;
-        $image->save();
+        if(!empty($image->web_image)) {
+            unlink('../../admin/images/mall_images/' . $image->web_image);
+            $image->web_image = Null;
+            $image->save();
+        }
 
         return response()->json([
             'status' => $image ? 'success' : 'error',
@@ -519,12 +515,10 @@ class MallController extends Controller
 
         $image = MallImage::find($id);
 
-        if(env('APP_ENV')=='live')
-            unlink('../../admin/uploads/'.$image->image_name);
-        else
-            unlink('../storage/app/public/'.$image->image_name);
-
-        $delete = MallImage::destroy($id);
+        if(!empty($image->image_name)) {
+            unlink('../../admin/images/mall_images/' . $image->image_name);
+            $delete = MallImage::destroy($id);
+        }
         return response()->json([
             'status' => $delete ? 'success' : 'error',
             'image_count' => @$image->image_count,
@@ -536,16 +530,14 @@ class MallController extends Controller
     {
 
         $image = MallMaster::find($id);
+        if(!empty($image->main_image)) {
 
-        if(env('APP_ENV')=='live')
-            unlink('../../admin/uploads/'.$image->main_image);
-        else
-            unlink('../storage/app/public/'.$image->main_image);
+            unlink('../../admin/images/mall_logo/' . $image->main_image);
 
-
-        $image->main_image = Null;
-        $image->mall_logo = Null;
-        $image->save();
+            $image->main_image = Null;
+            $image->mall_logo = Null;
+            $image->save();
+        }
 
         return response()->json([
             'status' => $image ? 'success' : 'error',

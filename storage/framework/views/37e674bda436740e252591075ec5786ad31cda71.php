@@ -169,7 +169,7 @@
 
                     <?php if($mall->main_image): ?>
                         <div class="col-md-12 mb-3 pr-0">
-                            <img class="card-img-top" src="<?php echo e($live_url.$mall->main_image); ?>" alt="image count" style="width: 200px !important;" >
+                            <img class="card-img-top" src="<?php echo e($logo_url.$mall->main_image); ?>" alt="image count" style="width: 200px !important;" >
                             <br>
                             <a  href="javascript:;" data-href="<?php echo e(route('malls.logodeleteimage',['id'=>$mall->mall_id])); ?>" data-method="POST" class="btn-pi-delete" data-id="<?php echo e($mall->mall_id); ?>">
                                 <span class="text-danger"><?php echo e(__('Delete')); ?></span>
@@ -288,5 +288,5 @@
 
 
 <?php $__env->stopSection(); ?>
- 
+
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\adminlaravel3\resources\views/main/mall_list/mall_images.blade.php ENDPATH**/ ?>
