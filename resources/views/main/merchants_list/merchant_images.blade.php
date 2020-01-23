@@ -138,8 +138,8 @@
                         <input type="file" id="upload_{{$i}}" data-count="{{$i}}" class="imguploader" value="Choose a file" accept="image/*" style="display: none;" >
                     @endfor
 
-                    
- 
+
+
                 </div>
 
              </div>
@@ -157,40 +157,28 @@
 
                 <div class="row" id="promo-image-content2">
                     <input type="text" id="selected_image" style="display: none;">
-                    @for($i=0;$i<1;$i++)
-                        @php
-                            $empty = true;
-                        @endphp
 
-                        @if($merchant->merchantImage)
-                            @foreach($merchant->merchantImage as $merchant_image)
-                                @if($merchant_image->image_count == $i)
+                @if(!empty($merchant->merchant_logo))
+                        <div class="col-md-4 mb-3 pr-0">
+                            <img class="card-img-top fit-image" src="{{$logo_live_url.$merchant->merchant_logo}}" alt="image count">
+                            {{--<a  href="javascript:;" data-href="" data-method="POST" class="btn-pi-delete" data-id="">--}}
+                            <a  href="javascript:;" data-href="{{route('merchants.deletelogoimage',['id'=>$merchant->merchant_id])}}" data-method="POST" class="btn-pi-delete" data-id="{{$merchant->merchant_id}}">
+                                <span class="text-danger">{{__('Delete')}}</span>
+                            </a>
+                        </div>
 
-                                    <div class="col-md-4 mb-3 pr-0">
-                                        <img class="card-img-top fit-image" src="{{$logo_live_url.$merchant_image->image_name}}" alt="image count {{$merchant_image->image_count}}">
-                                        {{--<a  href="javascript:;" data-href="" data-method="POST" class="btn-pi-delete" data-id="">--}}
-                                        <a  href="javascript:;" data-href="{{route('merchants.deletemallimage',['id'=>$merchant_image->merchant_image_id])}}" data-method="POST" class="btn-pi-delete" data-id="{{$merchant_image->image_count}}">
-                                            <span class="text-danger">{{__('Delete')}}</span>
-                                        </a>
-                                    </div>
-                                    @php
-                                        $empty = false;
-                                    @endphp
-                                @endif
 
-                            @endforeach
-                        @endif
 
-                        @if($empty)
+                       @else
                             <div class="col-md-4 mb-3 pr-0">
                                 <div class="upload-msg " style="height: 323px; max-width: 310px; width: 100%" >
-                                    <div style="display: table-cell; vertical-align: middle;" onclick="$('#upload_{{$i}}').trigger('click');">Click to upload a file </div>
+                                    <div style="display: table-cell; vertical-align: middle;" onclick="$('#upload_0').trigger('click');">Click to upload a file </div>
                                 </div>
                             </div>
-                        @endif
 
-                        <input type="file" id="upload_{{$i}}" data-count="{{$i}}" class="imguploader" value="Choose a file" accept="image/*" style="display: none;" >
-                    @endfor
+
+                        <input type="file" id="upload_0" data-count="0" class="imguploader" value="Choose a file" accept="image/*" style="display: none;" >
+                    @endif
 
 
 
@@ -401,4 +389,3 @@
 
 
 @endsection
- 

@@ -66,6 +66,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('merchants-list/uploadimage', 'MerchantController@uploadimage')->name('merchants.uploadimage');
     Route::post('merchants-list/webdeleteimage/{id}', 'MerchantController@webdeleteimage')->name('merchants.webdeleteimage');
     Route::post('merchants-list/deletemallimage/{id}', 'MerchantController@deletemallimage')->name('merchants.deletemallimage');
+    Route::post('merchants-list/deletelogoimage/{id}', 'MerchantController@deletelogoimage')->name('merchants.deletelogoimage');
 
 
     //promotions

@@ -63,7 +63,7 @@ class ParkingController extends Controller
         $data = [
             'parking' => $parkings,
             'parking_images' => $parking_images,
-            'live_url' => env('LIVE_URL').'parking_images/'
+            'live_url' => env('LIVE_URL').'images/parking/'
         ];
 
         return view('main.parking.edit',$data);
@@ -148,7 +148,7 @@ class ParkingController extends Controller
             $newfilename = md5($request->mall_id."_".round(microtime(true))) . '.png';
 
             if(env('APP_ENV')=='live')
-                $file->move('../../admin/parking_images/', $newfilename);
+                $file->move('../../admin/images/parking/', $newfilename);
             else
                 $file->move('../storage/app/public/', $newfilename);
 
@@ -176,7 +176,7 @@ class ParkingController extends Controller
         $image = ParkingImages::find($id);
 
         if(env('APP_ENV')=='live')
-            unlink('../../admin/parking_images/'.$image->parking_image);
+            unlink('../../admin/images/parking/'.$image->parking_image);
         else
             unlink('../storage/app/public/'.$image->parking_image);
 

@@ -312,8 +312,8 @@ class MerchantController extends Controller
         //return $mall->mallImage;
         $data = [
             'merchant' => $merchant,
-            'live_url' => env('LIVE_URL').'main_merchant/',
-            'logo_live_url' => env('LIVE_URL').'uploads/'
+            'live_url' => env('LIVE_URL').'images/merchant_images/',
+            'logo_live_url' => env('LIVE_URL').'images/merchant_logo/'
         ];
 
         //return $data;
@@ -332,37 +332,27 @@ class MerchantController extends Controller
                 throw new \Exception("invalid file", 500);
             }
 
-
             $newfilename = md5($request->mall_id . "_" . round(microtime(true))) . '.png';
-
-            if (env('APP_ENV') == 'live'){
-                if (isset($request->image_count) && $request->image_count == 0) {
-                    $file->move('../../admin/uploads/', $newfilename);
-                    \File::copy('../../admin/uploads/'.$newfilename,'../../admin/main_merchant/'.$newfilename);
-                } else {
-                    $file->move('../../admin/main_merchant/', $newfilename);
-                }
-            }
-            else {
-                $file->move('../storage/app/public/', $newfilename);
-            }
 
             if(isset($request->image_count)){
 
-                $merchant = new MerchantImage();
-                $merchant->merchant_id = $request->merchant_id;
-                $merchant->image_name = $newfilename;
-                $merchant->image_count = $request->image_count;
-                $merchant->date_added = Carbon::now()->format('Y-m-d');
-                $merchant->save();
-
                 if($request->image_count == 0){
+                    $file->move('../../admin/images/merchant_logo/', $newfilename);
                     $merchant = MerchantMaster::find($request->merchant_id);
                     $merchant->merchant_logo = $newfilename;
+                    $merchant->save();
+                }else{
+                    $file->move('../../admin/images/merchant_images/', $newfilename);
+                    $merchant = new MerchantImage();
+                    $merchant->merchant_id = $request->merchant_id;
+                    $merchant->image_name = $newfilename;
+                    $merchant->image_count = $request->image_count;
+                    $merchant->date_added = Carbon::now()->format('Y-m-d');
                     $merchant->save();
                 }
 
             }else{
+                $file->move('../../admin/images/merchant_images/', $newfilename);
                 $merchant = MerchantMaster::find($request->merchant_id);
                 $merchant->web_image = $newfilename;
                 $merchant->save();
@@ -387,11 +377,7 @@ class MerchantController extends Controller
 
         $image = MerchantMaster::find($id);
 
-        if(env('APP_ENV')=='live')
-            unlink('../../admin/main_merchant/'.$image->web_image);
-        else
-            unlink('../storage/app/public/'.$image->web_image);
-
+        unlink('../../admin/images/merchant_images/' . $image->web_image);
 
         $image->web_image = Null;
         $image->save();
@@ -405,28 +391,25 @@ class MerchantController extends Controller
     public function deletemallimage($id){
 
         $image = MerchantImage::find($id);
-
-        if(env('APP_ENV')=='live') {
-            if ($image->image_count == 0) {
-                unlink('../../admin/uploads/' . $image->image_name);
-                unlink('../../admin/main_merchant/' . $image->image_name);
-            } else {
-                unlink('../../admin/main_merchant/' . $image->image_name);
-            }
-        }
-        else {
-            unlink('../storage/app/public/' . $image->image_name);
-        }
-
-        $image1 = MerchantMaster::find($image->merchant_id);
-        $image1->merchant_logo = Null;
-        $image1->save();
+        unlink('../../admin/images/merchant_images/' . $image->image_name);
 
         $delete = MerchantImage::destroy($id);
         return response()->json([
             'status' => $delete ? 'success' : 'error',
             'image_count' => @$image->image_count,
             'message' => $delete ? __('succesfully deleted') : __('error deleting')
+        ],200);
+    }
+
+    public function deletelogoimage($id){
+
+        $image1 = MerchantMaster::find($id);
+        unlink('../../admin/images/merchant_logo/' . $image1->merchant_logo);
+        $image1->merchant_logo = Null;
+        $image1->save();
+        return response()->json([
+            'status' => $image1 ? 'success' : 'error',
+            'message' => $image1 ? __('succesfully deleted') : __('error deleting')
         ],200);
     }
 
