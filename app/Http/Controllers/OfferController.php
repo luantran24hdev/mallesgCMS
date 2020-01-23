@@ -108,7 +108,7 @@ class OfferController extends Controller
         $data = [
             'offer' => $offer,
             'offer_images' => $offer_images,
-            'live_url' => env('LIVE_URL').'offer_images/'
+            'live_url' => env('LIVE_URL').'images/offers/'
         ];
 
         return view('main.offer.edit',$data);
@@ -166,7 +166,7 @@ class OfferController extends Controller
         $offer_images = OfferImages::where('offer_id',$id)->get();
         foreach ($offer_images as $image){
             if(env('APP_ENV')=='live')
-                unlink('../../admin/offer_images/'.$image->Image_name);
+                unlink('../../admin/images/offers/'.$image->Image_name);
             else
                 unlink('../storage/app/public/'.$image->Image_name);
 
@@ -197,7 +197,7 @@ class OfferController extends Controller
             $newfilename = md5($request->offer_id."_".round(microtime(true))) . '.png';
 
             if(env('APP_ENV')=='live')
-                $file->move('../../admin/offer_images/', $newfilename);
+                $file->move('../../admin/images/offers/', $newfilename);
             else
                 $file->move('../storage/app/public/', $newfilename);
 
@@ -228,7 +228,7 @@ class OfferController extends Controller
         $image = OfferImages::find($id);
 
         if(env('APP_ENV')=='live')
-            unlink('../../admin/offer_images/'.$image->Image_name);
+            unlink('../../admin/images/offers/'.$image->Image_name);
         else
             unlink('../storage/app/public/'.$image->Image_name);
 

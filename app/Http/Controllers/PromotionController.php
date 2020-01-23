@@ -12,8 +12,8 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Request as sRequest;
 use Illuminate\Support\Facades\Validator;
 
-use App\Repositories\PromotionRepository; 
-use App\Repositories\MerchantRepository; 
+use App\Repositories\PromotionRepository;
+use App\Repositories\MerchantRepository;
 use App\MerchantPromoImage;
 
 use Carbon\Carbon;
@@ -36,8 +36,8 @@ class PromotionController extends Controller
      */
     public function __construct(MerchantRepository $merchant, PromotionRepository $promotion)
     {
-        $this->promotion =  $promotion;  
-        $this->merchant =  $merchant; 
+        $this->promotion =  $promotion;
+        $this->merchant =  $merchant;
     }
 
     /**
@@ -77,25 +77,25 @@ class PromotionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
+    {
         $messages = [
-            
+
         ];
- 
+
         // Start Validation
         $validator = Validator::make($request->all(), [
             'promo_name' => 'required',
             'merchant_id' => 'required',
         ],$messages);
-        
-        if($validator->fails()){ 
+
+        if($validator->fails()){
            return response()->json([
                 'status' => 'error',
                 'message' => $validator->messages()->first()
            ],200);
         }
 
-        $insert = $this->promotion->create([ 
+        $insert = $this->promotion->create([
             'user_id' => Auth::user()->user_id,
             'promo_name' => $request->promo_name,
             'merchant_id' => $request->merchant_id,
@@ -146,7 +146,7 @@ class PromotionController extends Controller
         //return $current_promo->promotion_category;
         $data = [
             'merchantOptions' => $merchantOptions,
-            'current_merchant' => $current_merchant, 
+            'current_merchant' => $current_merchant,
             'promotions' => $promotions,
             'id' => $id,
             'promo_id' => request()->promo_id ?? null,
@@ -156,7 +156,7 @@ class PromotionController extends Controller
             'promotion_categorys' => $current_promo->promotion_category ?? [],
             'promotion_images' => $current_promo->images ?? [],
             'promotion_tags' => $current_promo->promotion_tags ?? [],
-            'live_url' => env('LIVE_URL').'promos/',
+            'live_url' => env('LIVE_URL').'images/promos/',
             'mall_lists' => $mall_list,
             'sub_category_lists' => $sub_categoryies,
             'preference_lists' => $current_promo->promotion_preference ?? [],
@@ -191,7 +191,7 @@ class PromotionController extends Controller
        // try {
             $request = request();
             $messages = [
-                 
+
             ];
 
             // Start Validation
@@ -204,8 +204,8 @@ class PromotionController extends Controller
                 'start_on' => 'required',
                 'ends_on' => $request->no_end_date ? '': 'required'
             ],$messages);
-            
-            if($validator->fails()){ 
+
+            if($validator->fails()){
                return response()->json([
                     'status' => 'error',
                     'message' => $validator->messages()->first()
@@ -220,7 +220,7 @@ class PromotionController extends Controller
                 'was_amount' => $request->was_amount,
                 'start_on' => $request->start_on,
                 'ends_on' => $request->no_end_date ? "": $request->ends_on,
-                'other_offer' => $request->other_offer ?? null, 
+                'other_offer' => $request->other_offer ?? null,
                 'no_end_date' => $request->no_end_date ?? "",
                 'active' => $request->active_txt ?? "",
                 'promo_active' => $request->active_txt ?? "",
@@ -254,16 +254,16 @@ class PromotionController extends Controller
     }
 
     /**
-     * 
+     *
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function uploadimage(sRequest $request)
     {
- 
+
         $file = $request->files->get('image');
- 
+
         try{
 
             if($file->getMimeType()!="image/png"){
@@ -274,10 +274,10 @@ class PromotionController extends Controller
             $newfilename = md5($request->promo_id."_".$request->merchant_id."_".round(microtime(true))) . '.png';
 
             if(env('APP_ENV')=='live')
-                $file->move('../../admin/promos/', $newfilename);
+                $file->move('../../admin/images/promos/', $newfilename);
             else
                 $file->move('../storage/app/public/', $newfilename);
-            
+
             MerchantPromoImage::create([
                 'promo_id' => $request->promo_id,
                 'merchant_id' => $request->merchant_id,
@@ -306,11 +306,11 @@ class PromotionController extends Controller
      */
     public function deleteimage($id)
     {
-        
+
         $image = MerchantPromoImage::find($id);
 
         if(env('APP_ENV')=='live')
-                unlink('../../admin/promos/'.$image->image_name);
+                unlink('../../admin/images/promos/'.$image->image_name);
             else
                 unlink('../storage/app/public/'.$image->image_name);
 
@@ -385,6 +385,6 @@ class PromotionController extends Controller
             'id' => $id
         ],200);
     }
- 
+
 
 }

@@ -116,7 +116,7 @@ class EventController extends Controller
             'event' => $event,
             'events_categorys' =>$events_category,
             'event_images' => $event_images,
-            'live_url' => env('LIVE_URL').'event_photos/'
+            'live_url' => env('LIVE_URL').'images/events/'
         ];
 
         return view('main.event.edit',$data);
@@ -185,7 +185,7 @@ class EventController extends Controller
         foreach ($event_image as $image){
 
             if(env('APP_ENV')=='live')
-                unlink('../../admin/event_photos/'.$image->event_image);
+                unlink('../../admin/images/events/'.$image->event_image);
             else
                 unlink('../storage/app/public/'.$image->event_image);
 
@@ -217,7 +217,7 @@ class EventController extends Controller
             $newfilename = md5($request->event_id."_".round(microtime(true))) . '.png';
 
             if(env('APP_ENV')=='live')
-                $file->move('../../admin/event_photos/', $newfilename);
+                $file->move('../../admin/images/events/', $newfilename);
             else
                 $file->move('../storage/app/public/', $newfilename);
 
@@ -246,7 +246,7 @@ class EventController extends Controller
         $image = EventImages::find($id);
 
         if(env('APP_ENV')=='live')
-            unlink('../../admin/event_photos/'.$image->event_image);
+            unlink('../../admin/images/events/'.$image->event_image);
         else
             unlink('../storage/app/public/'.$image->event_image);
 
