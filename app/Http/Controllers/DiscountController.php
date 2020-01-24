@@ -97,7 +97,7 @@ class DiscountController extends Controller
 
         $data = [
             'tagMaster' => $tagMaster,
-            'live_url' => env('LIVE_URL').'tag_images/'
+            'live_url' => env('LIVE_URL').'images/stock/'
         ];
 
         return view('main.discount_tag.edit_tags',$data);
@@ -178,7 +178,7 @@ class DiscountController extends Controller
             $newfilename = md5($request->tag_id."_".round(microtime(true))) . '.png';
 
             if(env('APP_ENV')=='live')
-                $file->move('../../admin/tag_images/', $newfilename);
+                $file->move('../../admin/images/stock/', $newfilename);
             else
                 $file->move('../storage/app/public/', $newfilename);
 
@@ -205,7 +205,7 @@ class DiscountController extends Controller
         $image = TagMaster::find($id);
 
         if(env('APP_ENV')=='live')
-            unlink('../../admin/tag_images/'.$image->image);
+            unlink('../../admin/images/stock/'.$image->image);
         else
             unlink('../storage/app/public/'.$image->image);
 

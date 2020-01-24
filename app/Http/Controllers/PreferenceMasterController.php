@@ -97,7 +97,7 @@ class PreferenceMasterController extends Controller
 
         $data = [
             'tagMaster' => $tagMaster,
-            'live_url' => env('LIVE_URL').'preference_images/'
+            'live_url' => env('LIVE_URL').'images/stock/'
         ];
 
         return view('main.preference_tag.edit_tags',$data);
@@ -252,7 +252,7 @@ class PreferenceMasterController extends Controller
             $newfilename = md5($request->preference_id."_".round(microtime(true))) . '.png';
 
             if(env('APP_ENV')=='live')
-                $file->move('../../admin/preference_images/', $newfilename);
+                $file->move('../../admin/images/stock/', $newfilename);
             else
                 $file->move('../storage/app/public/', $newfilename);
 
@@ -278,7 +278,7 @@ class PreferenceMasterController extends Controller
         $image = PreferenceMaster::find($id);
 
         if(env('APP_ENV')=='live')
-            unlink('../../admin/preference_images/'.$image->image);
+            unlink('../../admin/images/stock/'.$image->image);
         else
             unlink('../storage/app/public/'.$image->image);
 

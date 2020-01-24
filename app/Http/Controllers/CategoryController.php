@@ -103,7 +103,7 @@ class CategoryController extends Controller
         $data = [
             'tagMaster' => $tagMaster,
             'categorys' => $categorys,
-            'live_url' => env('LIVE_URL').'dealcategory_images/'
+            'live_url' => env('LIVE_URL').'images/stock/'
         ];
 
         return view('main.category_tag.edit_tags',$data);
@@ -186,7 +186,7 @@ class CategoryController extends Controller
             $newfilename = md5($request->sub_category_id."_".round(microtime(true))) . '.png';
 
             if(env('APP_ENV')=='live')
-                $file->move('../../admin/dealcategory_images/', $newfilename);
+                $file->move('../../admin/images/stock/', $newfilename);
             else
                 $file->move('../storage/app/public/', $newfilename);
 
@@ -213,7 +213,7 @@ class CategoryController extends Controller
         $image = SubCategoryMaster::find($id);
 
         if(env('APP_ENV')=='live')
-            unlink('../../admin/dealcategory_images/'.$image->image);
+            unlink('../../admin/images/stock/'.$image->image);
         else
             unlink('../storage/app/public/'.$image->image);
 

@@ -97,7 +97,7 @@ class PromotionOutletsController extends Controller
             'promotion_days' => $current_promo->promotion_days ?? [],
             'promotion_images' => $current_promo->images ?? [],
             'promotion_tags' => $current_promo->promotion_tags ?? [],
-            'live_url' => env('LIVE_URL'),
+            'live_url' => env('LIVE_URL').'images/promos/',
             'outlate_data' => $outlate_data,
             'promotions_out_days'=>$promotion_outlate_days,
             'time_data' => $time_data,
