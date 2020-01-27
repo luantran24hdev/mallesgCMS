@@ -19,7 +19,9 @@
             <li class="list-group-item"><a class="malle-link" href="<?php echo e(route('category-tags')); ?>"><?php echo e(__('Category Tags')); ?></a></li>
             <li class="list-group-item"><a class="malle-link" href="<?php echo e(route('manage.inquiry')); ?>"><?php echo e(__('Manage Inquiry')); ?></a></li>
             <li class="list-group-item"><a class="malle-link" href="<?php echo e(route('manage.shoppers')); ?>"><?php echo e(__('Manage Shoppers')); ?></a></li>
+            <li class="list-group-item"><a class="malle-link" href="<?php echo e(route('country')); ?>"><?php echo e(__('Manage Country')); ?></a></li>
         </ul>
-        
+
     </div>
-</div><?php /**PATH C:\xampp\htdocs\adminlaravel3\resources\views/partials/sidebar.blade.php ENDPATH**/ ?>
+</div>
+<?php /**PATH C:\xampp\htdocs\adminlaravel3\resources\views/partials/sidebar.blade.php ENDPATH**/ ?>

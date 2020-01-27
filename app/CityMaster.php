@@ -20,4 +20,14 @@ class CityMaster extends Model
     protected $fillable = [
 
     ];
+
+    public static function getCityName($id){
+        if(!empty($id)){
+            $city = CityMaster::find($id);
+
+            return $city->city_name;
+        }
+
+        return '---';
+    }
 }

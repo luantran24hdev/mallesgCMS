@@ -206,4 +206,15 @@ Route::group(['middleware' => 'auth'], function () {
     ]]);
     Route::post('merchant-type/uploadimage', 'MerchantTypeController@uploadimage')->name('merchanttype.uploadimage');
     Route::post('merchant-type/deleteimage/{id}', 'MerchantTypeController@deleteimage')->name('merchanttype.deleteimage');
+
+    Route::resource('country', 'CountryController', ['names' => [
+        'index' => 'country'
+    ]]);
+    Route::resource('city', 'CityController', ['names' => [
+        'index' => 'city'
+    ]]);
+    Route::resource('town', 'TownController', ['names' => [
+        'index' => 'town'
+    ]]);
+
 });
