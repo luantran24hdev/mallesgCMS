@@ -194,4 +194,16 @@ Route::group(['middleware' => 'auth'], function () {
     ]]);
     Route::post('parking/uploadimage', 'ParkingController@uploadimage')->name('parking.uploadimage');
     Route::post('parking/deleteimage/{id}', 'ParkingController@deleteimage')->name('parking.deleteimage');
+
+    Route::resource('mall-type', 'MallTypeController', ['names' => [
+        'index' => 'mall-type'
+    ]]);
+    Route::post('malltype/uploadimage', 'MallTypeController@uploadimage')->name('malltype.uploadimage');
+    Route::post('malltype/deleteimage/{id}', 'MallTypeController@deleteimage')->name('malltype.deleteimage');
+
+    Route::resource('merchant-type', 'MerchantTypeController', ['names' => [
+        'index' => 'merchant-type'
+    ]]);
+    Route::post('merchant-type/uploadimage', 'MerchantTypeController@uploadimage')->name('merchanttype.uploadimage');
+    Route::post('merchant-type/deleteimage/{id}', 'MerchantTypeController@deleteimage')->name('merchanttype.deleteimage');
 });

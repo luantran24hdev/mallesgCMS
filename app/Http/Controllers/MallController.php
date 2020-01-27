@@ -261,10 +261,15 @@ class MallController extends Controller
      */
     public function destroy($id)
     {
-        $delete = $this->mall->destroy($id);
+        //$delete = $this->mall->destroy($id);
+
+        $mallmaster = $this->mall->find($id);
+        $mall = MallMaster::deleteMallData($id);
+
+        $mallmaster->delete();
         return response()->json([
-            'status' => $delete ? 'success' : 'error',
-            'message' => $delete ? __('succesfully deleted') : __('error deleting')
+            'status' => $mall ? 'success' : 'error',
+            'message' => $mall ? __('succesfully deleted') : __('error deleting')
         ],200);
     }
 

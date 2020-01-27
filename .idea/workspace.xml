@@ -2,11 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b78cfcb-942f-4cbe-bdc3-7ba4e2bc8d2a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/main/mall_list/edit_malltype.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/main/mall_list/malltype.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/main/merchants_list/edit_merchanttype.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/main/merchants_list/merchanttype.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CategoryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DiscountController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DiscountController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PreferenceMasterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PreferenceMasterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PromotionOutletsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PromotionOutletsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MallController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MallController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/MallMaster.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/MallMaster.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/main/mall_list/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/mall_list/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/main/merchants_list/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/merchants_list/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/21408b24a28bfd9763dfa2e924f86ea07287b6f4.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/21408b24a28bfd9763dfa2e924f86ea07287b6f4.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/46012800a5aa06f76f385c07687f252c5737193e.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/46012800a5aa06f76f385c07687f252c5737193e.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/c11d36ed67933ae2230cf11dfef76fe112f64e33.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/c11d36ed67933ae2230cf11dfef76fe112f64e33.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,13 +123,15 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../malle_api" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/main/merchants_list" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\adminlaravel3\resources\views\main\merchants_list" />
+      <recent name="C:\xampp\htdocs\adminlaravel3\resources\views\main\mall_list" />
       <recent name="C:\xampp\htdocs\adminlaravel3\resources\views\main\shoppers" />
     </key>
   </component>
@@ -188,6 +198,10 @@
       <workItem from="1579769698324" duration="7358000" />
       <workItem from="1579798366148" duration="973000" />
       <workItem from="1579840847334" duration="756000" />
+      <workItem from="1579884377436" duration="1038000" />
+      <workItem from="1579920705186" duration="629000" />
+      <workItem from="1579923505670" duration="17243000" />
+      <workItem from="1580023659410" duration="5537000" />
     </task>
     <servers />
   </component>
@@ -195,26 +209,26 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="499" y="171" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1579420051019">
+    <state x="499" y="171" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1579945608226">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="499" y="171" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1579420051019" />
-    <state x="128" y="71" key="DiffContextDialog" timestamp="1579789232623">
+    <state x="499" y="171" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1579945608226" />
+    <state x="128" y="71" key="DiffContextDialog" timestamp="1579923831977">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="128" y="71" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1579789232623" />
+    <state x="128" y="71" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1579923831977" />
     <state x="549" y="171" key="FileChooserDialogImpl" timestamp="1579415890454">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="171" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1579415890454" />
-    <state x="587" y="127" key="RollbackChangesDialog" timestamp="1579789235039">
+    <state x="587" y="127" key="RollbackChangesDialog" timestamp="1579923833499">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="587" y="127" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1579789235039" />
-    <state x="477" y="241" key="com.intellij.ide.util.TipDialog" timestamp="1579753019287">
+    <state x="587" y="127" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1579923833499" />
+    <state x="477" y="241" key="com.intellij.ide.util.TipDialog" timestamp="1580023788024">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="477" y="241" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1579753019287" />
+    <state x="477" y="241" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1580023788024" />
     <state x="473" y="46" width="590" height="732" key="find.popup" timestamp="1579798542831">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -223,9 +237,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1579233729120" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1579841353174">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1579949405307">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1579841353174" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1579949405307" />
   </component>
 </project>

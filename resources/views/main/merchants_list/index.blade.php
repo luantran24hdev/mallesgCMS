@@ -21,7 +21,10 @@
 <div class="row">
     <div class="col-md-10">
         <div class="card card-malle">
-            <div class="card-header-malle">{{__('Manage Merchants')}} ({{@$total_merchant}})</div>
+            <div class="card-header-malle">
+                <a href="{{route('merchants.list')}}"> {{__('Manage Merchants')}} ({{@$total_merchant}})</a>
+                <a style="margin-left: 50px" href="{{route('merchant-type')}}">{{__('Merchant Types')}}</a>
+            </div>
             <div class="card-body">
                 <form method="POST" action="{{ route('merchants.store') }}" id="InsertMerchants">
                     <div class="row merch_out">
@@ -239,7 +242,7 @@
             });
         },
           select: function(event, ui) {
-            $("#merchant_name").val(ui.item.label); 
+            $("#merchant_name").val(ui.item.label);
             window.location.href = '{{route("merchants.list.show")}}/'+ui.item.value;
 
             return false;
@@ -259,8 +262,8 @@
             });
         },
           select: function(event, ui) {
-             $("#mall_name").val(ui.item.label); 
-             $("#mall_id").val(ui.item.value); 
+             $("#mall_name").val(ui.item.label);
+             $("#mall_id").val(ui.item.value);
              return false;
           }
     });
@@ -274,46 +277,46 @@
 
         $.ajax({
             url: url,
-            type: type,       
+            type: type,
             dataType:'json',
             data:data,
             success:function(data){
                 if(data.status==='error'){
                     alert(data.message);
-                }else{  
+                }else{
                     $('#location-table tbody').remove();
                     $("#location-table").load( $('#location-table').attr('data-sourceurl') +" #location-table tbody");
                     toastr.success("Successfully Added!");
-                }   
+                }
             }
         });
- 
-    });   
+
+    });
 
     // delete
     $(document).on('click', '.btn-delete', function(e){
         e.preventDefault();
-        var btndelete = $(this); 
- 
+        var btndelete = $(this);
+
         $('#deletelocationmodal').modal('show');
 
         $('#btnDeleteLocation').unbind().click(function(){
 
             $.ajax({
                 url: btndelete.attr('data-href'),
-                type: btndelete.attr('data-method'),       
+                type: btndelete.attr('data-method'),
                 dataType:'json',
                 success:function(data){
                     if(data.status==='error'){
                         toastr.error(data.message);
-                    }else{  
+                    }else{
                         $('#deletelocationmodal').modal('hide');
                         $('.row-location[data-id="'+btndelete.attr('data-id')+'"]').remove();
                         toastr.success(data.message);
-                    }   
+                    }
                 }
             });
-                 
+
         });
     });
 

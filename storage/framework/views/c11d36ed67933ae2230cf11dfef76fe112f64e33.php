@@ -16,7 +16,12 @@
 <div class="row">
     <div class="col-md-10">
         <div class="card card-malle">
-            <div class="card-header-malle"><?php echo e(__('Manage Malls')); ?> (<?php echo e(@$total_mall); ?>)</div>
+
+            <div class="card-header-malle">
+               <a href="<?php echo e(route('malls')); ?>"><?php echo e(__('Manage Malls')); ?> (<?php echo e(@$total_mall); ?>)</a>
+                <a style="margin-left: 50px" href="<?php echo e(route('mall-type')); ?>"><?php echo e(__('Mall Types')); ?></a>
+            </div>
+
             <div class="card-body">
 
             <form method="POST" action="<?php echo e(route('malls.store')); ?>" id="InsertMalls">
@@ -376,7 +381,7 @@
             });
         },
           select: function(event, ui) {
-             $("#mall_name").val(ui.item.label); 
+             $("#mall_name").val(ui.item.label);
              $("#mall_id").val(ui.item.value);
               window.location.href = '<?php echo e(route("malls")); ?>/'+ui.item.value;
              return false;
@@ -392,47 +397,47 @@
 
         $.ajax({
             url: url,
-            type: type,       
+            type: type,
             dataType:'json',
             data:data,
             success:function(data){
                 if(data.status==='error'){
                     alert(data.message);
-                }else{  
+                }else{
                     $('#location-table tbody').remove();
                     $("#location-table").load( $('#location-table').attr('data-sourceurl') +" #location-table tbody");
                     toastr.success("Successfully Added!");
-                }   
+                }
             }
         });
- 
-    });   
+
+    });
 
     // delete
     $(document).on('click', '.btn-delete', function(e){
         e.preventDefault();
-        var btndelete = $(this); 
- 
+        var btndelete = $(this);
+
         $('#deletelocationmodal').modal('show');
 
         $('#btnDeleteLocation').unbind().click(function(){
 
             $.ajax({
                 url: btndelete.attr('data-href'),
-                type: btndelete.attr('data-method'),       
+                type: btndelete.attr('data-method'),
                 dataType:'json',
                 success:function(data){
                     if(data.status==='error'){
                         toastr.error(data.message);
-                    }else{  
+                    }else{
                         $('#deletelocationmodal').modal('hide');
                         $('.row-location[data-id="'+btndelete.attr('data-id')+'"]').remove();
                         toastr.success(data.message);
                         window.location.href = '<?php echo e(route('malls')); ?>';
-                    }   
+                    }
                 }
             });
-                 
+
         });
     });
 
@@ -476,4 +481,5 @@
   });
   </script>
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\adminlaravel3\resources\views/main/mall_list/index.blade.php ENDPATH**/ ?>
