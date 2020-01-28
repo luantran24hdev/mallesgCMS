@@ -94,10 +94,16 @@
                         @foreach($current_merchants as $current_merchant)
                             <tr class="row-location" data-id="{{$current_merchant->merchant_id}}">
                                 <td>{{$current_merchant->merchant_name}}
-                                <br><br><span class="link_color"><a href="{{ route('merchants.edit',[$current_merchant->merchant_id]) }}"> Main Info </a> </span>  <span class="link_color" style="float: right"><a href="{{ route('merchants.images',['merchants'=>$current_merchant->merchant_id]) }}"> Images</a></span>
+                                <br><br><span class="link_color"><a href="{{ route('merchants.edit',[$current_merchant->merchant_id]) }}"><b> Main Info</b> </a> </span>
                                 </td>
-                                <td>{{ @$current_merchant->city->city_name }}</td>
-                                <td>{{ $current_merchant->country->country_name }}</td>
+                                <td>{{ @$current_merchant->city->city_name }}
+                                    <br><br>
+                                    <span class="link_color"><a href="{{ route('merchants.images',['merchants'=>$current_merchant->merchant_id]) }}"> <b>Images</b></a></span>
+                                </td>
+                                <td>{{ $current_merchant->country->country_name }}
+                                    <br><br>
+                                    <span class="link_color"><a href="{{ route('merchant-contact.show',$current_merchant->merchant_id) }}"> <b>Contacts</b></a></span>
+                                </td>
                                 <td>{{ $current_merchant->merchanttype->type }}</td>
                                 <td>
                                     <span style="display: none"> {{ $current_merchant->beta }} </span>

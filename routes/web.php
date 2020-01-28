@@ -216,5 +216,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('town', 'TownController', ['names' => [
         'index' => 'town'
     ]]);
+    Route::resource('merchant-contact', 'MerchantContactController', ['names' => [
+        'index' => 'merchant-contact'
+    ]]);
 
 });

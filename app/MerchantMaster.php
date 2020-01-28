@@ -13,7 +13,7 @@ class MerchantMaster extends Model
     public $timestamps = false;
     protected $table = 'merchant_master';
     protected $primaryKey = 'merchant_id';
-	
+
 	/**
      * The attributes that are mass assignable.
      *
@@ -93,9 +93,15 @@ class MerchantMaster extends Model
         return $this->hasMany(MerchantImage::class, 'merchant_id', 'merchant_id');
     }
 
+    public static function getMerchantName($id){
+        if(!empty($id)){
+            $mercahnt = MerchantMaster::find($id);
+            return $mercahnt->merchant_name;
+        }
+        return "---";
+    }
 
 
 
 
-    
 }
