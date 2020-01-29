@@ -22,7 +22,8 @@
         <div class="col-md-10">
             <div class="card card-malle">
                 <div class="card-header-malle">
-                   {{__('Main Category Tags')}}
+                    <a href="{{ route('category.header') }}"> {{__('Category Headers')}}</a>
+                    <a href="{{ route('category-tags') }}" style="margin-left: 70px;">{{__('Main Category Tags')}}</a>
                 </div>
                 <div class="card-body merch_out">
                     <form method="POST" action="{{route('category-tags.store')}}" id="addCategoryTag">

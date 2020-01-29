@@ -225,4 +225,58 @@ class CategoryController extends Controller
             'message' => $image ? __('succesfully deleted') : __('error deleting')
         ],200);
     }
+
+
+    public  function categoryHeader(){
+        $category = CategoryMaster::all();
+
+        $data = [
+            'categorys' => $category
+        ];
+
+        return view('main.category_tag.category_header',$data);
+    }
+
+    public function categoryHeaderStore(Request $request){
+        $messages = [
+            'Category_name.required'    => 'Tag name field is required'
+        ];
+
+        // Start Validation
+        $validator = \Validator::make($request->all(), [
+            'Category_name' => 'required|unique:category_master',
+        ],$messages);
+
+        if($validator->fails()){
+            return response()->json([
+                'status' => 'error',
+                'message' => $validator->messages()->first()
+            ],200);
+        }
+
+
+        $tag_master = new CategoryMaster();
+        $tag_master->Category_name = $request->Category_name;
+        $tag_master->Created_on = Carbon::now()->format('Y-m-d');
+        $tag_master->Created_by = \Auth::user()->user_id;
+        $tag_master->save();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => __('successfully added!'),
+            //'tag_name' => $request->time_name,
+            //'id' => $time_master->time_id
+        ],200);
+    }
+
+    public function categoryHeaderDelete($id)
+    {
+        $tagMaster = CategoryMaster::find($id);
+        $tagMaster->delete();
+
+        return response()->json([
+            'status' => $tagMaster ? 'success' : 'error',
+            'message' => $tagMaster ? __('succesfully deleted') : __('error deleting')
+        ],200);
+    }
 }

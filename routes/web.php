@@ -165,6 +165,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('tags/uploadimage', 'CategoryController@uploadimage')->name('category.tag.uploadimage');
     Route::post('tags/deleteimage/{id}', 'CategoryController@deleteimage')->name('category.tag.deleteimage');
 
+    Route::get('category-header', 'CategoryController@categoryHeader')->name('category.header');
+    Route::post('category-header/store', 'CategoryController@categoryHeaderStore')->name('category.header.store');
+    Route::delete('category-header/delete/{id}', 'CategoryController@categoryHeaderDelete')->name('category.header.delete');
+
+
     Route::get('manage/inquiry', 'EnquiryController@getInquiry')->name('manage.inquiry');
     Route::get('manage/shoppers', 'ShopperController@getShoppers')->name('manage.shoppers');
     Route::get('manage/editshoppers/{id}', 'ShopperController@editShoppers')->name('manage.edit.shoppers');

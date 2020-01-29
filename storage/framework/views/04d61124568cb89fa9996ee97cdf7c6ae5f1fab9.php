@@ -21,28 +21,17 @@
         <div class="col-md-10">
             <div class="card card-malle">
                 <div class="card-header-malle">
-                    <a href="<?php echo e(route('category.header')); ?>"> <?php echo e(__('Category Headers')); ?></a>
-                    <a href="<?php echo e(route('category-tags')); ?>" style="margin-left: 70px;"><?php echo e(__('Main Category Tags')); ?></a>
+                   <a href="<?php echo e(route('category.header')); ?>"> <?php echo e(__('Category Headers')); ?></a>
+                   <a href="<?php echo e(route('category-tags')); ?>" style="margin-left: 70px;"><?php echo e(__('Main Category Tags')); ?></a>
                 </div>
                 <div class="card-body merch_out">
-                    <form method="POST" action="<?php echo e(route('category-tags.store')); ?>" id="addCategoryTag">
+                    <form method="POST" action="<?php echo e(route('category.header.store')); ?>" id="addCategoryTag">
                     <div class="row">
                         <div class="col-md-3">
-                            <input type="text" name="Sub_Category_name" placeholder="Enter Category Tag" id="sub_category_name"
-                                   class="form-control" required="" list="datalist1" data-autocompleturl="<?php echo e(route('category.tag.search')); ?>">
+                            <input type="text" name="Category_name" placeholder="Enter Category Name" id="sub_category_name"
+                                   class="form-control" required="">
                         </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <select id="main_category_select" name="Category_id">
-                                    <?php if(!empty($categorys)): ?>
-                                        <option value="">Select Main Category</option>
-                                        <?php $__currentLoopData = $categorys; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                            <option value="<?php echo e($category->Category_id); ?>"><?php echo e($category->Category_name); ?></option>
-                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                    <?php endif; ?>
-                                </select>
-                            </div>
-                        </div>
+
                         <div class="col-md-2">
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary" id="out-form">Update</button>
@@ -52,30 +41,27 @@
                     </div>
                     </form>
 
-                    <?php if(isset($sub_cats)): ?>
+                    <?php if(isset($categorys)): ?>
                         <br/>
                         <div class="row">
                             <div class="col-md-12">
                                 <table class="table table-striped malle-table" id="category-tag-table"
-                                       data-sourceurl="<?php echo e(route('category-tags')); ?>">
+                                       data-sourceurl="<?php echo e(route('category.header')); ?>">
                                     <thead>
                                     <th>Category Name</th>
-                                    <th>Main Category</th>
                                     <th>Action</th>
                                     </thead>
                                     <tbody>
-                                    <?php $__currentLoopData = $sub_cats; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sub_cat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <tr class="row-location" data-id="<?php echo e(@$sub_cat->sub_category_id); ?>">
-                                        <td><?php echo e(@$sub_cat->Sub_Category_name); ?></td>
-                                        <td><?php echo e(@$sub_cat->category->Category_name); ?></td>
+                                    <?php $__currentLoopData = $categorys; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <tr class="row-location" data-id="<?php echo e(@$category->Category_id); ?>">
+                                        <td><?php echo e(@$category->Category_name); ?></td>
 
                                         <td>
-                                            <a href="<?php echo e(route('category-tags.edit',[$sub_cat->sub_category_id])); ?>"><span class="text-info">Edit</span></a>
-                                            |
+
                                             <a href="javascript:;"
-                                               data-href="<?php echo e(route('category-tags.destroy',[$sub_cat->sub_category_id])); ?>"
+                                               data-href="<?php echo e(route('category.header.delete',[$category->Category_id])); ?>"
                                                data-method="DELETE" class="btn-delete"
-                                               data-id="<?php echo e($sub_cat->sub_category_id); ?>">
+                                               data-id="<?php echo e($category->Category_id); ?>">
                                                 <span class="text-danger">Delete</span>
                                             </a>
                                         </td>
@@ -177,4 +163,4 @@
     </script>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\adminlaravel3\resources\views/main/category_tag/category_tags.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\adminlaravel3\resources\views/main/category_tag/category_header.blade.php ENDPATH**/ ?>
