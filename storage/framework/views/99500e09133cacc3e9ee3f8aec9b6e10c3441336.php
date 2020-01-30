@@ -2,10 +2,7 @@
     <div class="row">
         <div class="col-md-10">
             <div class="card card-malle">
-                <div class="card-header-malle">
-                    <a href="<?php echo e(route('malls')); ?>"><?php echo e(__('Manage Malls')); ?> (<?php echo e(@$malls); ?>)</a>
-                    <a style="margin-left: 50px" href="<?php echo e(route('mall-type')); ?>"><?php echo e(__('Mall Types')); ?></a>
-                </div>
+                <?php echo $__env->make('main.mall_list.mall_menu', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                 <div class="card-body">
                     <form method="POST" action="<?php echo e(route('mall-type.store')); ?>" id="addMalltype">
                         <div class="row">

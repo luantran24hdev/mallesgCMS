@@ -100,7 +100,6 @@
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </select>
                                     </div>
-                                    <input type="hidden" name="town_id" id="town_id" value="<?= $mall['town_id'] ?>">
                                 </div>
 
                             </div>
@@ -326,4 +325,5 @@
 */
   </script>
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\adminlaravel3\resources\views/main/mall_list/mall_info.blade.php ENDPATH**/ ?>

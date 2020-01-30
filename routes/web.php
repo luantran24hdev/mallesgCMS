@@ -225,4 +225,9 @@ Route::group(['middleware' => 'auth'], function () {
         'index' => 'merchant-contact'
     ]]);
 
+    Route::resource('mall-owner', 'MallOwnerController', ['names' => [
+        'index' => 'mall-owner'
+    ]]);
+    Route::get('mall-owner/search/{name?}', 'MallOwnerController@search')->name('mall-owner.search');
+
 });

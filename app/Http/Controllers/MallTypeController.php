@@ -20,7 +20,7 @@ class MallTypeController extends Controller
 
         $data = [
             'mall_types' => $mall_types,
-            'malls' => $malls,
+            'total_mall' => $malls,
         ];
 
         return view('main.mall_list.malltype',$data);

@@ -101,7 +101,6 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <input type="hidden" name="town_id" id="town_id" value="<?= $mall['town_id'] ?>">
                                 </div>
 
                             </div>

@@ -19,10 +19,7 @@
     <div class="col-md-10">
         <div class="card card-malle">
 
-            <div class="card-header-malle">
-               <a href="{{route('malls')}}">{{__('Manage Malls')}} ({{ @$total_mall }})</a>
-                <a style="margin-left: 50px" href="{{route('mall-type')}}">{{__('Mall Types')}}</a>
-            </div>
+            @include('main.mall_list.mall_menu')
 
             <div class="card-body">
 
