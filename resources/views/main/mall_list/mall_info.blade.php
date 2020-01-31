@@ -36,7 +36,9 @@
 
             <div class="col-md-12">
                 <div class="card card-malle">
-                    <div class="card-header-malle">Mall Info</div>
+                    <div class="card-header-malle">Mall Info
+                    <a href="{{ route('malls') }}" style="float: right">Back</a>
+                    </div>
                     <div class="card-body">
                         <form  method="post" action="{{ route('malls.update',[$mall->mall_id]) }}">
 
@@ -165,7 +167,9 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="mb-2 font-12">Mall Managed By</label><br>
-                                        <input type="text" name="managed_by" class="form-control" placeholder="Mall Managed By" value="{{ $mall->managed_by }}">
+                                        <input type="text" name="managed_by" placeholder="Enter Company Name"
+                                               class="form-control" id="managed_by" value="{{ \App\MallOwner::getOwnerName($mall->managed_by) }}" list="datalist1" data-autocompleturl="{{route('mall-owner.search')}}">
+                                        <input type="hidden" name="managed_by" id="mo_id" value="">
                                     </div>
                                     <div class="form-group">
                                         <label class="mb-2 font-12">About Us</label>
@@ -317,6 +321,24 @@
             }
         });
 
+    });
+
+    $( "#managed_by" ).autocomplete({
+        source: function (request, response) {
+            $.getJSON($("#managed_by").attr('data-autocompleturl') +'/' + request.term, function (data) {
+                response($.map(data, function (value, key) {
+                    return {
+                        label: value,
+                        value: key
+                    };
+                }));
+            });
+        },
+        select: function(event, ui) {
+            $("#managed_by").val(ui.item.label);
+            $("#mo_id").val(ui.item.value);
+            return false;
+        }
     });
 
    /* $(document).ready(function() {

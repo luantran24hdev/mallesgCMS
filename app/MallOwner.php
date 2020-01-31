@@ -16,4 +16,13 @@ class MallOwner extends Model
             ->orderBy('mall_owner_name')
             ->pluck('mall_owner_name','mo_id');
     }
+
+    public static function getOwnerName($id){
+        if(!empty($id)){
+            $name = MallOwner::find($id);
+            return $name->mall_owner_name;
+        }
+
+        return "";
+    }
 }

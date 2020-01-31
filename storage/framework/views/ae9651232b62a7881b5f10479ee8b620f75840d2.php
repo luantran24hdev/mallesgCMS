@@ -67,6 +67,7 @@
 
                                                 <br><br>
                                             <span style="float: left" class="link_color"><a href="<?php echo e(route('mall-owner.edit',[$owner->mo_id])); ?>"><b>Main Info</b></a></span>
+                                                <span style="margin-left: 20px" class="link_color"><a href="<?php echo e(route('mall-owner.show',[$owner->mo_id])); ?>"><b>Malls Owned</b></a></span>
                                             </td>
                                             <td><?php echo e(\App\CityMaster::getCityName(@$owner->city_id)); ?></td>
 

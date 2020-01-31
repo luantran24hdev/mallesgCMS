@@ -89,7 +89,14 @@ class MallOwnerController extends Controller
      */
     public function show($id)
     {
-        //
+        $malllist = MallMaster::where('managed_by',$id)->get();
+        $owner = MallOwner::find($id);
+        $data = [
+            'malllists' => $malllist,
+            'owner'=>$owner,
+        ];
+
+        return view('main.mall_list.show_owner',$data);
     }
 
     /**

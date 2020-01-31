@@ -67,6 +67,7 @@
                                             <td>{{ @$owner->mall_owner_name }}
                                                 <br><br>
                                             <span style="float: left" class="link_color"><a href="{{route('mall-owner.edit',[$owner->mo_id])}}"><b>Main Info</b></a></span>
+                                                <span style="margin-left: 20px" class="link_color"><a href="{{route('mall-owner.show',[$owner->mo_id])}}"><b>Malls Owned</b></a></span>
                                             </td>
                                             <td>{{ \App\CityMaster::getCityName(@$owner->city_id) }}</td>
 

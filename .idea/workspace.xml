@@ -2,18 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b78cfcb-942f-4cbe-bdc3-7ba4e2bc8d2a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/main/mall_list/edit_mallowner.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/main/mall_list/mall_menu.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/main/mall_list/owner.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/main/mall_list/show_owner.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MallTypeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MallTypeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/main/mall_list/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/mall_list/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MallOwnerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MallOwnerController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/MallOwner.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/MallOwner.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/main/mall_list/mall_info.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/mall_list/mall_info.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/main/mall_list/malltype.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/mall_list/malltype.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/main/mall_list/owner.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/mall_list/owner.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storage/framework/views/723345529762c0b0e041170edefcc8604c97dad9.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/723345529762c0b0e041170edefcc8604c97dad9.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/views/99500e09133cacc3e9ee3f8aec9b6e10c3441336.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/99500e09133cacc3e9ee3f8aec9b6e10c3441336.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/views/c11d36ed67933ae2230cf11dfef76fe112f64e33.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/c11d36ed67933ae2230cf11dfef76fe112f64e33.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/ae9651232b62a7881b5f10479ee8b620f75840d2.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/ae9651232b62a7881b5f10479ee8b620f75840d2.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,6 +117,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/main/mall_list" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -213,6 +210,8 @@
       <workItem from="1580309422330" duration="7480000" />
       <workItem from="1580357505409" duration="4089000" />
       <workItem from="1580373411153" duration="288000" />
+      <workItem from="1580396219980" duration="826000" />
+      <workItem from="1580444245289" duration="2837000" />
     </task>
     <servers />
   </component>
@@ -248,9 +247,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1579233729120" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1580361073004">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1580445232730">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1580361073004" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1580445232730" />
   </component>
 </project>
