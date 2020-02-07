@@ -58,7 +58,8 @@
                                         <td>{{ @$category->Category_name }}</td>
 
                                         <td>
-
+                                            <a href="{{route('category-tags.show',[$category->Category_id])}}"><span class="text-info">Edit</span></a>
+                                            |
                                             <a href="javascript:;"
                                                data-href="{{route('category.header.delete',[$category->Category_id])}}"
                                                data-method="DELETE" class="btn-delete"

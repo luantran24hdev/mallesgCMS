@@ -65,7 +65,7 @@ class CategoryController extends Controller
         $tag_master = new SubCategoryMaster();
         $tag_master->Category_id = $request->Category_id;
         $tag_master->Sub_Category_name = $request->Sub_Category_name;
-        $tag_master->Created_on = Carbon::now()->format('Y-m-d');
+        $tag_master->Created_on = Carbon::now()->format('d/m/y');
         $tag_master->Created_by = \Auth::user()->user_id;
         $tag_master->image = '';
         $tag_master->save();
@@ -86,7 +86,14 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $categorys = CategoryMaster::find($id);
+
+        $data = [
+            'categorys' => $categorys,
+            'live_url' => env('LIVE_URL').'images/stock/'
+        ];
+
+        return view('main.category_tag.edit_category_header',$data);
     }
 
     /**
@@ -140,7 +147,7 @@ class CategoryController extends Controller
         $tag_master = SubCategoryMaster::find($id);
         $tag_master->Sub_Category_name = $request->Sub_Category_name;
         $tag_master->Category_id = $request->Category_id;
-        $tag_master->Created_on = Carbon::now()->format('Y-m-d');
+        $tag_master->Created_on = Carbon::now()->format('d/m/y');
         $tag_master->Created_by = \Auth::user()->user_id;
         $tag_master->save();
 
@@ -257,7 +264,7 @@ class CategoryController extends Controller
 
         $tag_master = new CategoryMaster();
         $tag_master->Category_name = $request->Category_name;
-        $tag_master->Created_on = Carbon::now()->format('Y-m-d');
+        $tag_master->Created_on = Carbon::now()->format('d/m/y');
         $tag_master->Created_by = \Auth::user()->user_id;
         $tag_master->save();
 
@@ -272,11 +279,106 @@ class CategoryController extends Controller
     public function categoryHeaderDelete($id)
     {
         $tagMaster = CategoryMaster::find($id);
+        if(!empty($tagMaster->image)){
+            unlink('../../admin/images/stock/'.$tagMaster->image);
+        }
         $tagMaster->delete();
 
         return response()->json([
             'status' => $tagMaster ? 'success' : 'error',
             'message' => $tagMaster ? __('succesfully deleted') : __('error deleting')
+        ],200);
+    }
+
+
+    public function headerSearch($name){
+        return CategoryMaster::search($name);
+    }
+
+    public function headerUploadimage(Request $request)
+    {
+        $file = $request->files->get('image');
+        try{
+
+            if($file->getMimeType()!="image/png"){
+                throw new \Exception("invalid file", 500);
+            }
+
+
+            $newfilename = md5($request->Category_id."_".round(microtime(true))) . '.png';
+
+            if(env('APP_ENV')=='live')
+                $file->move('../../admin/images/stock/', $newfilename);
+            else
+                $file->move('../storage/app/public/', $newfilename);
+
+
+            $tag = CategoryMaster::find($request->Category_id);
+            $tag->image = $newfilename;
+            $tag->save();
+
+
+        } catch (QueryException $e) {
+            throw new \Exception($e->getMessage(), 500, $e);
+        }
+
+        return response()->json([
+            'status' => 'success' ,
+            'message' =>__('succesfully uploaded'),
+            'file' => env("LIVE_URL").$newfilename
+        ],200);
+
+    }
+
+    public function headerDeleteimage($id){
+
+        $image = CategoryMaster::find($id);
+
+        if(env('APP_ENV')=='live')
+            unlink('../../admin/images/stock/'.$image->image);
+        else
+            unlink('../storage/app/public/'.$image->image);
+
+        $image->image = '';
+        $image->save();
+
+        return response()->json([
+            'status' => $image ? 'success' : 'error',
+            'message' => $image ? __('succesfully deleted') : __('error deleting')
+        ],200);
+    }
+
+    public function headerUpdate(Request $request, $id)
+    {
+        $messages = [
+            'Category_name.required'    => 'Category name field is required'
+        ];
+
+        // Start Validation
+        $validator = \Validator::make($request->all(), [
+            'Category_name' => 'required|unique:category_master,Category_name,'.$id.',Category_id',
+        ],$messages);
+
+
+
+        if($validator->fails()){
+            return response()->json([
+                'status' => 'error',
+                'message' => $validator->messages()->first()
+            ],200);
+        }
+
+        $tag_master = CategoryMaster::find($id);
+        $tag_master->Category_name = $request->Category_name;
+        $tag_master->Created_on = Carbon::now()->format('d/m/y');
+        $tag_master->Created_by = \Auth::user()->user_id;
+        $tag_master->save();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => __('successfully Updated!'),
+            //'tag_name' => $request->time_name,
+            //'id' => $time_master->time_id
         ],200);
     }
 }

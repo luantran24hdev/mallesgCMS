@@ -169,6 +169,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('category-header/store', 'CategoryController@categoryHeaderStore')->name('category.header.store');
     Route::delete('category-header/delete/{id}', 'CategoryController@categoryHeaderDelete')->name('category.header.delete');
 
+    Route::patch('category-header/update/{id}', 'CategoryController@headerUpdate')->name('category.header.update');
+    Route::get('category-header/search/{name?}', 'CategoryController@headerSearch')->name('category.header.search');
+    Route::post('category-header/uploadimage', 'CategoryController@headerUploadimage')->name('category.header.uploadimage');
+    Route::post('category-header/deleteimage/{id}', 'CategoryController@headerDeleteimage')->name('category.header.deleteimage');
+
 
     Route::get('manage/inquiry', 'EnquiryController@getInquiry')->name('manage.inquiry');
     Route::get('manage/shoppers', 'ShopperController@getShoppers')->name('manage.shoppers');
