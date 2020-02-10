@@ -20,7 +20,8 @@ class CategoryController extends Controller
         $categorys = CategoryMaster::all();
         $data = [
             'sub_cats' => $sub_cats,
-            'categorys' => $categorys
+            'categorys' => $categorys,
+            'live_url'=>env('LIVE_URL').'images/stock/'
         ];
 
         return view('main.category_tag.category_tags',$data);
@@ -238,7 +239,8 @@ class CategoryController extends Controller
         $category = CategoryMaster::all();
 
         $data = [
-            'categorys' => $category
+            'categorys' => $category,
+            'live_url' => env('LIVE_URL').'images/stock/'
         ];
 
         return view('main.category_tag.category_header',$data);

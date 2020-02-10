@@ -49,12 +49,20 @@
                                 <table class="table table-striped malle-table" id="category-tag-table"
                                        data-sourceurl="{{ route('category.header') }}">
                                     <thead>
+                                    <th></th>
                                     <th>Category Name</th>
                                     <th>Action</th>
                                     </thead>
                                     <tbody>
                                     @foreach($categorys as $category)
                                     <tr class="row-location" data-id="{{@$category->Category_id}}">
+                                        <td>
+                                        @if(!empty($category->image))
+                                            <img src="{{ $live_url.$category->image }}" width="50px" height="50px">
+                                        @else
+                                            <i class="fa fa-picture-o" aria-hidden="true" style="font-size: 50px;"></i>
+                                        @endif
+                                        </td>
                                         <td>{{ @$category->Category_name }}</td>
 
                                         <td>

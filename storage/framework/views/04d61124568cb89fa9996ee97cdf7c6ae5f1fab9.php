@@ -48,12 +48,20 @@
                                 <table class="table table-striped malle-table" id="category-tag-table"
                                        data-sourceurl="<?php echo e(route('category.header')); ?>">
                                     <thead>
+                                    <th></th>
                                     <th>Category Name</th>
                                     <th>Action</th>
                                     </thead>
                                     <tbody>
                                     <?php $__currentLoopData = $categorys; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <tr class="row-location" data-id="<?php echo e(@$category->Category_id); ?>">
+                                        <td>
+                                        <?php if(!empty($category->image)): ?>
+                                            <img src="<?php echo e($live_url.$category->image); ?>" width="50px" height="50px">
+                                        <?php else: ?>
+                                            <i class="fa fa-picture-o" aria-hidden="true" style="font-size: 50px;"></i>
+                                        <?php endif; ?>
+                                        </td>
                                         <td><?php echo e(@$category->Category_name); ?></td>
 
                                         <td>

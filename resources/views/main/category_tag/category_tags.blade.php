@@ -60,6 +60,7 @@
                                 <table class="table table-striped malle-table" id="category-tag-table"
                                        data-sourceurl="{{ route('category-tags') }}">
                                     <thead>
+                                    <th></th>
                                     <th>Category Name</th>
                                     <th>Main Category</th>
                                     <th>Action</th>
@@ -67,6 +68,13 @@
                                     <tbody>
                                     @foreach($sub_cats as $sub_cat)
                                     <tr class="row-location" data-id="{{@$sub_cat->sub_category_id}}">
+                                        <td>
+                                            @if(!empty($sub_cat->image))
+                                                <img src="{{ $live_url.$sub_cat->image }}" width="50px" height="50px">
+                                            @else
+                                                <i class="fa fa-picture-o" aria-hidden="true" style="font-size: 50px;"></i>
+                                            @endif
+                                        </td>
                                         <td>{{ @$sub_cat->Sub_Category_name }}</td>
                                         <td>{{ @$sub_cat->category->Category_name }}</td>
 

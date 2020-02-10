@@ -59,6 +59,7 @@
                                 <table class="table table-striped malle-table" id="category-tag-table"
                                        data-sourceurl="<?php echo e(route('category-tags')); ?>">
                                     <thead>
+                                    <th></th>
                                     <th>Category Name</th>
                                     <th>Main Category</th>
                                     <th>Action</th>
@@ -66,6 +67,13 @@
                                     <tbody>
                                     <?php $__currentLoopData = $sub_cats; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sub_cat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <tr class="row-location" data-id="<?php echo e(@$sub_cat->sub_category_id); ?>">
+                                        <td>
+                                            <?php if(!empty($sub_cat->image)): ?>
+                                                <img src="<?php echo e($live_url.$sub_cat->image); ?>" width="50px" height="50px">
+                                            <?php else: ?>
+                                                <i class="fa fa-picture-o" aria-hidden="true" style="font-size: 50px;"></i>
+                                            <?php endif; ?>
+                                        </td>
                                         <td><?php echo e(@$sub_cat->Sub_Category_name); ?></td>
                                         <td><?php echo e(@$sub_cat->category->Category_name); ?></td>
 
