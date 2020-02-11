@@ -29,12 +29,20 @@
                                 <table class="table table-striped malle-table"  id="mall_type-table"
                                        data-sourceurl="<?php echo e(route('merchant-type')); ?>">
                                     <thead>
+                                    <th></th>
                                     <th>Merchant Type</th>
                                     <th>Action</th>
                                     </thead>
                                     <tbody>
                                     <?php $__currentLoopData = $merchant_types; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $merchant_type): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <tr class="row-location" data-id="<?php echo e(@$merchant_type->mt_id); ?>">
+                                            <td>
+                                                <?php if(!empty($merchant_type->image)): ?>
+                                                    <img src="<?php echo e($live_url.$merchant_type->image); ?>" width="50px" height="50px">
+                                                <?php else: ?>
+                                                    <i class="fa fa-picture-o" aria-hidden="true" style="font-size: 50px;"></i>
+                                                <?php endif; ?>
+                                            </td>
                                             <td><?php echo e(@$merchant_type->type); ?></td>
 
                                             <td>

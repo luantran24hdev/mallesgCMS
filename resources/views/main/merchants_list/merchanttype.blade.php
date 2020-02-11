@@ -31,12 +31,20 @@
                                 <table class="table table-striped malle-table"  id="mall_type-table"
                                        data-sourceurl="{{ route('merchant-type') }}">
                                     <thead>
+                                    <th></th>
                                     <th>Merchant Type</th>
                                     <th>Action</th>
                                     </thead>
                                     <tbody>
                                     @foreach($merchant_types as $merchant_type)
                                         <tr class="row-location" data-id="{{@$merchant_type->mt_id}}">
+                                            <td>
+                                                @if(!empty($merchant_type->image))
+                                                    <img src="{{ $live_url.$merchant_type->image }}" width="50px" height="50px">
+                                                @else
+                                                    <i class="fa fa-picture-o" aria-hidden="true" style="font-size: 50px;"></i>
+                                                @endif
+                                            </td>
                                             <td>{{ @$merchant_type->type }}</td>
 
                                             <td>
