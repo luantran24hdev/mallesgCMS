@@ -42,9 +42,10 @@
                                     @if(!empty($countrys))
                                         @foreach($countrys as $country)
                                             <?php $country_total = \App\CountryMaster::totalCountryMerchant($country->country_id);?>
-                                            <option value="{{ $country->country_name }}">{{ $country->country_name }} ({{ $country_total }})</option>
+                                            <option value="{{ $country->country_id }}" title="{{ $country->country_name }}">{{ $country->country_name }} ({{ $country_total }})</option>
                                         @endforeach
                                     @endif
+                                        <input type="hidden" name="country_id" class="merchant_country_id" value="">
                                 </select>
                             </div>
                         </div>
@@ -56,9 +57,10 @@
                                         <option value="all">All ({{ @$total_merchant }})</option>
                                         @foreach($merchant_types as $merchant_type)
                                             <?php $type_total = \App\MerchantType::totalTypeMerchant($merchant_type->mt_id);?>
-                                            <option value="{{ $merchant_type->type }}">{{ $merchant_type->type }} ({{ $type_total }})</option>
+                                            <option value="{{ $merchant_type->mt_id }}" title="{{ $merchant_type->type }}">{{ $merchant_type->type }} ({{ $type_total }})</option>
                                         @endforeach
                                     @endif
+                                    <input type="hidden" name="mt_id" class="merchant_type_id" value="">
                                 </select>
                             </div>
                         </div>
@@ -198,7 +200,10 @@
         '<?php } ?>'
 
         $('#country_select').on('select2:select', function (e) {
-            var val = e.params.data.id;
+
+            var val = e.params.data.title;
+            var id = e.params.data.id;
+            $('.merchant_country_id').val(id);
             dataTables.columns(2).search(val).draw();
 
 
@@ -206,8 +211,9 @@
 
         $('#merchant_type').on('select2:select', function (e) {
             // $("#time_dow_id").val(e.params.data.id);
-            var val = e.params.data.id;
-
+            var val = e.params.data.title;
+            var id = e.params.data.id;
+            $('.merchant_type_id').val(id);
             //console.log(e.params.data.text);
             if(val=='all'){
                 dataTables.columns(3).search("").draw();

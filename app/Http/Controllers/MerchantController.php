@@ -98,12 +98,13 @@ class MerchantController extends Controller
         $merchant = new MerchantMaster();
         $merchant->merchant_name = $request->merchant_name;
         $merchant->city_id = 0;
-        $merchant->country_id = 1;
+        $merchant->country_id = ($request->country_id) ? $request->country_id : 1;
         $merchant->town_id = 0;
         $merchant->company_id = 0;
-        $merchant->mt_id = 1;
+        $merchant->mt_id = ($request->mt_id) ? $request->mt_id : 1;
         $merchant->featured = 'N';
         $merchant->youtube = '';
+        $merchant->merchant_active = 'N';
         $merchant->save();
 
         return response()->json([

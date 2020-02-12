@@ -29,13 +29,29 @@
                                 <table class="table table-striped malle-table" id="discount-tag-table"
                                        data-sourceurl="<?php echo e(route('discount-tags')); ?>">
                                     <thead>
+                                    <th></th>
                                     <th>Tag Type</th>
+                                    <th>Favorite</th>
                                     <th>Action</th>
                                     </thead>
                                     <tbody>
                                     <?php $__currentLoopData = $tags_master; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag_master): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <tr class="row-location" data-id="<?php echo e(@$tag_master->tag_id); ?>">
+                                        <td>
+                                            <?php if(!empty($tag_master->image)): ?>
+                                                <img src="<?php echo e($live_url.$tag_master->image); ?>" width="50px" height="50px">
+                                            <?php else: ?>
+                                                <i class="fa fa-picture-o" aria-hidden="true" style="font-size: 50px;"></i>
+                                            <?php endif; ?>
+                                        </td>
                                         <td><?php echo e(@$tag_master->tag_name); ?></td>
+
+                                        <td>
+                                            <select name="favorite" id="" class="tag_column_update dd-orange" data-href="<?php echo e(route('tag.column-update',[$tag_master->tag_id])); ?>" data-method="POST">
+                                                <option value="N" <?php if($tag_master->favorite=='N'): ?> selected <?php endif; ?>>No</option>
+                                                <option value="Y" <?php if($tag_master->favorite=='Y'): ?> selected <?php endif; ?>>Yes</option>
+                                            </select>
+                                        </td>
 
                                         <td>
                                             <a href="<?php echo e(route('discount-tags.edit',[$tag_master->tag_id])); ?>"><span class="text-info">Edit</span></a>
@@ -139,6 +155,40 @@
             }
         });
 
+
+        $(document).on('change', '.tag_column_update', function(e){
+            e.preventDefault();
+            //debugger;
+            var selectOp = $(this);
+            var attrName = selectOp.attr("name");
+
+            $.ajax({
+                url: selectOp.attr('data-href'),
+                type: selectOp.attr('data-method'),
+                dataType:'json',
+                data: {
+                    name : selectOp.attr('name'),
+                    value : selectOp.find('option:selected').val()
+                },
+                success:function(data){
+                    console.log(data);
+                    if(data.status==='error'){
+                        errorReturn(data)
+                    }else{
+                        //$('#merchant-list-table tbody').remove();
+                        //  $("#merchant-list-table").load( $('#merchant-list-table').attr('data-sourceurl') +" #merchant-list-table");
+                        toastr.success(data.message);
+                    }
+                },
+                error: function(data){
+                    console.log(data);
+                    exeptionReturn(data);
+                }
+            });
+
+        });
+
     </script>
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\adminlaravel3\resources\views/main/discount_tag/discount_tags.blade.php ENDPATH**/ ?>

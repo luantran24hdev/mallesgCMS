@@ -17,7 +17,8 @@ class DiscountController extends Controller
     {
         $tags_master = TagMaster::all();
         $data = [
-            'tags_master' => $tags_master
+            'tags_master' => $tags_master,
+            'live_url' => env('LIVE_URL').'images/stock/'
         ];
 
         return view('main.discount_tag.discount_tags',$data);
@@ -215,6 +216,20 @@ class DiscountController extends Controller
         return response()->json([
             'status' => $image ? 'success' : 'error',
             'message' => $image ? __('succesfully deleted') : __('error deleting')
+        ],200);
+    }
+
+    public function columnUpdate($id){
+        $name = request()->name;
+        $tag = TagMaster::find($id);
+        $tag->$name = request()->value;
+        $tag->save();
+
+
+        return response()->json([
+            'status' => 'success',
+            'message' => __('successfully updated '. request()->name),
+            'id' => $id
         ],200);
     }
 }

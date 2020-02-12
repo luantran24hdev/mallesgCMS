@@ -41,9 +41,10 @@
                                     <?php if(!empty($countrys)): ?>
                                         <?php $__currentLoopData = $countrys; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $country): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                             <?php $country_total = \App\CountryMaster::totalCountryMerchant($country->country_id);?>
-                                            <option value="<?php echo e($country->country_name); ?>"><?php echo e($country->country_name); ?> (<?php echo e($country_total); ?>)</option>
+                                            <option value="<?php echo e($country->country_id); ?>" title="<?php echo e($country->country_name); ?>"><?php echo e($country->country_name); ?> (<?php echo e($country_total); ?>)</option>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     <?php endif; ?>
+                                        <input type="hidden" name="country_id" class="merchant_country_id" value="">
                                 </select>
                             </div>
                         </div>
@@ -55,9 +56,10 @@
                                         <option value="all">All (<?php echo e(@$total_merchant); ?>)</option>
                                         <?php $__currentLoopData = $merchant_types; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $merchant_type): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                             <?php $type_total = \App\MerchantType::totalTypeMerchant($merchant_type->mt_id);?>
-                                            <option value="<?php echo e($merchant_type->type); ?>"><?php echo e($merchant_type->type); ?> (<?php echo e($type_total); ?>)</option>
+                                            <option value="<?php echo e($merchant_type->mt_id); ?>" title="<?php echo e($merchant_type->type); ?>"><?php echo e($merchant_type->type); ?> (<?php echo e($type_total); ?>)</option>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     <?php endif; ?>
+                                    <input type="hidden" name="mt_id" class="merchant_type_id" value="">
                                 </select>
                             </div>
                         </div>
@@ -197,7 +199,10 @@
         '<?php } ?>'
 
         $('#country_select').on('select2:select', function (e) {
-            var val = e.params.data.id;
+
+            var val = e.params.data.title;
+            var id = e.params.data.id;
+            $('.merchant_country_id').val(id);
             dataTables.columns(2).search(val).draw();
 
 
@@ -205,8 +210,9 @@
 
         $('#merchant_type').on('select2:select', function (e) {
             // $("#time_dow_id").val(e.params.data.id);
-            var val = e.params.data.id;
-
+            var val = e.params.data.title;
+            var id = e.params.data.id;
+            $('.merchant_type_id').val(id);
             //console.log(e.params.data.text);
             if(val=='all'){
                 dataTables.columns(3).search("").draw();

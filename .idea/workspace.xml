@@ -3,9 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="5b78cfcb-942f-4cbe-bdc3-7ba4e2bc8d2a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MerchantTypeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MerchantTypeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/main/merchants_list/merchanttype.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/merchants_list/merchanttype.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/views/3922e219b565e2f61ea00a5ac98ad7ae7bdbefdd.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/3922e219b565e2f61ea00a5ac98ad7ae7bdbefdd.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DiscountController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DiscountController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MerchantController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MerchantController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/main/discount_tag/discount_tags.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/discount_tag/discount_tags.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/main/merchants_list/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/merchants_list/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/21408b24a28bfd9763dfa2e924f86ea07287b6f4.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/21408b24a28bfd9763dfa2e924f86ea07287b6f4.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/4bd81f2d6b87cc5f53a19e89c0e75bb7fb34f801.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/4bd81f2d6b87cc5f53a19e89c0e75bb7fb34f801.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -217,6 +221,8 @@
       <workItem from="1581328121970" duration="195000" />
       <workItem from="1581419261962" duration="569000" />
       <workItem from="1581420356300" duration="229000" />
+      <workItem from="1581422234150" duration="3419000" />
+      <workItem from="1581517370364" duration="251000" />
     </task>
     <servers />
   </component>
@@ -252,9 +258,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1579233729120" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1581419525372">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1581425678960">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1581419525372" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1581425678960" />
   </component>
 </project>

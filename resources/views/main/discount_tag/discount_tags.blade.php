@@ -30,13 +30,29 @@
                                 <table class="table table-striped malle-table" id="discount-tag-table"
                                        data-sourceurl="{{ route('discount-tags') }}">
                                     <thead>
+                                    <th></th>
                                     <th>Tag Type</th>
+                                    <th>Favorite</th>
                                     <th>Action</th>
                                     </thead>
                                     <tbody>
                                     @foreach($tags_master as $tag_master)
                                     <tr class="row-location" data-id="{{@$tag_master->tag_id}}">
+                                        <td>
+                                            @if(!empty($tag_master->image))
+                                                <img src="{{ $live_url.$tag_master->image }}" width="50px" height="50px">
+                                            @else
+                                                <i class="fa fa-picture-o" aria-hidden="true" style="font-size: 50px;"></i>
+                                            @endif
+                                        </td>
                                         <td>{{ @$tag_master->tag_name }}</td>
+
+                                        <td>
+                                            <select name="favorite" id="" class="tag_column_update dd-orange" data-href="{{route('tag.column-update',[$tag_master->tag_id])}}" data-method="POST">
+                                                <option value="N" @if($tag_master->favorite=='N') selected @endif>No</option>
+                                                <option value="Y" @if($tag_master->favorite=='Y') selected @endif>Yes</option>
+                                            </select>
+                                        </td>
 
                                         <td>
                                             <a href="{{route('discount-tags.edit',[$tag_master->tag_id])}}"><span class="text-info">Edit</span></a>
@@ -138,6 +154,39 @@
                // window.location.href = '{{route("malls")}}/'+ui.item.value;
                 return false;
             }
+        });
+
+
+        $(document).on('change', '.tag_column_update', function(e){
+            e.preventDefault();
+            //debugger;
+            var selectOp = $(this);
+            var attrName = selectOp.attr("name");
+
+            $.ajax({
+                url: selectOp.attr('data-href'),
+                type: selectOp.attr('data-method'),
+                dataType:'json',
+                data: {
+                    name : selectOp.attr('name'),
+                    value : selectOp.find('option:selected').val()
+                },
+                success:function(data){
+                    console.log(data);
+                    if(data.status==='error'){
+                        errorReturn(data)
+                    }else{
+                        //$('#merchant-list-table tbody').remove();
+                        //  $("#merchant-list-table").load( $('#merchant-list-table').attr('data-sourceurl') +" #merchant-list-table");
+                        toastr.success(data.message);
+                    }
+                },
+                error: function(data){
+                    console.log(data);
+                    exeptionReturn(data);
+                }
+            });
+
         });
 
     </script>

@@ -156,6 +156,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('tag/search/{name?}', 'DiscountController@search')->name('tag.search');
     Route::post('tag/uploadimage', 'DiscountController@uploadimage')->name('tag.uploadimage');
     Route::post('tag/deleteimage/{id}', 'DiscountController@deleteimage')->name('tag.deleteimage');
+    Route::post('tag/column-update/{id?}', 'DiscountController@columnUpdate')->name('tag.column-update');
 
     //Category tags
     Route::resource('category-tags', 'CategoryController', ['names' => [
