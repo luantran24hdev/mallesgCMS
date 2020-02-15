@@ -32,7 +32,9 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card card-malle">
-                    <div class="card-header-malle">Merchant Info</div>
+                    <div class="card-header-malle">Merchant Info
+                        <a href="<?php echo e(route('merchants.list')); ?>" style="float: right">Back</a>
+                    </div>
                     <div class="card-body">
                         <form method="patch" action="<?php echo e(route('merchants.update',[$merchant->merchant_id ])); ?>" id="editmerchantform" autocomplete="off">
                             <div class="row">
@@ -68,6 +70,16 @@
                                     <div class="form-group">
                                         <label class="mb-2 font-12">Short Name</label>
                                         <input type="text" name="short_name" id="short_name" placeholder="Short Name" class="form-control" value=" <?php echo e($merchant->short_name); ?> ">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="mb-2 font-12">City</label><br>
+                                    <div class="dropdown">
+                                        <select name="city_id" class="form-control col-md-12" id="city_control">
+                                            <?php $__currentLoopData = $cities; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $city): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <option value="<?php echo e($city->city_id); ?>" <?php if($city->city_id == $merchant->city_id): ?> selected <?php endif; ?>><?php echo e($city->city_name); ?></option>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -297,4 +309,5 @@
 */
   </script>
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\adminlaravel3\resources\views/main/merchants_list/merchant_info.blade.php ENDPATH**/ ?>

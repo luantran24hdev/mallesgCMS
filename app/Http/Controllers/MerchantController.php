@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\CityMaster;
 use App\CompanyMaster;
 use App\CountryMaster;
 use App\MallType;
@@ -101,7 +102,7 @@ class MerchantController extends Controller
         $merchant->country_id = ($request->country_id) ? $request->country_id : 1;
         $merchant->town_id = 0;
         $merchant->company_id = 0;
-        $merchant->mt_id = ($request->mt_id) ? $request->mt_id : 1;
+        $merchant->mt_id = ($request->mt_id) ? $request->mt_id : 0;
         $merchant->featured = 'N';
         $merchant->youtube = '';
         $merchant->merchant_active = 'N';
@@ -156,13 +157,15 @@ class MerchantController extends Controller
         $merchant = MerchantMaster::find($id);
         $merchantTypes = MerchantType::all();
         $countrys = CountryMaster::all();
+        $citys = CityMaster::all();
         $companys = CompanyMaster::all();
 
         $data = [
             'merchant' => $merchant,
             'countries' => $countrys,
             'merchantTypes' => $merchantTypes,
-            'companys' => $companys
+            'companys' => $companys,
+            'cities' => $citys
         ];
         return view('main.merchants_list.merchant_info',$data);
     }
@@ -195,9 +198,10 @@ class MerchantController extends Controller
         $merchant = MerchantMaster::find($id);
         $merchant->merchant_name = $request->merchant_name ?  $request->merchant_name : '';
         $merchant->short_name = $request->short_name ?  $request->short_name : '';
-        $merchant->mt_id = $request->mt_id ? $request->mt_id : 1;
+        $merchant->mt_id = $request->mt_id ? $request->mt_id : '';
         $merchant->merchant_address = $request->merchant_address ? $request->merchant_address : '';
         $merchant->country_id = $request->country_id ? $request->country_id : 1;
+        $merchant->city_id = $request->city_id ? $request->city_id : 1;
         $merchant->postal_code = $request->postal_code ? $request->postal_code : '';
         $merchant->telephone = $request->telephone ? $request->telephone : '';
         $merchant->website = $request->website ? $request->website : '';

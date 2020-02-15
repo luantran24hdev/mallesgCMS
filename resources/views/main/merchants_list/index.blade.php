@@ -106,7 +106,7 @@
                                     <br><br>
                                     <span class="link_color"><a href="{{ route('merchant-contact.show',$current_merchant->merchant_id) }}"> <b>Contacts</b></a></span>
                                 </td>
-                                <td>{{ $current_merchant->merchanttype->type }}</td>
+                                <td>{{ @$current_merchant->merchanttype->type }}</td>
                                 <td>
                                     <span style="display: none"> {{ $current_merchant->beta }} </span>
                                     <select name="beta" id="" class="merchant_column_update dd-orange" data-href="{{route('merchants.column-update',[$current_merchant->merchant_id])}}" data-method="POST">
