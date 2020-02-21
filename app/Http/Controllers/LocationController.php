@@ -2,7 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\CityMaster;
+use App\CompanyMaster;
+use App\CountryMaster;
+use App\LevelMaster;
+use App\MallMaster;
 use App\MerchantLocationImages;
+use App\MerchantMaster;
+use App\MerchantType;
+use App\TownMaster;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -38,7 +46,7 @@ class LocationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
+    {
 
         $messages = [
             'mall_id.required'    => 'Invalid mall name!'
@@ -51,8 +59,8 @@ class LocationController extends Controller
             'level_id' => 'required',
             'merchant_location' => 'required',
         ],$messages);
-        
-        if($validator->fails()){ 
+
+        if($validator->fails()){
            return response()->json([
                 'status' => 'error',
                 'message' => $validator->messages()->first()
@@ -82,7 +90,20 @@ class LocationController extends Controller
      */
     public function show($id)
     {
-        //
+        $merchant_location = MerchantLocation::find($id);
+        $countrys = CountryMaster::all();
+        $citys = CityMaster::all();
+        $towns = TownMaster::all();
+        $levels = LevelMaster::all();
+
+        $data = [
+            'merchant_location' => $merchant_location,
+            'countries' => $countrys,
+            'cities' => $citys,
+            'towns' => $towns,
+            'levels' => $levels,
+        ];
+        return view('main.merchants.edit_merchant_location',$data);
     }
 
     /**
@@ -115,7 +136,52 @@ class LocationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $messages = [
+            'mall_id.required'    => 'Mall name field is required',
+        ];
+
+        // Start Validation
+        $validator = \Validator::make($request->all(), [
+            'mall_id' => 'required',
+            'level_id' => 'required',
+            'country_id' => 'required',
+            'city_id' => 'required',
+            'town_id' => 'required',
+            'gps_street' => 'required',
+            'postal_code' => 'required',
+
+        ],$messages);
+
+        if($validator->fails()){
+
+            return redirect()->back()->withInput()->withErrors($validator->errors());
+        }
+
+
+        $mall = MerchantLocation::find($id);
+        $mall->merchant_location = $request->merchant_location ? $request->merchant_location : '';
+        $mall->level_id = $request->level_id ? $request->level_id : 1;
+        $mall->country_id = $request->country_id ? $request->country_id : 1;
+        $mall->city_id = $request->city_id ? $request->city_id : 1;
+        $mall->town_id = $request->town_id ? $request->town_id :1;
+        $mall->loc_address = $request->loc_address ? $request->loc_address : '';
+        $mall->postal_code = $request->postal_code ? $request->postal_code : 0;
+        $mall->loc_telephone = $request->loc_telephone ? $request->loc_telephone : '';
+        $mall->op_hours = $request->op_hours ? $request->op_hours : '';
+        $mall->cls_hours = $request->cls_hours ? $request->cls_hours : '';
+        $mall->longtitude = $request->longitude ? $request->longitude :'';
+        $mall->latitude = $request->latitude ? $request->latitude : '';
+        $mall->gps_street = $request->gps_street ? $request->gps_street : '';
+        $mall->save();
+
+        /*return response()->json([
+            'status' => 'success',
+            'message' => __('successfully updated mall'),
+            //'tag_name' => $request->time_name,
+            //'id' => $time_master->time_id
+        ],200);*/
+
+        return redirect()->route('locations.show',[$id])->with('success','Updated successfully!.');
     }
 
     /**
