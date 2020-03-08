@@ -20,6 +20,7 @@
             <li class="list-group-item"><a class="malle-link" href="{{route('manage.inquiry')}}">{{__('Manage Inquiry')}}</a></li>
             <li class="list-group-item"><a class="malle-link" href="{{route('manage.shoppers')}}">{{__('Manage Shoppers')}}</a></li>
             <li class="list-group-item"><a class="malle-link" href="{{route('country')}}">{{__('Manage Country')}}</a></li>
+            <li class="list-group-item"><a class="malle-link" href="{{route('level')}}">{{__('Manage Level')}}</a></li>
         </ul>
 
     </div>

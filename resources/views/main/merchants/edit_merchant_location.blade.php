@@ -159,17 +159,18 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label class="mb-2 font-12">Longitude</label><br>
-                                        <input type="text" name="longitude" class="form-control" placeholder="Longitude" value="{{ $merchant_location->longtitude }}">
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
 
                                         <label class="mb-2 font-12">Latitude</label>
                                         <input type="text" name="latitude" id="latitude" placeholder="Latitude" class="form-control" value="{{ $merchant_location->latitude }}" >
                                     </div>
                                 </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="mb-2 font-12">Longitude</label><br>
+                                        <input type="text" name="longitude" class="form-control" placeholder="Longitude" value="{{ $merchant_location->longtitude }}">
+                                    </div>
+                                </div>
+
 
                             </div>
                         </form>

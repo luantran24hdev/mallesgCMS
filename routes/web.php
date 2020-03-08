@@ -236,4 +236,10 @@ Route::group(['middleware' => 'auth'], function () {
     ]]);
     Route::get('mall-owner/search/{name?}', 'MallOwnerController@search')->name('mall-owner.search');
 
+    Route::resource('level', 'LevelController', ['names' => [
+        'index' => 'level'
+    ]]);
+    Route::post('level/uploadimage', 'LevelController@uploadimage')->name('level.uploadimage');
+    Route::post('level/deleteimage/{id}', 'LevelController@deleteimage')->name('level.deleteimage');
+
 });

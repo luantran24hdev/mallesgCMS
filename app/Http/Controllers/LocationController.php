@@ -122,7 +122,7 @@ class LocationController extends Controller
         $data = [
             'location' => $location,
             'locations_images' => $locations_images,
-            'live_url' => env('LIVE_URL').'location_images/'
+            'live_url' => env('LIVE_URL').'images/merchant_location/'
         ];
         return view('main.merchants.merchant_locations_images',$data);
     }
@@ -146,10 +146,7 @@ class LocationController extends Controller
             'level_id' => 'required',
             'country_id' => 'required',
             'city_id' => 'required',
-            'town_id' => 'required',
-            'gps_street' => 'required',
-            'postal_code' => 'required',
-
+            'town_id' => 'required'
         ],$messages);
 
         if($validator->fails()){
@@ -213,7 +210,7 @@ class LocationController extends Controller
             $newfilename = md5($request->merchantlocation_id."_".round(microtime(true))) . '.png';
 
             if(env('APP_ENV')=='live')
-                $file->move('../../admin/location_images/', $newfilename);
+                $file->move('../../admin/images/merchant_location/', $newfilename);
             else
                 $file->move('../storage/app/public/', $newfilename);
 
@@ -244,7 +241,7 @@ class LocationController extends Controller
         $image = MerchantLocationImages::find($id);
 
         if(env('APP_ENV')=='live')
-            unlink('../../admin/location_images/'.$image->image);
+            unlink('../../admin/images/merchant_location/'.$image->image);
         else
             unlink('../storage/app/public/'.$image->image);
 

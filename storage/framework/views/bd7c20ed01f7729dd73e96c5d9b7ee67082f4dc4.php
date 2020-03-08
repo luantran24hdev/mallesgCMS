@@ -20,6 +20,7 @@
             <li class="list-group-item"><a class="malle-link" href="<?php echo e(route('manage.inquiry')); ?>"><?php echo e(__('Manage Inquiry')); ?></a></li>
             <li class="list-group-item"><a class="malle-link" href="<?php echo e(route('manage.shoppers')); ?>"><?php echo e(__('Manage Shoppers')); ?></a></li>
             <li class="list-group-item"><a class="malle-link" href="<?php echo e(route('country')); ?>"><?php echo e(__('Manage Country')); ?></a></li>
+            <li class="list-group-item"><a class="malle-link" href="<?php echo e(route('level')); ?>"><?php echo e(__('Manage Level')); ?></a></li>
         </ul>
 
     </div>

@@ -47,9 +47,13 @@ class User extends Authenticatable
     }
 
     public static function getUserName($id){
-         $user = User::find($id);
 
-         return $user->user_name;
+        if(!empty($id)) {
+            $user = User::find($id);
+
+            return $user->user_name;
+        }
+        return "";
     }
 
     public static function getGender($id){
