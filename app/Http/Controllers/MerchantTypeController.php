@@ -23,6 +23,7 @@ class MerchantTypeController extends Controller
         $data = [
             'merchant_types' => $merchant_types,
             'merchants' => $merchants,
+            'total_merchant' => $merchants,
             'live_url' => env('LIVE_URL').'images/stock/'
         ];
 

@@ -242,4 +242,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('level/uploadimage', 'LevelController@uploadimage')->name('level.uploadimage');
     Route::post('level/deleteimage/{id}', 'LevelController@deleteimage')->name('level.deleteimage');
 
+
+    Route::resource('merchant-company', 'MerchantCompanyController', ['names' => [
+        'index' => 'merchant-company'
+    ]]);
+    Route::get('merchant-company/search/{name?}', 'MerchantCompanyController@search')->name('merchant-company.search');
 });

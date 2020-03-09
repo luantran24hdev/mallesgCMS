@@ -190,7 +190,7 @@
                                         <select name="company_id" class="form-control col-md-12" >
                                             <option value="0">----  Select ------</option>
                                             @foreach($companys as $company)
-                                                <option value="{{ $company->company_id }}" @if($company->company_id == $merchant->company_id) selected @endif>{{$merchant->company_name }}</option>
+                                                <option value="{{ $company->company_id }}" @if($company->company_id == $merchant->company_id) selected @endif>{{$company->company_name }}</option>
                                             @endforeach
                                         </select>
                                     </div>

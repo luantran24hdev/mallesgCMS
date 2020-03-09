@@ -47,7 +47,7 @@ class MallController extends Controller
     public function index()
     {
         $malls = $this->mall->all()->pluck('mall_name', 'mall_id');
-        $current_malls = MallMaster::where('mall_active','Y')->orderBy('mall_id','desc')->get() ?? [];
+        $current_malls = MallMaster::where('mall_active','Y')->where('beta','Y')->orderBy('mall_id','desc')->get() ?? [];
         $total_mall = MallMaster::where('mall_active','Y')->count();
         $countrys = CountryMaster::all();
         $citymaster = CityMaster::where('country_id',1)->first();

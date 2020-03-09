@@ -21,10 +21,8 @@
 <div class="row">
     <div class="col-md-10">
         <div class="card card-malle">
-            <div class="card-header-malle">
-                <a href="{{route('merchants.list')}}"> {{__('Manage Merchants')}} ({{@$total_merchant}})</a>
-                <a style="margin-left: 50px" href="{{route('merchant-type')}}">{{__('Merchant Types')}}</a>
-            </div>
+            @include('main.merchants_list.merchant_menu')
+
             <div class="card-body">
                 <form method="POST" action="{{ route('merchants.store') }}" id="InsertMerchants">
                     <div class="row merch_out">

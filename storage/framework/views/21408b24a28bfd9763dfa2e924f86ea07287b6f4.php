@@ -20,10 +20,8 @@
 <div class="row">
     <div class="col-md-10">
         <div class="card card-malle">
-            <div class="card-header-malle">
-                <a href="<?php echo e(route('merchants.list')); ?>"> <?php echo e(__('Manage Merchants')); ?> (<?php echo e(@$total_merchant); ?>)</a>
-                <a style="margin-left: 50px" href="<?php echo e(route('merchant-type')); ?>"><?php echo e(__('Merchant Types')); ?></a>
-            </div>
+            <?php echo $__env->make('main.merchants_list.merchant_menu', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+
             <div class="card-body">
                 <form method="POST" action="<?php echo e(route('merchants.store')); ?>" id="InsertMerchants">
                     <div class="row merch_out">

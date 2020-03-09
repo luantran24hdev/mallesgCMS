@@ -188,7 +188,7 @@
                                         <select name="company_id" class="form-control col-md-12" >
                                             <option value="0">----  Select ------</option>
                                             <?php $__currentLoopData = $companys; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $company): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                <option value="<?php echo e($company->company_id); ?>" <?php if($company->company_id == $merchant->company_id): ?> selected <?php endif; ?>><?php echo e($merchant->company_name); ?></option>
+                                                <option value="<?php echo e($company->company_id); ?>" <?php if($company->company_id == $merchant->company_id): ?> selected <?php endif; ?>><?php echo e($company->company_name); ?></option>
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </select>
                                     </div>
