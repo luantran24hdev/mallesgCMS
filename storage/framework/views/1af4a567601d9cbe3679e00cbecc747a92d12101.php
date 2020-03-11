@@ -46,7 +46,7 @@
         <div class="col-md-10">
             <div class="card card-malle">
                 <div class="card-header-malle">
-                   <p>Level Id: <span style="margin-right: 120px;color: red"><?php echo e($level->level_id); ?></span> | Created On: <span style="margin-right: 120px;color: red"><?php echo e($level->created_on); ?></span> | Created By: <span style="color: red"><?php echo e(\App\User::getUserName( $level->created_by)); ?></span> <span style="float: right;color: blue"><a href="<?php echo e(route('level')); ?>">Back</a></span></p>
+                   <p>Level Id: <span style="margin-right: 120px;color: red"><?php echo e($level->level_id); ?></span> | Created On: <span style="margin-right: 120px;color: red"><?php echo e($level->created_on); ?></span> | Created By: <span style="color: red"><?php echo e(\App\User::getUserName( @$level->created_by)); ?></span> <span style="float: right;color: blue"><a href="<?php echo e(route('level')); ?>">Back</a></span></p>
                 </div>
                 <div class="card-body" id="tag-image-body" data-sourceurl="<?php echo e(route('level.edit',[$level->level_id])); ?>">
                     <form method="PATCH" action="<?php echo e(route('level.update',[$level->level_id])); ?>" id="editLevel">

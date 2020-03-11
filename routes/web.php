@@ -45,6 +45,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('malls/webdeleteimage/{id}', 'MallController@webdeleteimage')->name('malls.webdeleteimage');
     Route::post('malls/logodeleteimage/{id}', 'MallController@logodeleteimage')->name('malls.logodeleteimage');
     Route::post('malls/deletemallimage/{id}', 'MallController@deletemallimage')->name('malls.deletemallimage');
+    Route::get('malls/level/{id}', 'MallController@mallLevel')->name('malls.level');
+    Route::post('malls/level/', 'MallController@storeMallLevel')->name('malls.storeMallLevel');
+    Route::delete('malls/level/delete/{id}', 'MallController@mallLevelDestroy')->name('malls.level.destroy');
 
 
 

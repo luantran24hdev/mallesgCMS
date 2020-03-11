@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\CityMaster;
 use App\CountryMaster;
 use App\EventMaster;
+use App\LevelActivity;
+use App\LevelMalls;
 use App\LevelMaster;
 use App\MallImage;
 use App\MallType;
@@ -47,7 +49,7 @@ class MallController extends Controller
     public function index()
     {
         $malls = $this->mall->all()->pluck('mall_name', 'mall_id');
-        $current_malls = MallMaster::where('mall_active','Y')->where('beta','Y')->orderBy('mall_id','desc')->get() ?? [];
+        $current_malls = MallMaster::where('mall_active','Y')->orderBy('mall_id','desc')->get() ?? [];
         $total_mall = MallMaster::where('mall_active','Y')->count();
         $countrys = CountryMaster::all();
         $citymaster = CityMaster::where('country_id',1)->first();
@@ -587,6 +589,77 @@ class MallController extends Controller
             'status' => 'success',
             'message' => __('successfully updated mall'),
             'town' => $tow
+        ],200);
+    }
+
+    public function mallLevel($id){
+
+        $levels = LevelMaster::all();
+        $level_activitys = LevelActivity::all();
+        $level_malls = LevelMalls::where('mall_id',$id)->get();
+
+        $data = [
+            'levels' => $levels,
+            'level_activitys' => $level_activitys,
+            'level_malls' => $level_malls,
+            'mall_id' => $id,
+            'live_url' => env('LIVE_URL').'images/stock/'
+        ];
+
+        return view('main.mall_list.level_mall',$data);
+
+    }
+
+    public function storeMallLevel(Request $request){
+
+        $messages = [
+            'level_id.required'    => 'Level field is required',
+            'level_activity_id.required'    => 'Level Activity field is required'
+        ];
+
+        // Start Validation
+        $validator = \Validator::make($request->all(), [
+            'level_id' => 'required',
+            'level_activity_id' => 'required',
+
+
+        ],$messages);
+
+        if($validator->fails()){
+            return response()->json([
+                'status' => 'error',
+                'message' => $validator->messages()->first()
+            ],200);
+        }
+
+
+        $malllevel = new LevelMalls();
+        $malllevel->mall_id = $request->mall_id;
+        $malllevel->level_id = $request->level_id;
+        $malllevel->la_id = $request->level_activity_id;
+        $malllevel->created_on = Carbon::now()->format('d/m/Y');
+        $malllevel->created_by = \Auth::user()->user_id;
+        $malllevel->save();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => __('successfully added!'),
+            'id' => $malllevel->mo_id
+        ],200);
+
+    }
+
+
+    public function mallLevelDestroy($id)
+    {
+        //$delete = $this->mall->destroy($id);
+
+        $mallmaster = LevelMalls::find($id);
+
+        $mallmaster->delete();
+        return response()->json([
+            'status' => $mallmaster ? 'success' : 'error',
+            'message' => $mallmaster ? __('succesfully deleted') : __('error deleting')
         ],200);
     }
 

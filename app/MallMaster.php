@@ -184,6 +184,14 @@ class MallMaster extends Model
 
     }
 
+    public static function getMallName($id){
+        if(!empty($id)){
+            $mall = MallMaster::find($id);
+            return $mall->mall_name;
+        }
+        return "---";
+    }
+
 
 
 

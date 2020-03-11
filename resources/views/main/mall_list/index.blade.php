@@ -140,6 +140,7 @@
                                         <option value="Y" @if($current_malls->beta=='Y') selected @endif>Yes</option>
 
                                     </select>
+                                    <br><br><span class="link_color"><a href="{{ route('malls.level',['id'=>$current_malls->mall_id]) }}"> <b>Level</b> </a></span>
                                 </td>
                                 <td>
                                     <select name="mall_active" id="" class="malls_column_update dd-orange" data-href="{{route('malls.column-update',[$current_malls->mall_id])}}" data-method="POST">

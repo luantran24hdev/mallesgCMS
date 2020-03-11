@@ -2,21 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b78cfcb-942f-4cbe-bdc3-7ba4e2bc8d2a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/main/merchants_list/company.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/main/merchants_list/edit_company.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/main/merchants_list/merchant_menu.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/main/merchants_list/show_merchant_owned.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/LevelActivity.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/main/mall_list/level_mall.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/CompanyMaster.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/CompanyMaster.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MallController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MallController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MerchantTypeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MerchantTypeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/main/merchants_list/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/merchants_list/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/main/merchants_list/merchant_info.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/merchants_list/merchant_info.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/main/merchants_list/merchanttype.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/merchants_list/merchanttype.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/MallMaster.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/MallMaster.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/main/mall_list/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/mall_list/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/views/21408b24a28bfd9763dfa2e924f86ea07287b6f4.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/21408b24a28bfd9763dfa2e924f86ea07287b6f4.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/views/3922e219b565e2f61ea00a5ac98ad7ae7bdbefdd.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/3922e219b565e2f61ea00a5ac98ad7ae7bdbefdd.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/views/6bda2e25116c1b44902581531b36bbcbe60a66e3.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/6bda2e25116c1b44902581531b36bbcbe60a66e3.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/1af4a567601d9cbe3679e00cbecc747a92d12101.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/1af4a567601d9cbe3679e00cbecc747a92d12101.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/c11d36ed67933ae2230cf11dfef76fe112f64e33.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/c11d36ed67933ae2230cf11dfef76fe112f64e33.php" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/vendor/beyondcode/laravel-dump-server/" />
     <ignored path="$PROJECT_DIR$/vendor/composer/" />
@@ -114,88 +108,46 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MerchantCompanyController.php">
+        <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="434">
-              <caret line="94" column="38" lean-forward="true" selection-start-line="94" selection-start-column="38" selection-end-line="94" selection-end-column="38" />
-              <folding>
-                <element signature="e#40#59#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="179">
+              <caret line="51" lean-forward="true" selection-start-line="51" selection-end-line="51" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/main/merchants_list/show_merchant_owned.blade.php">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MallController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+            <state relative-caret-position="383">
+              <caret line="605" column="57" selection-start-line="605" selection-start-column="57" selection-end-line="605" selection-end-column="57" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MerchantController.php">
+        <entry file="file://$PROJECT_DIR$/resources/views/main/mall_list/level_mall.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="160" column="33" selection-start-line="160" selection-start-column="20" selection-end-line="160" selection-end-column="33" />
+            <state relative-caret-position="408">
+              <caret line="84" column="74" selection-start-line="84" selection-start-column="65" selection-end-line="84" selection-end-column="74" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/main/merchants_list/edit_company.blade.php">
+        <entry file="file://$PROJECT_DIR$/resources/views/main/level/index.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="371">
-              <caret line="51" column="77" selection-start-line="51" selection-start-column="65" selection-end-line="51" selection-end-column="77" />
-              <folding>
-                <element signature="e#1077#1097#0#HTML" expanded="true" />
-              </folding>
+            <state relative-caret-position="255">
+              <caret line="39" column="40" lean-forward="true" selection-start-line="39" selection-start-column="40" selection-end-line="45" selection-end-column="45" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MallOwnerController.php">
+        <entry file="file://$PROJECT_DIR$/app/LevelMalls.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="98" column="55" lean-forward="true" selection-start-line="91" selection-start-column="8" selection-end-line="98" selection-end-column="55" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/MallOwner.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="27" column="1" lean-forward="true" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/main/merchants_list/merchant_menu.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="52" lean-forward="true" selection-start-line="6" selection-start-column="52" selection-end-line="6" selection-end-column="68" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/web.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="587">
-              <caret line="247" column="8" lean-forward="true" selection-start-line="247" selection-start-column="8" selection-end-line="247" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/main/merchants_list/company.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="370">
-              <caret line="69" column="179" selection-start-line="69" selection-start-column="179" selection-end-line="69" selection-end-column="179" />
+            <state relative-caret-position="493">
+              <caret line="29" column="34" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -207,9 +159,13 @@
       <find>tag_id</find>
       <find>user_name</find>
       <find>total_merchant</find>
-      <find>addMalltype</find>
       <find>$owner-&gt;mo_id</find>
       <find>mall-owner</find>
+      <find>level</find>
+      <find>main_category_select</find>
+      <find>$level_mall</find>
+      <find>$owner</find>
+      <find>addMalltype</find>
     </findStrings>
     <replaceStrings>
       <replace>level_id</replace>
@@ -217,6 +173,7 @@
       <replace>$company-&gt;company_id</replace>
       <replace>merchant</replace>
       <replace>merchant-company</replace>
+      <replace>$level_mall</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -230,18 +187,23 @@
         <option value="$PROJECT_DIR$/resources/views/main/level/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/main/level/edit.blade.php" />
         <option value="$PROJECT_DIR$/app/User.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/MallController.php" />
         <option value="$PROJECT_DIR$/resources/views/main/merchants_list/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/main/merchants_list/merchanttype.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/MerchantTypeController.php" />
         <option value="$PROJECT_DIR$/resources/views/main/merchants_list/merchant_menu.blade.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/CompanyMaster.php" />
         <option value="$PROJECT_DIR$/resources/views/main/merchants_list/edit_company.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/main/merchants_list/merchant_info.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/main/merchants_list/company.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/MerchantCompanyController.php" />
         <option value="$PROJECT_DIR$/resources/views/main/merchants_list/show_merchant_owned.blade.php" />
+        <option value="$PROJECT_DIR$/app/LevelActivity.php" />
+        <option value="$PROJECT_DIR$/resources/views/main/mall_list/index.blade.php" />
+        <option value="$PROJECT_DIR$/app/LevelMalls.php" />
+        <option value="$PROJECT_DIR$/app/MallMaster.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/resources/views/main/mall_list/level_mall.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/MallController.php" />
       </list>
     </option>
   </component>
@@ -437,18 +399,18 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../live_stream2" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\adminlaravel3\app" />
+      <recent name="C:\xampp\htdocs\adminlaravel3\resources\views\main\mall_list" />
       <recent name="C:\xampp\htdocs\adminlaravel3\resources\views\main\merchants_list" />
       <recent name="C:\xampp\htdocs\adminlaravel3\resources\views\main" />
       <recent name="C:\xampp\htdocs\adminlaravel3\resources\views\main\merchants" />
-      <recent name="C:\xampp\htdocs\adminlaravel3\resources\views\main\category_tag" />
-      <recent name="C:\xampp\htdocs\adminlaravel3\resources\views\main\mall_list" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -563,16 +525,19 @@
       <workItem from="1583411809947" duration="4818000" />
       <workItem from="1583595039538" duration="2362000" />
       <workItem from="1583682772576" duration="5837000" />
+      <workItem from="1583720637631" duration="105000" />
+      <workItem from="1583927227024" duration="7995000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13017000" />
+    <option name="totallyTimeSpent" value="21117000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25302014" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.2590604" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" weight="0.3295302" />
@@ -643,30 +608,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/LevelController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1156">
-          <caret line="70" column="47" selection-start-line="70" selection-start-column="47" selection-end-line="70" selection-end-column="47" />
-          <folding>
-            <element signature="e#40#60#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/main/level/edit.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="918">
-          <caret line="54" selection-start-line="54" selection-end-line="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/main/level/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/DiscountController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2397">
@@ -694,13 +635,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/main/mall_list/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="48" lean-forward="true" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MerchantTypeController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -715,27 +649,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="587">
-          <caret line="247" column="8" lean-forward="true" selection-start-line="247" selection-start-column="8" selection-end-line="247" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/CompanyMaster.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="17" column="5" lean-forward="true" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/main/merchants_list/edit_company.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="51" column="77" selection-start-line="51" selection-start-column="65" selection-end-line="51" selection-end-column="77" />
-          <folding>
-            <element signature="e#1077#1097#0#HTML" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -746,62 +663,175 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/MallOwner.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="1" lean-forward="true" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MerchantController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="160" column="33" selection-start-line="160" selection-start-column="20" selection-end-line="160" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/main/merchants_list/company.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="370">
-          <caret line="69" column="179" selection-start-line="69" selection-start-column="179" selection-end-line="69" selection-end-column="179" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MallOwnerController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="98" column="55" lean-forward="true" selection-start-line="91" selection-start-column="8" selection-end-line="98" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/main/merchants_list/merchant_menu.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="52" lean-forward="true" selection-start-line="6" selection-start-column="52" selection-end-line="6" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MerchantCompanyController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="94" column="38" lean-forward="true" selection-start-line="94" selection-start-column="38" selection-end-line="94" selection-end-column="38" />
+        <state relative-caret-position="1530">
+          <caret line="94" column="38" selection-start-line="94" selection-start-column="38" selection-end-line="94" selection-end-column="38" />
           <folding>
             <element signature="e#40#59#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MallController.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MerchantController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2482">
+          <caret line="160" column="33" selection-start-line="160" selection-start-column="20" selection-end-line="160" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/MallOwner.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
-          <caret line="67" column="40" lean-forward="true" selection-start-line="67" selection-start-column="40" selection-end-line="67" selection-end-column="40" />
+          <caret line="27" column="1" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/main/merchants_list/merchant_menu.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="52" selection-start-line="6" selection-start-column="52" selection-end-line="6" selection-end-column="68" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/main/merchants_list/show_merchant_owned.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+        <state relative-caret-position="459">
+          <caret line="27" column="44" selection-start-line="27" selection-start-column="44" selection-end-line="27" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/LevelActivity.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="23" column="6" lean-forward="true" selection-start-line="12" selection-start-column="4" selection-end-line="23" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/main/merchants_list/company.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1173">
+          <caret line="69" column="179" selection-start-line="69" selection-start-column="179" selection-end-line="69" selection-end-column="179" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/main/merchants_list/contact.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="23" column="16" lean-forward="true" selection-start-line="23" selection-start-column="16" selection-end-line="26" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/main/mall_list/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="19" column="37" lean-forward="true" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/MerchantMaster.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="95" column="4" lean-forward="true" selection-start-line="95" selection-start-column="4" selection-end-line="101" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MallOwnerController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="833">
+          <caret line="53" column="10" lean-forward="true" selection-start-line="53" selection-start-column="10" selection-end-line="53" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PreferenceMasterController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="64" column="64" lean-forward="true" selection-start-line="63" selection-start-column="8" selection-end-line="64" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/LevelMalls.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="34" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/main/mall_list/edit_mallowner.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1105">
+          <caret line="86" lean-forward="true" selection-start-line="86" selection-end-line="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/main/mall_list/edit_malltype.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-714" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/main/merchants/edit_merchant_location.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/main/merchants_list/edit_company.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="355">
+          <caret line="64" column="51" lean-forward="true" selection-start-line="64" selection-start-column="51" selection-end-line="64" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/main/level/edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="49" column="288" selection-start-line="49" selection-start-column="237" selection-end-line="49" selection-end-column="288" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/MallMaster.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="179" column="13" lean-forward="true" selection-start-line="179" selection-start-column="13" selection-end-line="179" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="51" lean-forward="true" selection-start-line="51" selection-end-line="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/main/level/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="39" column="40" lean-forward="true" selection-start-line="39" selection-start-column="40" selection-end-line="45" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/main/mall_list/level_mall.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="84" column="74" selection-start-line="84" selection-start-column="65" selection-end-line="84" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/LevelController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="57" lean-forward="true" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="57" />
+          <folding>
+            <element signature="e#40#60#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MallController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="605" column="57" selection-start-line="605" selection-start-column="57" selection-end-line="605" selection-end-column="57" />
         </state>
       </provider>
     </entry>
