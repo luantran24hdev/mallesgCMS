@@ -21,6 +21,7 @@
             <li class="list-group-item"><a class="malle-link" href="{{route('manage.shoppers')}}">{{__('Manage Shoppers')}}</a></li>
             <li class="list-group-item"><a class="malle-link" href="{{route('country')}}">{{__('Manage Country')}}</a></li>
             <li class="list-group-item"><a class="malle-link" href="{{route('level')}}">{{__('Manage Level')}}</a></li>
+            <li class="list-group-item"><a class="malle-link" href="{{route('manage-age')}}">{{__('Manage Age Group')}}</a></li>
         </ul>
 
     </div>

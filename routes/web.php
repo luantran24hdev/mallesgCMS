@@ -250,4 +250,9 @@ Route::group(['middleware' => 'auth'], function () {
         'index' => 'merchant-company'
     ]]);
     Route::get('merchant-company/search/{name?}', 'MerchantCompanyController@search')->name('merchant-company.search');
+
+    Route::resource('manage-age', 'ManageAgeController', ['names' => [
+        'index' => 'manage-age'
+    ]]);
+    Route::post('manage-age/uploadimage', 'ManageAgeController@uploadimage')->name('manageage.uploadimage');
 });
