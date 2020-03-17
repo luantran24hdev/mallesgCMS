@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\ManageAge;
+use App\Mealgroup;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
-class ManageAgeController extends Controller
+class MealgroupController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,13 +15,13 @@ class ManageAgeController extends Controller
      */
     public function index()
     {
-        $manageAge = ManageAge::all();
+        $mealgroups = Mealgroup::all();
         $data = [
-            'manageAges' => $manageAge,
+            'mealgroups' => $mealgroups,
             'live_url' => env('LIVE_URL').'images/stock/'
         ];
 
-        return view('main.manage_age.index',$data);
+        return view('main.meal_group.index',$data);
     }
 
     /**
@@ -31,7 +31,7 @@ class ManageAgeController extends Controller
      */
     public function create()
     {
-
+        //
     }
 
     /**
@@ -43,14 +43,12 @@ class ManageAgeController extends Controller
     public function store(Request $request)
     {
         $messages = [
-            'age_group_name.required'    => 'Age Group Name field is required',
-            'age_group.required'    => 'Age Group field is required'
+            'meal_name.required'    => 'Meal Name field is required',
         ];
 
         // Start Validation
         $validator = \Validator::make($request->all(), [
-            'age_group_name' => 'required',
-            'age_group' => 'required',
+            'meal_name' => 'required',
 
         ],$messages);
 
@@ -62,10 +60,9 @@ class ManageAgeController extends Controller
         }
 
 
-        $age = new ManageAge();
-        $age->age_group_name = $request->age_group_name;
-        $age->age_group = $request->age_group;
-        $age->ag_image = NULL;
+        $age = new Mealgroup();
+        $age->meal_name = $request->meal_name;
+        $age->meal_image = NULL;
         $age->created_on = Carbon::now()->format('d/m/Y');
         $age->created_by = \Auth::user()->user_id;
         $age->save();
@@ -120,13 +117,13 @@ class ManageAgeController extends Controller
      */
     public function destroy($id)
     {
-        $tagMaster = ManageAge::find($id);
+        $tagMaster = Mealgroup::find($id);
 
-        if(!empty($tagMaster->ag_image)){
+        if(!empty($tagMaster->meal_image)){
             if(env('APP_ENV')=='live')
-                unlink('../../admin/images/stock/'.$tagMaster->ag_image);
+                unlink('../../admin/images/stock/'.$tagMaster->meal_image);
             else
-                unlink('../storage/app/public/'.$tagMaster->ag_image);
+                unlink('../storage/app/public/'.$tagMaster->meal_image);
         }
         $tagMaster->delete();
 
@@ -146,7 +143,7 @@ class ManageAgeController extends Controller
                 throw new \Exception("invalid file", 500);
             }
 
-            $newfilename = md5($request->age_id."_".round(microtime(true))) . '.png';
+            $newfilename = md5($request->mg_id."_".round(microtime(true))) . '.png';
 
             if(env('APP_ENV')=='live')
                 $file->move('../../admin/images/stock/', $newfilename);
@@ -154,8 +151,8 @@ class ManageAgeController extends Controller
                 $file->move('../storage/app/public/', $newfilename);
 
 
-            $tag = ManageAge::find($request->age_id);
-            $tag->ag_image = $newfilename;
+            $tag = Mealgroup::find($request->mg_id);
+            $tag->meal_image = $newfilename;
             $tag->save();
 
 
@@ -173,14 +170,14 @@ class ManageAgeController extends Controller
 
     public function deleteimage($id){
 
-        $image = ManageAge::find($id);
+        $image = Mealgroup::find($id);
 
         if(env('APP_ENV')=='live')
-            unlink('../../admin/images/stock/'.$image->ag_image);
+            unlink('../../admin/images/stock/'.$image->meal_image);
         else
-            unlink('../storage/app/public/'.$image->ag_image);
+            unlink('../storage/app/public/'.$image->meal_image);
 
-        $image->ag_image = '';
+        $image->meal_image = '';
         $image->save();
 
         return response()->json([

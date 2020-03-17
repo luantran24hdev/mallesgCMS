@@ -22,6 +22,7 @@
             <li class="list-group-item"><a class="malle-link" href="<?php echo e(route('country')); ?>"><?php echo e(__('Manage Country')); ?></a></li>
             <li class="list-group-item"><a class="malle-link" href="<?php echo e(route('level')); ?>"><?php echo e(__('Manage Level')); ?></a></li>
             <li class="list-group-item"><a class="malle-link" href="<?php echo e(route('manage-age')); ?>"><?php echo e(__('Manage Age Group')); ?></a></li>
+            <li class="list-group-item"><a class="malle-link" href="<?php echo e(route('meal-group')); ?>"><?php echo e(__('Manage Meal Group')); ?></a></li>
         </ul>
 
     </div>

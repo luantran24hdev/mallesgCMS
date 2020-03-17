@@ -86,6 +86,10 @@
                                         <td>
                                             @if(!empty($manageAge->ag_image))
                                                 <img src="{{ $live_url.$manageAge->ag_image }}" width="50px" height="50px">
+                                                <br>
+                                                <a  href="javascript:;" data-href="{{route('manageage.deleteimage',['id'=>@$manageAge->ag_id])}}" data-method="POST" class="btn-pi-delete" data-id="{{$manageAge->ag_id}}">
+                                                    <span class="text-danger">{{__('Delete')}}</span>
+                                                </a>
                                             @else
                                                 {{--<i class="fa fa-picture-o" aria-hidden="true" style="font-size: 50px;"></i>--}}
                                                 <input type="hidden" id="selected_image" value="">
@@ -187,9 +191,9 @@
                             if(data.status==='error'){
                                 errorReturn(data)
                             }else{
-                                $('#tag-image-body #tag-image-content').remove();
-                                $("#tag-image-body").load( $('#tag-image-body').attr('data-sourceurl') +" #tag-image-content");
-
+                                /*$('#tag-image-body #tag-image-content').remove();
+                                $("#tag-image-body").load( $('#tag-image-body').attr('data-sourceurl') +" #tag-image-content");*/
+                                $("#discount-tag-table").load( $('#discount-tag-table').attr('data-sourceurl') +" #discount-tag-table");
                                 $('#croppermodal').modal('hide');
                                 toastr.success(data.message);
                             }
@@ -256,6 +260,37 @@
                 var blob = new Blob(byteArrays, {type: contentType});
                 return blob;
             }
+        });
+
+
+        $(document).on('click', '.btn-pi-delete', function(e){
+            e.preventDefault();
+            var btndelete = $(this);
+
+            $('#deletepromotionmodal').modal('show');
+
+            $('#btnDeletePromotion').unbind().click(function(){
+
+                $.ajax({
+                    url: btndelete.attr('data-href'),
+                    type: btndelete.attr('data-method'),
+                    dataType:'json',
+                    success:function(data){
+                        if(data.status==='error'){
+                            errorReturn(data)
+                        }else{
+                            $('#deletepromotionmodal').modal('hide');
+                            //var image_count = $(this).attr('data-id')
+
+                            /*$('#tag-image-body #tag-image-content').remove();
+                            $("#tag-image-body").load( $('#tag-image-body').attr('data-sourceurl') +" #tag-image-content");*/
+                            $("#discount-tag-table").load( $('#discount-tag-table').attr('data-sourceurl') +" #discount-tag-table");
+                            toastr.success(data.message);
+                        }
+                    }
+                });
+
+            });
         });
 
         $(document).on('submit','#addlevel', function(e){

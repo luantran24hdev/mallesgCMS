@@ -45,18 +45,14 @@
         <div class="col-md-10">
             <div class="card card-malle">
                 <div class="card-header-malle">
-                   <?php echo e(__('Manage Age Groups')); ?>
+                   <?php echo e(__('Manage Meal Groups')); ?>
 
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="<?php echo e(route('manage-age.store')); ?>" id="addlevel">
+                    <form method="POST" action="<?php echo e(route('meal-group.store')); ?>" id="addlevel">
                     <div class="row">
                         <div class="col-md-3">
-                            <input type="text" name="age_group_name" placeholder="Age Group Name"
-                                   class="form-control" required="" list="datalist1">
-                        </div>
-                        <div class="col-md-3">
-                            <input type="text" name="age_group" placeholder="Age Group"
+                            <input type="text" name="meal_name" placeholder="Meal Name"
                                    class="form-control" required="" list="datalist1">
                         </div>
                         <div class="col-md-2">
@@ -68,26 +64,25 @@
                     </div>
                     </form>
 
-                    <?php if(isset($manageAges)): ?>
+                    <?php if(isset($mealgroups)): ?>
                         <br/>
                         <div class="row">
                             <div class="col-md-12">
                                 <table class="table table-striped malle-table" id="discount-tag-table"
-                                       data-sourceurl="<?php echo e(route('manage-age')); ?>">
+                                       data-sourceurl="<?php echo e(route('meal-group')); ?>">
                                     <thead>
                                     <th></th>
-                                    <th>Age Group Name</th>
-                                    <th>Age Group</th>
+                                    <th>Meal Name</th>
                                     <th>Action</th>
                                     </thead>
                                     <tbody>
-                                    <?php $__currentLoopData = $manageAges; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $manageAge): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <tr class="row-location" data-id="<?php echo e(@$manageAge->ag_id); ?>">
+                                    <?php $__currentLoopData = $mealgroups; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $mealgroup): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <tr class="row-location" data-id="<?php echo e(@$mealgroup->mg_id); ?>">
                                         <td>
-                                            <?php if(!empty($manageAge->ag_image)): ?>
-                                                <img src="<?php echo e($live_url.$manageAge->ag_image); ?>" width="50px" height="50px">
+                                            <?php if(!empty($mealgroup->meal_image)): ?>
+                                                <img src="<?php echo e($live_url.$mealgroup->meal_image); ?>" width="50px" height="50px">
                                                 <br>
-                                                <a  href="javascript:;" data-href="<?php echo e(route('manageage.deleteimage',['id'=>@$manageAge->ag_id])); ?>" data-method="POST" class="btn-pi-delete" data-id="<?php echo e($manageAge->ag_id); ?>">
+                                                <a  href="javascript:;" data-href="<?php echo e(route('mealgroup.deleteimage',['id'=>@$mealgroup->mg_id])); ?>" data-method="POST" class="btn-pi-delete" data-id="<?php echo e($mealgroup->mg_id); ?>">
                                                     <span class="text-danger"><?php echo e(__('Delete')); ?></span>
                                                 </a>
                                             <?php else: ?>
@@ -97,17 +92,16 @@
                                                 <br>
                                                 <span>Upload</span>
                                                 
-                                                <input type="file" id="upload_5" data-count="<?php echo e(@$manageAge->ag_id); ?>" class="imguploader" value="Drop Files Here to click upload a photo" accept="image/*" style="display: none;" >
+                                                <input type="file" id="upload_5" data-count="<?php echo e(@$mealgroup->mg_id); ?>" class="imguploader" value="Drop Files Here to click upload a photo" accept="image/*" style="display: none;" >
 
                                             <?php endif; ?>
                                         </td>
-                                        <td><?php echo e(@$manageAge->age_group_name); ?></td>
-                                        <td><?php echo e(@$manageAge->age_group); ?></td>
+                                        <td><?php echo e(@$mealgroup->meal_name); ?></td>
                                         <td>
                                             <a href="javascript:;"
-                                               data-href="<?php echo e(route('manage-age.destroy',[$manageAge->ag_id])); ?>"
+                                               data-href="<?php echo e(route('meal-group.destroy',[$mealgroup->mg_id])); ?>"
                                                data-method="DELETE" class="btn-delete"
-                                               data-id="<?php echo e($manageAge->ag_id); ?>">
+                                               data-id="<?php echo e($mealgroup->mg_id); ?>">
                                                 <span class="text-danger">Delete</span>
                                             </a>
                                         </td>
@@ -173,12 +167,12 @@
                     var age_id = $('#selected_image').val();
                     var fd = new FormData();
                     fd.append("image", blob);
-                    fd.append("age_id", age_id);
+                    fd.append("mg_id", age_id);
 
 
                     // console.log(fd);
                     $.ajax({
-                        url: "<?php echo e(route('manageage.uploadimage')); ?>",
+                        url: "<?php echo e(route('mealgroup.uploadimage')); ?>",
                         data: fd,// the formData function is available in almost all new browsers.
                         type:"POST",
                         contentType:false,
@@ -358,7 +352,7 @@
             },
             select: function(event, ui) {
                 $("#tag_name").val(ui.item.label);
-                $("#tag_id").val(ui.item.value);
+                $("#tmg_id").val(ui.item.value);
                // window.location.href = '<?php echo e(route("malls")); ?>/'+ui.item.value;
                 return false;
             }
@@ -400,4 +394,4 @@
     </script>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\adminlaravel3\resources\views/main/manage_age/index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\adminlaravel3\resources\views/main/meal_group/index.blade.php ENDPATH**/ ?>

@@ -255,4 +255,11 @@ Route::group(['middleware' => 'auth'], function () {
         'index' => 'manage-age'
     ]]);
     Route::post('manage-age/uploadimage', 'ManageAgeController@uploadimage')->name('manageage.uploadimage');
+    Route::post('manage-age/deleteimage/{id}', 'ManageAgeController@deleteimage')->name('manageage.deleteimage');
+
+    Route::resource('meal-group', 'MealgroupController', ['names' => [
+        'index' => 'meal-group'
+    ]]);
+    Route::post('meal-group/uploadimage', 'MealgroupController@uploadimage')->name('mealgroup.uploadimage');
+    Route::post('meal-group/deleteimage/{id}', 'MealgroupController@deleteimage')->name('mealgroup.deleteimage');
 });
