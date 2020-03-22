@@ -67,6 +67,18 @@ class PromotionMaster extends Model
             ->where('merchant_id', $this->merchant_id);
     }
 
+    public function promotion_age_group()
+    {
+        return $this->hasMany('App\PromotionAgeGroup', 'promo_id', 'promo_id')
+            ->where('merchant_id', $this->merchant_id);
+    }
+
+    public function promotion_meal()
+    {
+        return $this->hasMany('App\PromotionMeal', 'promo_id', 'promo_id')
+            ->where('merchant_id', $this->merchant_id);
+    }
+
     public function promotion_days()
     {
         //create if not exist

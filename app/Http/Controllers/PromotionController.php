@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\CountryMaster;
 use App\MallMaster;
+use App\ManageAge;
+use App\Mealgroup;
 use App\MerchantLocation;
 use App\PreferenceMaster;
 use App\PromotionMaster;
@@ -133,6 +135,9 @@ class PromotionController extends Controller
         $mall_id_lists = MerchantLocation::with('mall')->where('merchant_id', $id)->distinct()->pluck('mall_id');
         $sub_categoryies = \DB::table('sub_category_master')->select('sub_category_id','Sub_Category_Name')->get();
         $preference_master_lists = PreferenceMaster::all();
+        $manage_age_lists = ManageAge::all();
+        $manage_meal_lists = Mealgroup::all();
+
        // $preference_list = PromotionPreference::all();
         //return $sub_categoryies;
         $mall_list = [];
@@ -160,7 +165,12 @@ class PromotionController extends Controller
             'mall_lists' => $mall_list,
             'sub_category_lists' => $sub_categoryies,
             'preference_lists' => $current_promo->promotion_preference ?? [],
-            'preference_master_lists' => $preference_master_lists
+            'preference_master_lists' => $preference_master_lists,
+            'manage_age_lists' => $manage_age_lists,
+            'promo_age_groups' => $current_promo->promotion_age_group ?? [],
+            'live_url_age' => env('LIVE_URL').'images/stock/',
+            'manage_meal_lists' => $manage_meal_lists,
+            'promo_meal_groups' => $current_promo->promotion_meal ?? [],
         ];
 
         //return $current_promo->promotion_category->rajat;

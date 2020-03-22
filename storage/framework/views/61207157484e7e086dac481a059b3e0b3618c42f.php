@@ -203,6 +203,8 @@ height: 213px; /* only if you want fixed height */
 <?php echo $__env->make('main.promotions.tags', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <?php echo $__env->make('main.promotions.category', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <?php echo $__env->make('main.promotions.preference', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<?php echo $__env->make('main.promotions.age_group', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<?php echo $__env->make('main.promotions.meal_group', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
 <div class="modal fade" id="deletepromotionmodal" tabindex="-1" role="dialog" aria-labelledby="deletemodalpromotionlabel" aria-hidden="true">
 <div class="modal-dialog" role="document">
@@ -302,7 +304,7 @@ height: 213px; /* only if you want fixed height */
         });
 
 
-        $('#category_select,#preference_select').val('');
+        $('#category_select,#preference_select,#age_select,#mg_select').val('');
         $('#category_select').select2({
             placeholder: 'Search Category',
             allowClear: true,
@@ -315,11 +317,29 @@ height: 213px; /* only if you want fixed height */
             width:400,
             height:50
         });
+        $('#age_select').select2({
+            placeholder: 'Select Age Group Name',
+            allowClear: true,
+            width:400,
+            height:50
+        });
+        $('#mg_select').select2({
+            placeholder: 'Select Meal',
+            allowClear: true,
+            width:400,
+            height:50
+        });
         $('#category_select').on('select2:select', function (e) {
             $("#sub_category_id").val(e.params.data.id);
         });
         $('#preference_select').on('select2:select', function (e) {
             $("#preference_id").val(e.params.data.id);
+        });
+        $('#age_select').on('select2:select', function (e) {
+            $("#ag_id").val(e.params.data.id);
+        });
+        $('#mg_select').on('select2:select', function (e) {
+            $("#mg_id").val(e.params.data.id);
         });
 
     });
@@ -673,6 +693,64 @@ height: 213px; /* only if you want fixed height */
               }
           });
       });
+
+
+      $(document).on('submit','#addPromoAge', function(e){
+          e.preventDefault();
+          var data = $(this).serialize();
+          var url = $(this).attr('action');
+          var type =  $(this).attr('method');
+
+          $.ajax({
+              url: url,
+              type: type,
+              dataType:'json',
+              data:data,
+              success:function(data){
+                  if(data.status==='error'){
+                      //errorReturn(data)
+                      toastr.error(data.message, 'Error');
+                  }else{
+                      $('#promotion-age-table tbody').remove();
+                      $("#promotion-age-table").load( $('#promotion-age-table').attr('data-sourceurl') +" #promotion-age-table");
+                      toastr.success(data.message);
+                  }
+              },
+              error: function(data){
+                  exeptionReturn(data);
+                  //toastr.error('I do not think that word means what you think it means.', 'Inconceivable!');
+              }
+          });
+      });
+
+      $(document).on('submit','#addMeal', function(e){
+          e.preventDefault();
+          var data = $(this).serialize();
+          var url = $(this).attr('action');
+          var type =  $(this).attr('method');
+
+          $.ajax({
+              url: url,
+              type: type,
+              dataType:'json',
+              data:data,
+              success:function(data){
+                  if(data.status==='error'){
+                      //errorReturn(data)
+                      toastr.error(data.message, 'Error');
+                  }else{
+                      $('#promotion-meal-table tbody').remove();
+                      $("#promotion-meal-table").load( $('#promotion-meal-table').attr('data-sourceurl') +" #promotion-meal-table");
+                      toastr.success(data.message);
+                  }
+              },
+              error: function(data){
+                  exeptionReturn(data);
+                  //toastr.error('I do not think that word means what you think it means.', 'Inconceivable!');
+              }
+          });
+      });
+
 
       // delete promotion tags
     $(document).on('click', '.btn-pt-delete', function(e){

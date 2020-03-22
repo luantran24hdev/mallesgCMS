@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mealgroup;
+use App\PromotionMeal;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -183,6 +184,84 @@ class MealgroupController extends Controller
         return response()->json([
             'status' => $image ? 'success' : 'error',
             'message' => $image ? __('succesfully deleted') : __('error deleting')
+        ],200);
+    }
+
+
+    public function promotionMealStore(Request $request)
+    {
+        $messages = [
+            'mg_id.required'    => 'Invalid Meal Group name!'
+        ];
+
+        // Start Validation
+        $validator = \Validator::make($request->all(), [
+            'promo_id' => 'required',
+            'mg_id' => 'required',
+        ],$messages);
+
+        if($validator->fails()){
+            return response()->json([
+                'status' => 'error',
+                'message' => $validator->messages()->first()
+            ],200);
+        }
+
+
+
+        $ifexist = PromotionMeal::where('promo_id',$request->promo_id)->where('mg_id',$request->mg_id)->first();
+
+        if(!empty($ifexist)){
+
+            return response()->json([
+                'status' => 'error',
+                'message' => __('Already Added.'),
+            ],200);
+
+        }
+        else{
+
+            $insert = new PromotionMeal;
+            $insert->promo_id = $request->promo_id;
+            $insert->mg_id = $request->mg_id;
+            $insert->primary_cat = 'N';
+            $insert->merchant_id = $request->merchant_id;
+            $insert->created_on = Carbon::now()->format('d/m/Y');
+            $insert->created_by = \Auth::user()->user_id;
+            $insert->save();
+
+
+        }
+
+        return response()->json([
+            'status' => 'success',
+            'message' => __('successfully added!.'),
+            //'tag_name' => $request->tag_name,
+            //'id' => $insert->pt_id
+        ],200);
+    }
+
+    public function promotionMealDestroy($id)
+    {
+        $promotionPreference = PromotionMeal::find($id);
+        $promotionPreference->delete();
+
+        return response()->json([
+            'status' => $promotionPreference ? 'success' : 'error',
+            'message' => $promotionPreference ? __('succesfully deleted') : __('error deleting')
+        ],200);
+    }
+
+    public function setPrimary($id)
+    {
+        $update = PromotionMeal::find($id);
+        $update->primary_cat= request()->primary_tag;
+        $update->save();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => __('successfully updated'),
+            //    'id' => $id
         ],200);
     }
 

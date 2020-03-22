@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ManageAge;
+use App\PromotionAgeGroup;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -186,6 +187,84 @@ class ManageAgeController extends Controller
         return response()->json([
             'status' => $image ? 'success' : 'error',
             'message' => $image ? __('succesfully deleted') : __('error deleting')
+        ],200);
+    }
+
+
+    public function promotionAgeStore(Request $request)
+    {
+        $messages = [
+            'ag_id.required'    => 'Invalid Age Group name!'
+        ];
+
+        // Start Validation
+        $validator = \Validator::make($request->all(), [
+            'promo_id' => 'required',
+            'ag_id' => 'required',
+        ],$messages);
+
+        if($validator->fails()){
+            return response()->json([
+                'status' => 'error',
+                'message' => $validator->messages()->first()
+            ],200);
+        }
+
+
+
+        $ifexist = PromotionAgeGroup::where('promo_id',$request->promo_id)->where('ag_id',$request->ag_id)->first();
+
+        if(!empty($ifexist)){
+
+            return response()->json([
+                'status' => 'error',
+                'message' => __('Already Added.'),
+            ],200);
+
+        }
+        else{
+
+            $insert = new PromotionAgeGroup;
+            $insert->promo_id = $request->promo_id;
+            $insert->ag_id = $request->ag_id;
+            $insert->primary_cat = 'N';
+            $insert->merchant_id = $request->merchant_id;
+            $insert->created_on = Carbon::now()->format('d/m/Y');
+            $insert->created_by = \Auth::user()->user_id;
+            $insert->save();
+
+
+        }
+
+        return response()->json([
+            'status' => 'success',
+            'message' => __('successfully added!.'),
+            //'tag_name' => $request->tag_name,
+            //'id' => $insert->pt_id
+        ],200);
+    }
+
+    public function promotionAgeDestroy($id)
+    {
+        $promotionPreference = PromotionAgeGroup::find($id);
+        $promotionPreference->delete();
+
+        return response()->json([
+            'status' => $promotionPreference ? 'success' : 'error',
+            'message' => $promotionPreference ? __('succesfully deleted') : __('error deleting')
+        ],200);
+    }
+
+    public function setPrimary($id)
+    {
+        $update = PromotionAgeGroup::find($id);
+        $update->primary_cat= request()->primary_tag;
+        $update->save();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => __('successfully updated'),
+            //    'id' => $id
         ],200);
     }
 

@@ -152,6 +152,16 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('promotion-preference/destroy/{id?}', 'PreferenceMasterController@promotionPreferenceDestroy')->name('promotion.preference.destroy');
     Route::post('promotion-preference/set-primary/{id?}', 'PreferenceMasterController@setPrimary')->name('promotion.preference.setprimary');
 
+    //Promotion Age Group
+    Route::post('promotion-age-group/store', 'ManageAgeController@promotionAgeStore')->name('promotion.agegroup.store');
+    Route::delete('promotion-age-group/destroy/{id?}', 'ManageAgeController@promotionAgeDestroy')->name('promotion.agegroup.destroy');
+    Route::post('promotion-age-group/set-primary/{id?}', 'ManageAgeController@setPrimary')->name('promotion.agegroup.setprimary');
+
+    //Promotion Meal Group
+    Route::post('promotion-meal-group/store', 'MealgroupController@promotionMealStore')->name('promotion.mealgroup.store');
+    Route::delete('promotion-meal-group/destroy/{id?}', 'MealgroupController@promotionMealDestroy')->name('promotion.mealgroup.destroy');
+    Route::post('promotion-meal-group/set-primary/{id?}', 'MealgroupController@setPrimary')->name('promotion.mealgroup.setprimary');
+
     //Discount tags
     Route::resource('discount-tags', 'DiscountController', ['names' => [
         'index' => 'discount-tags'
