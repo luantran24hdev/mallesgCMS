@@ -146,6 +146,10 @@
                             <div class="row mt-3">
                                 <div class="col-md-6">
                                     <div class="form-group">
+                                        <label class="mb-2 font-12">GPS Street</label><br>
+                                        <input type="text" name="gps_street" class="form-control" placeholder="GPS Street" value="{{ $mall->gps_street }}">
+                                    </div>
+                                    <div class="form-group">
                                         <label class="mb-2 font-12">Website</label><br>
                                         <input type="text" name="website" class="form-control" placeholder="Website" value="{{ $mall->website }}">
                                     </div>

@@ -124,6 +124,7 @@ class MallController extends Controller
         $mall->business_address = '';
         $mall->website = '';
         $mall->youtube = '';
+        $mall->user_id = \Auth::user()->user_id;
         $mall->save();
 
         return response()->json([
@@ -232,6 +233,7 @@ class MallController extends Controller
         $mall->postal_code = $request->postal_code ? $request->postal_code : 0;
         $mall->telephone = $request->telephone ? $request->telephone : '';
         $mall->business_address = $request->business_address ? $request->business_address : '';
+        $mall->gps_street = $request->gps_street ? $request->gps_street : '';
         $mall->website = $request->website ? $request->website : '';
         $mall->lat = $request->lat ? $request->lat :'';
         $mall->long = $request->long ? $request->long : '';
