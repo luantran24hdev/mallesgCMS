@@ -73,15 +73,18 @@
                                  </a>
                              </div>
                          <?php else: ?>
-                            <div class="col-md-12 mb-3 pr-0">
-                                <div class="upload-msg " style="height: 320px; width: 100%" onclick="$('#upload_5').trigger('click');">
-                                    <div style="display: table-cell; vertical-align: middle;">Drop Files Here or click upload a photo </div>
-                                </div>
+
+                            <div class="col-md-4">
+                                <form action="<?php echo e(route('merchants.uploadimage')); ?>" class="dropzone" id="image_5">
+                                    <?php echo csrf_field(); ?>
+                                    <input type="hidden" name="merchant_id" value="<?php echo e($merchant->merchant_id); ?>">
+                                </form>
                             </div>
+                            
                          <?php endif; ?>
 
 
-                        <input type="file" id="upload_5" data-count="5" class="imguploader" value="Drop Files Here to click upload a photo" accept="image/*" style="display: none;" >
+                        
 
 
 
@@ -112,7 +115,7 @@
                             <?php if($merchant_image->image_count == $i): ?>
 
                                 <div class="col-md-4 mb-3 pr-0">
-                                    <img class="card-img-top fit-image" src="<?php echo e($live_url.$merchant_image->image_name); ?>" alt="image count <?php echo e($merchant_image->image_count); ?>">
+                                    <img class="card-img-top" src="<?php echo e($live_url.$merchant_image->image_name); ?>" alt="image count <?php echo e($merchant_image->image_count); ?>">
                                     
                                     <a  href="javascript:;" data-href="<?php echo e(route('merchants.deletemallimage',['id'=>$merchant_image->merchant_image_id])); ?>" data-method="POST" class="btn-pi-delete" data-id="<?php echo e($merchant_image->image_count); ?>">
                                         <span class="text-danger"><?php echo e(__('Delete')); ?></span>
@@ -127,14 +130,21 @@
                         <?php endif; ?>
 
                         <?php if($empty): ?>
-                        <div class="col-md-4 mb-3 pr-0">
-                                <div class="upload-msg " style="height: 323px; max-width: 310px; width: 100%" >
-                                    <div style="display: table-cell; vertical-align: middle;" onclick="$('#upload_<?php echo e($i); ?>').trigger('click');">Click to upload a file </div>
-                                </div>
+                            
+
+
+                            <div class="col-md-4">
+                                <form action="<?php echo e(route('merchants.uploadimage')); ?>" class="dropzone" id="image_<?php echo e($i); ?>">
+                                    <?php echo csrf_field(); ?>
+                                    <input type="hidden" name="image_count" value="<?php echo e($i); ?>">
+                                    <input type="hidden" name="merchant_id" value="<?php echo e($merchant->merchant_id); ?>">
+                                </form>
                             </div>
+
+
                         <?php endif; ?>
 
-                        <input type="file" id="upload_<?php echo e($i); ?>" data-count="<?php echo e($i); ?>" class="imguploader" value="Choose a file" accept="image/*" style="display: none;" >
+                        
                     <?php endfor; ?>
 
 
@@ -159,8 +169,9 @@
 
                 <?php if(!empty($merchant->merchant_logo)): ?>
                         <div class="col-md-4 mb-3 pr-0">
-                            <img class="card-img-top fit-image" src="<?php echo e($logo_live_url.$merchant->merchant_logo); ?>" alt="image count">
+                            <img class="card-img-top" src="<?php echo e($logo_live_url.$merchant->merchant_logo); ?>" alt="image count" style="width: 200px !important;">
                             
+                            <br>
                             <a  href="javascript:;" data-href="<?php echo e(route('merchants.deletelogoimage',['id'=>$merchant->merchant_id])); ?>" data-method="POST" class="btn-pi-delete" data-id="<?php echo e($merchant->merchant_id); ?>">
                                 <span class="text-danger"><?php echo e(__('Delete')); ?></span>
                             </a>
@@ -169,14 +180,18 @@
 
 
                        <?php else: ?>
-                            <div class="col-md-4 mb-3 pr-0">
-                                <div class="upload-msg " style="height: 323px; max-width: 310px; width: 100%" >
-                                    <div style="display: table-cell; vertical-align: middle;" onclick="$('#upload_0').trigger('click');">Click to upload a file </div>
-                                </div>
-                            </div>
 
 
-                        <input type="file" id="upload_0" data-count="0" class="imguploader" value="Choose a file" accept="image/*" style="display: none;" >
+                        <div class="col-md-4">
+                            <form action="<?php echo e(route('merchants.uploadimage')); ?>" class="dropzone" id="my-awesome-dropzone">
+                                <?php echo csrf_field(); ?>
+                                <input type="hidden" name="image_count" value="0">
+                                <input type="hidden" name="merchant_id" value="<?php echo e($merchant->merchant_id); ?>">
+                            </form>
+                        </div>
+
+
+                            
                     <?php endif; ?>
 
 
@@ -195,153 +210,33 @@
 
 
 <?php $__env->startSection('script'); ?>
-
+<script type="text/javascript" src="<?php echo e(asset('js/dropzone.js')); ?>"></script>
 <link rel="stylesheet" type="text/css" href="<?php echo e(asset('css/croppie.css')); ?>">
 <script type="text/javascript" src="<?php echo e(asset('js/croppie.min.js')); ?>"></script>
 <script>
 
 
     $( function() {
-        var $uploadCrop = $('#upload-demo');
-        $uploadCrop.croppie({
-            enableResize: true,
-            enableExif: true,
-            viewport: {
-                width: 550,
-                height: 390,
+        Dropzone.options.myAwesomeDropzone = {
+            paramName: "file", // The name that will be used to transfer the file
+            maxFilesize: 2, // MB
+            accept: function(file, done) {
+                done();
             },
-            boundary: {
-                width: 647,
-                height: 459
+            init: function() {
+                this.on("maxfilesexceeded", function(file){
+                    toastr['error']('Upload one file only');
+
+                });
+                this.on("success", function(file, responseText) {
+                    //console.log('asdasdasdsad');
+                    toastr.success(responseText);
+                    //console.log(responseText);
+                    //ndow.location.reload();
+                    //location.reload();
+                });
             }
-        });
-
-        $('#croppermodal').on('shown.bs.modal', function() {
-            $uploadCrop.croppie('bind');
-        });
-
-
-
-        $(document).on('click','.upload-result', function (ev) {
-        $uploadCrop.croppie('result', {
-            type: 'canvas',
-            size: 'viewport'
-        }).then(function (resp) {
-
-            var ImageURL = resp;
-
-            //console.log(ImageURL);
-            // Split the base64 string in data and contentType
-            var block = ImageURL.split(";");
-            // Get the content type
-
-           // console.log(block);
-            var contentType = block[0].split(":")[1];// In this case "image/gif"
-            // get the real base64 content of the file
-            var realData = block[1].split(",")[1];// In this case "iVBORw0KGg...."
-
-            // Convert to blob
-            var blob = b64toBlob(realData, contentType);
-            var image_count = $('#selected_image').val();
-            // Create a FormData and append the file
-            var fd = new FormData();
-            fd.append("image", blob);
-            fd.append("merchant_id", "<?php echo e(@$merchant->merchant_id); ?>");
-            //console.log($('#selected_image').val());
-            if (image_count < 4) {
-                fd.append("image_count", image_count);
-            }
-            //console.log('dddddddddddd');
-
-           // console.log(fd);
-            $.ajax({
-                url: "<?php echo e(route('merchants.uploadimage')); ?>",
-                data: fd,// the formData function is available in almost all new browsers.
-                type:"POST",
-                contentType:false,
-                processData:false,
-                cache:false,
-                dataType:"json", // Cha
-                success:function(data){
-                    if(data.status==='error'){
-                        errorReturn(data)
-                    }else{
-                        if (data.image_count > 1) {
-                            $('#promo-image-body1 #promo-image-content1').remove();
-                            $("#promo-image-body1").load( $('#promo-image-body1').attr('data-sourceurl') +" #promo-image-content1");
-                        }else if(data.image_count == 0){
-                            $('#promo-image-body2 #promo-image-content2').remove();
-                            $("#promo-image-body2").load( $('#promo-image-body2').attr('data-sourceurl') +" #promo-image-content2");
-                        }else{
-                            $('#promo-image-body #promo-image-content').remove();
-                            $("#promo-image-body").load( $('#promo-image-body').attr('data-sourceurl') +" #promo-image-content");
-                        }
-                        $('#croppermodal').modal('hide');
-                        toastr.success(data.message);
-                    }
-                },
-                error: function(data){
-                    exeptionReturn(data);
-                }
-            });
-
-        });
-        });
-
-
-
-        $(document).on('change', '.imguploader', function () {
-            readFile(this);
-            $('#selected_image').val($(this).attr('data-count'));
-        });
-
-        function readFile(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-
-                $('#croppermodal').modal('show');
-
-                reader.onload = function (e) {
-                    $('.upload-demo-wrap').show();
-                    $uploadCrop.croppie('bind', {
-                        url: e.target.result
-                    }).then(function(){
-                        console.log('jQuery bind complete');
-                    });
-
-                }
-
-                reader.readAsDataURL(input.files[0]);
-
-            }
-            else {
-                alert("Sorry - you're browser doesn't support the FileReader API");
-            }
-        }
-
-        function b64toBlob(b64Data, contentType, sliceSize) {
-            contentType = contentType || '';
-            sliceSize = sliceSize || 512;
-
-            var byteCharacters = atob(b64Data);
-            var byteArrays = [];
-
-            for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
-                var slice = byteCharacters.slice(offset, offset + sliceSize);
-
-                var byteNumbers = new Array(slice.length);
-                for (var i = 0; i < slice.length; i++) {
-                    byteNumbers[i] = slice.charCodeAt(i);
-                }
-
-                var byteArray = new Uint8Array(byteNumbers);
-
-                byteArrays.push(byteArray);
-            }
-
-            var blob = new Blob(byteArrays, {type: contentType});
-            return blob;
-        }
+        };
     });
 
 
@@ -375,6 +270,7 @@
                                 $("#promo-image-body").load( $('#promo-image-body').attr('data-sourceurl') +" #promo-image-content");
                             }
                             toastr.success(data.message);
+                            window.location.reload();
                         }
                     }
                 });

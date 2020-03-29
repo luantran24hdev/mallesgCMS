@@ -330,14 +330,14 @@ class MerchantController extends Controller
     public function uploadimage(Request $request)
     {
 
-        $file = $request->files->get('image');
+        $file = $request->files->get('file');
         try {
 
-            if ($file->getMimeType() != "image/png") {
+            if($file->getMimeType()!="image/png" && $file->getMimeType()!="image/jpeg" && $file->getMimeType()!="image/jpg"){
                 throw new \Exception("invalid file", 500);
             }
 
-            $newfilename = md5($request->mall_id . "_" . round(microtime(true))) . '.png';
+            $newfilename = md5($request->merchant_id . "_" . round(microtime(true))) . '.png';
 
             if(isset($request->image_count)){
 
@@ -367,12 +367,15 @@ class MerchantController extends Controller
             throw new \Exception($e->getMessage(), 500, $e);
         }
 
-        return response()->json([
+
+        return response()->json(['success' ,'succesfully uploaded']);
+
+        /*return response()->json([
             'status' => 'success' ,
             'image_count' => @$request->image_count,
             'message' =>__('succesfully uploaded'),
             'file' => env("LIVE_URL").$newfilename
-        ],200);
+        ],200);*/
 
     }
 
