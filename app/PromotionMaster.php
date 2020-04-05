@@ -36,7 +36,16 @@ class PromotionMaster extends Model
         'dm_id',
         'user_id',
         'redeemable',
-        'promo_active'
+        'promo_active',
+        'dine_in',
+        'dine_in_service',
+        'dine_in_gst',
+        'take_out',
+        'take_out_service',
+        'take_out_gst',
+        'deliver',
+        'deliver_service',
+        'deliver_gst',
     ];
 
     public function merchant()

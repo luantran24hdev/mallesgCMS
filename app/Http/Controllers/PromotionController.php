@@ -235,6 +235,15 @@ class PromotionController extends Controller
                 'active' => $request->active_txt ?? "",
                 'promo_active' => $request->active_txt ?? "",
                 'redeemable' => $request->redeemable_txt ?? null,
+                'dine_in' => $request->dine_in ?? null,
+                'dine_in_service' => $request->dine_in_service ?? null,
+                'dine_in_gst' => $request->dine_in_gst ?? null,
+                'take_out' => $request->take_out ?? null,
+                'take_out_service' => $request->take_out_service ?? null,
+                'take_out_gst' => $request->take_out_gst ?? null,
+                'deliver' => $request->deliver ?? null,
+                'deliver_service' => $request->deliver_service ?? null,
+                'deliver_gst' => $request->deliver_gst ?? null,
             ]);
 
             return response()->json([
@@ -272,11 +281,11 @@ class PromotionController extends Controller
     public function uploadimage(sRequest $request)
     {
 
-        $file = $request->files->get('image');
+        $file = $request->files->get('file');
 
         try{
 
-            if($file->getMimeType()!="image/png"){
+            if($file->getMimeType()!="image/png" && $file->getMimeType()!="image/jpeg" && $file->getMimeType()!="image/jpg"){
                 throw new \Exception("invalid file", 500);
             }
 
@@ -299,6 +308,8 @@ class PromotionController extends Controller
         } catch (QueryException $e) {
             throw new \Exception($e->getMessage(), 500, $e);
         }
+
+        return response()->json(['success' ,'succesfully uploaded']);
 
         return response()->json([
             'status' => 'success' ,

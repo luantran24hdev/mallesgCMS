@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('style')
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> 
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <style type="text/css">
         .card{
             margin-bottom: 0px;
@@ -12,27 +12,27 @@
             border-color: #ccc;
         }
         .active{
-            background-color: #007bff !important; 
+            background-color: #007bff !important;
         }
         .pic {
             width: 100%;
             height: 100%;
         }
 
- 
+
 .upload-demo-wrap {
     width: 100%;
-    height: 100; 
+    height: 100;
 }
 
 .upload-msg {
-    text-align: center; 
+    text-align: center;
     font-size: 22px;
-    color: #aaa; 
+    color: #aaa;
     border: 1px solid #aaa;
     display: table;
     cursor: pointer;
-}     
+}
 
 .fit-image{
 width: 100%;
@@ -75,7 +75,7 @@ height: 213px; /* only if you want fixed height */
     </style>
 @endsection
 
-@section('content')                        
+@section('content')
 <div class="row">
     <div class="col-md-10">
         <div class="card card-malle">
@@ -84,7 +84,7 @@ height: 213px; /* only if you want fixed height */
 
             @if(isset($promo_id))
             <a style="float:right;" href="{{route('promotions.show',['promotions'=>$id])}}">{{__('Back')}}</a>
-            @endif 
+            @endif
             </div>
             <div class="card-body">
 
@@ -126,8 +126,8 @@ height: 213px; /* only if you want fixed height */
                                     <input type="text" name="promo_name" placeholder="Promotion Name" id="promo_name" class="form-control" required="">
                                 </div>
                             </div>
- 
- 
+
+
                             <div class="col-md-3">
                                 <button type="submit" class="btn btn-primary col-md-12 top-t" id="btnMerchantPromotion">{{__('Add Promotion')}}</button>
                             </div>
@@ -152,8 +152,8 @@ height: 213px; /* only if you want fixed height */
                          @foreach($promotions as $promotions)
                             <tr class="row-promotion" data-id="{{$promotions->promo_id}}">
                                 <td>{{$promotions->promo_name}}  {{$promotions->promo_id}}</td>
-                                <td>{{$promotions->merchant->merchant_name}}</td>
-                                <td>{{$promotions->merchant->country->country_name}}</td>
+                                <td>{{@$promotions->merchant->merchant_name}}</td>
+                                <td>{{@$promotions->merchant->country->country_name}}</td>
                                 <td>{{ $total_outlate = \App\PromotionMaster::totalOutlate($promotions->promo_id) }}</td>
                                 <td>{{$promotions->creator->short_name}}</td>
                                 <td>
@@ -194,21 +194,12 @@ height: 213px; /* only if you want fixed height */
             </div>
         </div>
 
- 
+
     </div>
 </div>
 
 @include('main.promotions.images')
-
- @include('main.promotions.outlets')
-{{--@if(isset($promo_id))
-    <promotion-outlets
-        :promo-id="{{ $promo_id }}"
-        :outlets="{{ (isset($promo_id)) ? $current_promo->outlets()->with('merchant', 'merchantLocation', 'mall', 'merchantLocation.floor')->get()->toJson() : '' }}"
-        :autocompletesrc="'{{ route("malls.searchwith") }}'"
-        :post-url="'{{ route("promo-outlets.store") }}'">
-    </promotion-outlets>
-@endif--}}
+@include('main.promotions.outlets')
 @include('main.promotions.tags')
 @include('main.promotions.category')
 @include('main.promotions.preference')
@@ -261,6 +252,8 @@ height: 213px; /* only if you want fixed height */
 
 
 @section('script')
+
+<script type="text/javascript" src="{{ asset('js/dropzone.js') }}"></script>
 <link rel="stylesheet" type="text/css" href="{{asset('css/croppie.css')}}">
 <script type="text/javascript" src="{{asset('js/croppie.min.js')}}"></script>
 
@@ -365,7 +358,7 @@ height: 213px; /* only if you want fixed height */
             enableExif: true,
             viewport: {
                 width: 550,
-                height: 390, 
+                height: 390,
             },
             boundary: {
                 width: 647,
@@ -376,7 +369,7 @@ height: 213px; /* only if you want fixed height */
    $('#croppermodal').on('shown.bs.modal', function() {
         $uploadCrop.croppie('bind');
    });
-    
+
 
     @if(isset($promo_id))
         $(document).on('click','.upload-result', function (ev) {
@@ -403,7 +396,7 @@ height: 213px; /* only if you want fixed height */
                 fd.append("promo_id", "{{@$promo_id}}");
                 fd.append("merchant_id", "{{@$id}}");
                 fd.append("image_count", $('#selected_image').val());
-                
+
                 $.ajax({
                     url: "{{route('promotions.uploadimage')}}",
                     data: fd,// the formData function is available in almost all new browsers.
@@ -415,14 +408,14 @@ height: 213px; /* only if you want fixed height */
                     success:function(data){
                         if(data.status==='error'){
                             errorReturn(data)
-                        }else{  
+                        }else{
                             $('#promo-image-body #promo-image-content').remove();
                             $("#promo-image-body").load( $('#promo-image-body').attr('data-sourceurl') +" #promo-image-content");
                             $('#croppermodal').modal('hide');
                             toastr.success(data.message);
-                        }   
+                        }
                     },
-                    error: function(data){ 
+                    error: function(data){
                         exeptionReturn(data);
                     }
                 });
@@ -431,8 +424,8 @@ height: 213px; /* only if you want fixed height */
         });
     @endif
 
-    $(document).on('change', '.imguploader', function () { 
-        readFile(this); 
+    $(document).on('change', '.imguploader', function () {
+        readFile(this);
         $('#selected_image').val($(this).attr('data-count'));
     });
 
@@ -454,21 +447,21 @@ height: 213px; /* only if you want fixed height */
 
     function readFile(input) {
         if (input.files && input.files[0]) {
-            var reader = new FileReader();            
+            var reader = new FileReader();
             $('#croppermodal').modal('show');
 
-            reader.onload = function (e) { 
+            reader.onload = function (e) {
                 $('.upload-demo-wrap').show();
                 $uploadCrop.croppie('bind', {
                     url: e.target.result
                 }).then(function(){
                     console.log('jQuery bind complete');
                 });
-                
+
             }
-            
+
             reader.readAsDataURL(input.files[0]);
-            
+
         }
         else {
             alert("Sorry - you're browser doesn't support the FileReader API");
@@ -488,23 +481,23 @@ height: 213px; /* only if you want fixed height */
 
         $.ajax({
             url: url,
-            type: type,       
+            type: type,
             dataType:'json',
             data:data,
             success:function(data){
                 if(data.status==='error'){
                     errorReturn(data)
-                }else{  
+                }else{
                     $('#promotion-table tbody').remove();
                     $("#promotion-table").load( $('#promotion-table').attr('data-sourceurl') +" #promotion-table tbody");
                     toastr.success(data.message);
-                }   
+                }
             },
-            error: function(data){ 
+            error: function(data){
                 exeptionReturn(data);
             }
         });
-    });   
+    });
 
     // update promotions
     $(document).on('submit','#editPromoform', function(e){
@@ -515,47 +508,47 @@ height: 213px; /* only if you want fixed height */
 
         $.ajax({
             url: url,
-            type: type,       
+            type: type,
             dataType:'json',
             data:data,
             success:function(data){
                 if(data.status==='error'){
                     errorReturn(data)
-                }else{  
+                }else{
                     toastr.success(data.message);
-                }   
+                }
             },
-            error: function(data){ 
+            error: function(data){
                 exeptionReturn(data);
             }
         });
- 
-    });   
+
+    });
 
     // delete promotions
     $(document).on('click', '.btn-delete', function(e){
         e.preventDefault();
-        var btndelete = $(this); 
- 
+        var btndelete = $(this);
+
         $('#deletepromotionmodal').modal('show');
 
         $('#btnDeletePromotion').unbind().click(function(){
 
             $.ajax({
                 url: btndelete.attr('data-href'),
-                type: btndelete.attr('data-method'),       
+                type: btndelete.attr('data-method'),
                 dataType:'json',
                 success:function(data){
                     if(data.status==='error'){
                         errorReturn(data)
-                    }else{  
+                    }else{
                         $('#deletepromotionmodal').modal('hide');
                         $('.row-promotion[data-id="'+btndelete.attr('data-id')+'"]').remove();
                         toastr.success(data.message);
-                    }   
+                    }
                 }
             });
-                 
+
         });
     });
 
@@ -586,6 +579,81 @@ height: 213px; /* only if you want fixed height */
         $('#active_txt').val('N');
     });
 
+      $('#yes_dine_in').click(function(){
+          $('#dine_in').val('Y');
+      });
+
+      $('#no_dine_in').click(function(){
+          $('#dine_in').val('N');
+      });
+
+      $('#yes_dine_in_service').click(function(){
+          $('#dine_in_service').val('Y');
+      });
+
+      $('#no_dine_in_service').click(function(){
+          $('#dine_in_service').val('N');
+      });
+
+      $('#yes_dine_in_gst').click(function(){
+          $('#dine_in_gst').val('Y');
+      });
+
+      $('#no_dine_in_gst').click(function(){
+          $('#dine_in_gst').val('N');
+      });
+
+
+      $('#yes_take_out').click(function(){
+          $('#take_out').val('Y');
+      });
+
+      $('#no_take_out').click(function(){
+          $('#take_out').val('N');
+      });
+
+      $('#yes_take_out_service').click(function(){
+          $('#take_out_service').val('Y');
+      });
+
+      $('#no_take_out_service').click(function(){
+          $('#take_out_service').val('N');
+      });
+
+      $('#yes_take_out_gst').click(function(){
+          $('#take_out_gst').val('Y');
+      });
+
+      $('#no_take_out_gst').click(function(){
+          $('#take_out_gst').val('N');
+      });
+
+
+      $('#yes_deliver').click(function(){
+          $('#deliver').val('Y');
+      });
+
+      $('#no_deliver').click(function(){
+          $('#deliver').val('N');
+      });
+
+      $('#yes_deliver_service').click(function(){
+          $('#deliver_service').val('Y');
+      });
+
+      $('#no_deliver_service').click(function(){
+          $('#deliver_service').val('N');
+      });
+
+      $('#yes_deliver_gst').click(function(){
+          $('#deliver_gst').val('Y');
+      });
+
+      $('#no_deliver_gst').click(function(){
+          $('#deliver_gst').val('N');
+      });
+
+
 
      // store promotags
     $(document).on('submit','#addPromoTag', function(e){
@@ -596,7 +664,7 @@ height: 213px; /* only if you want fixed height */
 
         $.ajax({
             url: url,
-            type: type,       
+            type: type,
             dataType:'json',
             data:data,
             success:function(data){
@@ -609,7 +677,7 @@ height: 213px; /* only if you want fixed height */
                     $('#promotion-tag-table tbody').remove();
                     $("#promotion-tag-table").load( $('#promotion-tag-table').attr('data-sourceurl') +" #promotion-tag-table tbody");
                     toastr.success(data.message);
-                }   
+                }
             },
             error: function(data){mall_name
                // console.log(data);
@@ -764,49 +832,49 @@ height: 213px; /* only if you want fixed height */
       // delete promotion tags
     $(document).on('click', '.btn-pt-delete', function(e){
         e.preventDefault();
-        var btndelete = $(this); 
- 
+        var btndelete = $(this);
+
         $('#deletepromotionmodal').modal('show');
 
         $('#btnDeletePromotion').unbind().click(function(){
 
             $.ajax({
                 url: btndelete.attr('data-href'),
-                type: btndelete.attr('data-method'),       
+                type: btndelete.attr('data-method'),
                 dataType:'json',
                 success:function(data){
                     if(data.status==='error'){
                         errorReturn(data)
-                    }else{  
+                    }else{
                         $('#deletepromotionmodal').modal('hide');
                         $('.row-promo-tags[data-id="'+btndelete.attr('data-id')+'"]').remove();
                         toastr.success(data.message);
-                    }   
+                    }
                 }
             });
-                 
+
         });
     });
 
     // change promo tag status
     $(document).on('change', '.primary_tag', function(e){
         e.preventDefault();
-        var selectOp = $(this); 
- 
+        var selectOp = $(this);
+
          $.ajax({
             url: selectOp.attr('data-href'),
-            type: selectOp.attr('data-method'),       
+            type: selectOp.attr('data-method'),
             dataType:'json',
             data: {'primary_tag': selectOp.find('option:selected').val()},
             success:function(data){
                 if(data.status==='error'){
                     errorReturn(data)
-                }else{  
+                }else{
 
                     toastr.success(data.message);
-                }   
+                }
             },
-            error: function(data){ 
+            error: function(data){
                 exeptionReturn(data);
             }
         });
@@ -851,28 +919,28 @@ height: 213px; /* only if you want fixed height */
     // delete promo image
     $(document).on('click', '.btn-pi-delete', function(e){
         e.preventDefault();
-        var btndelete = $(this); 
- 
+        var btndelete = $(this);
+
         $('#deletepromotionmodal').modal('show');
 
         $('#btnDeletePromotion').unbind().click(function(){
 
             $.ajax({
                 url: btndelete.attr('data-href'),
-                type: btndelete.attr('data-method'),       
+                type: btndelete.attr('data-method'),
                 dataType:'json',
                 success:function(data){
                     if(data.status==='error'){
                         errorReturn(data)
-                    }else{   
+                    }else{
                         $('#deletepromotionmodal').modal('hide');
                         $('#promo-image-body #promo-image-content').remove();
                         $("#promo-image-body").load( $('#promo-image-body').attr('data-sourceurl') +" #promo-image-content");
                         toastr.success(data.message);
-                    }   
+                    }
                 }
             });
-                 
+
         });
     });
 
@@ -925,7 +993,7 @@ height: 213px; /* only if you want fixed height */
           select: function(event, ui) {
             //console.log(event);
 
-             $("#mall_name").val(ui.item.label); 
+             $("#mall_name").val(ui.item.label);
              $("#mall_id").val(ui.item.value);
 
               $.ajax({
