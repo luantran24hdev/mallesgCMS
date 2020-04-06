@@ -2,16 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b78cfcb-942f-4cbe-bdc3-7ba4e2bc8d2a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/adminlaravel3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/adminlaravel3.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PromotionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PromotionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/PromotionMaster.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/PromotionMaster.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/main/promotions/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/promotions/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/main/promotions/images.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/promotions/images.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/main/promotions/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/promotions/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/views/479e07d0b6252a1b8e99e50b687732feead0f0a1.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/479e07d0b6252a1b8e99e50b687732feead0f0a1.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/views/61207157484e7e086dac481a059b3e0b3618c42f.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/61207157484e7e086dac481a059b3e0b3618c42f.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/views/e4872dd601f3506e4edb81dda931d47c9d6f5e86.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/e4872dd601f3506e4edb81dda931d47c9d6f5e86.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ManageAgeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ManageAgeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MealgroupController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MealgroupController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/main/manage_age/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/manage_age/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/main/meal_group/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/meal_group/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/134f30c7060e1636dc40ce54a016f20fe4e1f58a.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/134f30c7060e1636dc40ce54a016f20fe4e1f58a.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/6b287dd62479e85c01cc73f84520f65452bafcbb.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/6b287dd62479e85c01cc73f84520f65452bafcbb.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +121,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../live_stream2" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -262,6 +259,9 @@
       <workItem from="1585892391640" duration="2074000" />
       <workItem from="1585907519292" duration="4721000" />
       <workItem from="1585920930552" duration="691000" />
+      <workItem from="1586099978927" duration="4055000" />
+      <workItem from="1586148618085" duration="32000" />
+      <workItem from="1586151302188" duration="873000" />
     </task>
     <servers />
   </component>
@@ -277,10 +277,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="128" y="71" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1579923831977" />
-    <state x="549" y="171" key="FileChooserDialogImpl" timestamp="1579415890454">
+    <state x="549" y="171" key="FileChooserDialogImpl" timestamp="1586148648384">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="171" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1579415890454" />
+    <state x="549" y="171" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1586148648384" />
     <state x="587" y="127" key="RollbackChangesDialog" timestamp="1582869016310">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -289,10 +289,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1582869066848" />
-    <state x="477" y="241" key="com.intellij.ide.util.TipDialog" timestamp="1582276725729">
+    <state x="477" y="241" key="com.intellij.ide.util.TipDialog" timestamp="1586148617929">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="477" y="241" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1582276725729" />
+    <state x="477" y="241" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1586148617929" />
     <state x="473" y="46" width="590" height="732" key="find.popup" timestamp="1585908076221">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -301,9 +301,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1579233729120" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1585911893846">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1586108000006">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1585911893846" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1586108000006" />
   </component>
 </project>

@@ -31,12 +31,25 @@
             display: table;
             cursor: pointer;
         }
+        .dropzone .dz-message {
+            text-align: center;
+            font-size: 11px;
+            padding: 17px 0 0 0 !important;
+            margin: 0 0 0 0 !important;
+        }
+        .dropzone .dz-preview .dz-details {
+            padding: 0px !important;
+        }
 
-        /*  .fit-image{
-              width: 100%;
-              object-fit: cover;
-              height: 180px; !* only if you want fixed height *!
-          }*/
+        .dropzone .dz-preview .dz-image{
+            max-width: 50px !important;
+            max-height: 50px !important;
+        }
+
+        .dropzone .dz-preview{
+            margin: 5px !important;
+            min-height: 0px !important;
+        }
 
     </style>
 <?php $__env->stopSection(); ?>
@@ -91,14 +104,10 @@
                                                     <span class="text-danger"><?php echo e(__('Delete')); ?></span>
                                                 </a>
                                             <?php else: ?>
-                                                
-                                                <input type="hidden" id="selected_image" value="">
-                                                <i class="fa fa-file-image-o" aria-hidden="true" style="font-size: 50px;" onclick="$('#upload_5').trigger('click');"></i>
-                                                <br>
-                                                <span>Upload</span>
-                                                
-                                                <input type="file" id="upload_5" data-count="<?php echo e(@$manageAge->ag_id); ?>" class="imguploader" value="Drop Files Here to click upload a photo" accept="image/*" style="display: none;" >
-
+                                                <form action="<?php echo e(route('manageage.uploadimage')); ?>" class="dropzone" style="width: 60px;height: 60px;min-height: 0px !important; padding: 0 0 0 0 !important;">
+                                                    <?php echo csrf_field(); ?>
+                                                    <input type="hidden" name="age_id" value="<?php echo e(@$manageAge->ag_id); ?>">
+                                                </form>
                                             <?php endif; ?>
                                         </td>
                                         <td><?php echo e(@$manageAge->age_group_name); ?></td>
@@ -129,137 +138,20 @@
 
 
 <?php $__env->startSection('script'); ?>
-    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('css/croppie.css')); ?>">
-    <script type="text/javascript" src="<?php echo e(asset('js/croppie.min.js')); ?>"></script>
+    <script type="text/javascript" src="<?php echo e(asset('js/dropzone.js')); ?>"></script>
+
 
     <script>
 
-        $( function() {
-            var $uploadCrop = $('#upload-demo');
-            $uploadCrop.croppie({
-                enableResize: true,
-                enableExif: true,
-                viewport: {
-                    width: 550,
-                    height: 390,
-                },
-                boundary: {
-                    width: 647,
-                    height: 459
-                }
-            });
+        Dropzone.autoDiscover = false;
 
-            $('#croppermodal').on('shown.bs.modal', function() {
-                $uploadCrop.croppie('bind');
-            });
+        var urls = ['url1', 'url2'];
 
-            $(document).on('click','.upload-result', function (ev) {
-                $uploadCrop.croppie('result', {
-                    type: 'canvas',
-                    size: 'viewport'
-                }).then(function (resp) {
-
-                    var ImageURL = resp;
-                    // Split the base64 string in data and contentType
-                    var block = ImageURL.split(";");
-                    // Get the content type
-
-                    var contentType = block[0].split(":")[1];// In this case "image/gif"
-                    // get the real base64 content of the file
-                    var realData = block[1].split(",")[1];// In this case "iVBORw0KGg...."
-
-                    // Convert to blob
-                    var blob = b64toBlob(realData, contentType);
-                    var age_id = $('#selected_image').val();
-                    var fd = new FormData();
-                    fd.append("image", blob);
-                    fd.append("age_id", age_id);
-
-
-                    // console.log(fd);
-                    $.ajax({
-                        url: "<?php echo e(route('manageage.uploadimage')); ?>",
-                        data: fd,// the formData function is available in almost all new browsers.
-                        type:"POST",
-                        contentType:false,
-                        processData:false,
-                        cache:false,
-                        dataType:"json", // Cha
-                        success:function(data){
-                            if(data.status==='error'){
-                                errorReturn(data)
-                            }else{
-                                /*$('#tag-image-body #tag-image-content').remove();
-                                $("#tag-image-body").load( $('#tag-image-body').attr('data-sourceurl') +" #tag-image-content");*/
-                                $("#discount-tag-table").load( $('#discount-tag-table').attr('data-sourceurl') +" #discount-tag-table");
-                                $('#croppermodal').modal('hide');
-                                toastr.success(data.message);
-                            }
-                        },
-                        error: function(data){
-                            exeptionReturn(data);
-                        }
-                    });
-
-                });
-            });
-
-
-
-            $(document).on('change', '.imguploader', function () {
-                readFile(this);
-                $('#selected_image').val($(this).attr('data-count'));
-            });
-
-            function readFile(input) {
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
-
-                    $('#croppermodal').modal('show');
-
-                    reader.onload = function (e) {
-                        $('.upload-demo-wrap').show();
-                        $uploadCrop.croppie('bind', {
-                            url: e.target.result
-                        }).then(function(){
-                            console.log('jQuery bind complete');
-                        });
-
-                    }
-
-                    reader.readAsDataURL(input.files[0]);
-
-                }
-                else {
-                    alert("Sorry - you're browser doesn't support the FileReader API");
-                }
-            }
-
-            function b64toBlob(b64Data, contentType, sliceSize) {
-                contentType = contentType || '';
-                sliceSize = sliceSize || 512;
-
-                var byteCharacters = atob(b64Data);
-                var byteArrays = [];
-
-                for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
-                    var slice = byteCharacters.slice(offset, offset + sliceSize);
-
-                    var byteNumbers = new Array(slice.length);
-                    for (var i = 0; i < slice.length; i++) {
-                        byteNumbers[i] = slice.charCodeAt(i);
-                    }
-
-                    var byteArray = new Uint8Array(byteNumbers);
-
-                    byteArrays.push(byteArray);
-                }
-
-                var blob = new Blob(byteArrays, {type: contentType});
-                return blob;
-            }
+        $('.dropzone').each(function(index){
+            $(this).dropzone({
+                dictDefaultMessage: 'Upload',
+            })
         });
-
 
         $(document).on('click', '.btn-pi-delete', function(e){
             e.preventDefault();
@@ -284,6 +176,7 @@
                             $("#tag-image-body").load( $('#tag-image-body').attr('data-sourceurl') +" #tag-image-content");*/
                             $("#discount-tag-table").load( $('#discount-tag-table').attr('data-sourceurl') +" #discount-tag-table");
                             toastr.success(data.message);
+                            window.location.href = '<?php echo e(route('manage-age')); ?>';
                         }
                     }
                 });

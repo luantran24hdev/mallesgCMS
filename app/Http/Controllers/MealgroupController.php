@@ -137,10 +137,10 @@ class MealgroupController extends Controller
 
     public function uploadimage(Request $request)
     {
-        $file = $request->files->get('image');
+        $file = $request->files->get('file');
         try{
 
-            if($file->getMimeType()!="image/png"){
+            if($file->getMimeType()!="image/png" && $file->getMimeType()!="image/jpeg" && $file->getMimeType()!="image/jpg"){
                 throw new \Exception("invalid file", 500);
             }
 
@@ -160,12 +160,8 @@ class MealgroupController extends Controller
         } catch (QueryException $e) {
             throw new \Exception($e->getMessage(), 500, $e);
         }
+        return response()->json(['success' ,'succesfully uploaded']);
 
-        return response()->json([
-            'status' => 'success' ,
-            'message' =>__('succesfully uploaded'),
-            'file' => env("LIVE_URL").$newfilename
-        ],200);
 
     }
 
