@@ -178,6 +178,8 @@
                                         <label class="mb-2 font-12">Longitude</label>
                                         <input type="text" name="longitude" id="longitude" placeholder="Longitude" class="form-control">
                                     </div>
+
+
                                 </div>
 
                             </div>
@@ -191,6 +193,12 @@
                                                 <option value="<?php echo e($company->company_id); ?>" <?php if($company->company_id == $merchant->company_id): ?> selected <?php endif; ?>><?php echo e($company->company_name); ?></option>
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="mb-2 font-12">Deliver Charges</label>
+                                        <input type="text" name="delivery_charge" id="delivery_charge" placeholder="Deliver Charges" class="form-control" value="<?php echo e($merchant->delivery_charge); ?>">
                                     </div>
                                 </div>
                             </div>

@@ -180,6 +180,8 @@
                                         <label class="mb-2 font-12">Longitude</label>
                                         <input type="text" name="longitude" id="longitude" placeholder="Longitude" class="form-control">
                                     </div>
+
+
                                 </div>
 
                             </div>
@@ -193,6 +195,12 @@
                                                 <option value="{{ $company->company_id }}" @if($company->company_id == $merchant->company_id) selected @endif>{{$company->company_name }}</option>
                                             @endforeach
                                         </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="mb-2 font-12">Deliver Charges</label>
+                                        <input type="text" name="delivery_charge" id="delivery_charge" placeholder="Deliver Charges" class="form-control" value="{{$merchant->delivery_charge }}">
                                     </div>
                                 </div>
                             </div>

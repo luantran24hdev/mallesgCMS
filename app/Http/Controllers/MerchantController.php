@@ -179,6 +179,7 @@ class MerchantController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //return $request->all();
         $messages = [
             'merchant_name.required'    => 'Merchant name field is required'
         ];
@@ -212,6 +213,7 @@ class MerchantController extends Controller
         $merchant->opening_hour = $request->opening_hour ? $request->opening_hour : '';
         $merchant->company_id = $request->company_id ? $request->company_id : 0;
         $merchant->about_us = $request->about_us ? $request->about_us : '';
+        $merchant->delivery_charge = $request->delivery_charge ? $request->delivery_charge : null;
         $merchant->save();
 
         return response()->json([
