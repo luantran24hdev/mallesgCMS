@@ -161,12 +161,13 @@ class LevelController extends Controller
 
     public function uploadimage(Request $request)
     {
-        $file = $request->files->get('image');
+        $file = $request->files->get('file');
         try{
 
-            if($file->getMimeType()!="image/png"){
+            if($file->getMimeType()!="image/png" && $file->getMimeType()!="image/jpeg" && $file->getMimeType()!="image/jpg"){
                 throw new \Exception("invalid file", 500);
             }
+
 
 
             $newfilename = md5($request->level_id."_".round(microtime(true))) . '.png';

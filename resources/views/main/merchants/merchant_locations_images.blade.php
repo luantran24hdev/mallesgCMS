@@ -1,42 +1,4 @@
 @extends('layouts.app')
-@section('style')
-
-    <style>
-        .card{
-            margin-bottom: 0px;
-        }
-        .btn-default{
-            color: #fff;
-            background-color: #ccc;
-            border-color: #ccc;
-        }
-        .active{
-            background-color: #007bff !important;
-        }
-        .pic {
-            width: 100%;
-            height: 100%;
-        }
-
-
-        .upload-demo-wrap {
-            width: 100%;
-            height: 100%;
-        }
-
-        .upload-msg {
-            text-align: center;
-            font-size: 22px;
-            color: #aaa;
-            border: 1px solid #aaa;
-            display: table;
-            cursor: pointer;
-        }
-
-
-
-    </style>
-@endsection
 
 @section('content')
 <div class="row">
@@ -76,17 +38,22 @@
                         @endif
 
                         @if($empty)
-                        <div class="col-md-4 mb-3 pr-0">
-                                <div class="upload-msg " style="height: 200px; max-width: 310px; width: 100%" >
-                                    <div style="display: table-cell; vertical-align: middle;" onclick="$('#upload_{{$i}}').trigger('click');">Click to upload a file </div>
-                                </div>
+
+
+
+                            <div class="col-md-4 mb-3 pr-0">
+                                <form action="{{ route('locations.uploadimage') }}" class="dropzone" id="my-awesome-dropzone">
+                                    @csrf
+                                    <input type="hidden" name="image_count" value="{{$i}}">
+                                    <input type="hidden" name="merchant_id" value="{{ @$location->merchant_id  }}">
+                                    <input type="hidden" name="merchantlocation_id" value="{{ @$location->merchantlocation_id  }}">
+                                </form>
                             </div>
                         @endif
 
-                        <input type="file" id="upload_{{$i}}" data-count="{{$i}}" class="imguploader" value="Choose a file" accept="image/*" style="display: none;" >
                     @endfor
 
- 
+
                 </div>
 
              </div>
@@ -99,150 +66,10 @@
 @endsection
 
 @section('script')
-    <link rel="stylesheet" type="text/css" href="{{asset('css/croppie.css')}}">
-    <script type="text/javascript" src="{{asset('js/croppie.min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('js/dropzone.js') }}"></script>
+
     <script>
-
-
-
-
-        $( function() {
-            var $uploadCrop = $('#upload-demo');
-            $uploadCrop.croppie({
-                enableResize: true,
-                enableExif: true,
-                viewport: {
-                    width: 550,
-                    height: 390,
-                },
-                boundary: {
-                    width: 647,
-                    height: 459
-                }
-            });
-
-            $('#croppermodal').on('shown.bs.modal', function() {
-                $uploadCrop.croppie('bind');
-            });
-
-
-
-            $(document).on('click','.upload-result', function (ev) {
-                $uploadCrop.croppie('result', {
-                    type: 'canvas',
-                    size: 'viewport'
-                }).then(function (resp) {
-
-                    var ImageURL = resp;
-
-                    //console.log(ImageURL);
-                    // Split the base64 string in data and contentType
-                    var block = ImageURL.split(";");
-                    // Get the content type
-
-                    // console.log(block);
-                    var contentType = block[0].split(":")[1];// In this case "image/gif"
-                    // get the real base64 content of the file
-                    var realData = block[1].split(",")[1];// In this case "iVBORw0KGg...."
-
-                    // Convert to blob
-                    var blob = b64toBlob(realData, contentType);
-                    var image_count = $('#selected_image').val();
-                    // Create a FormData and append the file
-                    var fd = new FormData();
-                    fd.append("image", blob);
-                    fd.append("merchantlocation_id", "{{@$location->merchantlocation_id}}");
-                    fd.append("merchant_id", "{{@$location->merchant_id}}");
-                    fd.append("count", image_count);
-
-
-                    //console.log('dddddddddddd');
-
-                    // console.log(fd);
-                    $.ajax({
-                        url: "{{route('locations.uploadimage')}}",
-                        data: fd,// the formData function is available in almost all new browsers.
-                        type:"POST",
-                        contentType:false,
-                        processData:false,
-                        cache:false,
-                        dataType:"json", // Cha
-                        success:function(data){
-                            if(data.status==='error'){
-                                errorReturn(data)
-                            }else{
-                                $('#croppermodal').modal('hide');
-                                toastr.success(data.message);
-                                window.setTimeout(function(){location.reload()},2000)
-                            }
-                        },
-                        error: function(data){
-                            exeptionReturn(data);
-                        }
-                    });
-
-                });
-            });
-
-
-
-            $(document).on('change', '.imguploader', function () {
-                readFile(this);
-                $('#selected_image').val($(this).attr('data-count'));
-            });
-
-            function readFile(input) {
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
-
-                    $('#croppermodal').modal('show');
-
-                    reader.onload = function (e) {
-                        $('.upload-demo-wrap').show();
-                        $uploadCrop.croppie('bind', {
-                            url: e.target.result
-                        }).then(function(){
-                            console.log('jQuery bind complete');
-                        });
-
-                    }
-
-                    reader.readAsDataURL(input.files[0]);
-
-                }
-                else {
-                    alert("Sorry - you're browser doesn't support the FileReader API");
-                }
-            }
-
-            function b64toBlob(b64Data, contentType, sliceSize) {
-                contentType = contentType || '';
-                sliceSize = sliceSize || 512;
-
-                var byteCharacters = atob(b64Data);
-                var byteArrays = [];
-
-                for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
-                    var slice = byteCharacters.slice(offset, offset + sliceSize);
-
-                    var byteNumbers = new Array(slice.length);
-                    for (var i = 0; i < slice.length; i++) {
-                        byteNumbers[i] = slice.charCodeAt(i);
-                    }
-
-                    var byteArray = new Uint8Array(byteNumbers);
-
-                    byteArrays.push(byteArray);
-                }
-
-                var blob = new Blob(byteArrays, {type: contentType});
-                return blob;
-            }
-        });
-
-
-
-        $(document).on('click', '.btn-pi-delete', function(e){
+           $(document).on('click', '.btn-pi-delete', function(e){
             e.preventDefault();
             var btndelete = $(this);
 
@@ -268,8 +95,6 @@
 
             });
         });
-
-
 
     </script>
 @endsection

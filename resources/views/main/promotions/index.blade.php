@@ -151,7 +151,7 @@ height: 213px; /* only if you want fixed height */
 
                          @foreach($promotions as $promotions)
                             <tr class="row-promotion" data-id="{{$promotions->promo_id}}">
-                                <td>{{$promotions->promo_name}}  {{$promotions->promo_id}}</td>
+                                <td>{{$promotions->promo_name}}</td>
                                 <td>{{@$promotions->merchant->merchant_name}}</td>
                                 <td>{{@$promotions->merchant->country->country_name}}</td>
                                 <td>{{ $total_outlate = \App\PromotionMaster::totalOutlate($promotions->promo_id) }}</td>

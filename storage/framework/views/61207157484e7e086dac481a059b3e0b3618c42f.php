@@ -149,7 +149,7 @@ height: 213px; /* only if you want fixed height */
 
                          <?php $__currentLoopData = $promotions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $promotions): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr class="row-promotion" data-id="<?php echo e($promotions->promo_id); ?>">
-                                <td><?php echo e($promotions->promo_name); ?>  <?php echo e($promotions->promo_id); ?></td>
+                                <td><?php echo e($promotions->promo_name); ?></td>
                                 <td><?php echo e(@$promotions->merchant->merchant_name); ?></td>
                                 <td><?php echo e(@$promotions->merchant->country->country_name); ?></td>
                                 <td><?php echo e($total_outlate = \App\PromotionMaster::totalOutlate($promotions->promo_id)); ?></td>

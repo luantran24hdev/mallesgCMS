@@ -3,12 +3,27 @@
   <component name="ChangeListManager">
     <list default="true" id="5b78cfcb-942f-4cbe-bdc3-7ba4e2bc8d2a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ManageAgeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ManageAgeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MealgroupController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MealgroupController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/main/manage_age/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/manage_age/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/main/meal_group/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/meal_group/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/views/134f30c7060e1636dc40ce54a016f20fe4e1f58a.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/134f30c7060e1636dc40ce54a016f20fe4e1f58a.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/views/6b287dd62479e85c01cc73f84520f65452bafcbb.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/6b287dd62479e85c01cc73f84520f65452bafcbb.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DiscountController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DiscountController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LevelController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LevelController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LocationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LocationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PreferenceMasterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PreferenceMasterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/main/category_tag/edit_tags.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/category_tag/edit_tags.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/main/discount_tag/edit_tags.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/discount_tag/edit_tags.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/main/level/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/level/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/main/merchants/merchant_locations_images.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/merchants/merchant_locations_images.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/main/merchants_list/merchant_images.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/merchants_list/merchant_images.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/main/preference_tag/edit_tags.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/preference_tag/edit_tags.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/main/promotions/editoutlets.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/promotions/editoutlets.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/main/promotions/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/promotions/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/1af4a567601d9cbe3679e00cbecc747a92d12101.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/1af4a567601d9cbe3679e00cbecc747a92d12101.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/61207157484e7e086dac481a059b3e0b3618c42f.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/61207157484e7e086dac481a059b3e0b3618c42f.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/66495af5f7a90c2c9f284112695fa09b072c45df.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/66495af5f7a90c2c9f284112695fa09b072c45df.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/7b72cd46b080396ac17d78862657484026d4dcf8.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/7b72cd46b080396ac17d78862657484026d4dcf8.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/ae21daee92b4022e16b5b5867bbe27437c797ee1.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/ae21daee92b4022e16b5b5867bbe27437c797ee1.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/bf28e32620638860fd9b8acf7f2599aa069392da.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/bf28e32620638860fd9b8acf7f2599aa069392da.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/eeafd855a7fa1b905538314247428589aae5e633.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/eeafd855a7fa1b905538314247428589aae5e633.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/f564e995d3d49ebb02dd52fa94f7d122cd178499.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/f564e995d3d49ebb02dd52fa94f7d122cd178499.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -261,7 +276,7 @@
       <workItem from="1585920930552" duration="691000" />
       <workItem from="1586099978927" duration="4055000" />
       <workItem from="1586148618085" duration="32000" />
-      <workItem from="1586151302188" duration="873000" />
+      <workItem from="1586151302188" duration="6249000" />
     </task>
     <servers />
   </component>
@@ -301,9 +316,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1579233729120" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1586108000006">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1586156828470">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1586108000006" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1586156828470" />
   </component>
 </project>

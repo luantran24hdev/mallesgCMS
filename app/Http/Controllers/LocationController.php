@@ -198,11 +198,10 @@ class LocationController extends Controller
 
     public function uploadimage(Request $request)
     {
-
-        $file = $request->files->get('image');
+        $file = $request->files->get('file');
         try{
 
-            if($file->getMimeType()!="image/png"){
+            if($file->getMimeType()!="image/png" && $file->getMimeType()!="image/jpeg" && $file->getMimeType()!="image/jpg"){
                 throw new \Exception("invalid file", 500);
             }
 
@@ -219,7 +218,7 @@ class LocationController extends Controller
             $image->merchant_id = $request->merchant_id;
             $image->image = $newfilename;
             $image->user_id = \Auth::user()->user_id;
-            $image->image_count = $request->count;
+            $image->image_count = $request->image_count;
             $image->date = Carbon::now();
             $image->save();
 
@@ -228,11 +227,7 @@ class LocationController extends Controller
             throw new \Exception($e->getMessage(), 500, $e);
         }
 
-        return response()->json([
-            'status' => 'success' ,
-            'message' =>__('succesfully uploaded'),
-            'file' => env("LIVE_URL").$newfilename
-        ],200);
+        return response()->json(['success' ,'succesfully uploaded']);
 
     }
 

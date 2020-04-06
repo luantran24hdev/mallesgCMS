@@ -6,39 +6,6 @@
         .card{
             margin-bottom: 0px;
         }
-        .btn-default{
-            color: #fff;
-            background-color: #ccc;
-            border-color: #ccc;
-        }
-        .active{
-            background-color: #007bff !important;
-        }
-        .pic {
-            width: 100%;
-            height: 100%;
-        }
-
-
-        .upload-demo-wrap {
-            width: 100%;
-            height: 100%;
-        }
-
-        .upload-msg {
-            text-align: center;
-            font-size: 22px;
-            color: #aaa;
-            border: 1px solid #aaa;
-            display: table;
-            cursor: pointer;
-        }
-
-        .fit-image{
-            /*width: 100%;
-            object-fit: cover;*/
-            height: 320px; /* only if you want fixed height */
-        }
 
     </style>
 @endsection
@@ -225,8 +192,6 @@
 
 @section('script')
 <script type="text/javascript" src="{{ asset('js/dropzone.js') }}"></script>
-<link rel="stylesheet" type="text/css" href="{{asset('css/croppie.css')}}">
-<script type="text/javascript" src="{{asset('js/croppie.min.js')}}"></script>
 <script>
 
 
@@ -272,19 +237,8 @@
                             errorReturn(data)
                         }else{
                             $('#deletepromotionmodal').modal('hide');
-                             //var image_count = $(this).attr('data-id');
-                            if (data.image_count > 1) {
-                                $('#promo-image-body1 #promo-image-content1').remove();
-                                $("#promo-image-body1").load( $('#promo-image-body1').attr('data-sourceurl') +" #promo-image-content1");
-                            }else if(data.image_count == 0){
-                                $('#promo-image-body2 #promo-image-content2').remove();
-                                $("#promo-image-body2").load( $('#promo-image-body2').attr('data-sourceurl') +" #promo-image-content2");
-                            }else{
-                                $('#promo-image-body #promo-image-content').remove();
-                                $("#promo-image-body").load( $('#promo-image-body').attr('data-sourceurl') +" #promo-image-content");
-                            }
                             toastr.success(data.message);
-                            window.location.reload();
+                            window.setTimeout(function(){location.reload()},2000)
                         }
                     }
                 });

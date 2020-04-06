@@ -85,9 +85,13 @@
                         <input type="hidden" name="out_id" value="{{ $outlate_data->po_id }}">
                     <div class="row" >
                         <div class="col-md-3 mb-3 pr-0">
+                            @if(count($promotion_images) > 0)
                             <img class="card-img-top fit-image"
                                  src="{{$live_url.$promotion_images[0]->image_name}}"
                                  alt="image count">
+                            @else
+                                <i class="fa fa-picture-o" aria-hidden="true" style="font-size: 200px;"></i>
+                            @endif
                             <div class="row">
                                 <div class="col-md-6">
                                     <label class="col-md-12 font-12">Live</label>
