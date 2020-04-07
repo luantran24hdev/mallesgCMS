@@ -297,9 +297,13 @@ class MerchantController extends Controller
 
     public function columnUpdate($id){
 
-        $this->merchant->update($id, [
+        $name = request()->name;
+        $merchant = MerchantMaster::find($id);
+        $merchant->$name = request()->value;
+        $merchant->save();
+       /* $this->merchant->update($id, [
             request()->name => request()->value
-        ]);
+        ]);*/
 
         return response()->json([
             'status' => 'success',

@@ -394,10 +394,10 @@ class PromotionController extends Controller
     public function activeUp(Request $request)
     {
 
-        $name = request()->name;
+        $name = $request->name;
         $id = $request->promo_id;
         $promo_master = PromotionMaster::find($id);
-        $promo_master->$name = request()->value;
+        $promo_master->$name = $request->value;
         $promo_master->save();
 
         return response()->json([

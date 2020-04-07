@@ -70,16 +70,14 @@
                     <div class="form-group">
                     <label class="mb-2 font-12">Active</label><br>
                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                <label class="btn btn-default @if($current_promo->active=="Y") active @endif" id="yes_active">
-                                    <input type="radio" name="options" autocomplete="off"> Yes
+                                <label class="btn btn-default @if($current_promo->promo_active=="Y") active @endif" id="yes_active">
+                                    <input type="radio" name="promo_active" autocomplete="off" value="Y" class="column_update_promotion"> Yes
                                 </label>
-                                <label class="btn btn-default @if($current_promo->active!="Y") active @endif" id="no_active">
-                                    <input type="radio" name="options" autocomplete="off"> No
+                                <label class="btn btn-default @if($current_promo->promo_active!="Y") active @endif" id="no_active">
+                                    <input type="radio" name="promo_active" autocomplete="off" value="N" class="column_update_promotion"> No
                                 </label>
 
                             </div>
-
-                            <input type="hidden" name="active_txt" id="active_txt" @if($current_promo->active) value="Y" @else value="N" @endif>
                     </div>
 
 
@@ -87,15 +85,13 @@
                             <label class="mb-2 font-12">Redeemable</label><br>
                             <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                 <label class="btn btn-default @if($current_promo->redeemable=="Y") active @endif" id="yes_redeemable">
-                                    <input type="radio" name="redeemable" autocomplete="off"> Yes
+                                    <input type="radio" name="redeemable" autocomplete="off" value="Y" class="column_update_promotion"> Yes
                                 </label>
                                 <label class="btn btn-default @if($current_promo->redeemable!="Y") active @endif" id="no_redeemable">
-                                    <input type="radio" name="redeemable" autocomplete="off"> No
+                                    <input type="radio" name="redeemable" autocomplete="off" value="N" class="column_update_promotion"> No
                                 </label>
 
                             </div>
-
-                            <input type="hidden" name="redeemable_txt" id="redeemable_txt" value="{{$current_promo->redeemable}}">
                     </div>
 
 
@@ -143,15 +139,13 @@
                         <hr>
                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
                             <label class="btn btn-default button_toogle @if($current_promo->dine_in=="Y") active @endif" id="yes_dine_in">
-                                <input type="radio" name="redeemable" autocomplete="off"> Yes
+                                <input type="radio" name="dine_in" autocomplete="off"  value="Y" class="column_update_promotion"> Yes
                             </label>
                             <label class="btn btn-default button_toogle @if($current_promo->dine_in!="Y") active @endif" id="no_dine_in">
-                                <input type="radio" name="redeemable" autocomplete="off"> No
+                                <input type="radio" name="dine_in" autocomplete="off"  value="N" class="column_update_promotion"> No
                             </label>
 
                         </div>
-
-                        <input type="hidden" name="dine_in" id="dine_in" value="{{$current_promo->dine_in}}">
                     </div>
                 </div>
 
@@ -161,15 +155,13 @@
                         <hr>
                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
                             <label class="btn btn-default @if($current_promo->dine_in_service=="Y") active @endif" id="yes_dine_in_service">
-                                <input type="radio" name="redeemable" autocomplete="off"> Yes
+                                <input type="radio" name="dine_in_service" autocomplete="off"  value="Y" class="column_update_promotion"> Yes
                             </label>
                             <label class="btn btn-default @if($current_promo->dine_in_service!="Y") active @endif" id="no_dine_in_service">
-                                <input type="radio" name="redeemable" autocomplete="off"> No
+                                <input type="radio" name="dine_in_service" autocomplete="off" value="N" class="column_update_promotion"> No
                             </label>
 
                         </div>
-
-                        <input type="hidden" name="dine_in_service" id="dine_in_service" value="{{$current_promo->dine_in_service}}">
                     </div>
                 </div>
 
@@ -179,15 +171,13 @@
                         <hr>
                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
                             <label class="btn btn-default @if($current_promo->dine_in_gst=="Y") active @endif" id="yes_dine_in_gst">
-                                <input type="radio" name="redeemable" autocomplete="off"> Yes
+                                <input type="radio" name="dine_in_gst" autocomplete="off" value="Y" class="column_update_promotion"> Yes
                             </label>
                             <label class="btn btn-default @if($current_promo->dine_in_gst!="Y") active @endif" id="no_dine_in_gst">
-                                <input type="radio" name="redeemable" autocomplete="off"> No
+                                <input type="radio" name="dine_in_gst" autocomplete="off" value="N" class="column_update_promotion"> No
                             </label>
 
                         </div>
-
-                        <input type="hidden" name="dine_in_gst" id="dine_in_gst" value="{{$current_promo->dine_in_gst}}">
                     </div>
                 </div>
 
@@ -201,15 +191,13 @@
                         <hr>
                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
                             <label class="btn btn-default button_toogle @if($current_promo->take_out=="Y") active @endif" id="yes_take_out">
-                                <input type="radio" name="redeemable" autocomplete="off"> Yes
+                                <input type="radio" name="take_out" autocomplete="off" value="Y" class="column_update_promotion"> Yes
                             </label>
                             <label class="btn btn-default button_toogle @if($current_promo->take_out!="Y") active @endif" id="no_take_out">
-                                <input type="radio" name="redeemable" autocomplete="off"> No
+                                <input type="radio" name="take_out" autocomplete="off" value="N" class="column_update_promotion"> No
                             </label>
 
                         </div>
-
-                        <input type="hidden" name="take_out" id="take_out" value="{{$current_promo->take_out}}">
                     </div>
                 </div>
 
@@ -219,15 +207,13 @@
                         <hr>
                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
                             <label class="btn btn-default @if($current_promo->take_out_service=="Y") active @endif" id="yes_take_out_service">
-                                <input type="radio" name="redeemable" autocomplete="off"> Yes
+                                <input type="radio" name="take_out_service" autocomplete="off" value="Y" class="column_update_promotion"> Yes
                             </label>
                             <label class="btn btn-default @if($current_promo->take_out_service!="Y") active @endif" id="no_take_out_service">
-                                <input type="radio" name="redeemable" autocomplete="off"> No
+                                <input type="radio" name="take_out_service" autocomplete="off" value="N" class="column_update_promotion"> No
                             </label>
 
                         </div>
-
-                        <input type="hidden" name="take_out_service" id="take_out_service" value="{{$current_promo->take_out_service}}">
                     </div>
                 </div>
 
@@ -237,15 +223,13 @@
                         <hr>
                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
                             <label class="btn btn-default @if($current_promo->take_out_gst=="Y") active @endif" id="yes_take_out_gst">
-                                <input type="radio" name="redeemable" autocomplete="off"> Yes
+                                <input type="radio" name="take_out_gst" autocomplete="off"  value="Y" class="column_update_promotion"> Yes
                             </label>
                             <label class="btn btn-default @if($current_promo->take_out_gst!="Y") active @endif" id="no_take_out_gst">
-                                <input type="radio" name="redeemable" autocomplete="off"> No
+                                <input type="radio" name="take_out_gst" autocomplete="off" value="N" class="column_update_promotion"> No
                             </label>
 
                         </div>
-
-                        <input type="hidden" name="take_out_gst" id="take_out_gst" value="{{$current_promo->take_out_gst}}">
                     </div>
                 </div>
 
@@ -259,15 +243,13 @@
                         <hr>
                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
                             <label class="btn btn-default button_toogle @if($current_promo->deliver=="Y") active @endif" id="yes_deliver">
-                                <input type="radio" name="redeemable" autocomplete="off"> Yes
+                                <input type="radio" name="deliver" autocomplete="off"  value="Y" class="column_update_promotion"> Yes
                             </label>
                             <label class="btn btn-default button_toogle @if($current_promo->deliver!="Y") active @endif" id="no_deliver">
-                                <input type="radio" name="redeemable" autocomplete="off"> No
+                                <input type="radio" name="deliver" autocomplete="off" value="N" class="column_update_promotion"> No
                             </label>
 
                         </div>
-
-                        <input type="hidden" name="deliver" id="deliver" value="{{$current_promo->deliver}}">
                     </div>
                 </div>
 
@@ -277,15 +259,13 @@
                         <hr>
                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
                             <label class="btn btn-default @if($current_promo->deliver_service=="Y") active @endif" id="yes_deliver_service">
-                                <input type="radio" name="redeemable" autocomplete="off"> Yes
+                                <input type="radio" name="deliver_service" autocomplete="off" value="Y" class="column_update_promotion"> Yes
                             </label>
                             <label class="btn btn-default @if($current_promo->deliver_service!="Y") active @endif" id="no_deliver_service">
-                                <input type="radio" name="redeemable" autocomplete="off"> No
+                                <input type="radio" name="deliver_service" autocomplete="off" value="N" class="column_update_promotion"> No
                             </label>
 
                         </div>
-
-                        <input type="hidden" name="deliver_service" id="deliver_service" value="{{$current_promo->deliver_service}}">
                     </div>
                 </div>
 
@@ -295,15 +275,13 @@
                         <hr>
                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
                             <label class="btn btn-default @if($current_promo->deliver_gst=="Y") active @endif" id="yes_deliver_gst">
-                                <input type="radio" name="redeemable" autocomplete="off"> Yes
+                                <input type="radio" name="deliver_gst" autocomplete="off" value="Y" class="column_update_promotion"> Yes
                             </label>
                             <label class="btn btn-default @if($current_promo->deliver_gst!="Y") active @endif" id="no_deliver_gst">
-                                <input type="radio" name="redeemable" autocomplete="off"> No
+                                <input type="radio" name="deliver_gst" autocomplete="off" value="N" class="column_update_promotion"> No
                             </label>
 
                         </div>
-
-                        <input type="hidden" name="deliver_gst" id="deliver_gst" value="{{$current_promo->deliver_gst}}">
                     </div>
                 </div>
 

@@ -30,7 +30,7 @@
     </style>
 
     <?php echo $__env->yieldContent('style'); ?>
- 
+
 </head>
 
 <body class="dashboard-body">
@@ -49,7 +49,7 @@
         <div class="container-fluid">
             <div class="row">
                 <?php echo $__env->make('partials.sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-                <div class="col-md-10">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
                     <?php echo $__env->yieldContent('content'); ?>
                 </div>
             </div>
@@ -74,4 +74,5 @@
 <script type="text/javascript" src="<?php echo e(asset('js/bootbox.locales.min.js')); ?>"></script>
 <script type="text/javascript" src="<?php echo e(asset('js/defaults.js')); ?>"></script>
 <?php echo $__env->yieldContent('script'); ?>
-</html><?php /**PATH C:\xampp\htdocs\adminlaravel3\resources\views/layouts/app.blade.php ENDPATH**/ ?>
+</html>
+<?php /**PATH C:\xampp\htdocs\adminlaravel3\resources\views/layouts/app.blade.php ENDPATH**/ ?>

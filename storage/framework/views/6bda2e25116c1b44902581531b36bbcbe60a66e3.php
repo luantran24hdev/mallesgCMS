@@ -195,12 +195,6 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label class="mb-2 font-12">Deliver Charges</label>
-                                        <input type="text" name="delivery_charge" id="delivery_charge" placeholder="Deliver Charges" class="form-control" value="<?php echo e($merchant->delivery_charge); ?>">
-                                    </div>
-                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
@@ -210,6 +204,190 @@
                                     </div>
                                 </div>
                             </div>
+
+
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="mb-2 font-12">Dine IN / In House</label>
+                                        <hr>
+                                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                            <label class="btn btn-default button_toogle <?php if($merchant->dine_in=="Y"): ?> active <?php endif; ?>" id="yes_dine_in">
+                                                <input type="radio" name="dine_in" autocomplete="off" value="Y" class="column_update"> Yes
+                                            </label>
+                                            <label class="btn btn-default button_toogle <?php if($merchant->dine_in!="Y"): ?> active <?php endif; ?>" id="no_dine_in">
+                                                <input type="radio" name="dine_in" autocomplete="off" value="N" class="column_update"> No
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="mb-2 font-12">Service Charge</label>
+                                        <hr>
+                                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                            <label class="btn btn-default <?php if($merchant->dine_service=="Y"): ?> active <?php endif; ?>" id="yes_dine_in_service">
+                                                <input type="radio" name="dine_service" autocomplete="off" value="Y" class="column_update"> Yes
+                                            </label>
+                                            <label class="btn btn-default <?php if($merchant->dine_service!="Y"): ?> active <?php endif; ?>" id="no_dine_in_service">
+                                                <input type="radio" name="dine_service" autocomplete="off" value="N" class="column_update"> No
+                                            </label>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="mb-2 font-12">Taxes</label>
+                                        <hr>
+                                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                            <label class="btn btn-default <?php if($merchant->dine_gst=="Y"): ?> active <?php endif; ?>" id="yes_dine_in_gst">
+                                                <input type="radio" name="dine_gst" autocomplete="off" value="Y" class="column_update"> Yes
+                                            </label>
+                                            <label class="btn btn-default <?php if($merchant->dine_gst!="Y"): ?> active <?php endif; ?>" id="no_dine_in_gst">
+                                                <input type="radio" name="dine_gst" autocomplete="off" value="N" class="column_update"> No
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="mb-2 font-12">Take Away / Take Out</label>
+                                        <hr>
+                                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                            <label class="btn btn-default button_toogle <?php if($merchant->take_out=="Y"): ?> active <?php endif; ?>" id="yes_take_out">
+                                                <input type="radio" name="take_out" autocomplete="off" value="Y" class="column_update"> Yes
+                                            </label>
+                                            <label class="btn btn-default button_toogle <?php if($merchant->take_out!="Y"): ?> active <?php endif; ?>" id="no_take_out">
+                                                <input type="radio" name="take_out" autocomplete="off" value="N" class="column_update"> No
+                                            </label>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="mb-2 font-12">Service Charge</label>
+                                        <hr>
+                                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                            <label class="btn btn-default <?php if($merchant->take_out_service=="Y"): ?> active <?php endif; ?>" id="yes_take_out_service">
+                                                <input type="radio" name="take_out_service" autocomplete="off" value="Y" class="column_update"> Yes
+                                            </label>
+                                            <label class="btn btn-default <?php if($merchant->take_out_service!="Y"): ?> active <?php endif; ?>" id="no_take_out_service">
+                                                <input type="radio" name="take_out_service" autocomplete="off" value="N" class="column_update"> No
+                                            </label>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="mb-2 font-12">Taxes</label>
+                                        <hr>
+                                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                            <label class="btn btn-default <?php if($merchant->take_out_gst=="Y"): ?> active <?php endif; ?>" id="yes_take_out_gst">
+                                                <input type="radio" name="take_out_gst" autocomplete="off" value="Y" class="column_update"> Yes
+                                            </label>
+                                            <label class="btn btn-default <?php if($merchant->take_out_gst!="Y"): ?> active <?php endif; ?>" id="no_take_out_gst">
+                                                <input type="radio" name="take_out_gst" autocomplete="off" value="Y" class="column_update"> No
+                                            </label>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="mb-2 font-12">Take Out Charges</label>
+                                        <hr>
+                                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                            <label class="btn btn-default <?php if($merchant->take_out_charge=="Y"): ?> active <?php endif; ?>" id="yes_deliver_gst">
+                                                <input type="radio" name="take_out_charge" autocomplete="off" value="Y" class="column_update"> Yes
+                                            </label>
+                                            <label class="btn btn-default <?php if($merchant->take_out_charge!="Y"): ?> active <?php endif; ?>" id="no_deliver_gst">
+                                                <input type="radio" name="take_out_charge" autocomplete="off" value="N" class="column_update"> No
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="mb-2 font-12">Delivery</label>
+                                        <hr>
+                                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                            <label class="btn btn-default button_toogle <?php if($merchant->delivery=="Y"): ?> active <?php endif; ?>" id="yes_deliver">
+                                                <input type="radio" name="delivery" autocomplete="off" value="Y" class="column_update"> Yes
+                                            </label>
+                                            <label class="btn btn-default button_toogle <?php if($merchant->delivery!="Y"): ?> active <?php endif; ?>" id="no_deliver">
+                                                <input type="radio" name="delivery" autocomplete="off" value="N" class="column_update"> No
+                                            </label>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="mb-2 font-12">Service Charge</label>
+                                        <hr>
+                                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                            <label class="btn btn-default <?php if($merchant->deliver_service=="Y"): ?> active <?php endif; ?>" id="yes_deliver_service">
+                                                <input type="radio" name="deliver_service" autocomplete="off" value="Y" class="column_update"> Yes
+                                            </label>
+                                            <label class="btn btn-default <?php if($merchant->deliver_service!="Y"): ?> active <?php endif; ?>" id="no_deliver_service">
+                                                <input type="radio" name="deliver_service" autocomplete="off" value="N" class="column_update"> No
+                                            </label>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="mb-2 font-12">Taxes</label>
+                                        <hr>
+                                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                            <label class="btn btn-default <?php if($merchant->deliver_gst=="Y"): ?> active <?php endif; ?>" id="yes_deliver_gst">
+                                                <input type="radio" name="deliver_gst" autocomplete="off" value="Y" class="column_update"> Yes
+                                            </label>
+                                            <label class="btn btn-default <?php if($merchant->deliver_gst!="Y"): ?> active <?php endif; ?>" id="no_deliver_gst">
+                                                <input type="radio" name="deliver_gst" autocomplete="off" value="N" class="column_update"> No
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="mb-2 font-12">Delivery Charges</label>
+                                        <hr>
+                                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                            <label class="btn btn-default <?php if($merchant->delivery_charge=="Y"): ?> active <?php endif; ?>" id="yes_deliver_gst">
+                                                <input type="radio" name="delivery_charge" autocomplete="off" value="Y" class="column_update"> Yes
+                                            </label>
+                                            <label class="btn btn-default <?php if($merchant->delivery_charge!="Y"): ?> active <?php endif; ?>" id="no_deliver_gst">
+                                                <input type="radio" name="delivery_charge" autocomplete="off" value="N" class="column_update"> No
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
                         </form>
                     </div>
                 </div>

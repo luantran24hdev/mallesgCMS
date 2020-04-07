@@ -1,4 +1,4 @@
-<div class="col-md-2 mt-4">
+<div class="mt-4 col-lg-2 col-md-2 col-sm-2 col-xs-2">
     <div class="sidebar">
         <?php if(Auth::user()): ?>
             <div class="container">

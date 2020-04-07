@@ -30,7 +30,7 @@
     </style>
 
     @yield('style')
- 
+
 </head>
 
 <body class="dashboard-body">
@@ -48,7 +48,7 @@
         <div class="container-fluid">
             <div class="row">
                 @include('partials.sidebar')
-                <div class="col-md-10">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
                     @yield('content')
                 </div>
             </div>

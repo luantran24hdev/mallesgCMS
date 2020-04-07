@@ -204,47 +204,8 @@ height: 213px; /* only if you want fixed height */
 <?php echo $__env->make('main.promotions.age_group', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <?php echo $__env->make('main.promotions.meal_group', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
-<div class="modal fade" id="deletepromotionmodal" tabindex="-1" role="dialog" aria-labelledby="deletemodalpromotionlabel" aria-hidden="true">
-<div class="modal-dialog" role="document">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h5 class="modal-title" id="deletemodalpromotionlabel">Delete Confirmation</h5>
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body ">
-      <p class="font-12"><?php echo e(__('Are you sure you want to delete Item?')); ?></p>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-dismiss="modal"><?php echo e(__('No')); ?></button>
-      <button type="button" class="btn btn-danger" id="btnDeletePromotion"><?php echo e(__('Yes')); ?></button>
-    </div>
-  </div>
-</div>
-</div>
 
-<div class="modal fade" id="croppermodal" tabindex="-1" role="dialog" aria-labelledby="cropmodallabel" aria-hidden="true">
-<div class="modal-dialog modal-lg" role="document">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h5 class="modal-title" id="cropmodallabel">Image Cropper</h5>
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body ">
-      <div class="upload-demo-wrap" style="display: none">
-        <div id="upload-demo"></div>
-    </div>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-dismiss="modal"><?php echo e(__('Cancel')); ?></button>
-      <button type="button" class="btn upload-result" ><?php echo e(__('Upload')); ?></button>
-    </div>
-  </div>
-</div>
-</div>
+<?php echo $__env->make('partials.delete_model', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
 <?php $__env->stopSection(); ?>
 
@@ -252,9 +213,6 @@ height: 213px; /* only if you want fixed height */
 <?php $__env->startSection('script'); ?>
 
 <script type="text/javascript" src="<?php echo e(asset('js/dropzone.js')); ?>"></script>
-<link rel="stylesheet" type="text/css" href="<?php echo e(asset('css/croppie.css')); ?>">
-<script type="text/javascript" src="<?php echo e(asset('js/croppie.min.js')); ?>"></script>
-
 <script>
 
     $(document).ready(function() {
@@ -299,6 +257,34 @@ height: 213px; /* only if you want fixed height */
                     //$("#msg").html(data.msg);
                     console.log(data.location);
                     $('#locations').html(data.location);
+                }
+            });
+        });
+
+        $(".column_update_promotion").change(function(){
+
+            var value = $(this).val();
+            var attrName = $(this).attr("name");
+            var promo_id = $('#promo_id').val();
+
+            $.ajax({
+                type : 'ajax',
+                method : 'post',
+                url : '<?php echo e(route('promotions.col')); ?>',
+                data : {name:attrName,
+                    value : value,
+                    promo_id: promo_id
+                },
+                async : false,
+                dataType : 'json',
+                success : function(data){
+
+                    // /toastr.success(data.message);
+                    toastr['info'](data.message);
+
+                },
+                error : function(){
+                    toastr['error']('Could not update featured.');
                 }
             });
         });
@@ -350,83 +336,6 @@ height: 213px; /* only if you want fixed height */
           width:200
       });
 
-   var $uploadCrop = $('#upload-demo');
-   $uploadCrop.croppie({
-            enableResize: true,
-            enableExif: true,
-            viewport: {
-                width: 550,
-                height: 390,
-            },
-            boundary: {
-                width: 647,
-                height: 459
-            }
-        });
-
-   $('#croppermodal').on('shown.bs.modal', function() {
-        $uploadCrop.croppie('bind');
-   });
-
-
-    <?php if(isset($promo_id)): ?>
-        $(document).on('click','.upload-result', function (ev) {
-            $uploadCrop.croppie('result', {
-                type: 'canvas',
-                size: 'viewport'
-            }).then(function (resp) {
-
-                var ImageURL = resp;
-
-                // Split the base64 string in data and contentType
-                var block = ImageURL.split(";");
-                // Get the content type
-                var contentType = block[0].split(":")[1];// In this case "image/gif"
-                // get the real base64 content of the file
-                var realData = block[1].split(",")[1];// In this case "iVBORw0KGg...."
-
-                // Convert to blob
-                var blob = b64toBlob(realData, contentType);
-
-                // Create a FormData and append the file
-                var fd = new FormData();
-                fd.append("image", blob);
-                fd.append("promo_id", "<?php echo e(@$promo_id); ?>");
-                fd.append("merchant_id", "<?php echo e(@$id); ?>");
-                fd.append("image_count", $('#selected_image').val());
-
-                $.ajax({
-                    url: "<?php echo e(route('promotions.uploadimage')); ?>",
-                    data: fd,// the formData function is available in almost all new browsers.
-                    type:"POST",
-                    contentType:false,
-                    processData:false,
-                    cache:false,
-                    dataType:"json", // Cha
-                    success:function(data){
-                        if(data.status==='error'){
-                            errorReturn(data)
-                        }else{
-                            $('#promo-image-body #promo-image-content').remove();
-                            $("#promo-image-body").load( $('#promo-image-body').attr('data-sourceurl') +" #promo-image-content");
-                            $('#croppermodal').modal('hide');
-                            toastr.success(data.message);
-                        }
-                    },
-                    error: function(data){
-                        exeptionReturn(data);
-                    }
-                });
-
-            });
-        });
-    <?php endif; ?>
-
-    $(document).on('change', '.imguploader', function () {
-        readFile(this);
-        $('#selected_image').val($(this).attr('data-count'));
-    });
-
       $('#start_date').daterangepicker({
         singleDatePicker: true,
         showDropdowns: true,
@@ -443,28 +352,6 @@ height: 213px; /* only if you want fixed height */
         }
       });
 
-    function readFile(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            $('#croppermodal').modal('show');
-
-            reader.onload = function (e) {
-                $('.upload-demo-wrap').show();
-                $uploadCrop.croppie('bind', {
-                    url: e.target.result
-                }).then(function(){
-                    console.log('jQuery bind complete');
-                });
-
-            }
-
-            reader.readAsDataURL(input.files[0]);
-
-        }
-        else {
-            alert("Sorry - you're browser doesn't support the FileReader API");
-        }
-    }
 
     // malls autocomplete
     jcomplete('#merchant_name');
@@ -560,98 +447,6 @@ height: 213px; /* only if you want fixed height */
                 $("#end_date").attr('disabled', false);
         }
     });
-
-    $('#yes_redeemable').click(function(){
-        $('#redeemable_txt').val('Y');
-    });
-
-    $('#no_redeemable').click(function(){
-        $('#redeemable_txt').val('N');
-    });
-
-    $('#yes_active').click(function(){
-            $('#active_txt').val('Y');
-        });
-
-    $('#no_active').click(function(){
-        $('#active_txt').val('N');
-    });
-
-      $('#yes_dine_in').click(function(){
-          $('#dine_in').val('Y');
-      });
-
-      $('#no_dine_in').click(function(){
-          $('#dine_in').val('N');
-      });
-
-      $('#yes_dine_in_service').click(function(){
-          $('#dine_in_service').val('Y');
-      });
-
-      $('#no_dine_in_service').click(function(){
-          $('#dine_in_service').val('N');
-      });
-
-      $('#yes_dine_in_gst').click(function(){
-          $('#dine_in_gst').val('Y');
-      });
-
-      $('#no_dine_in_gst').click(function(){
-          $('#dine_in_gst').val('N');
-      });
-
-
-      $('#yes_take_out').click(function(){
-          $('#take_out').val('Y');
-      });
-
-      $('#no_take_out').click(function(){
-          $('#take_out').val('N');
-      });
-
-      $('#yes_take_out_service').click(function(){
-          $('#take_out_service').val('Y');
-      });
-
-      $('#no_take_out_service').click(function(){
-          $('#take_out_service').val('N');
-      });
-
-      $('#yes_take_out_gst').click(function(){
-          $('#take_out_gst').val('Y');
-      });
-
-      $('#no_take_out_gst').click(function(){
-          $('#take_out_gst').val('N');
-      });
-
-
-      $('#yes_deliver').click(function(){
-          $('#deliver').val('Y');
-      });
-
-      $('#no_deliver').click(function(){
-          $('#deliver').val('N');
-      });
-
-      $('#yes_deliver_service').click(function(){
-          $('#deliver_service').val('Y');
-      });
-
-      $('#no_deliver_service').click(function(){
-          $('#deliver_service').val('N');
-      });
-
-      $('#yes_deliver_gst').click(function(){
-          $('#deliver_gst').val('Y');
-      });
-
-      $('#no_deliver_gst').click(function(){
-          $('#deliver_gst').val('N');
-      });
-
-
 
      // store promotags
     $(document).on('submit','#addPromoTag', function(e){
