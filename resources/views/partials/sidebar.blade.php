@@ -23,6 +23,8 @@
             <li class="list-group-item"><a class="malle-link" href="{{route('level')}}">{{__('Manage Level')}}</a></li>
             <li class="list-group-item"><a class="malle-link" href="{{route('manage-age')}}">{{__('Manage Age Group')}}</a></li>
             <li class="list-group-item"><a class="malle-link" href="{{route('meal-group')}}">{{__('Manage Meal Group')}}</a></li>
+            <li class="list-group-item"><a class="malle-link" href="{{route('user-setting')}}">{{__('User Setting')}}</a></li>
+            <li class="list-group-item"><a class="malle-link" href="{{route('fnb')}}">{{__('F & B List')}}</a></li>
         </ul>
 
     </div>

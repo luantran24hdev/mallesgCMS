@@ -68,11 +68,11 @@
                     <div class="form-group">
                     <label class="mb-2 font-12">Active</label><br>
                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                <label class="btn btn-default <?php if($current_promo->active=="Y"): ?> active <?php endif; ?>" id="yes_active">
-                                    <input type="radio" name="active" autocomplete="off" value="Y" class="column_update_promotion"> Yes
+                                <label class="btn btn-default <?php if($current_promo->promo_active=="Y"): ?> active <?php endif; ?>" id="yes_active">
+                                    <input type="radio" name="promo_active" autocomplete="off" value="Y" class="column_update_promotion"> Yes
                                 </label>
-                                <label class="btn btn-default <?php if($current_promo->active!="Y"): ?> active <?php endif; ?>" id="no_active">
-                                    <input type="radio" name="active" autocomplete="off" value="N" class="column_update_promotion"> No
+                                <label class="btn btn-default <?php if($current_promo->promo_active!="Y"): ?> active <?php endif; ?>" id="no_active">
+                                    <input type="radio" name="promo_active" autocomplete="off" value="N" class="column_update_promotion"> No
                                 </label>
 
                             </div>

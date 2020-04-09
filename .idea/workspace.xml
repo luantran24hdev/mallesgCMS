@@ -3,19 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="5b78cfcb-942f-4cbe-bdc3-7ba4e2bc8d2a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MerchantController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MerchantController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PromotionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PromotionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/main/merchants_list/merchant_info.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/merchants_list/merchant_info.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/main/preference_tag/preference_tags.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/preference_tag/preference_tags.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/main/promotions/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/promotions/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/main/promotions/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/promotions/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DiscountController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DiscountController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/main/fnb_list/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/fnb_list/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/main/user_setting/edit_tags.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/main/user_setting/preference_tags.blade.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/partials/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storage/framework/views/479e07d0b6252a1b8e99e50b687732feead0f0a1.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/479e07d0b6252a1b8e99e50b687732feead0f0a1.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/views/61207157484e7e086dac481a059b3e0b3618c42f.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/61207157484e7e086dac481a059b3e0b3618c42f.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/views/6bda2e25116c1b44902581531b36bbcbe60a66e3.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/6bda2e25116c1b44902581531b36bbcbe60a66e3.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/views/7551e0233314fe2d8d62babae23649ee56b0b55a.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/7551e0233314fe2d8d62babae23649ee56b0b55a.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/views/912155e80f8296b166e2c5fdc5fb8e6f8fdeae49.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/912155e80f8296b166e2c5fdc5fb8e6f8fdeae49.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storage/framework/views/bd7c20ed01f7729dd73e96c5d9b7ee67082f4dc4.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/bd7c20ed01f7729dd73e96c5d9b7ee67082f4dc4.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -129,15 +124,15 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../live_stream2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/main" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\adminlaravel3\resources\views\main\promotions" />
       <recent name="C:\xampp\htdocs\adminlaravel3\resources\views\main" />
+      <recent name="C:\xampp\htdocs\adminlaravel3\resources\views\main\promotions" />
       <recent name="C:\xampp\htdocs\adminlaravel3\app" />
       <recent name="C:\xampp\htdocs\adminlaravel3\resources\views\main\mall_list" />
       <recent name="C:\xampp\htdocs\adminlaravel3\resources\views\main\merchants_list" />
@@ -270,7 +265,11 @@
       <workItem from="1586099978927" duration="4055000" />
       <workItem from="1586148618085" duration="32000" />
       <workItem from="1586151302188" duration="7798000" />
-      <workItem from="1586265868282" duration="7482000" />
+      <workItem from="1586265868282" duration="9385000" />
+      <workItem from="1586325672491" duration="106000" />
+      <workItem from="1586327091234" duration="75000" />
+      <workItem from="1586335843508" duration="11894000" />
+      <workItem from="1586409268280" duration="606000" />
     </task>
     <servers />
   </component>
@@ -278,10 +277,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="499" y="171" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1582024513432">
+    <state x="499" y="171" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1586355190799">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="499" y="171" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1582024513432" />
+    <state x="499" y="171" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1586355190799" />
     <state x="128" y="71" key="DiffContextDialog" timestamp="1579923831977">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -298,10 +297,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1582869066848" />
-    <state x="477" y="241" key="com.intellij.ide.util.TipDialog" timestamp="1586148617929">
+    <state x="477" y="241" key="com.intellij.ide.util.TipDialog" timestamp="1586409271092">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="477" y="241" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1586148617929" />
+    <state x="477" y="241" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1586409271092" />
     <state x="473" y="46" width="590" height="732" key="find.popup" timestamp="1586269241393">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -310,9 +309,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1579233729120" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1586278807979">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1586355134437">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1586278807979" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1586355134437" />
   </component>
 </project>

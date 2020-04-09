@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\TagMaster;
+use App\FNBCategory;
+use App\FNBType;
+use App\SubCategoryMaster;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
-class DiscountController extends Controller
+class FNBController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,13 +17,15 @@ class DiscountController extends Controller
      */
     public function index()
     {
-        $tags_master = TagMaster::all();
+        $fnb_cats = FNBCategory::all();
+        $fnb_types = FNBType::all();
         $data = [
-            'tags_master' => $tags_master,
+            'fnb_cats' => $fnb_cats,
+            'fnb_types' => $fnb_types,
             'live_url' => env('LIVE_URL').'images/stock/'
         ];
 
-        return view('main.discount_tag.discount_tags',$data);
+        return view('main.fnb_list.index',$data);
     }
 
     /**
@@ -31,7 +35,7 @@ class DiscountController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -44,12 +48,13 @@ class DiscountController extends Controller
     {
 
         $messages = [
-            'tag_name.required'    => 'Tag name field is required'
+            'fnb_name.required'    => 'Dish name field is required'
         ];
 
         // Start Validation
         $validator = \Validator::make($request->all(), [
-            'tag_name' => 'required|unique:tags_master',
+            'fnb_name' => 'required|unique:f_n_b_category',
+            'fnb_type' => 'required',
         ],$messages);
 
         if($validator->fails()){
@@ -60,16 +65,15 @@ class DiscountController extends Controller
         }
 
 
-        $tag_master = new TagMaster();
-        $tag_master->tag_name = $request->tag_name;
-        $tag_master->dated = Carbon::now()->format('d-m-Y');
-        $tag_master->user_id = \Auth::user()->user_id;
-        $tag_master->image = '';
-        $tag_master->save();
+        $fnb = new FNBCategory();
+        $fnb->fnb_name = $request->fnb_name;
+        $fnb->fnb_type = $request->fnb_type;
+        $fnb->fnb_image = null;
+        $fnb->save();
 
         return response()->json([
             'status' => 'success',
-            'message' => __('successfully added tags'),
+            'message' => __('successfully added FNB'),
             //'tag_name' => $request->time_name,
             //'id' => $time_master->time_id
         ],200);
@@ -94,15 +98,7 @@ class DiscountController extends Controller
      */
     public function edit($id)
     {
-        $tagMaster = TagMaster::find($id);
-
-        $data = [
-            'tagMaster' => $tagMaster,
-            'live_url' => env('LIVE_URL').'images/stock/'
-        ];
-
-        return view('main.discount_tag.edit_tags',$data);
-
+        //
     }
 
     /**
@@ -114,34 +110,7 @@ class DiscountController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //return $request->all();
-        $messages = [
-            'tag_name.required'    => 'Tag name field is required'
-        ];
-
-        // Start Validation
-        $validator = \Validator::make($request->all(), [
-            'tag_name' => 'required|unique:tags_master,tag_name,'.$id.',tag_id',
-        ],$messages);
-
-        if($validator->fails()){
-            return response()->json([
-                'status' => 'error',
-                'message' => $validator->messages()->first()
-            ],200);
-        }
-
-
-        $tag_master = TagMaster::find($id);
-        $tag_master->tag_name = $request->tag_name;
-        $tag_master->save();
-
-        return response()->json([
-            'status' => 'success',
-            'message' => __('successfully Updated tags'),
-            //'tag_name' => $request->time_name,
-            //'id' => $time_master->time_id
-        ],200);
+        //
     }
 
     /**
@@ -152,13 +121,13 @@ class DiscountController extends Controller
      */
     public function destroy($id)
     {
-        $tagMaster = TagMaster::find($id);
+        $tagMaster = FNBCategory::find($id);
 
-        if(!empty($tagMaster->image)){
+        if(!empty($tagMaster->fnb_image)){
             if(env('APP_ENV')=='live')
-                unlink('../../admin/images/stock/'.$tagMaster->image);
+                unlink('../../admin/images/stock/'.$tagMaster->fnb_image);
             else
-                unlink('../storage/app/public/'.$tagMaster->image);
+                unlink('../storage/app/public/'.$tagMaster->fnb_image);
         }
 
         $tagMaster->delete();
@@ -170,9 +139,8 @@ class DiscountController extends Controller
     }
 
     public function search($name){
-        return TagMaster::search($name);
+        return FNBCategory::search($name);
     }
-
 
     public function uploadimage(Request $request)
     {
@@ -184,7 +152,7 @@ class DiscountController extends Controller
             }
 
 
-            $newfilename = md5($request->tag_id."_".round(microtime(true))) . '.png';
+            $newfilename = md5($request->fnb_id."_".round(microtime(true))) . '.png';
 
             if(env('APP_ENV')=='live')
                 $file->move('../../admin/images/stock/', $newfilename);
@@ -192,8 +160,8 @@ class DiscountController extends Controller
                 $file->move('../storage/app/public/', $newfilename);
 
 
-            $tag = TagMaster::find($request->tag_id);
-            $tag->image = $newfilename;
+            $tag = FNBCategory::find($request->fnb_id);
+            $tag->fnb_image = $newfilename;
             $tag->save();
 
 
@@ -211,33 +179,19 @@ class DiscountController extends Controller
 
     public function deleteimage($id){
 
-        $image = TagMaster::find($id);
+        $image = FNBCategory::find($id);
 
         if(env('APP_ENV')=='live')
-            unlink('../../admin/images/stock/'.$image->image);
+            unlink('../../admin/images/stock/'.$image->fnb_image);
         else
-            unlink('../storage/app/public/'.$image->image);
+            unlink('../storage/app/public/'.$image->fnb_image);
 
-        $image->image = '';
+        $image->fnb_image = '';
         $image->save();
 
         return response()->json([
             'status' => $image ? 'success' : 'error',
             'message' => $image ? __('succesfully deleted') : __('error deleting')
-        ],200);
-    }
-
-    public function columnUpdate($id){
-        $name = request()->name;
-        $tag = TagMaster::find($id);
-        $tag->$name = request()->value;
-        $tag->save();
-
-
-        return response()->json([
-            'status' => 'success',
-            'message' => __('successfully updated '. request()->name),
-            'id' => $id
         ],200);
     }
 }

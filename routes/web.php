@@ -272,4 +272,17 @@ Route::group(['middleware' => 'auth'], function () {
     ]]);
     Route::post('meal-group/uploadimage', 'MealgroupController@uploadimage')->name('mealgroup.uploadimage');
     Route::post('meal-group/deleteimage/{id}', 'MealgroupController@deleteimage')->name('mealgroup.deleteimage');
+
+    //User Setting
+    Route::resource('user-setting', 'UserSettingController', ['names' => [
+        'index' => 'user-setting'
+    ]]);
+
+    //FNB List
+    Route::resource('fnb', 'FNBController', ['names' => [
+        'index' => 'fnb'
+    ]]);
+    Route::get('fnb/search/{name?}', 'FNBController@search')->name('fnb.search');
+    Route::post('fnb/uploadimage', 'FNBController@uploadimage')->name('fnb.uploadimage');
+    Route::post('fnb/deleteimage/{id}', 'FNBController@deleteimage')->name('fnb.deleteimage');
 });

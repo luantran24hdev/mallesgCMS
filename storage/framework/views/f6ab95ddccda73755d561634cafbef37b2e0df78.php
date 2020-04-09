@@ -1,5 +1,4 @@
-@extends('layouts.app')
-@section('style')
+<?php $__env->startSection('style'); ?>
 
     <style>
         .card{
@@ -66,30 +65,31 @@
             color: blue;}
 
     </style>
-@endsection
-@section('content')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
     <div class="row">
         <div class="col-md-10">
             <div class="card card-malle">
                 <div class="card-header-malle">
-                   {{__('F & B List')}}
+                   <?php echo e(__('F & B List')); ?>
+
                 </div>
                 <div class="card-body merch_out">
-                    <form method="POST" action="{{route('fnb.store')}}" id="addlevel">
+                    <form method="POST" action="<?php echo e(route('fnb.store')); ?>" id="addlevel">
                     <div class="row">
                         <div class="col-md-3">
                             <input type="text" name="fnb_name" placeholder="Type Dish Name" id="fnb_name"
-                                   class="form-control" required="" list="datalist1" data-autocompleturl="{{route('fnb.search')}}">
+                                   class="form-control" required="" list="datalist1" data-autocompleturl="<?php echo e(route('fnb.search')); ?>">
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <select id="main_category_select" name="fnb_type">
-                                    @if(!empty($fnb_types))
+                                    <?php if(!empty($fnb_types)): ?>
                                         <option value="">Select FNB Types</option>
-                                        @foreach($fnb_types as $fnb_type)
-                                            <option value="{{ $fnb_type->fnbt_id }}">{{$fnb_type->fnbt_name }}</option>
-                                        @endforeach
-                                    @endif
+                                        <?php $__currentLoopData = $fnb_types; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $fnb_type): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <option value="<?php echo e($fnb_type->fnbt_id); ?>"><?php echo e($fnb_type->fnbt_name); ?></option>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    <?php endif; ?>
                                 </select>
                             </div>
                         </div>
@@ -102,12 +102,12 @@
                     </div>
                     </form>
 
-                    @if(isset($fnb_cats))
+                    <?php if(isset($fnb_cats)): ?>
                         <br/>
                         <div class="row">
                             <div class="col-md-12">
                                 <table class="table table-striped malle-table" id="discount-tag-table"
-                                       data-sourceurl="{{ route('fnb') }}">
+                                       data-sourceurl="<?php echo e(route('fnb')); ?>">
                                     <thead>
                                     <th></th>
                                     <th>FNB Name</th>
@@ -115,50 +115,50 @@
                                     <th>Action</th>
                                     </thead>
                                     <tbody>
-                                    @foreach($fnb_cats as $fnb_cat)
-                                    <tr class="row-location" data-id="{{@$fnb_cat->fnb_id}}">
+                                    <?php $__currentLoopData = $fnb_cats; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $fnb_cat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <tr class="row-location" data-id="<?php echo e(@$fnb_cat->fnb_id); ?>">
                                         <td>
-                                            @if(!empty($fnb_cat->fnb_image))
-                                                <img src="{{ $live_url.$fnb_cat->fnb_image }}" width="50px" height="50px">
+                                            <?php if(!empty($fnb_cat->fnb_image)): ?>
+                                                <img src="<?php echo e($live_url.$fnb_cat->fnb_image); ?>" width="50px" height="50px">
                                                 <br>
-                                                <a  href="javascript:;" data-href="{{route('fnb.deleteimage',['id'=>@$fnb_cat->fnb_id])}}" data-method="POST" class="btn-pi-delete" data-id="{{$fnb_cat->fnb_id}}">
-                                                    <span class="text-danger">{{__('Delete')}}</span>
+                                                <a  href="javascript:;" data-href="<?php echo e(route('fnb.deleteimage',['id'=>@$fnb_cat->fnb_id])); ?>" data-method="POST" class="btn-pi-delete" data-id="<?php echo e($fnb_cat->fnb_id); ?>">
+                                                    <span class="text-danger"><?php echo e(__('Delete')); ?></span>
                                                 </a>
-                                            @else
-                                                <form action="{{ route('fnb.uploadimage') }}" class="dropzone" style="width: 60px;height: 60px;min-height: 0px !important; padding: 0 0 0 0 !important;">
-                                                    @csrf
-                                                    <input type="hidden" name="fnb_id" value="{{@$fnb_cat->fnb_id}}">
+                                            <?php else: ?>
+                                                <form action="<?php echo e(route('fnb.uploadimage')); ?>" class="dropzone" style="width: 60px;height: 60px;min-height: 0px !important; padding: 0 0 0 0 !important;">
+                                                    <?php echo csrf_field(); ?>
+                                                    <input type="hidden" name="fnb_id" value="<?php echo e(@$fnb_cat->fnb_id); ?>">
                                                 </form>
-                                            @endif
+                                            <?php endif; ?>
                                         </td>
-                                        <td>{{ @$fnb_cat->fnb_name }}</td>
-                                        <td>{{ @$fnb_cat->fnbtype->fnbt_name }}</td>
+                                        <td><?php echo e(@$fnb_cat->fnb_name); ?></td>
+                                        <td><?php echo e(@$fnb_cat->fnbtype->fnbt_name); ?></td>
                                         <td>
                                             <a href="javascript:;"
-                                               data-href="{{route('fnb.destroy',[$fnb_cat->fnb_id])}}"
+                                               data-href="<?php echo e(route('fnb.destroy',[$fnb_cat->fnb_id])); ?>"
                                                data-method="DELETE" class="btn-delete"
-                                               data-id="{{$fnb_cat->fnb_id}}">
+                                               data-id="<?php echo e($fnb_cat->fnb_id); ?>">
                                                 <span class="text-danger">Delete</span>
                                             </a>
                                         </td>
                                     </tr>
-                                    @endforeach
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-                    @endif
+                    <?php endif; ?>
 
                 </div>
             </div>
         </div>
     </div>
-    @include('partials.delete_model')
-@endsection
+    <?php echo $__env->make('partials.delete_model', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<?php $__env->stopSection(); ?>
 
 
-@section('script')
-    <script type="text/javascript" src="{{ asset('js/dropzone.js') }}"></script>
+<?php $__env->startSection('script'); ?>
+    <script type="text/javascript" src="<?php echo e(asset('js/dropzone.js')); ?>"></script>
 
 
     <script>
@@ -201,7 +201,7 @@
                             $("#tag-image-body").load( $('#tag-image-body').attr('data-sourceurl') +" #tag-image-content");*/
                             $("#discount-tag-table").load( $('#discount-tag-table').attr('data-sourceurl') +" #discount-tag-table");
                             toastr.success(data.message);
-                            window.location.href = '{{ route('fnb') }}';
+                            window.location.href = '<?php echo e(route('fnb')); ?>';
                         }
                     }
                 });
@@ -315,4 +315,6 @@
         });
 
     </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\adminlaravel3\resources\views/main/fnb_list/index.blade.php ENDPATH**/ ?>

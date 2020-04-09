@@ -169,6 +169,15 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $tagMaster = SubCategoryMaster::find($id);
+
+        if(!empty($tagMaster->image)){
+            if(env('APP_ENV')=='live')
+                unlink('../../admin/images/stock/'.$tagMaster->image);
+            else
+                unlink('../storage/app/public/'.$tagMaster->image);
+        }
+
+
         $tagMaster->delete();
 
         return response()->json([
