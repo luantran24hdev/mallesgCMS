@@ -3,15 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="5b78cfcb-942f-4cbe-bdc3-7ba4e2bc8d2a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CategoryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DiscountController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DiscountController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/main/fnb_list/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/fnb_list/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/main/user_setting/edit_tags.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/main/user_setting/preference_tags.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/partials/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ShopperController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ShopperController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/main/shoppers/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/shoppers/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/views/479e07d0b6252a1b8e99e50b687732feead0f0a1.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/479e07d0b6252a1b8e99e50b687732feead0f0a1.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/views/bd7c20ed01f7729dd73e96c5d9b7ee67082f4dc4.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/bd7c20ed01f7729dd73e96c5d9b7ee67082f4dc4.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/6e5e4e50904c683add69ce20e7651d579c5172de.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/6e5e4e50904c683add69ce20e7651d579c5172de.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,12 +15,7 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution>
-      <executable />
-    </execution>
-  </component>
-  <component name="FavoritesManager">
-    <favorites_list name="adminlaravel3" />
+    <execution />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -118,13 +108,13 @@
   <component name="ProjectId" id="1WQNnfzWfVJlurE1jTpZfpsVUBK" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/main" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -143,18 +133,6 @@
       <TestRunner scope="XML" />
       <method v="2" />
     </configuration>
-  </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -269,18 +247,36 @@
       <workItem from="1586325672491" duration="106000" />
       <workItem from="1586327091234" duration="75000" />
       <workItem from="1586335843508" duration="11894000" />
-      <workItem from="1586409268280" duration="606000" />
+      <workItem from="1586409268280" duration="1208000" />
+      <workItem from="1586523541513" duration="4278000" />
+      <workItem from="1586529010496" duration="1877000" />
+      <workItem from="1586599864896" duration="1186000" />
+      <workItem from="1586604167663" duration="4782000" />
+      <workItem from="1586685205066" duration="21000" />
+      <workItem from="1586687694803" duration="1453000" />
+      <workItem from="1586690144170" duration="8974000" />
+      <workItem from="1586756833121" duration="157000" />
+      <workItem from="1586757053377" duration="3104000" />
+      <workItem from="1586873635800" duration="94000" />
+      <workItem from="1587178861954" duration="100000" />
+      <workItem from="1587613509305" duration="3181000" />
+      <workItem from="1587995321996" duration="85000" />
+      <workItem from="1588001206260" duration="164000" />
+      <workItem from="1588088990443" duration="32000" />
+      <workItem from="1588089051965" duration="29000" />
+      <workItem from="1588169979986" duration="98000" />
+      <workItem from="1588443785047" duration="1263000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="499" y="171" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1586355190799">
+    <state x="499" y="171" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1588444681486">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="499" y="171" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1586355190799" />
+    <state x="499" y="171" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1588444681486" />
     <state x="128" y="71" key="DiffContextDialog" timestamp="1579923831977">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -297,21 +293,21 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1582869066848" />
-    <state x="477" y="241" key="com.intellij.ide.util.TipDialog" timestamp="1586409271092">
+    <state x="477" y="241" key="com.intellij.ide.util.TipDialog" timestamp="1588089052315">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="477" y="241" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1586409271092" />
-    <state x="473" y="46" width="590" height="732" key="find.popup" timestamp="1586269241393">
+    <state x="477" y="241" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1588089052315" />
+    <state x="473" y="46" width="590" height="732" key="find.popup" timestamp="1586694841289">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="473" y="46" width="590" height="732" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1586269241393" />
-    <state x="425" y="187" key="run.anything.popup" timestamp="1579233729120">
+    <state x="473" y="46" width="590" height="732" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1586694841289" />
+    <state x="425" y="187" key="run.anything.popup" timestamp="1588444145199">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1579233729120" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1586355134437">
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1588444145199" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1588444663420">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1586355134437" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1588444663420" />
   </component>
 </project>

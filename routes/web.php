@@ -196,6 +196,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('shopper/uploadimage', 'ShopperController@uploadimage')->name('shopper.image.uploadimage');
     Route::post('shopper/deleteimage/{id}', 'ShopperController@deleteimage')->name('shopper.image.deleteimage');
     Route::delete('shopper/delete/{id}', 'ShopperController@destroy')->name('shopper.delete');
+    Route::post('shopper/column-update/{id?}', 'ShopperController@columnUpdate')->name('shopper.column-update');
 
     //Mall Events
     Route::resource('mall-events', 'EventController', ['names' => [

@@ -138,5 +138,22 @@ class ShopperController extends Controller
         ],200);
     }
 
+    public function columnUpdate($id){
+
+        $name = request()->name;
+        $shopper = ShopperMaster::find($id);
+        $shopper->$name = request()->value;
+        $shopper->save();
+        /* $this->merchant->update($id, [
+             request()->name => request()->value
+         ]);*/
+
+        return response()->json([
+            'status' => 'success',
+            'message' => __('successfully updated '. request()->name),
+            'id' => $id
+        ],200);
+    }
+
 
 }

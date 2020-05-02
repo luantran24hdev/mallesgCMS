@@ -34,10 +34,34 @@
                                             @endif
                                         </td>
 
-                                        <td>{{ @$shopper->Shopper_name }}</td>
-                                        <td>{{ \App\User::getGender(@$shopper->Gender) }}</td>
-                                        <td>{{ @$shopper->Mobile_number }} <br> <span style="color: green">Verified</span></td>
-                                        <td>{{ @$shopper->Email_id }}  <br> <span style="color: red">Verify Now</span></td>
+                                        <td>{{ @$shopper->Shopper_name }}
+                                            <br><br><br><span><b> Driver / Rider </b> </span> &nbsp;&nbsp;&nbsp;
+                                            <select name="dr_id" id="" class="shopper_column_update dd-orange" data-href="{{route('shopper.column-update',[$shopper->Shopper_id])}}" data-method="POST">
+                                                <option value="Y" @if($shopper->dr_id=='Y') selected @endif>Yes</option>
+                                                <option value="N" @if($shopper->dr_id=='N') selected @endif>No</option>
+                                            </select>
+                                        </td>
+                                        <td>{{ \App\User::getGender(@$shopper->Gender) }}
+                                            <br><br><br><span><b> Merchant </b> </span> &nbsp;&nbsp;&nbsp;
+                                            <select name="app_merchant" id="" class="shopper_column_update dd-orange" data-href="{{route('shopper.column-update',[$shopper->Shopper_id])}}" data-method="POST">
+                                                <option value="Y" @if($shopper->app_merchant=='Y') selected @endif>Yes</option>
+                                                <option value="N" @if($shopper->app_merchant=='N') selected @endif>No</option>
+                                            </select>
+                                        </td>
+                                        <td>{{ @$shopper->Mobile_number }} <br> <span style="color: green">Verified</span>
+                                            <br><br><span><b> App Admin </b> </span> &nbsp;&nbsp;&nbsp;
+                                            <select name="app_admin" id="" class="shopper_column_update dd-orange" data-href="{{route('shopper.column-update',[$shopper->Shopper_id])}}" data-method="POST">
+                                                <option value="Y" @if($shopper->app_admin=='Y') selected @endif>Yes</option>
+                                                <option value="N" @if($shopper->app_admin=='N') selected @endif>No</option>
+                                            </select>
+                                        </td>
+                                        <td>{{ @$shopper->Email_id }}  <br> <span style="color: red">Verify Now</span>
+                                            <br><br><span><b> App User </b> </span> &nbsp;&nbsp;&nbsp;
+                                            <select name="app_user" id="" class="shopper_column_update dd-orange" data-href="{{route('shopper.column-update',[$shopper->Shopper_id])}}" data-method="POST">
+                                                <option value="Y" @if($shopper->app_user=='Y') selected @endif>Yes</option>
+                                                <option value="N" @if($shopper->app_user=='N') selected @endif>No</option>
+                                            </select>
+                                        </td>
                                         <td>{{ @$shopper->Registered_on }}</td>
                                         <td><a href="{{ route('manage.edit.shoppers',$shopper->Shopper_id) }}"> Edit </a>
                                             |
@@ -90,6 +114,40 @@
                 });
 
             });
+        });
+
+
+        // change promo outlate live, featured and redeem status
+        $(document).on('change', '.shopper_column_update', function(e){
+            e.preventDefault();
+            //debugger;
+            var selectOp = $(this);
+            var attrName = selectOp.attr("name");
+
+            $.ajax({
+                url: selectOp.attr('data-href'),
+                type: selectOp.attr('data-method'),
+                dataType:'json',
+                data: {
+                    name : selectOp.attr('name'),
+                    value : selectOp.find('option:selected').val()
+                },
+                success:function(data){
+                    console.log(data);
+                    if(data.status==='error'){
+                        errorReturn(data)
+                    }else{
+                        //$('#merchant-list-table tbody').remove();
+                        //  $("#merchant-list-table").load( $('#merchant-list-table').attr('data-sourceurl') +" #merchant-list-table");
+                        toastr.success(data.message);
+                    }
+                },
+                error: function(data){
+                    console.log(data);
+                    exeptionReturn(data);
+                }
+            });
+
         });
 
     </script>
