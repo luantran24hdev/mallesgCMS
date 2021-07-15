@@ -111,7 +111,6 @@ class ParkingController extends Controller
 //        $parking = ParkingMaster::where('parking_id', $id)->first();
 //        if(!$parking)
 //            $parking = new ParkingMaster();
-//        dd($request);
 
         $parking = ParkingMaster::updateOrcreate(
             [
@@ -135,6 +134,7 @@ class ParkingController extends Controller
                 'dated' => Carbon::now()->format('d/m/Y'),
                 'user_id' => Auth::id(),
             ]);
+
 
         return response()->json([
             'status' => 'success',

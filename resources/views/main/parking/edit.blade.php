@@ -6,6 +6,10 @@
             margin-bottom: 0px;
         }
 
+        .card-body .col, .col-1, .col-10, .col-11, .col-12, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-auto, .col-lg, .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-auto, .col-md, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-auto, .col-sm, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-auto, .col-xl, .col-xl-1, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto {
+            padding: 0 0.5vw;
+        }
+
         .dd-orange {
             padding: .375rem .75rem
         }
@@ -61,53 +65,53 @@
 
                 <div class="card-body" id="tag-image-body"
                      data-sourceurl="{{route('mall-parking.edit',[$mall->mall_id])}}">
-                    <form method="PATCH" action="{{route('mall-parking.update',[$mall->mall_id])}}"
+                    <form method="PUT" action="{{route('mall-parking.update',[$mall->mall_id])}}"
                           id="editDiscountTag">
                         <div class="row">
-                            <div class="col-md-1 col-6">
-                                <div class="form-group">
+                            <div class="col-12 d-flex justify-content-around">
+
+                                <div class="form-group mx-1">
                                     <label class="mb-2 font-12">Car lots</label>
-                                    <input class="form-control w-100" type="number" name="lots_cars" value="{{ $parking->lots_cars?? 0}}"/>
+                                    <input class="form-control w-100" type="number" name="lots_cars"
+                                           value="{{ $parking->lots_cars?? 0}}"/>
                                 </div>
-                            </div>
 
-                            <div class="col-md-1 col-6">
-                                <div class="form-group">
+
+                                <div class="form-group mx-1">
                                     <label class="mb-2 font-12">Bike lots</label>
-                                    <input class="form-control w-100" type="number" name="lots_bike" value="{{ $parking->lots_bike?? 0}}"/>
+                                    <input class="form-control w-100" type="number" name="lots_bike"
+                                           value="{{ $parking->lots_bike?? 0}}"/>
                                 </div>
-                            </div>
 
-                            <div class="col-md-1 col-6">
-                                <div class="form-group">
+
+                                <div class="form-group mx-1">
                                     <label class="mb-2 font-12">Handicap</label>
-                                    <input class="form-control w-100" type="number" name="lots_handicap" value="{{ $parking->lots_handicap?? 0}}"/>
+                                    <input class="form-control w-100" type="number" name="lots_handicap"
+                                           value="{{ $parking->lots_handicap?? 0}}"/>
                                 </div>
-                            </div>
 
-                            <div class="col-md-1 col-6">
-                                <div class="form-group">
+
+                                <div class="form-group mx-1">
                                     <label class="mb-2 font-12">EV lots</label>
-                                    <input class="form-control w-100" type="number" name="lots_ev" value="{{ $parking->lots_ev?? 0}}"/>
+                                    <input class="form-control w-100" type="number" name="lots_ev"
+                                           value="{{ $parking->lots_ev?? 0}}"/>
                                 </div>
-                            </div>
 
-                            <div class="col-md-1 col-6">
-                                <div class="form-group">
+                                <div class="form-group mx-1">
                                     <label class="mb-2 font-12">Family lots</label>
-                                    <input class="form-control w-100" type="number" name="lots_family" value="{{ $parking->lots_family?? 0}}"/>
+                                    <input class="form-control w-100" type="number" name="lots_family"
+                                           value="{{ $parking->lots_family?? 0}}"/>
                                 </div>
-                            </div>
 
-                            <div class="col-md-1 col-6">
-                                <div class="form-group">
+
+                                <div class="form-group mx-1">
                                     <label class="mb-2 font-12">Views</label>
-                                    <input class="form-control w-100" type="number" name="views" value="{{ $parking->views?? 0}}"/>
+                                    <input class="form-control w-100" type="number" name="views"
+                                           value="{{ $parking->views?? 0}}"/>
                                 </div>
-                            </div>
 
-                            <div class="col-md-1 col-6">
-                                <div class="form-group">
+
+                                <div class="form-group mx-1">
                                     <label class="mb-2 font-12">Featured</label>
                                     <select name="mall_active" id="" class="dd-orange">
                                         <option value="N"
@@ -120,15 +124,84 @@
                                         </option>
                                     </select>
                                 </div>
-                            </div>
 
-                            <div class="offset-md-3 col-md-2">
-                                <div class="form-group">
+                                <div class="form-group ml-md-5 ml-2">
                                     <button type="submit" class="btn btn-primary mt-4 float-right" id="btnEditPromo">
                                         {{$parking? 'Update': 'Save'}}
                                     </button>
                                 </div>
                             </div>
+                            {{--                            <div class="col-md-1 col-6">--}}
+                            {{--                                <div class="form-group">--}}
+                            {{--                                    <label class="mb-2 font-12">Car lots</label>--}}
+                            {{--                                    <input class="form-control w-100" type="number" name="lots_cars"--}}
+                            {{--                                           value="{{ $parking->lots_cars?? 0}}"/>--}}
+                            {{--                                </div>--}}
+                            {{--                            </div>--}}
+
+                            {{--                            <div class="col-md-1 col-6">--}}
+                            {{--                                <div class="form-group">--}}
+                            {{--                                    <label class="mb-2 font-12">Bike lots</label>--}}
+                            {{--                                    <input class="form-control w-100" type="number" name="lots_bike"--}}
+                            {{--                                           value="{{ $parking->lots_bike?? 0}}"/>--}}
+                            {{--                                </div>--}}
+                            {{--                            </div>--}}
+
+                            {{--                            <div class="col-md-1 col-6">--}}
+                            {{--                                <div class="form-group">--}}
+                            {{--                                    <label class="mb-2 font-12">Handicap</label>--}}
+                            {{--                                    <input class="form-control w-100" type="number" name="lots_handicap"--}}
+                            {{--                                           value="{{ $parking->lots_handicap?? 0}}"/>--}}
+                            {{--                                </div>--}}
+                            {{--                            </div>--}}
+
+                            {{--                            <div class="col-md-1 col-6">--}}
+                            {{--                                <div class="form-group">--}}
+                            {{--                                    <label class="mb-2 font-12">EV lots</label>--}}
+                            {{--                                    <input class="form-control w-100" type="number" name="lots_ev"--}}
+                            {{--                                           value="{{ $parking->lots_ev?? 0}}"/>--}}
+                            {{--                                </div>--}}
+                            {{--                            </div>--}}
+
+                            {{--                            <div class="col-md-2 col-6">--}}
+                            {{--                                <div class="form-group w-75">--}}
+                            {{--                                    <label class="mb-2 font-12">Family lots</label>--}}
+                            {{--                                    <input class="form-control w-100" type="number" name="lots_family"--}}
+                            {{--                                           value="{{ $parking->lots_family?? 0}}"/>--}}
+                            {{--                                </div>--}}
+                            {{--                            </div>--}}
+
+                            {{--                            <div class="col-md-1 col-6">--}}
+                            {{--                                <div class="form-group">--}}
+                            {{--                                    <label class="mb-2 font-12">Views</label>--}}
+                            {{--                                    <input class="form-control w-100" type="number" name="views"--}}
+                            {{--                                           value="{{ $parking->views?? 0}}"/>--}}
+                            {{--                                </div>--}}
+                            {{--                            </div>--}}
+
+                            {{--                            <div class="col-md-1 col-6">--}}
+                            {{--                                <div class="form-group">--}}
+                            {{--                                    <label class="mb-2 font-12">Featured</label>--}}
+                            {{--                                    <select name="mall_active" id="" class="dd-orange">--}}
+                            {{--                                        <option value="N"--}}
+                            {{--                                                @if(!isset($parking->mall_active) || $parking->mall_active!='Y') selected @endif>--}}
+                            {{--                                            No--}}
+                            {{--                                        </option>--}}
+                            {{--                                        <option value="Y"--}}
+                            {{--                                                @if(isset($parking->mall_active) && $parking->mall_active=='Y') selected @endif>--}}
+                            {{--                                            Yes--}}
+                            {{--                                        </option>--}}
+                            {{--                                    </select>--}}
+                            {{--                                </div>--}}
+                            {{--                            </div>--}}
+
+                            {{--                            <div class="col col-md-2">--}}
+                            {{--                                <div class="form-group">--}}
+                            {{--                                    <button type="submit" class="btn btn-primary mt-4 float-right" id="btnEditPromo">--}}
+                            {{--                                        {{$parking? 'Update': 'Save'}}--}}
+                            {{--                                    </button>--}}
+                            {{--                                </div>--}}
+                            {{--                            </div>--}}
 
                             <div class="col-md-4">
                                 <div class="form-group">
@@ -136,9 +209,7 @@
                                     <textarea type="text"
                                               name="car_charges"
                                               class="form-control"
-                                              rows="15">
-                                        {{$parking->car_charges ?? '' }}
-                                    </textarea>
+                                              rows="15">{{$parking->car_charges ?? null }}</textarea>
                                 </div>
                             </div>
 
@@ -146,20 +217,16 @@
                                 <div class="form-group">
                                     <label class="mb-2 font-12">Bike Charges</label>
                                     <textarea type="text"
-                                              name="car_charges"
+                                              name="bike_charges"
                                               class="form-control"
-                                              rows="7">
-                                        {{$parking->car_charges ?? '' }}
-                                    </textarea>
+                                              rows="7">{{$parking->bike_charges ?? null }}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label class="mb-2 font-12">Free Parking</label>
                                     <textarea type="text"
                                               name="free_parking"
                                               class="form-control"
-                                              rows="6">
-                                        {{$parking->free_parking ?? '' }}
-                                    </textarea>
+                                              rows="6">{{$parking->free_parking ?? null }}</textarea>
                                 </div>
                             </div>
 
@@ -174,17 +241,15 @@
                                         </div>
                                     </div>
                                     <textarea type="text"
-                                              name="car_charges"
+                                              name="operating_hours"
                                               class="form-control"
-                                              rows="4">
-                                        {{$parking->car_charges ?? '' }}
-                                    </textarea>
+                                              rows="4">{{$parking->operating_hours ?? null }}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label class="mb-2 font-12">{{__('Grace Period')}}</label>
                                     <div class="input-group mb-3">
                                         <input type="text"
-                                               value="{{$parking->grace_period?? ''}}"
+                                               value="{{$parking->grace_period?? null}}"
                                                required
                                                name="grace_period"
                                                class="form-control"/>
@@ -193,11 +258,9 @@
                                 <div class="form-group">
                                     <label class="mb-2 font-12">Car Parking Info</label>
                                     <textarea type="text"
-                                              name="free_parking"
+                                              name="car_parking_info"
                                               class="form-control"
-                                              rows="5">
-                                        {{$parking->car_parking_info ?? '' }}
-                                    </textarea>
+                                              rows="5">{{$parking->car_parking_info ?? null }}</textarea>
 
                                 </div>
                             </div>
@@ -206,8 +269,8 @@
                             {{--                            <div class="col-md-6">--}}
                             {{--                                <div class="form-group">--}}
                             {{--                                    <label class="mb-2 font-12">Paid Parking</label>--}}
-                            {{--                                    <span style="float: right"><input type="checkbox" name="no_parking_info" value="Y" @if(isset($parking->no_parking_info) && $parking->no_parking_info == "Y") checked @endif><label class="mb-2 font-12">No Parking Info</label></span>--}}
-                            {{--                                    <textarea style="height: 300px;" type="text" name="paid_parking" id="description" class="form-control">{{$parking->paid_parking ?? '' }}</textarea>--}}
+                            {{--                                    <span style="float: right"><input type="checkbox" name="no_parking_info" value="Y" @if(isset($parkiing_info == "Y") checked @endif><label class="mb-2 font-12">No Parking Info</label></span>--}}
+                            {{--                                    <textarea style="height: 300px;" type="text" name="paid_parking" id="description" class="form-contr</textarea>--}}
 
                             {{--                                </div>--}}
                             {{--                            </div>--}}
@@ -216,7 +279,7 @@
                             {{--                                <div class="col-md-12">--}}
                             {{--                                    <div class="form-group">--}}
                             {{--                                        <label class="mb-2 font-12">Free Parking</label>--}}
-                            {{--                                        <textarea style="height: 100px;" type="text" name="free_parking" id="location" class="form-control">{{$parking->free_parking?? ''}}</textarea>--}}
+                            {{--                            <textarea style="height: 100px;" type="text" name="free_parking" id="location" class="form-con</textarea>--}}
                             {{--                                    </div>--}}
                             {{--                                </div>--}}
                             {{--                                <div class="col-md-12">--}}
@@ -261,7 +324,7 @@
             <div class="card card-malle">
 
                 <div class="card-header-malle">
-                   Services in Carpark
+                    Services in Carpark
                 </div>
 
                 <div class="card-body" id="tag-image-body"
@@ -277,7 +340,7 @@
 
                             <div class="col-6">
                                 <div class="form-group">
-                                   <button class="btn btn-primary">Update</button>
+                                    <button class="btn btn-primary">Update</button>
                                 </div>
                             </div>
 
