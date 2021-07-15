@@ -4,7 +4,7 @@
             <div class="card-header-malle">
                 Images for Event
             </div>
-            <div class="card-body" id="promo-image-body1" data-sourceurl="{{route('mall-parking.edit',[$parking->mall_id])}}">
+            <div class="card-body" id="promo-image-body1" data-sourceurl="{{route('mall-parking.edit',[$mall->mall_id])}}">
 
                 <div class="row" id="promo-image-content1">
                     <input type="text" id="selected_image" style="display: none;">
@@ -43,8 +43,8 @@
                         <input type="file" id="upload_{{$i}}" data-count="{{$i}}" class="imguploader" value="Choose a file" accept="image/*" style="display: none;" >
                     @endfor
 
-                    
- 
+
+
                 </div>
 
              </div>

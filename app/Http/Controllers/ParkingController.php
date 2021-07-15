@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\MallMaster;
 use App\ParkingImages;
+use App\ParkingMaster;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ParkingController extends Controller
 {
@@ -31,7 +34,7 @@ class ParkingController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -42,7 +45,7 @@ class ParkingController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -53,27 +56,29 @@ class ParkingController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $parkings = MallMaster::find($id);
-        $parking_images = ParkingImages::where('mall_id',$id)->get();
+        $parking = ParkingMaster::where('mall_id', $id)->first();
+        $mall = MallMaster::where('mall_id', $id)->first();
+        $parking_images = ParkingImages::where('mall_id', $id)->get();
         $data = [
-            'parking' => $parkings,
+            'mall' => $mall,
+            'parking' => $parking,
             'parking_images' => $parking_images,
-            'live_url' => env('LIVE_URL').'images/parking/'
+            'live_url' => env('LIVE_URL') . 'images/parking/'
         ];
 
-        return view('main.parking.edit',$data);
+        return view('main.parking.edit', $data);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -103,22 +108,40 @@ class ParkingController extends Controller
             ],200);
         }*/
 
-        $parking = MallMaster::find($id);
-        $parking->no_parking_info = $request->no_parking_info ? $request->no_parking_info : 'N';
-        $parking->paid_parking = $request->paid_parking ? $request->paid_parking : '';
-        $parking->free_parking = $request->free_parking ? $request->free_parking : '';
-        $parking->grace_period = $request->grace_period ? $request->grace_period : '10 Mins';
-        $parking->total_parking = $request->total_parking ? $request->total_parking : 0;
-        $parking->available_parking = $request->available_parking ? $request->available_parking : 0;
-        $parking->featured_park = $request->featured_park;
-        $parking->save();
+//        $parking = ParkingMaster::where('parking_id', $id)->first();
+//        if(!$parking)
+//            $parking = new ParkingMaster();
+//        dd($request);
+
+        $parking = ParkingMaster::updateOrcreate(
+            [
+                'mall_id' => $id,
+            ],
+            [
+                'views' => $request->views,
+                'featured' => $request->featured,
+                'lots_cars' => $request->lots_cars,
+                'lots_bike' => $request->lots_bike,
+                'lots_handicap' => $request->lots_handicap,
+                'lots_ev' => $request->lots_ev,
+                'lots_family' => $request->lots_family,
+                'car_park_info' => $request->car_park_info,
+                'grace_period' => $request->grace_period,
+                'operating_hours' => $request->operating_hours,
+                '24_hours' => $request['24_hours']? 'Y': 'N',
+                'free_parking' => $request->free_parking,
+                'car_charges' => $request->car_charges,
+                'bike_charges' => $request->bike_charges,
+                'dated' => Carbon::now()->format('d/m/Y'),
+                'user_id' => Auth::id(),
+            ]);
 
         return response()->json([
             'status' => 'success',
             'message' => __('successfully updated parking'),
             //'tag_name' => $request->time_name,
             //'id' => $time_master->time_id
-        ],200);
+        ], 200);
 
 
     }
@@ -126,7 +149,7 @@ class ParkingController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -138,16 +161,16 @@ class ParkingController extends Controller
     {
 
         $file = $request->files->get('image');
-        try{
+        try {
 
-            if($file->getMimeType()!="image/png"){
+            if ($file->getMimeType() != "image/png") {
                 throw new \Exception("invalid file", 500);
             }
 
 
-            $newfilename = md5($request->mall_id."_".round(microtime(true))) . '.png';
+            $newfilename = md5($request->mall_id . "_" . round(microtime(true))) . '.png';
 
-            if(env('APP_ENV')=='live')
+            if (env('APP_ENV') == 'live')
                 $file->move('../../admin/images/parking/', $newfilename);
             else
                 $file->move('../storage/app/public/', $newfilename);
@@ -164,27 +187,28 @@ class ParkingController extends Controller
         }
 
         return response()->json([
-            'status' => 'success' ,
-            'message' =>__('succesfully uploaded'),
-            'file' => env("LIVE_URL").$newfilename
-        ],200);
+            'status' => 'success',
+            'message' => __('succesfully uploaded'),
+            'file' => env("LIVE_URL") . $newfilename
+        ], 200);
 
     }
 
-    public function deleteimage($id){
+    public function deleteimage($id)
+    {
 
         $image = ParkingImages::find($id);
 
-        if(env('APP_ENV')=='live')
-            unlink('../../admin/images/parking/'.$image->parking_image);
+        if (env('APP_ENV') == 'live')
+            unlink('../../admin/images/parking/' . $image->parking_image);
         else
-            unlink('../storage/app/public/'.$image->parking_image);
+            unlink('../storage/app/public/' . $image->parking_image);
 
         $delete = ParkingImages::destroy($id);
         return response()->json([
             'status' => $delete ? 'success' : 'error',
             'image_count' => @$image->event_count,
             'message' => $delete ? __('succesfully deleted') : __('error deleting')
-        ],200);
+        ], 200);
     }
 }

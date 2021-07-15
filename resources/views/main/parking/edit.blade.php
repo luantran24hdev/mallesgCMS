@@ -2,17 +2,24 @@
 @section('style')
 
     <style>
-        .card{
+        .card {
             margin-bottom: 0px;
         }
-        .btn-default{
+
+        .dd-orange {
+            padding: .375rem .75rem
+        }
+
+        .btn-default {
             color: #fff;
             background-color: #ccc;
             border-color: #ccc;
         }
-        .active{
+
+        .active {
             background-color: #007bff !important;
         }
+
         .pic {
             width: 100%;
             height: 100%;
@@ -34,7 +41,6 @@
         }
 
 
-
     </style>
 @endsection
 
@@ -44,7 +50,7 @@
             <div class="card card-malle">
 
                 <div class="card-header-malle">
-                    {{ @$parking->mall_name  }} Parking Info
+                    {{ $mall->mall_name  }} Parking Info
 
                     <a href="{{route('malls')}}">
                     <span class="link_color" style="float: right">
@@ -53,67 +59,195 @@
                     </a>
                 </div>
 
-                <div class="card-body" id="tag-image-body" data-sourceurl="{{route('mall-parking.edit',[$parking->mall_id])}}">
-                    <form method="PATCH" action="{{route('mall-parking.update',[$parking->mall_id])}}" id="editDiscountTag">
+                <div class="card-body" id="tag-image-body"
+                     data-sourceurl="{{route('mall-parking.edit',[$mall->mall_id])}}">
+                    <form method="PATCH" action="{{route('mall-parking.update',[$mall->mall_id])}}"
+                          id="editDiscountTag">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-1 col-6">
                                 <div class="form-group">
-                                    <label class="mb-2 font-12">Paid Parking</label>
-                                    <span style="float: right"><input type="checkbox" name="no_parking_info" value="Y" @if($parking->no_parking_info == "Y") checked @endif><label class="mb-2 font-12">No Parking Info</label></span>
-                                    <textarea style="height: 300px;" type="text" name="paid_parking" id="description" value="{{$parking->paid_parking}}" class="form-control">{{$parking->paid_parking}}</textarea>
-
+                                    <label class="mb-2 font-12">Car lots</label>
+                                    <input class="form-control w-100" type="number" name="lots_cars" value="{{ $parking->lots_cars?? 0}}"/>
                                 </div>
-
-
                             </div>
 
-                            <div class="col-md-4" >
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label class="mb-2 font-12">Free Parking</label>
-                                        <textarea style="height: 100px;" type="text" name="free_parking" id="location" class="form-control" value="{{$parking->free_parking}}">{{$parking->free_parking}}</textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label class="mb-2 font-12">{{__('Grace Period')}}</label>
-                                        <div class="input-group mb-3">
-                                            <input type="text" value="{{$parking->grace_period}}" required="" name="grace_period" class="form-control">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="mb-2 font-12">{{__('Parking Spaces')}}</label>
-                                            <div class="input-group mb-3">
-                                                <input type="text" value="{{$parking->total_parking}}" class="form-control" name="total_parking">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="mb-2 font-12">{{__('Available Now')}}</label>
-                                            <div class="input-group mb-3">
-                                                <input type="text" value="{{$parking->available_parking}}" class="form-control" name="available_parking">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 ">
-                                    <label class="mb-2 font-12">{{__('Featured')}}</label>
-                                    <div class="form-group">
-                                        <input type="radio" value="Y"  name="featured_park" @if($parking->featured_park == 'Y') checked @endif> <span>Yes </span>
-                                        <input type="radio" value="N"  name="featured_park" @if($parking->featured_park == 'N') checked @endif> <span>No </span>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="col-md-2">
+                            <div class="col-md-1 col-6">
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary" id="btnEditPromo">Update</button>
+                                    <label class="mb-2 font-12">Bike lots</label>
+                                    <input class="form-control w-100" type="number" name="lots_bike" value="{{ $parking->lots_bike?? 0}}"/>
                                 </div>
                             </div>
+
+                            <div class="col-md-1 col-6">
+                                <div class="form-group">
+                                    <label class="mb-2 font-12">Handicap</label>
+                                    <input class="form-control w-100" type="number" name="lots_handicap" value="{{ $parking->lots_handicap?? 0}}"/>
+                                </div>
+                            </div>
+
+                            <div class="col-md-1 col-6">
+                                <div class="form-group">
+                                    <label class="mb-2 font-12">EV lots</label>
+                                    <input class="form-control w-100" type="number" name="lots_ev" value="{{ $parking->lots_ev?? 0}}"/>
+                                </div>
+                            </div>
+
+                            <div class="col-md-1 col-6">
+                                <div class="form-group">
+                                    <label class="mb-2 font-12">Family lots</label>
+                                    <input class="form-control w-100" type="number" name="lots_family" value="{{ $parking->lots_family?? 0}}"/>
+                                </div>
+                            </div>
+
+                            <div class="col-md-1 col-6">
+                                <div class="form-group">
+                                    <label class="mb-2 font-12">Views</label>
+                                    <input class="form-control w-100" type="number" name="views" value="{{ $parking->views?? 0}}"/>
+                                </div>
+                            </div>
+
+                            <div class="col-md-1 col-6">
+                                <div class="form-group">
+                                    <label class="mb-2 font-12">Featured</label>
+                                    <select name="mall_active" id="" class="dd-orange">
+                                        <option value="N"
+                                                @if(!isset($parking->mall_active) || $parking->mall_active!='Y') selected @endif>
+                                            No
+                                        </option>
+                                        <option value="Y"
+                                                @if(isset($parking->mall_active) && $parking->mall_active=='Y') selected @endif>
+                                            Yes
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="offset-md-3 col-md-2">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary mt-4 float-right" id="btnEditPromo">
+                                        {{$parking? 'Update': 'Save'}}
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="mb-2 font-12">Car Park Charges</label>
+                                    <textarea type="text"
+                                              name="car_charges"
+                                              class="form-control"
+                                              rows="15">
+                                        {{$parking->car_charges ?? '' }}
+                                    </textarea>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="mb-2 font-12">Bike Charges</label>
+                                    <textarea type="text"
+                                              name="car_charges"
+                                              class="form-control"
+                                              rows="7">
+                                        {{$parking->car_charges ?? '' }}
+                                    </textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label class="mb-2 font-12">Free Parking</label>
+                                    <textarea type="text"
+                                              name="free_parking"
+                                              class="form-control"
+                                              rows="6">
+                                        {{$parking->free_parking ?? '' }}
+                                    </textarea>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <div class="d-flex justify-content-between">
+                                        <label class="mb-2 font-12">Operating Hours</label>
+                                        <div>
+                                            <input type="checkbox" name="24_hours"
+                                                   @if(isset($parking['24_hours']) && $parking['24_hours'] == "Y") checked @endif>
+                                            <label class="mb-2 font-12">24 Hours</label>
+                                        </div>
+                                    </div>
+                                    <textarea type="text"
+                                              name="car_charges"
+                                              class="form-control"
+                                              rows="4">
+                                        {{$parking->car_charges ?? '' }}
+                                    </textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label class="mb-2 font-12">{{__('Grace Period')}}</label>
+                                    <div class="input-group mb-3">
+                                        <input type="text"
+                                               value="{{$parking->grace_period?? ''}}"
+                                               required
+                                               name="grace_period"
+                                               class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="mb-2 font-12">Car Parking Info</label>
+                                    <textarea type="text"
+                                              name="free_parking"
+                                              class="form-control"
+                                              rows="5">
+                                        {{$parking->car_parking_info ?? '' }}
+                                    </textarea>
+
+                                </div>
+                            </div>
+
+
+                            {{--                            <div class="col-md-6">--}}
+                            {{--                                <div class="form-group">--}}
+                            {{--                                    <label class="mb-2 font-12">Paid Parking</label>--}}
+                            {{--                                    <span style="float: right"><input type="checkbox" name="no_parking_info" value="Y" @if(isset($parking->no_parking_info) && $parking->no_parking_info == "Y") checked @endif><label class="mb-2 font-12">No Parking Info</label></span>--}}
+                            {{--                                    <textarea style="height: 300px;" type="text" name="paid_parking" id="description" class="form-control">{{$parking->paid_parking ?? '' }}</textarea>--}}
+
+                            {{--                                </div>--}}
+                            {{--                            </div>--}}
+
+                            {{--                            <div class="col-md-4" >--}}
+                            {{--                                <div class="col-md-12">--}}
+                            {{--                                    <div class="form-group">--}}
+                            {{--                                        <label class="mb-2 font-12">Free Parking</label>--}}
+                            {{--                                        <textarea style="height: 100px;" type="text" name="free_parking" id="location" class="form-control">{{$parking->free_parking?? ''}}</textarea>--}}
+                            {{--                                    </div>--}}
+                            {{--                                </div>--}}
+                            {{--                                <div class="col-md-12">--}}
+                            {{--                                    <div class="form-group">--}}
+                            {{--                                        <label class="mb-2 font-12">{{__('Grace Period')}}</label>--}}
+                            {{--                                        <div class="input-group mb-3">--}}
+                            {{--                                            <input type="text" value="{{$parking->grace_period?? ''}}" required="" name="grace_period" class="form-control">--}}
+                            {{--                                        </div>--}}
+                            {{--                                    </div>--}}
+                            {{--                                </div>--}}
+                            {{--                                <div class="col-md-12 row">--}}
+                            {{--                                    <div class="col-md-6">--}}
+                            {{--                                        <div class="form-group">--}}
+                            {{--                                            <label class="mb-2 font-12">{{__('Parking Spaces')}}</label>--}}
+                            {{--                                            <div class="input-group mb-3">--}}
+                            {{--                                                <input type="text" value="{{$parking->total_parking?? ''}}" class="form-control" name="total_parking">--}}
+                            {{--                                            </div>--}}
+                            {{--                                        </div>--}}
+                            {{--                                    </div>--}}
+                            {{--                                    <div class="col-md-6">--}}
+                            {{--                                        <div class="form-group">--}}
+                            {{--                                            <label class="mb-2 font-12">{{__('Available Now')}}</label>--}}
+                            {{--                                            <div class="input-group mb-3">--}}
+                            {{--                                                <input type="text" value="{{$parking->available_parking?? ''}}" class="form-control" name="available_parking">--}}
+                            {{--                                            </div>--}}
+                            {{--                                        </div>--}}
+                            {{--                                    </div>--}}
+                            {{--                                </div>--}}
+
+                            {{--                            </div>--}}
+
                         </div>
                     </form>
 
@@ -122,7 +256,46 @@
         </div>
     </div>
 
-     @include('main.parking.parking_images')
+    <div class="row">
+        <div class="col-md-10">
+            <div class="card card-malle">
+
+                <div class="card-header-malle">
+                   Services in Carpark
+                </div>
+
+                <div class="card-body" id="tag-image-body"
+                     data-sourceurl="{{route('mall-parking.edit',[$mall->mall_id])}}">
+                    <form method="PATCH" action="{{route('mall-parking.update',[$mall->mall_id])}}"
+                          id="editDiscountTag">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <input class="form-control w-100" type="text" name="service"/>
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="form-group">
+                                   <button class="btn btn-primary">Update</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+
+                    <div class="row">
+                        <div class="col-12">
+                            Service Name
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @include('main.parking.parking_images')
 
     @include('partials.image_model')
 @endsection
@@ -134,36 +307,33 @@
     <script>
 
 
-        $(document).on('submit','#editDiscountTag', function(e){
+        $(document).on('submit', '#editDiscountTag', function (e) {
             e.preventDefault();
             var data = $(this).serialize();
             var url = $(this).attr('action');
-            var type =  $(this).attr('method');
+            var type = $(this).attr('method');
 
             $.ajax({
                 url: url,
                 type: type,
-                dataType:'json',
-                data:data,
-                success:function(data){
-                    if(data.status==='error'){
+                dataType: 'json',
+                data: data,
+                success: function (data) {
+                    if (data.status === 'error') {
                         toastr.error(data.message, 'Error');
-                    }else{
+                    } else {
                         //$("#discount-tag-table").load( $('#discount-tag-table').attr('data-sourceurl') +" #discount-tag-table");
                         toastr.success(data.message);
                     }
                 },
-                error: function(data){
+                error: function (data) {
                     exeptionReturn(data);
                 }
             });
         });
 
 
-
-
-
-        $( function() {
+        $(function () {
             var $uploadCrop = $('#upload-demo');
             $uploadCrop.croppie({
                 enableResize: true,
@@ -178,13 +348,12 @@
                 }
             });
 
-            $('#croppermodal').on('shown.bs.modal', function() {
+            $('#croppermodal').on('shown.bs.modal', function () {
                 $uploadCrop.croppie('bind');
             });
 
 
-
-            $(document).on('click','.upload-result', function (ev) {
+            $(document).on('click', '.upload-result', function (ev) {
                 $uploadCrop.croppie('result', {
                     type: 'canvas',
                     size: 'viewport'
@@ -218,28 +387,29 @@
                     $.ajax({
                         url: "{{route('parking.uploadimage')}}",
                         data: fd,// the formData function is available in almost all new browsers.
-                        type:"POST",
-                        contentType:false,
-                        processData:false,
-                        cache:false,
-                        dataType:"json", // Cha
-                        success:function(data){
-                            if(data.status==='error'){
+                        type: "POST",
+                        contentType: false,
+                        processData: false,
+                        cache: false,
+                        dataType: "json", // Cha
+                        success: function (data) {
+                            if (data.status === 'error') {
                                 errorReturn(data)
-                            }else{
+                            } else {
                                 $('#croppermodal').modal('hide');
                                 toastr.success(data.message);
-                                window.setTimeout(function(){location.reload()},2000)
+                                window.setTimeout(function () {
+                                    location.reload()
+                                }, 2000)
                             }
                         },
-                        error: function(data){
+                        error: function (data) {
                             exeptionReturn(data);
                         }
                     });
 
                 });
             });
-
 
 
             $(document).on('change', '.imguploader', function () {
@@ -257,7 +427,7 @@
                         $('.upload-demo-wrap').show();
                         $uploadCrop.croppie('bind', {
                             url: e.target.result
-                        }).then(function(){
+                        }).then(function () {
                             console.log('jQuery bind complete');
                         });
 
@@ -265,8 +435,7 @@
 
                     reader.readAsDataURL(input.files[0]);
 
-                }
-                else {
+                } else {
                     alert("Sorry - you're browser doesn't support the FileReader API");
                 }
             }
@@ -297,34 +466,34 @@
         });
 
 
-
-        $(document).on('click', '.btn-pi-delete', function(e){
+        $(document).on('click', '.btn-pi-delete', function (e) {
             e.preventDefault();
             var btndelete = $(this);
 
             $('#deletepromotionmodal').modal('show');
 
-            $('#btnDeletePromotion').unbind().click(function(){
+            $('#btnDeletePromotion').unbind().click(function () {
 
                 $.ajax({
                     url: btndelete.attr('data-href'),
                     type: btndelete.attr('data-method'),
-                    dataType:'json',
-                    success:function(data){
-                        if(data.status==='error'){
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.status === 'error') {
                             errorReturn(data)
-                        }else{
+                        } else {
                             $('#deletepromotionmodal').modal('hide');
                             //var image_count = $(this).attr('data-id');
                             toastr.success(data.message);
-                            window.setTimeout(function(){location.reload()},2000)
+                            window.setTimeout(function () {
+                                location.reload()
+                            }, 2000)
                         }
                     }
                 });
 
             });
         });
-
 
 
     </script>

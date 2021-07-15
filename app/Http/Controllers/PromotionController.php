@@ -222,29 +222,30 @@ class PromotionController extends Controller
                ],200);
             }
 
-            $update = $this->promotion->update( $request->promo_id,[
-                'merchant_id' => $request->merchant_id,
-                'promo_name' => $request->promo_name,
-                'description' => $request->description,
-                'amount' => $request->amount,
-                'was_amount' => $request->was_amount,
-                'start_on' => $request->start_on,
-                'ends_on' => $request->no_end_date ? "": $request->ends_on,
-                'other_offer' => $request->other_offer ?? null,
-                'no_end_date' => $request->no_end_date ?? "",
-                'active' => $request->active_txt ?? "",
-                'promo_active' => $request->active_txt ?? "",
-                'redeemable' => $request->redeemable_txt ?? null,
-                'dine_in' => $request->dine_in ?? null,
-                'dine_in_service' => $request->dine_in_service ?? null,
-                'dine_in_gst' => $request->dine_in_gst ?? null,
-                'take_out' => $request->take_out ?? null,
-                'take_out_service' => $request->take_out_service ?? null,
-                'take_out_gst' => $request->take_out_gst ?? null,
-                'deliver' => $request->deliver ?? null,
-                'deliver_service' => $request->deliver_service ?? null,
-                'deliver_gst' => $request->deliver_gst ?? null,
-            ]);
+
+
+            $update = PromotionMaster::find($request->promo_id);
+            $update->merchant_id = $request->merchant_id;
+        $update->promo_name = $request->promo_name;
+        $update->description = $request->description;
+        $update->amount = $request->amount;
+        $update->was_amount = $request->was_amount;
+        $update->start_on = $request->start_on;
+        $update->ends_on =  $request->no_end_date ? "": $request->ends_on;
+        $update->other_offer =  $request->other_offer ?? null;
+        $update->no_end_date =  $request->no_end_date ?? "";
+        $update->active = $request->active_txt ?? "";
+        $update->promo_active =$request->active_txt ?? "";
+        $update->redeemable =  $request->redeemable_txt ?? 1;
+        $update->dine_in =$request->dine_in ?? null;
+        $update->dine_in_service =  $request->dine_in_service ?? null;
+        $update->dine_in_gst =  $request->dine_in_gst ?? null;
+        $update->take_out = $request->take_out ?? null;
+        $update->take_out_service = $request->take_out_service ?? null;
+        $update->deliver = $request->deliver ?? null;
+        $update->deliver_service = $request->deliver_service ?? null;
+        $update->deliver_gst = $request->deliver_gst ?? null;
+        $update->save();
 
             return response()->json([
                 'status' => 'success',

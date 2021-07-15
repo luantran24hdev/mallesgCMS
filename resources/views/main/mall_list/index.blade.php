@@ -100,7 +100,7 @@
             <br />
             <div class="row">
                 <div class="col-md-12">
-                    <table class="table table-striped malle-table" id="mall-list-table" @if(isset($id))  data-sourceurl="{{route('merchants.show',['merchant'=>@$id])}}" @else data-sourceurl="{{route('malls')}}" @endif >
+                    <table class="table table-striped malle-table float-left" id="mall-list-table" @if(isset($id))  data-sourceurl="{{route('merchants.show',['merchant'=>@$id])}}" @else data-sourceurl="{{route('malls')}}" @endif >
                         <thead>
                         <th>Mall Name</th>
                         <th>Town</th>
