@@ -113,13 +113,13 @@
 
                                 <div class="form-group mx-1">
                                     <label class="mb-2 font-12">Featured</label>
-                                    <select name="mall_active" id="" class="dd-orange">
+                                    <select name="featured" id="" class="dd-orange">
                                         <option value="N"
-                                                @if(!isset($parking->mall_active) || $parking->mall_active!='Y') selected @endif>
+                                                @if(!isset($parking->featured) || $parking->featured!='Y') selected @endif>
                                             No
                                         </option>
                                         <option value="Y"
-                                                @if(isset($parking->mall_active) && $parking->mall_active=='Y') selected @endif>
+                                                @if(isset($parking->featured) && $parking->featured=='Y') selected @endif>
                                             Yes
                                         </option>
                                     </select>
@@ -258,9 +258,9 @@
                                 <div class="form-group">
                                     <label class="mb-2 font-12">Car Parking Info</label>
                                     <textarea type="text"
-                                              name="car_parking_info"
+                                              name="car_park_info"
                                               class="form-control"
-                                              rows="5">{{$parking->car_parking_info ?? null }}</textarea>
+                                              rows="5">{{$parking->car_park_info ?? null }}</textarea>
 
                                 </div>
                             </div>
