@@ -131,6 +131,7 @@ class ParkingController extends Controller
                 'free_parking' => $request->free_parking,
                 'car_charges' => $request->car_charges,
                 'bike_charges' => $request->bike_charges,
+                'car_parking_info' => $request->car_parking_info,
                 'dated' => Carbon::now()->format('d/m/Y'),
                 'user_id' => Auth::id(),
             ]);
