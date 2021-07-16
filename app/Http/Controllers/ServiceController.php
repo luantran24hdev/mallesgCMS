@@ -123,7 +123,7 @@ class ServiceController extends Controller
 
         return response()->json([
             'status' => 'success',
-            'message' => __('successfully Updated tags'),
+            'message' => __('successfully Updated Service'),
         ],200);
     }
 

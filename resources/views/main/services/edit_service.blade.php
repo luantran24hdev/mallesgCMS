@@ -4,7 +4,7 @@
         <div class="col-md-10">
             <div class="card card-malle">
                 <div class="card-header-malle">
-                   <p>Service Id: <span style="margin-right: 120px;color: red">{{ $service->service_id }}</span> <span style="float: right;color: blue"><a href="{{ url()->previous() }}">Back</a></span></p>
+                   <p>Service Id: <span style="margin-right: 120px;color: red">{{ $service->service_id }}</span> <span style="float: right;color: blue"><a href="{{route('service.index') }}">Back</a></span></p>
                 </div>
                 <div class="card-body" id="tag-image-body" data-sourceurl="{{route('service.edit',[$service->service_id])}}">
 
