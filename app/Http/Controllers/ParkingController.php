@@ -66,7 +66,7 @@ class ParkingController extends Controller
         $mall = MallMaster::where('mall_id', $id)->first();
         $parking_images = ParkingImages::where('mall_id', $id)->get();
 
-        $services = ServiceMaster::where('mall_id', $id)->get();
+        $services = [];
 
         $data = [
             'mall' => $mall,

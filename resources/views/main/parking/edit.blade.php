@@ -602,7 +602,7 @@
             var data = $(this).serialize();
             let url = $(this).attr('action');
             let type =  $(this).attr('method');
-            data+='&mall_id='+ {{$mall->mall_id}};
+            {{--data+='&mall_id='+ {{$mall->mall_id}};--}}
 
             $.ajax({
                 url: url,
