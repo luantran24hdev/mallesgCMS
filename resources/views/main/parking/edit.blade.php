@@ -360,7 +360,7 @@
                                 @foreach($services as $service)
                                     <tr class="row-location" data-id="{{@$service->service_id}}">
                                         <td>
-                                            @if(!empty($services->service_image))
+                                            @if(!empty($service->service_image))
                                                 <img src="{{$image_url.'stock/'.$service->service_image}}">
                                             @else
                                                 <i class="fa fa-picture-o" aria-hidden="true" style="font-size: 50px;"></i>
