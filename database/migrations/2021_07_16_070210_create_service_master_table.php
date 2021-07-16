@@ -15,7 +15,6 @@ class CreateServiceMasterTable extends Migration
     {
         Schema::create('service_master', function (Blueprint $table) {
             $table->bigIncrements('service_id');
-            $table->bigInteger('mall_id');
             $table->string('service_name');
             $table->string('service_image')->nullable();
         });

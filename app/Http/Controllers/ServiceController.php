@@ -10,19 +10,18 @@ use Illuminate\Http\Request;
 class ServiceController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
+
     public function index()
     {
         $services = ServiceMaster::all();
         $data = [
             'services' => $services,
-            'live_url' => env('LIVE_URL').'images/stock/'
+            'image_url' => env('LIVE_URL').'images/'
         ];
 
-        return view('main.parking.edit', $data);
+        return view('main.services.index', $data);
     }
 
     /**
@@ -61,7 +60,6 @@ class ServiceController extends Controller
 
         ServiceMaster::updateOrcreate([
             'service_name' => $request->service_name,
-            'mall_id' => $request->mall_id,
         ]);
 
         return response()->json([
