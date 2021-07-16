@@ -48,7 +48,7 @@ class ServiceController extends Controller
 
         // Start Validation
         $validator = \Validator::make($request->all(), [
-            'service_name' => 'required|unique:service_master',
+            'service_name' => 'required:service_master',
         ],$messages);
 
         if($validator->fails()){
@@ -102,14 +102,13 @@ class ServiceController extends Controller
     public function update(Request $request, $id)
     {
         //return $request->all();
-        error_log($request);
         $messages = [
             'service_name.required'    => 'Service name field is required'
         ];
 
         // Start Validation
         $validator = \Validator::make($request->all(), [
-            'service_name' => 'required|unique:service_master,service_name,'.$id.',service_id',
+            'service_name' => 'required:service_master',
         ],$messages);
 
         if($validator->fails()){
@@ -195,21 +194,24 @@ class ServiceController extends Controller
 
     }
 
-    public function deleteimage($id){
+    public function deleteimage($id)
+    {
 
-        $image = TagMaster::find($id);
+        $service = ServiceMaster::where('service_id', $id)->first();
+
+//        $image = TagMaster::find($id);
 
         if(env('APP_ENV')=='live')
-            unlink('../../admin/images/stock/'.$image->image);
+            unlink('../../admin/images/stock/'.$service->service_image);
         else
-            unlink('../storage/app/public/'.$image->image);
+            unlink('../storage/app/public/'.$service->service_image);
 
-        $image->image = '';
-        $image->save();
+        $service->service_image = '';
+        $service->save();
 
         return response()->json([
-            'status' => $image ? 'success' : 'error',
-            'message' => $image ? __('succesfully deleted') : __('error deleting')
+            'status' => $service ? 'success' : 'error',
+            'message' => $service ? __('succesfully deleted') : __('error deleting')
         ],200);
     }
 }
