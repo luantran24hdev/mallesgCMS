@@ -361,7 +361,7 @@
                                     <tr class="row-location" data-id="{{@$service->service_id}}">
                                         <td>
                                             @if(!empty($service->service_image))
-                                                <img src="{{$image_url.'stock/'.$service->service_image}}">
+                                                <img src="{{$image_url.'stock/'.$service->service_image}}" width="50px" height="50px">
                                             @else
                                                 <i class="fa fa-picture-o" aria-hidden="true" style="font-size: 50px;"></i>
                                             @endif
