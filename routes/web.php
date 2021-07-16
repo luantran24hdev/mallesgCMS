@@ -217,6 +217,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('mall-parking', 'ParkingController', ['names' => [
         'index' => 'mall-parking'
     ]]);
+
+    Route::resource('service', 'ServiceController');
+    Route::get('service/search/{name?}', 'ServiceController@search')->name('service.search');
+    Route::post('service/uploadimage', 'ServiceController@uploadimage')->name('service.uploadimage');
+    Route::post('service/deleteimage/{id}', 'ServiceController@deleteimage')->name('service.deleteimage');
+
     Route::post('parking/uploadimage', 'ParkingController@uploadimage')->name('parking.uploadimage');
     Route::post('parking/deleteimage/{id}', 'ParkingController@deleteimage')->name('parking.deleteimage');
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\MallMaster;
 use App\ParkingImages;
 use App\ParkingMaster;
+use App\ServiceMaster;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -64,11 +65,16 @@ class ParkingController extends Controller
         $parking = ParkingMaster::where('mall_id', $id)->first();
         $mall = MallMaster::where('mall_id', $id)->first();
         $parking_images = ParkingImages::where('mall_id', $id)->get();
+
+        $services = ServiceMaster::where('mall_id', $id)->get();
+
         $data = [
             'mall' => $mall,
             'parking' => $parking,
             'parking_images' => $parking_images,
-            'live_url' => env('LIVE_URL') . 'images/parking/'
+            'services' => $services,
+            'live_url' => env('LIVE_URL') . 'images/parking/',
+            'image_url' => env('LIVE_URL') . 'images/',
         ];
 
         return view('main.parking.edit', $data);
