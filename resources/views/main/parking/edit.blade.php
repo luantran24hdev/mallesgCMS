@@ -328,7 +328,7 @@
                 </div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{route('service.store')}}" id="addParkingService">
+                    <form method="POST" action="{{route('parking-service.store')}}" id="addParkingService">
                         <div class="row">
                             <div class="col-md-3">
                                 <input type="text" name="service_name" placeholder="Search for service" id="service_name"
@@ -357,25 +357,23 @@
                                 <th>Action</th>
                                 </thead>
                                 <tbody>
-                                @foreach($services as $service)
-                                    <tr class="row-location" data-id="{{@$service->service_id}}">
+                                @foreach($parking_services as $parking_service)
+                                    <tr class="row-location" data-id="{{@$parking_service->service_id}}">
                                         <td>
-                                            @if(!empty($service->service_image))
-                                                <img src="{{$image_url.'stock/'.$service->service_image}}" width="50px" height="50px">
+                                            @if(!empty($parking_service->service_image))
+                                                <img src="{{$image_url.'stock/'.$parking_service->service_image}}" width="50px" height="50px">
                                             @else
                                                 <i class="fa fa-picture-o" aria-hidden="true" style="font-size: 50px;"></i>
                                             @endif
                                         </td>
                                         <td>
-                                            {{$service->service_name}}
+                                            {{$parking_service->service_name}}
                                         </td>
                                         <td>
-                                            <a href="{{route('service.edit',[$service->service_id])}}"><span class="text-info">Edit</span></a>
-                                            |
                                             <a href="javascript:;"
-                                               data-href="{{route('service.destroy',[$service->service_id])}}"
+                                               data-href="{{route('parking-service.destroy',[$parking_service->ps_id])}}"
                                                data-method="DELETE" class="btn-delete"
-                                               data-id="{{$service->service_id}}">
+                                               data-id="{{$parking_service->ps_id}}">
                                                 <span class="text-danger">Delete</span>
                                             </a>
                                         </td>
@@ -602,7 +600,7 @@
             var data = $(this).serialize();
             let url = $(this).attr('action');
             let type =  $(this).attr('method');
-            {{--data+='&mall_id='+ {{$mall->mall_id}};--}}
+            data+='&parking_id='+ {{$parking->parking_id}};
 
             $.ajax({
                 url: url,

@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\MallMaster;
 use App\ParkingImages;
 use App\ParkingMaster;
+use App\ParkingService;
 use App\ServiceMaster;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 
 class ParkingController extends Controller
 {
@@ -66,13 +68,16 @@ class ParkingController extends Controller
         $mall = MallMaster::where('mall_id', $id)->first();
         $parking_images = ParkingImages::where('mall_id', $id)->get();
 
-        $services = [];
+        $parking_services = ParkingService::join('service_master', 'parking_services.service_id', 'service_master.service_id')
+            ->where('parking_services.parking_id', $parking->parking_id)
+            ->get();
+
 
         $data = [
             'mall' => $mall,
             'parking' => $parking,
             'parking_images' => $parking_images,
-            'services' => $services,
+            'parking_services' => $parking_services,
             'live_url' => env('LIVE_URL') . 'images/parking/',
             'image_url' => env('LIVE_URL') . 'images/',
         ];
@@ -133,15 +138,13 @@ class ParkingController extends Controller
                 'car_park_info' => $request->car_park_info,
                 'grace_period' => $request->grace_period,
                 'operating_hours' => $request->operating_hours,
-                '24_hours' => $request['24_hours']? 'Y': 'N',
+                '24_hours' => $request['24_hours'] ? 'Y' : 'N',
                 'free_parking' => $request->free_parking,
                 'car_charges' => $request->car_charges,
                 'bike_charges' => $request->bike_charges,
-                'car_park_info' => $request->car_park_info,
                 'dated' => Carbon::now()->format('d/m/Y'),
                 'user_id' => Auth::id(),
             ]);
-
 
 
         return response()->json([
@@ -207,10 +210,15 @@ class ParkingController extends Controller
 
         $image = ParkingImages::find($id);
 
-        if (env('APP_ENV') == 'live')
-            unlink('../../admin/images/parking/' . $image->parking_image);
-        else
-            unlink('../storage/app/public/' . $image->parking_image);
+        if (env('APP_ENV') == 'live') {
+            $file_name = '../../admin/images/parking/' . $image->parking_image;
+        }
+        else {
+            $file_name = '../storage/app/public/' . $image->parking_image;
+        }
+
+        unlink($file_name);
+        File::delete($file_name);
 
         $delete = ParkingImages::destroy($id);
         return response()->json([

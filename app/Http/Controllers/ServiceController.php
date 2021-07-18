@@ -6,6 +6,7 @@ use App\ServiceMaster;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class ServiceController extends Controller
 {
@@ -138,10 +139,14 @@ class ServiceController extends Controller
         $service = ServiceMaster::where('service_id', $id)->first();
 
         if(!empty($service->image)){
-            if(env('APP_ENV')=='live')
-                unlink('../../admin/images/stock/'.$service->image);
-            else
-                unlink('../storage/app/public/'.$service->image);
+            if(env('APP_ENV')=='live') {
+                $file_name = '../../admin/images/stock/' . $service->image;
+            }
+            else {
+                $file_name = '../storage/app/public/' . $service->image;
+            }
+            unlink($file_name);
+            File::delete($file_name);
         }
 
         $service->delete();
@@ -197,12 +202,15 @@ class ServiceController extends Controller
 
         $service = ServiceMaster::where('service_id', $id)->first();
 
-//        $image = TagMaster::find($id);
+        if(env('APP_ENV')=='live') {
+            $file_name = '../../admin/images/stock/' . $service->service_image;
+        }
+        else {
+            $file_name = '../storage/app/public/' . $service->service_image;
+        }
 
-        if(env('APP_ENV')=='live')
-            unlink('../../admin/images/stock/'.$service->service_image);
-        else
-            unlink('../storage/app/public/'.$service->service_image);
+        unlink($file_name);
+        File::delete($file_name);
 
         $service->service_image = '';
         $service->save();

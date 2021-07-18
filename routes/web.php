@@ -223,6 +223,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('service/uploadimage', 'ServiceController@uploadimage')->name('service.uploadimage');
     Route::post('service/deleteimage/{id}', 'ServiceController@deleteimage')->name('service.deleteimage');
 
+    Route::resource('parking-service', 'ParkingServiceController');
+
     Route::post('parking/uploadimage', 'ParkingController@uploadimage')->name('parking.uploadimage');
     Route::post('parking/deleteimage/{id}', 'ParkingController@deleteimage')->name('parking.deleteimage');
 
