@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class ServiceController extends Controller
 {
@@ -65,7 +66,7 @@ class ServiceController extends Controller
 
         return response()->json([
             'status' => 'success',
-            'message' => __('successfully added tags'),
+            'message' => __('successfully added service'),
         ],200);
     }
 
@@ -145,8 +146,8 @@ class ServiceController extends Controller
             else {
                 $file_name = '../storage/app/public/' . $service->image;
             }
-            unlink($file_name);
-            File::delete($file_name);
+
+            Storage::delete($file_name);
         }
 
         $service->delete();
@@ -209,8 +210,7 @@ class ServiceController extends Controller
             $file_name = '../storage/app/public/' . $service->service_image;
         }
 
-        unlink($file_name);
-        File::delete($file_name);
+        Storage::delete($file_name);
 
         $service->service_image = '';
         $service->save();

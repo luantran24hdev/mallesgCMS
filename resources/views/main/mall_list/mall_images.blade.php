@@ -177,9 +177,9 @@
                 <div class="row" id="promo-image-content2">
                      <input type="text" id="selected_image1" style="display: none;">
 
-                    @if($mall->main_image)
+                    @if($mall->mall_logo)
                         <div class="col-md-12 mb-3 pr-0">
-                            <img class="card-img-top" src="{{ $logo_url.$mall->main_image}}" alt="image count" style="width: 200px !important;" >
+                            <img class="card-img-top" src="{{ $logo_url.$mall->mall_logo}}" alt="{{$mall->mall_name}}" style="width: 200px !important;" >
                             <br>
                             <a  href="javascript:;" data-href="{{route('malls.logodeleteimage',['id'=>$mall->mall_id])}}" data-method="POST" class="btn-pi-delete" data-id="{{$mall->mall_id}}">
                                 <span class="text-danger">{{__('Delete')}}</span>

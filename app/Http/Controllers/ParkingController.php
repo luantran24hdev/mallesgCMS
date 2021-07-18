@@ -11,6 +11,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class ParkingController extends Controller
 {
@@ -217,8 +218,7 @@ class ParkingController extends Controller
             $file_name = '../storage/app/public/' . $image->parking_image;
         }
 
-        unlink($file_name);
-        File::delete($file_name);
+        Storage::delete($file_name);
 
         $delete = ParkingImages::destroy($id);
         return response()->json([

@@ -21,6 +21,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Repositories\MallRepository;
 use App\MallMaster;
+use Illuminate\Support\Facades\Storage;
 
 class MallController extends Controller
 {
@@ -480,7 +481,7 @@ class MallController extends Controller
 
                 if(isset($request->logo_image)) {
                     $file->move('../../admin/images/mall_logo/', $newfilename);
-                    $mall->main_image = $newfilename;
+//                    $mall->main_image = $newfilename;
                     $mall->mall_logo = $newfilename;
                 }else{
                     $file->move('../../admin/images/mall_images/', $newfilename);
@@ -509,7 +510,9 @@ class MallController extends Controller
         $image = MallMaster::find($id);
 
         if(!empty($image->web_image)) {
-            unlink('../../admin/images/mall_images/' . $image->web_image);
+           $file_name = '../../admin/images/mall_images/' . $image->web_image;
+            Storage::delete($file_name);
+
             $image->web_image = Null;
             $image->save();
         }
@@ -525,7 +528,8 @@ class MallController extends Controller
         $image = MallImage::find($id);
 
         if(!empty($image->image_name)) {
-            unlink('../../admin/images/mall_images/' . $image->image_name);
+            $file_name = '../../admin/images/mall_images/' . $image->image_name;
+            Storage::delete($file_name);
             $delete = MallImage::destroy($id);
         }
         return response()->json([
@@ -539,11 +543,11 @@ class MallController extends Controller
     {
 
         $image = MallMaster::find($id);
-        if(!empty($image->main_image)) {
+        if(!empty($image->mall_logo)) {
 
-            unlink('../../admin/images/mall_logo/' . $image->main_image);
-
-            $image->main_image = Null;
+            $file_name = '../../admin/images/mall_logo/' . $image->mall_logo;
+            Storage::delete($file_name);
+//            $image->main_image = Null;
             $image->mall_logo = Null;
             $image->save();
         }
