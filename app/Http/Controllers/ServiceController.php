@@ -86,7 +86,7 @@ class ServiceController extends Controller
     {
         $service = ServiceMaster::where('service_id', $id)->first();
 
-        return view('main.parking.edit_service', [
+        return view('main.services.edit ', [
             'service' => $service,
             'live_url' => env('LIVE_URL').'images/stock/'
         ]);
