@@ -25,9 +25,9 @@ class PromotionController extends Controller
 {
 
     /**
-    * @var MallRepository
-    *
-    */
+     * @var MallRepository
+     *
+     */
     protected $promotion;
 
 
@@ -38,8 +38,8 @@ class PromotionController extends Controller
      */
     public function __construct(MerchantRepository $merchant, PromotionRepository $promotion)
     {
-        $this->promotion =  $promotion;
-        $this->merchant =  $merchant;
+        $this->promotion = $promotion;
+        $this->merchant = $merchant;
     }
 
     /**
@@ -54,12 +54,12 @@ class PromotionController extends Controller
         $promotions = PromotionMaster::all();
 //return $promotions;
         $data = [
-           'promoOptions' => $promotion->toJson(),
+            'promoOptions' => $promotion->toJson(),
             'countrys' => $countrys,
             'promotions' => $promotions
         ];
 
-        return view('main.promotions.index',$data);
+        return view('main.promotions.index', $data);
     }
 
     /**
@@ -75,7 +75,7 @@ class PromotionController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -88,13 +88,13 @@ class PromotionController extends Controller
         $validator = Validator::make($request->all(), [
             'promo_name' => 'required',
             'merchant_id' => 'required',
-        ],$messages);
+        ], $messages);
 
-        if($validator->fails()){
-           return response()->json([
+        if ($validator->fails()) {
+            return response()->json([
                 'status' => 'error',
                 'message' => $validator->messages()->first()
-           ],200);
+            ], 200);
         }
 
         $insert = $this->promotion->create([
@@ -116,13 +116,13 @@ class PromotionController extends Controller
             'status' => 'success',
             'promo_name' => $request->promo_name,
             'id' => $insert->id
-        ],200);
+        ], 200);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -133,12 +133,12 @@ class PromotionController extends Controller
         $current_promo = $this->promotion->find(request()->promo_id) ?? [];
         $daysofweek = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
         $mall_id_lists = MerchantLocation::with('mall')->where('merchant_id', $id)->distinct()->pluck('mall_id');
-        $sub_categoryies = \DB::table('sub_category_master')->select('sub_category_id','Sub_Category_Name')->get();
+        $sub_categoryies = \DB::table('sub_category_master')->select('sub_category_id', 'Sub_Category_Name')->get();
         $preference_master_lists = PreferenceMaster::all();
         $manage_age_lists = ManageAge::all();
         $manage_meal_lists = Mealgroup::all();
 
-       // $preference_list = PromotionPreference::all();
+        // $preference_list = PromotionPreference::all();
         //return $sub_categoryies;
         $mall_list = [];
         if (!empty($mall_id_lists)) {
@@ -161,27 +161,27 @@ class PromotionController extends Controller
             'promotion_categorys' => $current_promo->promotion_category ?? [],
             'promotion_images' => $current_promo->images ?? [],
             'promotion_tags' => $current_promo->promotion_tags ?? [],
-            'live_url' => env('LIVE_URL').'images/promos/',
+            'live_url' => env('LIVE_URL') . 'images/promos/',
             'mall_lists' => $mall_list,
             'sub_category_lists' => $sub_categoryies,
             'preference_lists' => $current_promo->promotion_preference ?? [],
             'preference_master_lists' => $preference_master_lists,
             'manage_age_lists' => $manage_age_lists,
             'promo_age_groups' => $current_promo->promotion_age_group ?? [],
-            'live_url_age' => env('LIVE_URL').'images/stock/',
+            'live_url_age' => env('LIVE_URL') . 'images/stock/',
             'manage_meal_lists' => $manage_meal_lists,
             'promo_meal_groups' => $current_promo->promotion_meal ?? [],
         ];
 
         //return $current_promo->promotion_category->rajat;
         //return $data;
-        return view('main.promotions.index',$data);
+        return view('main.promotions.index', $data);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -192,54 +192,52 @@ class PromotionController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update($id)
     {
-       // try {
-            $request = request();
-            $messages = [
+        // try {
+        $request = request();
+        $messages = [
 
-            ];
+        ];
 
-            // Start Validation
-            $validator = Validator::make($request->all(), [
-                'promo_id' => 'required',
-                'merchant_id' => 'required',
-                'promo_name' => 'required',
-                'description' => 'required',
-                'amount' => 'required',
-                'start_on' => 'required',
-                'ends_on' => $request->no_end_date ? '': 'required'
-            ],$messages);
+        // Start Validation
+        $validator = Validator::make($request->all(), [
+            'promo_id' => 'required',
+            'merchant_id' => 'required',
+            'promo_name' => 'required',
+            'description' => 'required',
+            'start_on' => 'required',
+            'ends_on' => $request->no_end_date=='Y' ? "" : 'required'
+        ], $messages);
 
-            if($validator->fails()){
-               return response()->json([
-                    'status' => 'error',
-                    'message' => $validator->messages()->first()
-               ],200);
-            }
-
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'error',
+                'message' => $validator->messages()->first()
+            ], 200);
+        }
 
 
-            $update = PromotionMaster::find($request->promo_id);
-            $update->merchant_id = $request->merchant_id;
+        $update = PromotionMaster::find($request->promo_id);
+        $update->merchant_id = $request->merchant_id;
         $update->promo_name = $request->promo_name;
         $update->description = $request->description;
         $update->amount = $request->amount;
         $update->was_amount = $request->was_amount;
         $update->start_on = $request->start_on;
-        $update->ends_on =  $request->no_end_date ? "": $request->ends_on;
-        $update->other_offer =  $request->other_offer ?? null;
-        $update->no_end_date =  $request->no_end_date ?? "";
+        $update->ends_on = $request->no_end_date ? "" : $request->ends_on;
+        $update->other_offer = $request->other_offer ?? null;
+        $update->no_end_date = $request->no_end_date ?? "";
         $update->active = $request->active_txt ?? "";
-        $update->promo_active =$request->active_txt ?? "";
-        $update->redeemable =  $request->redeemable_txt ?? 1;
-        $update->dine_in =$request->dine_in ?? null;
-        $update->dine_in_service =  $request->dine_in_service ?? null;
-        $update->dine_in_gst =  $request->dine_in_gst ?? null;
+        $update->promo_active = $request->active_txt ?? "";
+        $update->redeemable = $request->redeemable_txt ?? 1;
+        $update->dine_in = $request->dine_in ?? null;
+        $update->dine_in_service = $request->dine_in_service ?? null;
+        $update->dine_in_gst = $request->dine_in_gst ?? null;
         $update->take_out = $request->take_out ?? null;
         $update->take_out_service = $request->take_out_service ?? null;
         $update->deliver = $request->deliver ?? null;
@@ -247,12 +245,12 @@ class PromotionController extends Controller
         $update->deliver_gst = $request->deliver_gst ?? null;
         $update->save();
 
-            return response()->json([
-                'status' => 'success',
-                'message' => __('succesfully updated!'),
-                'promo_name' => $request->promo_name,
-                'id' => $request->promo_id
-            ],200);
+        return response()->json([
+            'status' => 'success',
+            'message' => __('succesfully updated!'),
+            'promo_name' => $request->promo_name,
+            'id' => $request->promo_id
+        ], 200);
         // } catch (QueryException $e) {
         //     throw new \InvalidArgumentException('Erro inserting', 500, $e);
         // }
@@ -261,7 +259,7 @@ class PromotionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -270,13 +268,13 @@ class PromotionController extends Controller
         return response()->json([
             'status' => $delete ? 'success' : 'error',
             'message' => $delete ? __('succesfully deleted') : __('error deleting')
-        ],200);
+        ], 200);
     }
 
     /**
      *
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function uploadimage(sRequest $request)
@@ -284,16 +282,16 @@ class PromotionController extends Controller
 
         $file = $request->files->get('file');
 
-        try{
+        try {
 
-            if($file->getMimeType()!="image/png" && $file->getMimeType()!="image/jpeg" && $file->getMimeType()!="image/jpg"){
+            if ($file->getMimeType() != "image/png" && $file->getMimeType() != "image/jpeg" && $file->getMimeType() != "image/jpg") {
                 throw new \Exception("invalid file", 500);
             }
 
 
-            $newfilename = md5($request->promo_id."_".$request->merchant_id."_".round(microtime(true))) . '.png';
+            $newfilename = md5($request->promo_id . "_" . $request->merchant_id . "_" . round(microtime(true))) . '.png';
 
-            if(env('APP_ENV')=='live')
+            if (env('APP_ENV') == 'live')
                 $file->move('../../admin/images/promos/', $newfilename);
             else
                 $file->move('../storage/app/public/', $newfilename);
@@ -310,20 +308,20 @@ class PromotionController extends Controller
             throw new \Exception($e->getMessage(), 500, $e);
         }
 
-        return response()->json(['success' ,'succesfully uploaded']);
+        return response()->json(['success', 'succesfully uploaded']);
 
         return response()->json([
-            'status' => 'success' ,
-            'message' =>__('succesfully uploaded'),
-            'file' => env("LIVE_URL").$newfilename
-        ],200);
+            'status' => 'success',
+            'message' => __('succesfully uploaded'),
+            'file' => env("LIVE_URL") . $newfilename
+        ], 200);
 
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function deleteimage($id)
@@ -331,65 +329,66 @@ class PromotionController extends Controller
 
         $image = MerchantPromoImage::find($id);
 
-        if(env('APP_ENV')=='live')
-                unlink('../../admin/images/promos/'.$image->image_name);
-            else
-                unlink('../storage/app/public/'.$image->image_name);
+        if (env('APP_ENV') == 'live')
+            unlink('../../admin/images/promos/' . $image->image_name);
+        else
+            unlink('../storage/app/public/' . $image->image_name);
 
         $delete = MerchantPromoImage::destroy($id);
         return response()->json([
             'status' => $delete ? 'success' : 'error',
             'message' => $delete ? __('succesfully deleted') : __('error deleting')
-        ],200);
+        ], 200);
     }
 
 
-    public function getLocation(Request $request){
+    public function getLocation(Request $request)
+    {
         //return $request->mall_id;
-        if($request->ajax()){
-          if($request->mall_id != NULL && $request->merchent_id != NULL){
-              $mall_id = $request->mall_id;
-              $merchent_id = $request->merchent_id;
+        if ($request->ajax()) {
+            if ($request->mall_id != NULL && $request->merchent_id != NULL) {
+                $mall_id = $request->mall_id;
+                $merchent_id = $request->merchent_id;
 
-              $locations = MerchantLocation::where('merchant_id',$merchent_id)->where('mall_id',$mall_id)->get();
-              $loc = "";
-              if(count($locations) > 0){
+                $locations = MerchantLocation::where('merchant_id', $merchent_id)->where('mall_id', $mall_id)->get();
+                $loc = "";
+                if (count($locations) > 0) {
 
-                  if(count($locations) > 1){
-                    $loc.="<option value=''>--- Select ----</option>";
-                  }
-                foreach ($locations as $location){
-                    $loc.='<option value="'.$location->merchantlocation_id.'">'.$location->merchant_location.'</option>';
+                    if (count($locations) > 1) {
+                        $loc .= "<option value=''>--- Select ----</option>";
+                    }
+                    foreach ($locations as $location) {
+                        $loc .= '<option value="' . $location->merchantlocation_id . '">' . $location->merchant_location . '</option>';
+                    }
+
+                    return response()->json([
+                        'status' => 'success',
+                        'message' => __('succesfully uploaded'),
+                        'location' => $loc
+                    ], 200);
+
+                } else {
+
+                    $loc .= "<option value=''>--- Select ----</option>";
+                    $loc .= "<option value=''>NO Data Found</option>";
+
+                    return response()->json([
+                        'status' => 'success',
+                        'message' => __('succesfully uploaded'),
+                        'location' => $loc
+                    ], 200);
                 }
+            } else {
+                return response()->json([
+                    'location' => "No Data Found"
+                ], 200);
 
-              return response()->json([
-                  'status' => 'success' ,
-                  'message' =>__('succesfully uploaded'),
-                  'location' => $loc
-              ],200);
-
-              }else{
-
-                  $loc.="<option value=''>--- Select ----</option>";
-                  $loc.="<option value=''>NO Data Found</option>";
-
-                  return response()->json([
-                      'status' => 'success' ,
-                      'message' =>__('succesfully uploaded'),
-                      'location' => $loc
-                  ],200);
-              }
-          }else{
-              return response()->json([
-                  'location' => "No Data Found"
-              ],200);
-
-          }
+            }
         }
 
         return response()->json([
             'location' => "No Data Found"
-        ],200);
+        ], 200);
     }
 
     public function activeUp(Request $request)
@@ -399,13 +398,18 @@ class PromotionController extends Controller
         $id = $request->promo_id;
         $promo_master = PromotionMaster::find($id);
         $promo_master->$name = $request->value;
+
+        if ($name == "no_end_date" && $request->value == 'Y') {
+            $promo_master->ends_on = null;
+        }
+
         $promo_master->save();
 
         return response()->json([
             'status' => 'success',
             'message' => __('successfully updated !'),
             'id' => $id
-        ],200);
+        ], 200);
     }
 
 
