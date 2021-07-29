@@ -277,6 +277,7 @@
             $('#prom_out').on('select2:select', function (e) {
                 $("#mall_name").val(e.params.data.text);
                 $("#mall_id").val(e.params.data.id);
+                console.log("e");
 
                 $.ajax({
                     type: 'POST',
@@ -910,4 +911,59 @@
 
 
     </script>
+    <script>
+        $(document).on('click', '.btn-delete', function (e) {
+            e.preventDefault();
+            var btndelete = $(this);
+
+            $('#deletelocationmodal').modal('show');
+
+            $('#btnDeleteLocation').unbind().click(function () {
+
+                $.ajax({
+                    url: btndelete.attr('data-href'),
+                    type: btndelete.attr('data-method'),
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.status === 'error') {
+                            toastr.error(data.message);
+                        } else {
+                            $('#deletelocationmodal').modal('hide');
+                            $('.row-promotion[data-id="' + btndelete.attr('data-id') + '"]').remove();
+                            toastr.success(data.message);
+                        }
+                    }
+                });
+
+            });
+        });
+    </script>
+    <script>
+        $(document).on('click', '.btn-pt-delete', function (e) {
+            e.preventDefault();
+            var btndelete = $(this);
+
+            $('#deletelocationmodal').modal('show');
+
+            $('#btnDeleteLocation').unbind().click(function () {
+
+                $.ajax({
+                    url: btndelete.attr('data-href'),
+                    type: btndelete.attr('data-method'),
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.status === 'error') {
+                            toastr.error(data.message);
+                        } else {
+                            $('#deletelocationmodal').modal('hide');
+                            $('.row-promo-tags[data-id="' + btndelete.attr('data-id') + '"]').remove();
+                            toastr.success(data.message);
+                        }
+                    }
+                });
+
+            });
+        });
+    </script>
+
 @endsection

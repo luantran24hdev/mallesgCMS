@@ -133,34 +133,4 @@
         </div>
     </div>
     @include('partials.delete_model')
-
-@section('script')
-    <script>
-        $(document).on('click', '.btn-delete', function (e) {
-            e.preventDefault();
-            var btndelete = $(this);
-
-            $('#deletelocationmodal').modal('show');
-
-            $('#btnDeleteLocation').unbind().click(function () {
-
-                $.ajax({
-                    url: btndelete.attr('data-href'),
-                    type: btndelete.attr('data-method'),
-                    dataType: 'json',
-                    success: function (data) {
-                        if (data.status === 'error') {
-                            toastr.error(data.message);
-                        } else {
-                            $('#deletelocationmodal').modal('hide');
-                            $('.row-promotion[data-id="' + btndelete.attr('data-id') + '"]').remove();
-                            toastr.success(data.message);
-                        }
-                    }
-                });
-
-            });
-        });
-    </script>
-@endsection
 @endif
