@@ -9,10 +9,10 @@ class EnquiryController extends Controller
 {
     public function getInquiry(){
 
-        $inquiry = InquiryMaster::all();
+        $inquiries = InquiryMaster::all();
 
         $data = [
-            'inquirys' =>$inquiry
+            'inquiries' =>$inquiries
         ];
 
         return view('main.inquiry.index',$data);

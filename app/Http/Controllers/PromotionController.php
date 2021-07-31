@@ -232,17 +232,17 @@ class PromotionController extends Controller
         $update->ends_on = $request->no_end_date ? "" : $request->ends_on;
         $update->other_offer = $request->other_offer ?? null;
         $update->no_end_date = $request->no_end_date ?? "";
-        $update->active = $request->active_txt ?? "";
-        $update->promo_active = $request->active_txt ?? "";
+//        $update->active = $request->active_txt ?? "";
+//        $update->promo_active = $request->active_txt ?? "";
         $update->redeemable = $request->redeemable_txt ?? 1;
-        $update->dine_in = $request->dine_in ?? null;
-        $update->dine_in_service = $request->dine_in_service ?? null;
-        $update->dine_in_gst = $request->dine_in_gst ?? null;
-        $update->take_out = $request->take_out ?? null;
-        $update->take_out_service = $request->take_out_service ?? null;
-        $update->deliver = $request->deliver ?? null;
-        $update->deliver_service = $request->deliver_service ?? null;
-        $update->deliver_gst = $request->deliver_gst ?? null;
+//        $update->dine_in = $request->dine_in ?? null;
+//        $update->dine_in_service = $request->dine_in_service ?? null;
+//        $update->dine_in_gst = $request->dine_in_gst ?? null;
+//        $update->take_out = $request->take_out ?? null;
+//        $update->take_out_service = $request->take_out_service ?? null;
+//        $update->deliver = $request->deliver ?? null;
+//        $update->deliver_service = $request->deliver_service ?? null;
+//        $update->deliver_gst = $request->deliver_gst ?? null;
         $update->save();
 
         return response()->json([

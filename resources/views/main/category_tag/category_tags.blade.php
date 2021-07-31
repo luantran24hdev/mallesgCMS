@@ -63,6 +63,8 @@
                                     <th></th>
                                     <th>Category Name</th>
                                     <th>Main Category</th>
+                                    <th>Views</th>
+                                    <th>Favourite</th>
                                     <th>Action</th>
                                     </thead>
                                     <tbody>
@@ -77,7 +79,13 @@
                                         </td>
                                         <td>{{ @$sub_cat->Sub_Category_name }}</td>
                                         <td>{{ @$sub_cat->category->Category_name }}</td>
-
+                                        <td>{{ @$sub_cat->views }}</td>
+                                        <td>
+                                            <select name="favorite" id="" class="merchant_column_update dd-orange" data-href="{{route('category-tags.column-update',[$sub_cat->sub_category_id])}}" data-method="POST">
+                                                <option value="N" @if($sub_cat->favorite=='N') selected @endif>No</option>
+                                                <option value="Y" @if($sub_cat->favorite=='Y') selected @endif>Yes</option>
+                                            </select>
+                                        </td>
                                         <td>
                                             <a href="{{route('category-tags.edit',[$sub_cat->sub_category_id])}}"><span class="text-info">Edit</span></a>
                                             |
@@ -183,5 +191,38 @@
             }
         });
 
+
+        // change promo outlate live, featured and redeem status
+        $(document).on('change', '.merchant_column_update', function(e){
+            e.preventDefault();
+            //debugger;
+            var selectOp = $(this);
+            var attrName = selectOp.attr("name");
+
+            $.ajax({
+                url: selectOp.attr('data-href'),
+                type: selectOp.attr('data-method'),
+                dataType:'json',
+                data: {
+                    name : selectOp.attr('name'),
+                    value : selectOp.find('option:selected').val()
+                },
+                success:function(data){
+                    console.log(data);
+                    if(data.status==='error'){
+                        errorReturn(data)
+                    }else{
+                        //$('#merchant-list-table tbody').remove();
+                        //  $("#merchant-list-table").load( $('#merchant-list-table').attr('data-sourceurl') +" #merchant-list-table");
+                        toastr.success(data.message);
+                    }
+                },
+                error: function(data){
+                    console.log(data);
+                    exeptionReturn(data);
+                }
+            });
+
+        });
     </script>
 @endsection

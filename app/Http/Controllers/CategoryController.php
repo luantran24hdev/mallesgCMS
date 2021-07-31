@@ -392,4 +392,21 @@ class CategoryController extends Controller
             //'id' => $time_master->time_id
         ],200);
     }
+
+    public function columnUpdate($id){
+
+        $name = request()->name;
+        $sub_cat = SubCategoryMaster::where('sub_category_id', $id)->first();
+        $sub_cat->$name = request()->value;
+        $sub_cat->save();
+        /* $this->merchant->update($id, [
+             request()->name => request()->value
+         ]);*/
+
+        return response()->json([
+            'status' => 'success',
+            'message' => __('successfully updated '. request()->name),
+            'id' => $id
+        ],200);
+    }
 }

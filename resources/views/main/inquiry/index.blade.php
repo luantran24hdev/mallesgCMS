@@ -8,7 +8,7 @@
                     {{__('Manage Inquiry')}}
                 </div>
 
-                @if(isset($inquirys))
+                @if(isset($inquiries))
                     <br/>
                     <div class="row container">
                         <div class="col-md-12">
@@ -23,14 +23,14 @@
                                     <th>Email</th>
                                 </thead>
                                 <tbody>
-                                @foreach($inquirys as $inquiry)
-                                    <tr class="row-location" data-id="{{@$inquiry->Inquiry_id}}">
-                                        <td>{{ @$inquiry->Inquiry_Date }}</td>
-                                        <td>{{ @$inquiry->Outlet_name }}</td>
+                                @foreach($inquiries as $inquiry)
+                                    <tr class="row-location" data-id="{{@$inquiry->inquiry_id}}">
+                                        <td>{{ @$inquiry->inquiry_Date }}</td>
+                                        <td>{{ @$inquiry->outlet_name }}</td>
                                         <td>{{ @$inquiry->country->country_name }}</td>
-                                        <td>{{ @$inquiry->Contact_person }}</td>
-                                        <td>{{ @$inquiry->Contact_number }}</td>
-                                        <td>{{ @$inquiry->Email_id }}</td>
+                                        <td>{{ @$inquiry->contact_person }}</td>
+                                        <td>{{ @$inquiry->contact_number }}</td>
+                                        <td>{{ @$inquiry->email_id }}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>

@@ -175,6 +175,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('category-tags', 'CategoryController', ['names' => [
         'index' => 'category-tags'
     ]]);
+    Route::post('category-tags/column-update/{id?}', 'CategoryController@columnUpdate')->name('category-tags.column-update');
+
+
     Route::get('tags/search/{name?}', 'CategoryController@search')->name('category.tag.search');
     Route::post('tags/uploadimage', 'CategoryController@uploadimage')->name('category.tag.uploadimage');
     Route::post('tags/deleteimage/{id}', 'CategoryController@deleteimage')->name('category.tag.deleteimage');

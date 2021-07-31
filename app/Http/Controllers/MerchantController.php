@@ -260,7 +260,8 @@ class MerchantController extends Controller
     {
         $merchants = $this->merchant->all()->pluck('merchant_name', 'merchant_id');
         $count_merchant = MerchantMaster::count();
-        $current_merchants = MerchantMaster::orderBy('merchant_id','desc')->get();
+        $current_merchants = MerchantMaster::orderBy('merchant_active','desc')->orderBy('merchant_id','desc')->get();
+//        dd($current_merchants);
         $countrys = CountryMaster::all();
         $merchant_types = MerchantType::all();
         //return $count_all_me_type;

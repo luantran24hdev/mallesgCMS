@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class InquiryMaster extends Model
 {
     public $timestamps = false;
-    protected $table = 'Inquiry_master';
+    protected $table = 'inquiry_master';
     protected $primaryKey = 'Inquiry_id';
 
     public function country(){
